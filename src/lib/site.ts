@@ -2,8 +2,8 @@ export const site = {
   name: "Archilas",
   url: "https://archilas.com",
   description:
-    "A persistent memory layer for AI. Your tools reason over your history instead of searching text and pasting it into a prompt.",
-  tagline: "Memory that stays with your AI.",
+    "Persistent memory for AI. Reasons over your history instead of searching old messages and pasting them into a prompt.",
+  tagline: "Persistent memory for AI.",
   email: "hello@archilas.com",
   twitter: "@archilas",
   locale: "en_US",

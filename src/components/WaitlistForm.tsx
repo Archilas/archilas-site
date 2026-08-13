@@ -2,7 +2,13 @@
 
 import { FormEvent, useState } from "react";
 
-export function WaitlistForm({ id = "waitlist" }: { id?: string }) {
+export function WaitlistForm({
+  id = "waitlist",
+  compact = false,
+}: {
+  id?: string;
+  compact?: boolean;
+}) {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "done" | "error">("idle");
   const [message, setMessage] = useState("");
@@ -20,24 +26,24 @@ export function WaitlistForm({ id = "waitlist" }: { id?: string }) {
       const data = (await res.json()) as { ok?: boolean; error?: string };
       if (!res.ok || !data.ok) {
         setStatus("error");
-        setMessage(data.error || "Something went wrong. Please try again.");
+        setMessage(data.error || "Something went wrong.");
         return;
       }
       setStatus("done");
-      setMessage("You're on the list. We'll email you when access opens.");
+      setMessage("You're on the list.");
       setEmail("");
     } catch {
       setStatus("error");
-      setMessage("Network error. Please try again.");
+      setMessage("Network error.");
     }
   }
 
   return (
-    <form id={id} onSubmit={onSubmit} className="w-full max-w-md">
+    <form id={id} onSubmit={onSubmit} className={compact ? "w-full" : "w-full max-w-md"}>
       <label htmlFor={`${id}-email`} className="sr-only">
-        Email address
+        Email
       </label>
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-stretch">
+      <div className="flex gap-2">
         <input
           id={`${id}-email`}
           name="email"
@@ -47,19 +53,17 @@ export function WaitlistForm({ id = "waitlist" }: { id?: string }) {
           placeholder="you@company.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="min-h-10 flex-1 rounded border border-border bg-bg px-3 text-[15px] text-ink outline-none placeholder:text-muted focus:border-ink"
+          className="min-h-9 flex-1 rounded-md border border-border bg-bg px-3 text-[13px] text-ink outline-none placeholder:text-muted focus:border-ink"
         />
         <button type="submit" className="btn btn-primary shrink-0" disabled={status === "loading"}>
-          {status === "loading" ? "Joining…" : "Join the waitlist"}
+          {status === "loading" ? "…" : "Join waitlist"}
         </button>
       </div>
       {message ? (
-        <p className="mt-3 text-sm text-muted" role="status">
+        <p className="mt-2 text-[12px] text-muted" role="status">
           {message}
         </p>
-      ) : (
-        <p className="mt-3 text-sm text-muted">Launch updates only.</p>
-      )}
+      ) : null}
     </form>
   );
 }

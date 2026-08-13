@@ -1,51 +1,35 @@
-# Archilas Site · Design System
+# Archilas Site — Design System
 
-Visual language: light-mode Resend / Cursor. Monochrome only. Engineer-written, not marketing-written.
+Light-mode Resend / Cursor: monochrome, dense, product-forward.
 
-## Color (black / white / gray only)
+## Color
 
 | Role | Token | Value |
 |------|-------|-------|
 | Background | `--color-bg` | `#FAFAF9` |
 | Surface | `--color-surface` | `#F4F4F3` |
 | Text | `--color-ink` | `#16161A` |
-| Muted text | `--color-muted` | `#6B6B6B` |
+| Muted | `--color-muted` | `#6B6B6B` |
 | Border | `--color-border` | `#E5E5E3` |
 
-Rules:
+No accent color. No gradients. No glow. Buttons are solid near-black.
 
-- No accent color. No amber, gold, brown, blue, purple, green.
-- No gradients. No noise textures. No glow. No glassmorphism.
-- Buttons: solid near-black on off-white. Never colored.
-- Borders: 1px `--color-border` when structure needs a line. No heavy shadows.
+## Type
 
-## Typography
+- **Geist Sans** for UI and headlines. Tight tracking on large type. Headline weight 500.
+- **Geist Mono** for code, MCP, API surfaces, technical labels.
+- Hierarchy from size and spacing. Not color. Not heavy weight.
+- Body 15–16px. Subheads short.
 
-| Role | Family |
-|------|--------|
-| Headlines + body | **Geist Sans** (geometric). Weight ≤ 500 for headlines. Hierarchy via size and spacing, not boldness or color. |
-| Code / technical | **Geist Mono** · API snippets, MCP examples, protocol names in technical context. |
+## Layout (critical)
 
-- Body ≥ 16px, line-height ~1.6, measure ~60–80ch.
-- One `h1` per page.
-
-## Layout
-
-- Generous whitespace. Major sections ~160–200px vertical padding.
-- Spacing scale: multiples of 8px (4px half-step ok).
-- Asymmetric or stacked layouts. No three-identical-card grids.
-- Left-aligned content by default.
-- Thin borders for chrome (code panels, dividers). No decorative cards.
+- Prefer **product density** over empty whitespace. If a section feels sparse, add structure (bordered panel, grid, code) or cut padding. Do not pad emptiness.
+- Section padding typically `64–96px`, not 160–200px on thin content.
+- Hero should fill the first viewport with **copy + product chrome**, not a lonely headline in a void.
+- Max content width ~1120px. Thin 1px borders for chrome.
 
 ## Copy
 
-- Short sentences. Direct. No hype adjectives.
-- No em dashes (` - `). Use periods, commas, or colons.
-- Do not call out marketing tropes you are avoiding.
-
-## Forbidden
-
-- Colored CTAs, badges, pills, left-border stripes
-- Stock photos, illustrations, 3D renders
-- Serif display fonts
-- Fabricated logos, testimonials, or stats
+- Short. Specific. Engineer voice (Resend / Cursor).
+- No em dashes. No hype. No tropes about tropes.
+- Split long ideas: short `h1`, supporting sentence below.

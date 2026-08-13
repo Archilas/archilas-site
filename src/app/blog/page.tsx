@@ -5,8 +5,7 @@ import { getAllPosts, readingTimeMinutes } from "@/lib/posts";
 
 export const metadata = buildMetadata({
   title: "Blog",
-  description:
-    "Archilas blog on AI memory, RAG, agents, MCP, and building grounded persistent memory.",
+  description: "Archilas writing on AI memory, RAG, agents, and MCP.",
   path: "/blog",
 });
 
@@ -15,78 +14,49 @@ export default function BlogIndexPage() {
 
   return (
     <>
-      <Section className="!pt-16 md:!pt-24">
-        <h1 className="max-w-2xl text-4xl font-medium tracking-tight text-ink md:text-5xl">
+      <Section className="!pb-8 !pt-12 md:!pt-14">
+        <p className="mono text-[12px] text-muted">blog</p>
+        <h1 className="mt-3 text-[36px] font-medium tracking-[-0.035em] text-ink md:text-[44px]">
           Blog
         </h1>
-        <p className="prose-measure mt-6 text-lg text-muted">
-          Direct answers first. Then the longer explanation, written for humans and for answer engines that cite sources.
+        <p className="mt-4 max-w-lg text-[15px] text-muted">
+          Direct answers first. Then the longer explanation.
         </p>
       </Section>
 
-      <Section className="border-t border-border">
-        <div className="space-y-16">
+      <Section className="!pt-0">
+        <div className="overflow-hidden rounded-lg border border-border">
           {posts.map((post, index) => {
             const mins = readingTimeMinutes(post);
-            if (index === 0) {
-              return (
-                <article key={post.slug} className="grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:gap-16">
-                  <Link href={`/blog/${post.slug}`} className="block overflow-hidden border border-border">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={post.coverImage}
-                      alt={post.coverAlt}
-                      width={960}
-                      height={540}
-                      className="h-auto w-full"
-                    />
-                  </Link>
-                  <div className="flex flex-col justify-center">
-                    <p className="mono text-[13px] text-muted">
-                      <time dateTime={post.datePublished}>{post.datePublished}</time>
-                      {" · "}
-                      {mins} min
-                    </p>
-                    <h2 className="mt-4 text-2xl font-medium tracking-tight text-ink md:text-3xl">
-                      <Link href={`/blog/${post.slug}`}>{post.title}</Link>
-                    </h2>
-                    <p className="prose-measure mt-5 text-muted">{post.excerpt}</p>
-                    <Link
-                      href={`/blog/${post.slug}`}
-                      className="mt-8 text-[15px] text-ink underline underline-offset-4"
-                    >
-                      Read post
-                    </Link>
-                  </div>
-                </article>
-              );
-            }
-
             return (
               <article
                 key={post.slug}
-                className="grid gap-8 border-t border-border pt-16 md:grid-cols-[200px_1fr] md:gap-12"
+                className={`grid gap-5 p-5 md:grid-cols-[200px_1fr] md:gap-8 md:p-6 ${
+                  index < posts.length - 1 ? "border-b border-border" : ""
+                }`}
               >
-                <Link href={`/blog/${post.slug}`} className="block overflow-hidden border border-border">
+                <Link href={`/blog/${post.slug}`} className="block overflow-hidden rounded border border-border">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={post.coverImage}
                     alt={post.coverAlt}
                     width={400}
-                    height={240}
+                    height={220}
                     className="h-auto w-full"
                   />
                 </Link>
-                <div>
-                  <p className="mono text-[13px] text-muted">
+                <div className="flex flex-col justify-center">
+                  <p className="mono text-[11px] text-muted">
                     <time dateTime={post.datePublished}>{post.datePublished}</time>
                     {" · "}
                     {mins} min
                   </p>
-                  <h2 className="mt-3 text-xl font-medium tracking-tight text-ink">
-                    <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+                  <h2 className="mt-2 text-[18px] font-medium tracking-tight text-ink">
+                    <Link href={`/blog/${post.slug}`} className="hover:underline hover:underline-offset-4">
+                      {post.title}
+                    </Link>
                   </h2>
-                  <p className="prose-measure mt-4 text-muted">{post.excerpt}</p>
+                  <p className="mt-2 max-w-xl text-[14px] text-muted">{post.excerpt}</p>
                 </div>
               </article>
             );

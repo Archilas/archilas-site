@@ -26,8 +26,9 @@ body {
   background: var(--color-bg);
   color: var(--color-ink);
   font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
-  font-size: 16px;
-  line-height: 1.65;
+  font-size: 15px;
+  line-height: 1.55;
+  letter-spacing: -0.011em;
 }
 
 ::selection {
@@ -35,28 +36,14 @@ body {
   color: var(--color-bg);
 }
 
-.prose-measure {
-  max-width: 68ch;
-}
-
-.fade-rise {
-  animation: fade-rise 600ms ease-out both;
-}
-
-@keyframes fade-rise {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.mono {
+  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: -0.02em;
 }
 
 .nav-link {
   color: var(--color-muted);
-  transition: color 140ms ease;
+  transition: color 120ms ease;
 }
 
 .nav-link:hover,
@@ -68,20 +55,18 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 40px;
-  padding: 0 16px;
-  border-radius: 4px;
-  font-size: 14px;
+  min-height: 36px;
+  padding: 0 14px;
+  border-radius: 6px;
+  font-size: 13px;
   font-weight: 500;
   line-height: 1;
-  transition:
-    background-color 120ms ease,
-    color 120ms ease,
-    opacity 120ms ease;
+  letter-spacing: -0.01em;
+  transition: opacity 120ms ease;
 }
 
 .btn:active {
-  opacity: 0.88;
+  opacity: 0.85;
 }
 
 .btn-primary {
@@ -90,28 +75,56 @@ body {
 }
 
 .btn-primary:hover {
-  opacity: 0.9;
+  opacity: 0.92;
 }
 
-.btn-ghost {
+.btn-secondary {
   background: transparent;
   color: var(--color-ink);
-  padding-inline: 8px;
+  border: 1px solid var(--color-border);
 }
 
-.btn-ghost:hover {
+.btn-secondary:hover {
+  background: var(--color-surface);
+}
+
+.panel {
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.panel-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
+  padding: 10px 12px;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 12px;
   color: var(--color-muted);
 }
 
-.code-panel {
-  border: 1px solid var(--color-border);
-  background: var(--color-surface);
-  font-family: var(--font-geist-mono), ui-monospace, monospace;
-  font-size: 13px;
-  line-height: 1.7;
-  color: var(--color-ink);
+.panel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #d4d4d2;
 }
 
-.mono {
-  font-family: var(--font-geist-mono), ui-monospace, monospace;
+.fade-in {
+  animation: fade-in 500ms ease-out both;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
