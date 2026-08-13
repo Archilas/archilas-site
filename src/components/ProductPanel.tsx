@@ -1,4 +1,4 @@
-/** Product chrome for the homepage — MCP memory session, Resend/Cursor density. */
+/** Product chrome for the homepage: MCP memory session, Resend/Cursor density. */
 export function ProductPanel() {
   return (
     <div className="panel fade-in shadow-[0_1px_0_rgba(22,22,26,0.04)]">
