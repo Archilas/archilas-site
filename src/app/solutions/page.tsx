@@ -28,9 +28,9 @@ const personas = [
 export default function SolutionsPage() {
   return (
     <>
-      <Section className="!pb-8 !pt-12">
-        <p className="mono text-[11px] uppercase tracking-[0.14em] text-muted">solutions</p>
-        <h1 className="display mt-4 max-w-2xl text-[40px] text-ink md:text-[48px]">
+      <Section className="!pb-10 !pt-16">
+        <p className="mono text-[11px] text-muted">solutions</p>
+        <h1 className="display mt-4 max-w-2xl text-[44px] text-ink md:text-[56px]">
           Built for people already in the tools.
         </h1>
         <p className="mt-5 max-w-lg text-[15px] text-muted">
@@ -39,23 +39,18 @@ export default function SolutionsPage() {
       </Section>
 
       <Section className="!pt-0">
-        <div className="overflow-hidden rounded-sm border border-border bg-bg">
-          {personas.map((p, i) => (
-            <article
-              key={p.title}
-              className={`grid gap-3 px-5 py-7 md:grid-cols-[180px_1fr] md:gap-10 md:px-6 ${
-                i < personas.length - 1 ? "border-b border-border" : ""
-              }`}
-            >
+        <div className="grid gap-4">
+          {personas.map((p) => (
+            <article key={p.title} className="card grid gap-3 p-6 md:grid-cols-[180px_1fr] md:gap-10 md:p-8">
               <h2 className="text-[15px] font-medium text-ink">{p.title}</h2>
               <p className="text-[14px] leading-relaxed text-muted">{p.body}</p>
             </article>
           ))}
         </div>
 
-        <div className="mt-8 grid overflow-hidden rounded-sm border border-border md:grid-cols-2">
-          <div className="border-b border-border p-6 md:border-b-0 md:border-r md:p-8">
-            <p className="mono text-[11px] uppercase tracking-[0.14em] text-muted">hosts</p>
+        <div className="mt-4 grid gap-4 md:grid-cols-2">
+          <div className="card p-7 md:p-8">
+            <p className="mono text-[11px] text-muted">hosts</p>
             <h2 className="mt-3 text-[22px] font-medium tracking-tight text-ink">
               One layer. Many surfaces.
             </h2>
@@ -65,16 +60,16 @@ export default function SolutionsPage() {
             </p>
             <Link
               href="/blog/what-is-mcp"
-              className="mt-5 inline-block text-[13px] font-medium underline underline-offset-4"
+              className="mt-5 inline-block text-[13px] font-medium text-ink underline underline-offset-4"
             >
               What MCP is
             </Link>
           </div>
-          <div className="bg-ink p-6 text-bg md:p-8">
-            <p className="mono text-[11px] uppercase tracking-[0.14em] text-white/45">waitlist</p>
-            <p className="mt-3 text-[14px] text-white/70">Get access when we open.</p>
+          <div className="card p-7 md:p-8">
+            <p className="mono text-[11px] text-muted">waitlist</p>
+            <p className="mt-3 text-[14px] text-muted">Get access when we open.</p>
             <div className="mt-5">
-              <WaitlistForm id="solutions-waitlist" tone="dark" />
+              <WaitlistForm id="solutions-waitlist" />
             </div>
           </div>
         </div>

@@ -48,8 +48,8 @@ export default async function BlogPostPage({ params }: Props) {
         })}
       />
 
-      <Section className="!pb-10 !pt-16 md:!pt-24">
-        <p className="mono text-[13px] text-muted">
+      <Section className="!pb-8 !pt-16">
+        <p className="mono text-[11px] text-muted">
           <Link href="/blog" className="hover:text-ink">
             Blog
           </Link>
@@ -58,41 +58,37 @@ export default async function BlogPostPage({ params }: Props) {
           {" · "}
           {mins} min
         </p>
-        <h1 className="mt-6 max-w-2xl text-3xl font-medium leading-tight tracking-tight text-ink md:text-4xl">
-          {post.title}
-        </h1>
-        <p className="mt-5 text-muted">By {post.author}</p>
+        <h1 className="display mt-5 max-w-3xl text-[40px] text-ink md:text-[52px]">{post.title}</h1>
+        <p className="mt-5 text-[14px] text-muted">By {post.author}</p>
       </Section>
 
-      <div className="mx-auto w-full max-w-5xl px-6 md:px-8">
+      <div className="mx-auto w-full max-w-[1120px] px-5 md:px-8">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={post.coverImage}
           alt={post.coverAlt}
           width={1200}
           height={630}
-          className="h-auto w-full border border-border"
+          className="h-auto w-full rounded-[20px] border border-border opacity-95"
         />
       </div>
 
       <Section>
         <div className="mx-auto max-w-2xl">
-          <p className="border border-border bg-surface px-6 py-8 text-[17px] text-ink">
-            {post.directAnswer}
-          </p>
+          <p className="card p-6 text-[16px] leading-relaxed text-ink md:p-8">{post.directAnswer}</p>
 
-          <div className="prose-measure mt-12 space-y-6 text-[17px] text-muted">
+          <div className="mt-10 space-y-6 text-[16px] leading-relaxed text-muted">
             {post.sections.map((block, i) => {
               if (block.type === "h2") {
                 return (
-                  <h2 key={i} className="!mt-14 text-2xl font-medium tracking-tight text-ink">
+                  <h2 key={i} className="!mt-12 text-[26px] font-medium tracking-tight text-ink">
                     {block.text}
                   </h2>
                 );
               }
               if (block.type === "h3") {
                 return (
-                  <h3 key={i} className="!mt-10 text-lg font-medium text-ink">
+                  <h3 key={i} className="!mt-8 text-lg font-medium text-ink">
                     {block.text}
                   </h3>
                 );
@@ -110,8 +106,8 @@ export default async function BlogPostPage({ params }: Props) {
             })}
           </div>
 
-          <p className="mt-16 text-muted">
-            <Link href="/blog" className="text-ink underline underline-offset-4">
+          <p className="mt-14">
+            <Link href="/blog" className="text-[13px] font-medium text-ink underline underline-offset-4">
               All posts
             </Link>
           </p>

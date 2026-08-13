@@ -1,12 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img">
-  <rect width="1200" height="630" fill="#F4F4F3"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="g" cx="50%" cy="20%" r="70%">
+      <stop offset="0%" stop-color="#2a2a32"/>
+      <stop offset="100%" stop-color="#0b0b0c"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#g)"/>
   
-  <circle cx="600" cy="300" r="70" fill="#16161A"/>
-  <circle cx="320" cy="180" r="36" fill="#16161A" fill-opacity="0.7"/>
-  <circle cx="880" cy="180" r="36" fill="#16161A" fill-opacity="0.7"/>
-  <circle cx="320" cy="420" r="36" fill="#16161A" fill-opacity="0.7"/>
-  <circle cx="880" cy="420" r="36" fill="#16161A" fill-opacity="0.7"/>
-  <path d="M350 200 L545 275 M850 200 L655 275 M350 400 L545 325 M850 400 L655 325" stroke="#16161A" stroke-opacity="0.35" stroke-width="2"/>
+  <circle cx="600" cy="300" r="72" fill="#ECECEE" fill-opacity="0.14"/>
+  <circle cx="320" cy="190" r="34" fill="#ECECEE" fill-opacity="0.1"/>
+  <circle cx="880" cy="190" r="34" fill="#ECECEE" fill-opacity="0.1"/>
+  <circle cx="320" cy="410" r="34" fill="#ECECEE" fill-opacity="0.1"/>
+  <circle cx="880" cy="410" r="34" fill="#ECECEE" fill-opacity="0.1"/>
+  <path d="M350 205 L545 275 M850 205 L655 275 M350 395 L545 325 M850 395 L655 325" stroke="#9B9BA3" stroke-width="2"/>
 
-  <text x="64" y="560" font-family="ui-sans-serif, system-ui, sans-serif" font-size="24" fill="#16161A" fill-opacity="0.45">Archilas</text>
+  <text x="64" y="560" font-family="ui-sans-serif,system-ui,sans-serif" font-size="22" fill="#9B9BA3">Archilas</text>
 </svg>

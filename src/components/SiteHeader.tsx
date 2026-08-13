@@ -8,13 +8,12 @@ export function SiteHeader() {
   const pathname = usePathname() || "";
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-bg/95">
-      <div className="mx-auto flex h-12 w-full max-w-[1180px] items-center justify-between px-5 md:px-8">
-        <Link href="/" className="flex items-baseline gap-2">
-          <span className="text-[15px] font-medium tracking-[-0.03em] text-ink">{site.name}</span>
-          <span className="mono hidden text-[10px] text-muted sm:inline">memory</span>
+    <header className="sticky top-0 z-40 border-b border-border bg-bg/70 backdrop-blur-md">
+      <div className="mx-auto flex h-14 w-full max-w-[1120px] items-center justify-between px-5 md:px-8">
+        <Link href="/" className="text-[15px] font-medium tracking-tight text-ink">
+          {site.name}
         </Link>
-        <nav aria-label="Primary" className="hidden items-center gap-6 md:flex">
+        <nav aria-label="Primary" className="hidden items-center gap-7 md:flex">
           {nav.map((item) => (
             <Link
               key={item.href}
@@ -25,11 +24,11 @@ export function SiteHeader() {
               {item.label}
             </Link>
           ))}
-          <Link href="/#waitlist" className="btn btn-primary">
+          <Link href="/#waitlist" className="btn btn-secondary">
             Join waitlist
           </Link>
         </nav>
-        <Link href="/#waitlist" className="btn btn-primary md:hidden">
+        <Link href="/#waitlist" className="btn btn-secondary md:hidden">
           Waitlist
         </Link>
       </div>

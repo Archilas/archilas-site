@@ -46,35 +46,27 @@ export default function PricingPage() {
   return (
     <>
       <JsonLd data={faqJsonLd(faqs)} />
-      <Section className="!pb-8 !pt-12">
-        <p className="mono text-[11px] uppercase tracking-[0.14em] text-muted">pricing</p>
-        <h1 className="display mt-4 text-[40px] text-ink md:text-[48px]">Plans</h1>
+      <Section className="!pb-10 !pt-16">
+        <p className="mono text-[11px] text-muted">pricing</p>
+        <h1 className="display mt-4 text-[44px] text-ink md:text-[56px]">Plans</h1>
         <p className="mt-4 max-w-md text-[15px] text-muted">
           Indicative. Subject to change. Packaging is not final.
         </p>
       </Section>
 
       <Section className="!pt-0">
-        <div className="grid gap-3 md:grid-cols-3">
+        <div className="grid gap-4 md:grid-cols-3">
           {tiers.map((t) => (
             <article
               key={t.name}
-              className={`rounded-sm border border-border p-6 ${
-                t.featured ? "bg-ink text-bg" : "bg-bg"
-              }`}
+              className={`card p-7 ${t.featured ? "border-border-strong bg-white/[0.04]" : ""}`}
             >
               <div className="flex items-baseline justify-between">
-                <h2 className="text-[15px] font-medium">{t.name}</h2>
-                <p className="mono text-[13px]">{t.price}</p>
+                <h2 className="text-[15px] font-medium text-ink">{t.name}</h2>
+                <p className="mono text-[13px] text-ink">{t.price}</p>
               </div>
-              <p className={`mt-3 text-[13px] ${t.featured ? "text-white/60" : "text-muted"}`}>
-                {t.note}
-              </p>
-              <ul
-                className={`mt-6 space-y-2 border-t pt-5 text-[13px] ${
-                  t.featured ? "border-white/10" : "border-border"
-                }`}
-              >
+              <p className="mt-3 text-[13px] text-muted">{t.note}</p>
+              <ul className="mt-6 space-y-2 border-t border-border pt-5 text-[13px] text-ink/90">
                 {t.points.map((pt) => (
                   <li key={pt}>{pt}</li>
                 ))}
@@ -84,10 +76,10 @@ export default function PricingPage() {
         </div>
       </Section>
 
-      <Section className="border-t border-border bg-surface">
+      <Section className="border-t border-border">
         <div className="grid gap-8 md:grid-cols-2">
           {faqs.map((f) => (
-            <div key={f.question}>
+            <div key={f.question} className="card p-6">
               <h2 className="text-[15px] font-medium text-ink">{f.question}</h2>
               <p className="mt-2 text-[14px] text-muted">{f.answer}</p>
             </div>

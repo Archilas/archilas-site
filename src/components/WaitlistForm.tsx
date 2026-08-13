@@ -2,17 +2,10 @@
 
 import { FormEvent, useState } from "react";
 
-export function WaitlistForm({
-  id = "waitlist",
-  tone = "light",
-}: {
-  id?: string;
-  tone?: "light" | "dark";
-}) {
+export function WaitlistForm({ id = "waitlist" }: { id?: string }) {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "done" | "error">("idle");
   const [message, setMessage] = useState("");
-  const dark = tone === "dark";
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -40,11 +33,11 @@ export function WaitlistForm({
   }
 
   return (
-    <form id={id} onSubmit={onSubmit} className="w-full">
+    <form id={id} onSubmit={onSubmit} className="w-full max-w-md">
       <label htmlFor={`${id}-email`} className="sr-only">
         Email
       </label>
-      <div className="flex gap-2">
+      <div className="flex flex-col gap-3 sm:flex-row">
         <input
           id={`${id}-email`}
           name="email"
@@ -54,22 +47,14 @@ export function WaitlistForm({
           placeholder="you@company.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className={`min-h-[38px] flex-1 rounded-sm border px-3 text-[13px] outline-none ${
-            dark
-              ? "border-white/15 bg-transparent text-bg placeholder:text-white/35 focus:border-white/40"
-              : "border-border bg-bg text-ink placeholder:text-muted focus:border-ink"
-          }`}
+          className="min-h-10 flex-1 rounded-full border border-border-strong bg-white/[0.03] px-4 text-[13px] text-ink outline-none placeholder:text-muted focus:border-ink/40"
         />
-        <button
-          type="submit"
-          className={`btn shrink-0 ${dark ? "bg-bg text-ink hover:opacity-90" : "btn-primary"}`}
-          disabled={status === "loading"}
-        >
+        <button type="submit" className="btn btn-primary shrink-0" disabled={status === "loading"}>
           {status === "loading" ? "…" : "Join waitlist"}
         </button>
       </div>
       {message ? (
-        <p className={`mt-2 text-[12px] ${dark ? "text-white/45" : "text-muted"}`} role="status">
+        <p className="mt-3 text-[12px] text-muted" role="status">
           {message}
         </p>
       ) : null}

@@ -1,30 +1,40 @@
 # Archilas Site — Design System
 
-Light page, dark product. Monochrome Resend/Cursor energy without copying a template.
+Dark, textured, Resend-adjacent energy. Do not copy Resend. Do not ship flat #000 / #fff squares.
 
-## Color
+## Color (never pure black / pure white)
 
-| Token | Value | Use |
-|------|-------|-----|
-| `--color-bg` | `#FAFAF9` | Page |
-| `--color-surface` | `#F0EFED` | Bands |
-| `--color-ink` | `#16161A` | Text, solid CTAs, inverted bands |
-| `--color-muted` | `#5C5C5C` | Secondary text |
-| `--color-border` | `#E4E4E1` | Rules |
-| `--color-panel` | `#111113` | Product chrome only |
+| Token | Value | Role |
+|------|-------|------|
+| `--color-bg` | `#0B0B0C` | Page (charcoal) |
+| `--color-surface` | `#121214` | Bands / wells |
+| `--color-elevated` | `#17171A` | Cards / panels |
+| `--color-ink` | `#ECECEE` | Primary text |
+| `--color-muted` | `#9B9BA3` | Secondary text |
+| `--color-border` | `rgba(255,255,255,0.08)` | Soft rules |
+| `--color-border-strong` | `rgba(255,255,255,0.14)` | Buttons / focus |
 
-No accent hues. Dark panels on light pages are intentional contrast, not dark-mode.
+Atmosphere: soft radial light from upper center (cool gray, low opacity) + fine film grain. No neon purple wash. No flat voids.
+
+## Shape
+
+- Prefer **pills** and **large radii** (12–24px cards, `999px` buttons).
+- Avoid hard 2px “engineering square” chrome as the default.
+- Thin 1px borders, almost invisible. Depth from layered charcoal, not drop shadows.
 
 ## Type
 
-- **IBM Plex Sans** for UI and display. Tight tracking on large type.
-- **IBM Plex Mono** for MCP, commands, labels, technical UI.
-- Hierarchy from size and contrast (light/dark bands), not color accents.
+- Display: **Instrument Serif** for hero / major section titles.
+- UI / body: **Geist Sans**.
+- Code: **Geist Mono**.
+- Hierarchy via size + gray, not heavy weight.
 
-## Craft
+## Motion
 
-- Technical grid background (low-contrast).
-- Product panel is dark, dense, animated (staggered lines + caret).
-- Prefer bordered lists and split bands over empty card grids.
-- Sharp 2px radii. No soft SaaS pills.
-- Motion: hero rise, terminal line-in, caret blink.
+- Soft fade/rise on hero.
+- Slow grain is static CSS; caret / line reveal in product panel.
+- Hover: border brightens slightly. No bounce. No glow spam.
+
+## Copy
+
+- Short. Direct. No em dashes. No hype.

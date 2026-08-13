@@ -1,10 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img">
-  <rect width="1200" height="630" fill="#F4F4F3"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="g" cx="50%" cy="20%" r="70%">
+      <stop offset="0%" stop-color="#2a2a32"/>
+      <stop offset="100%" stop-color="#0b0b0c"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#g)"/>
   
-  <rect x="160" y="160" width="220" height="280" fill="#FAFAF9" stroke="#E5E5E3"/>
-  <rect x="420" y="160" width="220" height="280" fill="#FAFAF9" stroke="#E5E5E3"/>
-  <rect x="680" y="160" width="220" height="280" fill="#FAFAF9" stroke="#E5E5E3"/>
-  <path d="M160 480 C360 520, 840 520, 1040 480" fill="none" stroke="#16161A" stroke-width="3"/>
+  <rect x="170" y="160" width="200" height="260" rx="28" fill="#17171A" stroke="#ffffff" stroke-opacity="0.08"/>
+  <rect x="430" y="160" width="200" height="260" rx="28" fill="#17171A" stroke="#ffffff" stroke-opacity="0.08"/>
+  <rect x="690" y="160" width="200" height="260" rx="28" fill="#17171A" stroke="#ffffff" stroke-opacity="0.08"/>
+  <path d="M170 470 C360 520 840 520 1030 470" fill="none" stroke="#9B9BA3" stroke-width="3"/>
 
-  <text x="64" y="560" font-family="ui-sans-serif, system-ui, sans-serif" font-size="24" fill="#16161A" fill-opacity="0.45">Archilas</text>
+  <text x="64" y="560" font-family="ui-sans-serif,system-ui,sans-serif" font-size="22" fill="#9B9BA3">Archilas</text>
 </svg>
