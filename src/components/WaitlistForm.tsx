@@ -24,7 +24,7 @@ export function WaitlistForm({ id = "waitlist" }: { id?: string }) {
         return;
       }
       setStatus("done");
-      setMessage("You’re on the list. We’ll be in touch when access opens.");
+      setMessage("You're on the list. We'll email you when access opens.");
       setEmail("");
     } catch {
       setStatus("error");
@@ -33,7 +33,7 @@ export function WaitlistForm({ id = "waitlist" }: { id?: string }) {
   }
 
   return (
-    <form id={id} onSubmit={onSubmit} className="w-full max-w-xl">
+    <form id={id} onSubmit={onSubmit} className="w-full max-w-md">
       <label htmlFor={`${id}-email`} className="sr-only">
         Email address
       </label>
@@ -47,25 +47,18 @@ export function WaitlistForm({ id = "waitlist" }: { id?: string }) {
           placeholder="you@company.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="min-h-12 flex-1 rounded bg-bg px-4 text-base text-ink outline-none ring-1 ring-ink/10 placeholder:text-muted focus:ring-2 focus:ring-accent"
+          className="min-h-10 flex-1 rounded border border-border bg-bg px-3 text-[15px] text-ink outline-none placeholder:text-muted focus:border-ink"
         />
-        <button
-          type="submit"
-          className="btn btn-primary shrink-0"
-          disabled={status === "loading"}
-        >
+        <button type="submit" className="btn btn-primary shrink-0" disabled={status === "loading"}>
           {status === "loading" ? "Joining…" : "Join the waitlist"}
         </button>
       </div>
       {message ? (
-        <p
-          className={`mt-3 text-sm ${status === "error" ? "text-accent" : "text-muted"}`}
-          role="status"
-        >
+        <p className="mt-3 text-sm text-muted" role="status">
           {message}
         </p>
       ) : (
-        <p className="mt-3 text-sm text-muted">No spam. Launch updates only.</p>
+        <p className="mt-3 text-sm text-muted">Launch updates only.</p>
       )}
     </form>
   );

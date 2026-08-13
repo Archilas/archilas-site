@@ -2,7 +2,7 @@ export type BlogPost = {
   slug: string;
   title: string;
   excerpt: string;
-  /** Direct answer for AEO — appears near the top of the post */
+  /** Direct answer for AEO; appears near the top of the post */
   directAnswer: string;
   datePublished: string;
   author: string;
@@ -38,11 +38,11 @@ export function readingTimeMinutes(post: BlogPost): number {
 export const posts: BlogPost[] = [
   {
     slug: "ai-memory-vs-rag",
-    title: "How AI memory tools actually work — and how they differ from RAG",
+    title: "How AI memory tools actually work, and how they differ from RAG",
     excerpt:
       "Retrieval-augmented generation finds passages. A memory layer maintains a living model of what matters across time. Here is the practical difference.",
     directAnswer:
-      "RAG retrieves text snippets and pastes them into a prompt. An AI memory layer maintains structured, durable facts about you and your work, then reasons over that history — so answers stay consistent across sessions instead of depending on whatever search happened to return.",
+      "RAG retrieves text snippets and pastes them into a prompt. An AI memory layer maintains structured, durable facts about you and your work, then reasons over that history so answers stay consistent across sessions instead of depending on whatever search happened to return.",
     datePublished: "2026-08-04",
     author: "Archilas",
     coverImage: "/blog/covers/memory-vs-rag.svg",
@@ -52,7 +52,7 @@ export const posts: BlogPost[] = [
     sections: [
       {
         type: "p",
-        text: "Most people meet “AI memory” as a product feature: the chatbot somehow remembers a preference from last week. Under the hood, that feature is often just retrieval-augmented generation (RAG) with a friendlier name — embed documents, search them, stuff the top hits into the prompt.",
+        text: "Most people meet “AI memory” as a product feature: the chatbot somehow remembers a preference from last week. Under the hood, that feature is often just retrieval-augmented generation (RAG) with a friendlier name: embed documents, search them, stuff the top hits into the prompt.",
       },
       {
         type: "p",
@@ -65,7 +65,7 @@ export const posts: BlogPost[] = [
       },
       {
         type: "p",
-        text: "Where RAG strains is when the truth is distributed. “Why did we leave that vendor?” might require a payment failure from one month, a migration decision from another, and a constraint you stated in passing. Search returns fragments. The model is left to stitch them — or invent a bridge.",
+        text: "Where RAG strains is when the truth is distributed. “Why did we leave that vendor?” might require a payment failure from one month, a migration decision from another, and a constraint you stated in passing. Search returns fragments. The model is left to stitch them, or invent a bridge.",
       },
       { type: "h2", text: "What a memory layer is trying to do" },
       {
@@ -93,11 +93,11 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "why-agents-lose-context",
-    title: "Why AI agents lose context between sessions — and what to do about it",
+    title: "Why AI agents lose context between sessions, and what to do about it",
     excerpt:
       "Agents do not forget because they are careless. They forget because session state is ephemeral by default. Persistent memory is the missing layer.",
     directAnswer:
-      "AI agents lose context between sessions because each run usually starts with a fresh prompt window. Unless you deliberately persist structured memory outside that window — and reload it on the next run — the agent cannot reliably remember decisions, constraints, or unfinished work from yesterday.",
+      "AI agents lose context between sessions because each run usually starts with a fresh prompt window. Unless you deliberately persist structured memory outside that window, and reload it on the next run, the agent cannot reliably remember decisions, constraints, or unfinished work from yesterday.",
     datePublished: "2026-08-06",
     author: "Archilas",
     coverImage: "/blog/covers/agents-lose-context.svg",
@@ -130,7 +130,7 @@ export const posts: BlogPost[] = [
       },
       {
         type: "p",
-        text: "Those items need a home outside the chat log — something durable, queryable, and small enough to reload without drowning the next prompt.",
+        text: "Those items need a home outside the chat log: something durable, queryable, and small enough to reload without drowning the next prompt.",
       },
       { type: "h2", text: "A practical response" },
       {
@@ -145,7 +145,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "what-is-mcp",
-    title: "What MCP is — and why it matters for agent tooling",
+    title: "What MCP is, and why it matters for agent tooling",
     excerpt:
       "The Model Context Protocol is a standard way for AI tools to connect to external context and capabilities. Here is why that matters for memory.",
     directAnswer:
@@ -186,7 +186,7 @@ export const posts: BlogPost[] = [
       },
       {
         type: "p",
-        text: "Archilas uses that delivery model so compacted memory and local reasoning can reach the AI tools you already use — without asking you to abandon them.",
+        text: "Archilas uses that delivery model so compacted memory and local reasoning can reach the AI tools you already use without asking you to abandon them.",
       },
     ],
   },
@@ -194,9 +194,9 @@ export const posts: BlogPost[] = [
     slug: "memory-that-does-not-fabricate",
     title: "Build in public: teaching memory not to fabricate answers",
     excerpt:
-      "A plain look at a hard product problem: when memory is incomplete, the system should say so — not invent a confident story.",
+      "A plain look at a hard product problem: when memory is incomplete, the system should say so, not invent a confident story.",
     directAnswer:
-      "The hardest part of AI memory is not storage — it is restraint. When related facts are missing or conflict, a trustworthy memory system should refuse to invent a tidy story. We design for grounded composition: combine what is known, surface uncertainty, and avoid fabricated bridges between fragments.",
+      "The hardest part of AI memory is not storage. It is restraint. When related facts are missing or conflict, a trustworthy memory system should refuse to invent a tidy story. We design for grounded composition: combine what is known, surface uncertainty, and avoid fabricated bridges between fragments.",
     datePublished: "2026-08-10",
     author: "Archilas",
     coverImage: "/blog/covers/no-fabricate.svg",
@@ -233,7 +233,7 @@ export const posts: BlogPost[] = [
       { type: "h2", text: "Why we are building in public on this point" },
       {
         type: "p",
-        text: "Reliability is easy to claim and hard to demonstrate without turning a marketing site into a lab notebook. So we state the standard plainly: Archilas is aimed at memory that does not fabricate answers and that combines related facts correctly. The work continues — and the standard does not get relaxed for demos.",
+        text: "Reliability is easy to claim and hard to demonstrate without turning a marketing site into a lab notebook. So we state the standard plainly: Archilas is aimed at memory that does not fabricate answers and that combines related facts correctly. The work continues, and the standard does not get relaxed for demos.",
       },
     ],
   },
@@ -263,7 +263,7 @@ export const posts: BlogPost[] = [
       { type: "h2", text: "A better shape" },
       {
         type: "p",
-        text: "Keep memory as its own layer. Compact what matters. Reason over it locally where you need control. Deliver it into the hosts you already use. When a new client appears, you connect the layer — you do not rebuild your autobiography.",
+        text: "Keep memory as its own layer. Compact what matters. Reason over it locally where you need control. Deliver it into the hosts you already use. When a new client appears, you connect the layer. You do not rebuild your autobiography.",
       },
       {
         type: "p",

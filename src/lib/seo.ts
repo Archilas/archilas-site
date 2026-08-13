@@ -31,7 +31,7 @@ export function buildMetadata({
   // Layout template adds "· Archilas"; home uses absolute title.
   const isHome = title === site.name;
   const displayTitle = isHome
-    ? `${site.name} — Persistent memory for AI`
+    ? `${site.name} · Persistent memory for AI`
     : title;
 
   return {

@@ -16,17 +16,15 @@ export default function HomePage() {
     <>
       <JsonLd data={organizationJsonLd()} />
 
-      {/* Hero: brand-first, left-aligned, single CTA, radial accent + noise only */}
-      <section className="noise radial-accent">
-        <div className="mx-auto flex w-full max-w-6xl flex-col px-6 pb-40 pt-16 md:px-8 md:pb-48 md:pt-24">
-          <p className="fade-rise font-[family-name:var(--font-fraunces)] text-5xl font-medium tracking-tight text-ink md:text-7xl">
-            {site.name}
-          </p>
-          <h1 className="fade-rise prose-measure mt-10 max-w-3xl font-[family-name:var(--font-fraunces)] text-3xl font-medium leading-tight text-ink md:text-5xl md:leading-[1.15]">
-            A persistent memory layer for AI that reasons over your history — not a search box that pastes text into a prompt.
+      <section>
+        <div className="mx-auto flex w-full max-w-5xl flex-col px-6 pb-24 pt-20 md:px-8 md:pb-32 md:pt-28">
+          <p className="fade-rise text-[15px] font-medium text-ink">{site.name}</p>
+          <h1 className="fade-rise mt-8 max-w-2xl text-4xl font-medium leading-[1.15] tracking-tight text-ink md:text-5xl">
+            A persistent memory layer for AI. It reasons over your history instead of searching old messages and pasting them into a prompt.
           </h1>
-          <p className="fade-rise prose-measure mt-8 text-lg text-muted md:text-xl">
-            It doesn’t fabricate answers. It combines related facts correctly. Delivered into the AI tools you already use.
+          <p className="fade-rise prose-measure mt-8 text-lg text-muted">
+            Does not fabricate answers. Combines related facts correctly. Delivered into Claude, ChatGPT, Cursor, and other tools via{" "}
+            <span className="mono text-[15px] text-ink">MCP</span>.
           </p>
           <div className="fade-rise mt-12">
             <WaitlistForm />
@@ -34,79 +32,55 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Mechanism: asymmetric 60/40, plain language, no codenames */}
-      <Section>
-        <div className="grid gap-16 md:grid-cols-[1.4fr_1fr] md:gap-20">
+      <Section className="border-t border-border">
+        <div className="grid gap-16 md:grid-cols-[1.3fr_1fr] md:gap-20">
           <div>
-            <h2 className="font-[family-name:var(--font-fraunces)] text-3xl font-medium text-ink md:text-4xl">
-              How it works, without the jargon fog
+            <h2 className="text-2xl font-medium tracking-tight text-ink md:text-3xl">
+              How it works
             </h2>
-            <p className="prose-measure mt-8 text-lg text-muted">
-              Archilas keeps a compacted record of what matters from your work with AI — decisions, preferences, open loops, and the links between them. A local reasoning step works over that record so answers stay grounded. You get the result through MCP inside Claude, ChatGPT, Cursor, and other tools — not in a separate silo.
+            <p className="prose-measure mt-6 text-[17px] text-muted">
+              Archilas keeps a compacted record of what matters from your work with AI: decisions, preferences, open loops, and the links between them. A local reasoning step works over that record so answers stay grounded. Results reach you through{" "}
+              <span className="mono text-[14px] text-ink">MCP</span> inside the tools you already use.
             </p>
           </div>
-          <aside className="bg-surface px-8 py-10 md:mt-16">
-            <p className="text-sm font-medium uppercase tracking-[0.08em] text-accent">
-              Three parts
-            </p>
-            <ul className="mt-6 space-y-6 text-ink">
-              <li>
-                <p className="font-medium">Compacted memory</p>
-                <p className="mt-2 text-muted">
-                  Durable facts instead of endless transcript paste.
-                </p>
-              </li>
-              <li>
-                <p className="font-medium">Local reasoning</p>
-                <p className="mt-2 text-muted">
-                  Compose what is known. Stay quiet when it isn’t.
-                </p>
-              </li>
-              <li>
-                <p className="font-medium">MCP delivery</p>
-                <p className="mt-2 text-muted">
-                  Meet you in the clients you already open every day.
-                </p>
-              </li>
-            </ul>
+          <aside className="code-panel px-5 py-5">
+            <p className="text-[12px] text-muted">memory.load</p>
+            <pre className="mt-4 overflow-x-auto whitespace-pre text-[13px] text-ink">{`{
+  "preferences": [...],
+  "decisions": [...],
+  "open_loops": [...],
+  "via": "mcp"
+}`}</pre>
           </aside>
         </div>
       </Section>
 
-      {/* Validation: qualitative honesty, no fractions */}
-      <Section className="bg-surface">
-        <div className="max-w-3xl">
-          <h2 className="font-[family-name:var(--font-fraunces)] text-3xl font-medium text-ink md:text-4xl">
-            What we’re validating
+      <Section className="border-t border-border bg-surface">
+        <div className="max-w-2xl">
+          <h2 className="text-2xl font-medium tracking-tight text-ink md:text-3xl">
+            What we validate
           </h2>
-          <p className="prose-measure mt-8 text-lg text-muted">
-            We’re not publishing lab scoreboards on a marketing site. What we care about in daily use is simpler and stricter:
-          </p>
-          <ul className="mt-10 space-y-8">
-            <li className="max-w-2xl">
-              <p className="font-[family-name:var(--font-fraunces)] text-2xl font-medium text-ink">
-                Doesn’t fabricate answers
-              </p>
+          <div className="mt-12 space-y-10">
+            <div>
+              <h3 className="text-lg font-medium text-ink">Does not fabricate answers</h3>
               <p className="mt-3 text-muted">
-                When the record doesn’t support a claim, the system should not invent a confident story to fill the gap.
+                When the record does not support a claim, the system should not invent one.
               </p>
-            </li>
-            <li className="max-w-2xl">
-              <p className="font-[family-name:var(--font-fraunces)] text-2xl font-medium text-ink">
-                Combines related facts correctly
-              </p>
+            </div>
+            <div>
+              <h3 className="text-lg font-medium text-ink">Combines related facts correctly</h3>
               <p className="mt-3 text-muted">
-                When two true details belong together, the answer should compose them — not return competing fragments or a false bridge.
+                When two true details belong together, the answer should compose them. Not competing fragments. Not a false bridge.
               </p>
-            </li>
-          </ul>
-          <p className="prose-measure mt-12 text-muted">
-            Read more in the{" "}
-            <Link href="/blog" className="text-ink underline decoration-accent/50 underline-offset-4">
+            </div>
+          </div>
+          <p className="mt-12 text-muted">
+            More in the{" "}
+            <Link href="/blog" className="text-ink underline underline-offset-4">
               blog
             </Link>
-            , or see who this is for on{" "}
-            <Link href="/solutions" className="text-ink underline decoration-accent/50 underline-offset-4">
+            . Personas on{" "}
+            <Link href="/solutions" className="text-ink underline underline-offset-4">
               Solutions
             </Link>
             .
@@ -114,14 +88,14 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <Section id="waitlist-block">
-        <div className="grid gap-12 md:grid-cols-[1fr_1.1fr] md:items-end">
+      <Section id="waitlist-block" className="border-t border-border">
+        <div className="grid gap-10 md:grid-cols-[1fr_1.1fr] md:items-end">
           <div>
-            <h2 className="font-[family-name:var(--font-fraunces)] text-3xl font-medium text-ink md:text-4xl">
+            <h2 className="text-2xl font-medium tracking-tight text-ink md:text-3xl">
               Join the waitlist
             </h2>
-            <p className="prose-measure mt-6 text-lg text-muted">
-              Pre-launch. We’ll reach out when access opens — no fabricated urgency, no fake scarcity.
+            <p className="prose-measure mt-4 text-muted">
+              Pre-launch. We will email you when access opens.
             </p>
           </div>
           <WaitlistForm id="waitlist" />

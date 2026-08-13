@@ -1,11 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Persistent memory for everyday AI">
-  <rect width="1200" height="630" fill="#F3EFE6"/>
-  <circle cx="1080" cy="60" r="220" fill="#C4622D" fill-opacity="0.12"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img">
+  <rect width="1200" height="630" fill="#F4F4F3"/>
   
-  <rect x="160" y="160" width="220" height="280" rx="12" fill="#FAF8F3"/>
-  <rect x="420" y="160" width="220" height="280" rx="12" fill="#FAF8F3"/>
-  <rect x="680" y="160" width="220" height="280" rx="12" fill="#FAF8F3"/>
-  <path d="M160 480 C360 520, 840 520, 1040 480" fill="none" stroke="#C4622D" stroke-width="10"/>
+  <rect x="160" y="160" width="220" height="280" fill="#FAFAF9" stroke="#E5E5E3"/>
+  <rect x="420" y="160" width="220" height="280" fill="#FAFAF9" stroke="#E5E5E3"/>
+  <rect x="680" y="160" width="220" height="280" fill="#FAFAF9" stroke="#E5E5E3"/>
+  <path d="M160 480 C360 520, 840 520, 1040 480" fill="none" stroke="#16161A" stroke-width="3"/>
 
-  <text x="64" y="560" font-family="Georgia, serif" font-size="28" fill="#1A1815" fill-opacity="0.55">Archilas</text>
+  <text x="64" y="560" font-family="ui-sans-serif, system-ui, sans-serif" font-size="24" fill="#16161A" fill-opacity="0.45">Archilas</text>
 </svg>

@@ -5,8 +5,7 @@ import { getAllPosts, readingTimeMinutes } from "@/lib/posts";
 
 export const metadata = buildMetadata({
   title: "Resources",
-  description:
-    "Archilas resources hub — blog, documentation status, and reference links for persistent AI memory.",
+  description: "Archilas resources: blog, documentation status, and reference links.",
   path: "/resources",
 });
 
@@ -15,31 +14,31 @@ export default function ResourcesPage() {
 
   return (
     <>
-      <Section className="noise radial-accent !pt-16 md:!pt-24">
-        <h1 className="max-w-3xl font-[family-name:var(--font-fraunces)] text-4xl font-medium text-ink md:text-6xl">
+      <Section className="!pt-16 md:!pt-24">
+        <h1 className="max-w-2xl text-4xl font-medium tracking-tight text-ink md:text-5xl">
           Resources
         </h1>
-        <p className="prose-measure mt-8 text-lg text-muted">
-          Writing, references, and documentation as they become available. No filler lead magnets.
+        <p className="prose-measure mt-6 text-lg text-muted">
+          Writing and docs as they ship. Nothing filler.
         </p>
       </Section>
 
-      <Section>
+      <Section className="border-t border-border">
         <div className="grid gap-16 lg:grid-cols-[1.4fr_0.9fr]">
           <div>
-            <h2 className="font-[family-name:var(--font-fraunces)] text-3xl font-medium text-ink">
-              Blog
-            </h2>
-            <p className="mt-4 text-muted">
-              Essays on memory vs RAG, agent context, MCP, and building grounded memory in public.
+            <h2 className="text-xl font-medium tracking-tight text-ink">Blog</h2>
+            <p className="mt-3 text-muted">
+              Memory vs RAG, agent context, MCP, and grounded memory.
             </p>
-            <ul className="mt-10 space-y-8">
+            <ul className="mt-10 divide-y divide-border border-y border-border">
               {latest.map((post) => (
-                <li key={post.slug}>
+                <li key={post.slug} className="py-6">
                   <Link href={`/blog/${post.slug}`} className="group block">
-                    <p className="font-medium text-ink group-hover:text-accent">{post.title}</p>
-                    <p className="mt-2 text-sm text-muted">
-                      {post.datePublished} · {readingTimeMinutes(post)} min read
+                    <p className="font-medium text-ink group-hover:underline group-hover:underline-offset-4">
+                      {post.title}
+                    </p>
+                    <p className="mono mt-2 text-[13px] text-muted">
+                      {post.datePublished} · {readingTimeMinutes(post)} min
                     </p>
                   </Link>
                 </li>
@@ -47,35 +46,31 @@ export default function ResourcesPage() {
             </ul>
             <Link
               href="/blog"
-              className="mt-10 inline-block text-ink underline decoration-accent/50 underline-offset-4"
+              className="mt-8 inline-block text-[15px] text-ink underline underline-offset-4"
             >
-              View all posts
+              All posts
             </Link>
           </div>
 
           <aside className="space-y-8">
-            <div className="bg-surface px-8 py-10">
-              <h2 className="font-[family-name:var(--font-fraunces)] text-2xl font-medium text-ink">
-                Docs
-              </h2>
-              <p className="mt-4 text-muted">
-                Product documentation is coming soon. When public APIs and MCP setup guides ship, they will live here.
+            <div className="border border-border px-6 py-8">
+              <h2 className="text-xl font-medium tracking-tight text-ink">Docs</h2>
+              <p className="mt-4 text-[15px] text-muted">
+                Product documentation is coming soon. Public APIs and MCP setup guides will live here.
               </p>
-              <p className="mt-6 text-sm font-medium text-accent">Coming soon</p>
+              <p className="mono mt-6 text-[12px] text-muted">status: coming soon</p>
             </div>
-            <div className="px-2">
-              <h2 className="font-[family-name:var(--font-fraunces)] text-2xl font-medium text-ink">
-                Also
-              </h2>
-              <ul className="mt-4 space-y-3 text-muted">
+            <div>
+              <h2 className="text-xl font-medium tracking-tight text-ink">Also</h2>
+              <ul className="mt-4 space-y-3 text-[15px] text-muted">
                 <li>
                   <Link href="/solutions" className="hover:text-ink">
-                    Solutions by persona
+                    Solutions
                   </Link>
                 </li>
                 <li>
                   <Link href="/pricing" className="hover:text-ink">
-                    Indicative pricing
+                    Pricing
                   </Link>
                 </li>
                 <li>

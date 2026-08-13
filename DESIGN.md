@@ -1,78 +1,51 @@
-# Archilas Site — Design System
+# Archilas Site · Design System
 
-Every page and component must follow this file. If you are about to add a gradient, a three-card grid, Inter at weight 700, or a gray-bordered card: stop and re-read.
+Visual language: light-mode Resend / Cursor. Monochrome only. Engineer-written, not marketing-written.
 
-## Color (three hues maximum)
+## Color (black / white / gray only)
 
 | Role | Token | Value |
 |------|-------|-------|
-| Background | `--color-bg` | `#FAF8F3` |
-| Surface (subtle lift) | `--color-surface` | `#F3EFE6` |
-| Text | `--color-ink` | `#1A1815` |
-| Muted text | `--color-muted` | `#5C574F` |
-| Accent | `--color-accent` | `#C4622D` |
+| Background | `--color-bg` | `#FAFAF9` |
+| Surface | `--color-surface` | `#F4F4F3` |
+| Text | `--color-ink` | `#16161A` |
+| Muted text | `--color-muted` | `#6B6B6B` |
+| Border | `--color-border` | `#E5E5E3` |
 
 Rules:
 
-- Light mode is primary. No dark-mode-by-default. No `prefers-color-scheme` auto-swap.
-- Accent appears in at most 3–4 places per page (primary CTA, a key phrase highlight, active nav, focus ring).
-- No multi-stop gradients anywhere. Hero atmosphere: one subtle radial accent in a single corner at low opacity, and/or a fine noise texture — never a gradient wash.
-- No purple, indigo, or default Tailwind blue as brand color.
+- No accent color. No amber, gold, brown, blue, purple, green.
+- No gradients. No noise textures. No glow. No glassmorphism.
+- Buttons: solid near-black on off-white. Never colored.
+- Borders: 1px `--color-border` when structure needs a line. No heavy shadows.
 
 ## Typography
 
-| Role | Family | Notes |
-|------|--------|-------|
-| Display / headlines | **Fraunces** | Serif with character. Weight **≤ 500**. Size carries weight, not boldness. |
-| Body / UI | **Geist** | Clean sans. Not Inter, Roboto, or Open Sans. |
+| Role | Family |
+|------|--------|
+| Headlines + body | **Geist Sans** (geometric). Weight ≤ 500 for headlines. Hierarchy via size and spacing, not boldness or color. |
+| Code / technical | **Geist Mono** · API snippets, MCP examples, protocol names in technical context. |
 
-- Body minimum **16px**, line-height ~1.6–1.7.
-- Measure (line length) **60–80 characters** for long reading text.
-- One `h1` per page. Logical `h2` / `h3` hierarchy.
+- Body ≥ 16px, line-height ~1.6, measure ~60–80ch.
+- One `h1` per page.
 
 ## Layout
 
-- **No three-identical-card grids.** Prefer asymmetric splits (~60/40), vertical stacks with alternating alignment, or a single primary column with a secondary rail.
-- Left-align body and section content. Center alignment only for rare moments — prefer a left-aligned hero with generous right margin.
-- Major section vertical padding: **160–200px** (`py-20` / `py-24` / `py-[10rem]` equivalents using the 8px scale).
-- Spacing scale: multiples of **8px** only (4px half-step allowed). No arbitrary values (13, 37, etc.).
+- Generous whitespace. Major sections ~160–200px vertical padding.
+- Spacing scale: multiples of 8px (4px half-step ok).
+- Asymmetric or stacked layouts. No three-identical-card grids.
+- Left-aligned content by default.
+- Thin borders for chrome (code panels, dividers). No decorative cards.
 
-## Components
+## Copy
 
-### Cards
+- Short sentences. Direct. No hype adjectives.
+- No em dashes (` - `). Use periods, commas, or colons.
+- Do not call out marketing tropes you are avoiding.
 
-- Borderless by default.
-- Separate with whitespace first, then a subtle surface shift (`--color-surface`), then soft elevation last.
-- **Never** a flat gray 1px border as decoration.
-- **Never** a colored left-border stripe unless it marks a semantic state (error/warning).
+## Forbidden
 
-### Buttons
-
-- Solid color only: ink-on-cream, cream-on-ink, or accent for primary CTAs.
-- No gradient buttons. No sparkle/emoji CTAs. No icon-arrow “event” buttons.
-- Primary marketing CTA copy for pre-launch: **Join the waitlist** (not “Get Started”).
-
-### Forbidden patterns
-
-- Badge/pill floating above hero headlines (“New!”).
-- Numbered 1·2·3 step rows unless the content is genuinely sequential.
-- Glassmorphism, glowing borders, 3D blobs, generic stock photography.
-- Fabricated logos, testimonials, or usage statistics.
-
-## Motion
-
-Use motion sparingly for presence, not noise:
-
-1. Soft fade/rise on first hero load.
-2. Underline or color shift on nav hover.
-3. Button active/pressed state.
-
-No perpetual floating animations.
-
-## SEO / markup checklist (every page)
-
-- Server-rendered or statically generated HTML with real content in the initial response.
-- Unique meta title + description; Open Graph + Twitter Card tags.
-- Semantic landmarks: `header`, `nav`, `main`, `footer`, `article` where appropriate.
-- JSON-LD where applicable (Organization on home, Article on posts).
-- Descriptive `alt` on every meaningful image.
+- Colored CTAs, badges, pills, left-border stripes
+- Stock photos, illustrations, 3D renders
+- Serif display fonts
+- Fabricated logos, testimonials, or stats
