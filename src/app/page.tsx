@@ -18,7 +18,7 @@ export default function HomePage() {
 
       {/* Hero: brand-first, left-aligned, single CTA, radial accent + noise only */}
       <section className="noise radial-accent">
-        <div className="mx-auto flex w-full max-w-6xl flex-col px-6 pb-24 pt-16 md:px-8 md:pb-32 md:pt-24">
+        <div className="mx-auto flex w-full max-w-6xl flex-col px-6 pb-40 pt-16 md:px-8 md:pb-48 md:pt-24">
           <p className="fade-rise font-[family-name:var(--font-fraunces)] text-5xl font-medium tracking-tight text-ink md:text-7xl">
             {site.name}
           </p>
