@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Memory versus RAG">
+  <rect width="1200" height="630" fill="#F3EFE6"/>
+  <circle cx="1080" cy="60" r="220" fill="#C4622D" fill-opacity="0.12"/>
+  
+  <rect x="80" y="140" width="200" height="28" fill="#1A1815" fill-opacity="0.12"/>
+  <rect x="80" y="188" width="260" height="28" fill="#1A1815" fill-opacity="0.10"/>
+  <rect x="80" y="236" width="180" height="28" fill="#1A1815" fill-opacity="0.08"/>
+  <rect x="80" y="284" width="220" height="28" fill="#1A1815" fill-opacity="0.06"/>
+  <circle cx="760" cy="280" r="120" fill="#C4622D" fill-opacity="0.85"/>
+  <circle cx="760" cy="280" r="70" fill="#FAF8F3"/>
+
+  <text x="64" y="560" font-family="Georgia, serif" font-size="28" fill="#1A1815" fill-opacity="0.55">Archilas</text>
+</svg>

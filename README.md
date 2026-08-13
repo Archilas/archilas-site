@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Archilas marketing site
 
-## Getting Started
+Public marketing site for [Archilas](https://archilas.com) — persistent memory for AI.
 
-First, run the development server:
+## Stack
+
+- Next.js App Router (SSR / static generation for SEO & AEO)
+- TypeScript
+- Tailwind CSS v4
+
+## Design system
+
+See [`DESIGN.md`](./DESIGN.md). Do not invent gradients, three-card grids, Inter-700 headlines, or bordered gray cards.
+
+## Develop
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Build
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+npm start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Pages
 
-## Learn More
+- `/` — landing
+- `/solutions` — personas
+- `/pricing` — indicative tiers
+- `/resources` — hub
+- `/blog` — index + posts
 
-To learn more about Next.js, take a look at the following resources:
+Waitlist submissions hit `POST /api/waitlist` (logs email; wire an ESP before production).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Constraints
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Marketing only — no dashboard, auth, or connection UI
+- No internal codenames or eval scoreboards
+- No fabricated logos, testimonials, or usage stats

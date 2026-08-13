@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Agents losing context">
+  <rect width="1200" height="630" fill="#F3EFE6"/>
+  <circle cx="1080" cy="60" r="220" fill="#C4622D" fill-opacity="0.12"/>
+  
+  <rect x="120" y="200" width="320" height="180" rx="8" fill="#FAF8F3"/>
+  <rect x="760" y="200" width="320" height="180" rx="8" fill="#FAF8F3"/>
+  <path d="M460 290 H700" stroke="#C4622D" stroke-width="4" stroke-dasharray="14 14"/>
+  <circle cx="580" cy="290" r="10" fill="#C4622D"/>
+
+  <text x="64" y="560" font-family="Georgia, serif" font-size="28" fill="#1A1815" fill-opacity="0.55">Archilas</text>
+</svg>
