@@ -8,12 +8,13 @@ export function SiteHeader() {
   const pathname = usePathname() || "";
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-bg">
-      <div className="mx-auto flex h-14 w-full max-w-[1120px] items-center justify-between px-5 md:px-8">
-        <Link href="/" className="text-[14px] font-medium tracking-tight text-ink">
-          {site.name}
+    <header className="sticky top-0 z-40 border-b border-border bg-bg/95">
+      <div className="mx-auto flex h-12 w-full max-w-[1180px] items-center justify-between px-5 md:px-8">
+        <Link href="/" className="flex items-baseline gap-2">
+          <span className="text-[15px] font-medium tracking-[-0.03em] text-ink">{site.name}</span>
+          <span className="mono hidden text-[10px] text-muted sm:inline">memory</span>
         </Link>
-        <nav aria-label="Primary" className="hidden items-center gap-7 md:flex">
+        <nav aria-label="Primary" className="hidden items-center gap-6 md:flex">
           {nav.map((item) => (
             <Link
               key={item.href}

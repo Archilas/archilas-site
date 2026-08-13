@@ -14,28 +14,20 @@ export default function ResourcesPage() {
 
   return (
     <>
-      <Section className="!pb-10 !pt-12 md:!pt-14">
-        <p className="mono text-[12px] text-muted">resources</p>
-        <h1 className="mt-3 text-[36px] font-medium tracking-[-0.035em] text-ink md:text-[44px]">
-          Resources
-        </h1>
-        <p className="mt-4 max-w-lg text-[15px] text-muted">
-          Writing and docs as they ship.
-        </p>
+      <Section className="!pb-8 !pt-12">
+        <p className="mono text-[11px] uppercase tracking-[0.14em] text-muted">resources</p>
+        <h1 className="display mt-4 text-[40px] text-ink md:text-[48px]">Resources</h1>
       </Section>
 
       <Section className="!pt-0">
-        <div className="grid gap-6 lg:grid-cols-[1.4fr_0.85fr]">
-          <div className="overflow-hidden rounded-lg border border-border">
+        <div className="grid gap-4 lg:grid-cols-[1.4fr_0.85fr]">
+          <div className="overflow-hidden rounded-sm border border-border">
             <div className="border-b border-border bg-surface px-5 py-3">
-              <p className="mono text-[12px] text-muted">blog</p>
+              <p className="mono text-[11px] uppercase tracking-[0.14em] text-muted">blog</p>
             </div>
             <ul>
               {latest.map((post, i) => (
-                <li
-                  key={post.slug}
-                  className={i < latest.length - 1 ? "border-b border-border" : ""}
-                >
+                <li key={post.slug} className={i < latest.length - 1 ? "border-b border-border" : ""}>
                   <Link href={`/blog/${post.slug}`} className="block px-5 py-4 hover:bg-surface">
                     <p className="text-[14px] font-medium text-ink">{post.title}</p>
                     <p className="mono mt-1 text-[11px] text-muted">
@@ -45,40 +37,18 @@ export default function ResourcesPage() {
                 </li>
               ))}
             </ul>
-            <div className="border-t border-border px-5 py-3">
-              <Link href="/blog" className="text-[13px] font-medium text-ink underline underline-offset-4">
-                All posts
-              </Link>
-            </div>
           </div>
-
           <div className="space-y-4">
-            <div className="rounded-lg border border-border p-5">
-              <p className="mono text-[12px] text-muted">docs</p>
+            <div className="rounded-sm border border-border p-5">
+              <p className="mono text-[11px] uppercase tracking-[0.14em] text-muted">docs</p>
               <p className="mt-3 text-[14px] text-ink">Coming soon</p>
-              <p className="mt-2 text-[13px] text-muted">
-                APIs and MCP setup guides will land here.
-              </p>
+              <p className="mt-2 text-[13px] text-muted">APIs and MCP setup guides.</p>
             </div>
-            <div className="rounded-lg border border-border p-5">
-              <p className="mono text-[12px] text-muted">links</p>
-              <ul className="mt-3 space-y-2 text-[13px]">
-                <li>
-                  <Link href="/solutions" className="text-ink hover:text-muted">
-                    Solutions
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/pricing" className="text-ink hover:text-muted">
-                    Pricing
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/#waitlist" className="text-ink hover:text-muted">
-                    Waitlist
-                  </Link>
-                </li>
-              </ul>
+            <div className="rounded-sm bg-ink p-5 text-bg">
+              <p className="mono text-[11px] uppercase tracking-[0.14em] text-white/45">start</p>
+              <Link href="/#waitlist" className="mt-3 inline-block text-[14px] font-medium underline underline-offset-4">
+                Join waitlist
+              </Link>
             </div>
           </div>
         </div>

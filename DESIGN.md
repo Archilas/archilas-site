@@ -1,35 +1,30 @@
 # Archilas Site — Design System
 
-Light-mode Resend / Cursor: monochrome, dense, product-forward.
+Light page, dark product. Monochrome Resend/Cursor energy without copying a template.
 
 ## Color
 
-| Role | Token | Value |
-|------|-------|-------|
-| Background | `--color-bg` | `#FAFAF9` |
-| Surface | `--color-surface` | `#F4F4F3` |
-| Text | `--color-ink` | `#16161A` |
-| Muted | `--color-muted` | `#6B6B6B` |
-| Border | `--color-border` | `#E5E5E3` |
+| Token | Value | Use |
+|------|-------|-----|
+| `--color-bg` | `#FAFAF9` | Page |
+| `--color-surface` | `#F0EFED` | Bands |
+| `--color-ink` | `#16161A` | Text, solid CTAs, inverted bands |
+| `--color-muted` | `#5C5C5C` | Secondary text |
+| `--color-border` | `#E4E4E1` | Rules |
+| `--color-panel` | `#111113` | Product chrome only |
 
-No accent color. No gradients. No glow. Buttons are solid near-black.
+No accent hues. Dark panels on light pages are intentional contrast, not dark-mode.
 
 ## Type
 
-- **Geist Sans** for UI and headlines. Tight tracking on large type. Headline weight 500.
-- **Geist Mono** for code, MCP, API surfaces, technical labels.
-- Hierarchy from size and spacing. Not color. Not heavy weight.
-- Body 15–16px. Subheads short.
+- **IBM Plex Sans** for UI and display. Tight tracking on large type.
+- **IBM Plex Mono** for MCP, commands, labels, technical UI.
+- Hierarchy from size and contrast (light/dark bands), not color accents.
 
-## Layout (critical)
+## Craft
 
-- Prefer **product density** over empty whitespace. If a section feels sparse, add structure (bordered panel, grid, code) or cut padding. Do not pad emptiness.
-- Section padding typically `64–96px`, not 160–200px on thin content.
-- Hero should fill the first viewport with **copy + product chrome**, not a lonely headline in a void.
-- Max content width ~1120px. Thin 1px borders for chrome.
-
-## Copy
-
-- Short. Specific. Engineer voice (Resend / Cursor).
-- No em dashes. No hype. No tropes about tropes.
-- Split long ideas: short `h1`, supporting sentence below.
+- Technical grid background (low-contrast).
+- Product panel is dark, dense, animated (staggered lines + caret).
+- Prefer bordered lists and split bands over empty card grids.
+- Sharp 2px radii. No soft SaaS pills.
+- Motion: hero rise, terminal line-in, caret blink.

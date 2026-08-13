@@ -14,19 +14,19 @@ const tiers = [
     name: "Free",
     price: "€0",
     note: "Early access personal limits.",
-    points: ["Personal workspace", "MCP connect when available", "Community updates"],
+    points: ["Personal workspace", "MCP when available", "Community updates"],
   },
   {
     name: "Starter",
     price: "TBD",
-    note: "Individuals using AI across daily tools.",
-    points: ["Higher memory capacity", "Priority access", "Email support at launch"],
+    note: "Individuals across daily AI tools.",
+    points: ["Higher capacity", "Priority access", "Email support at launch"],
     featured: true,
   },
   {
     name: "Team",
     price: "TBD",
-    note: "Shared project memory for small teams.",
+    note: "Shared project memory.",
     points: ["Shared projects", "Admin controls", "Onboarding help"],
   },
 ];
@@ -34,7 +34,7 @@ const tiers = [
 const faqs = [
   {
     question: "Is pricing final?",
-    answer: "No. These are indicative tiers while we are pre-launch.",
+    answer: "No. Indicative tiers while we are pre-launch.",
   },
   {
     question: "Can I pay today?",
@@ -46,32 +46,35 @@ export default function PricingPage() {
   return (
     <>
       <JsonLd data={faqJsonLd(faqs)} />
-
-      <Section className="!pb-10 !pt-12 md:!pt-14">
-        <p className="mono text-[12px] text-muted">pricing</p>
-        <h1 className="mt-3 text-[36px] font-medium tracking-[-0.035em] text-ink md:text-[44px]">
-          Simple plans
-        </h1>
-        <p className="mt-4 max-w-lg text-[15px] text-muted">
-          Indicative and subject to change. Packaging is not finalized.
+      <Section className="!pb-8 !pt-12">
+        <p className="mono text-[11px] uppercase tracking-[0.14em] text-muted">pricing</p>
+        <h1 className="display mt-4 text-[40px] text-ink md:text-[48px]">Plans</h1>
+        <p className="mt-4 max-w-md text-[15px] text-muted">
+          Indicative. Subject to change. Packaging is not final.
         </p>
       </Section>
 
       <Section className="!pt-0">
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="grid gap-3 md:grid-cols-3">
           {tiers.map((t) => (
             <article
               key={t.name}
-              className={`rounded-lg border border-border p-6 ${
-                t.featured ? "bg-surface md:-mt-2 md:mb-2 md:p-7" : "bg-bg"
+              className={`rounded-sm border border-border p-6 ${
+                t.featured ? "bg-ink text-bg" : "bg-bg"
               }`}
             >
               <div className="flex items-baseline justify-between">
-                <h2 className="text-[16px] font-medium text-ink">{t.name}</h2>
-                <p className="mono text-[13px] text-ink">{t.price}</p>
+                <h2 className="text-[15px] font-medium">{t.name}</h2>
+                <p className="mono text-[13px]">{t.price}</p>
               </div>
-              <p className="mt-3 text-[13px] text-muted">{t.note}</p>
-              <ul className="mt-6 space-y-2 border-t border-border pt-5 text-[13px] text-ink">
+              <p className={`mt-3 text-[13px] ${t.featured ? "text-white/60" : "text-muted"}`}>
+                {t.note}
+              </p>
+              <ul
+                className={`mt-6 space-y-2 border-t pt-5 text-[13px] ${
+                  t.featured ? "border-white/10" : "border-border"
+                }`}
+              >
                 {t.points.map((pt) => (
                   <li key={pt}>{pt}</li>
                 ))}
@@ -79,13 +82,10 @@ export default function PricingPage() {
             </article>
           ))}
         </div>
-        <p className="mt-6 text-[12px] text-muted">
-          Exact amounts publish with launch packaging.
-        </p>
       </Section>
 
       <Section className="border-t border-border bg-surface">
-        <div className="grid gap-10 md:grid-cols-2">
+        <div className="grid gap-8 md:grid-cols-2">
           {faqs.map((f) => (
             <div key={f.question}>
               <h2 className="text-[15px] font-medium text-ink">{f.question}</h2>
