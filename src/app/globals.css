@@ -9,8 +9,8 @@
   --color-border: rgba(255, 255, 255, 0.08);
   --color-border-strong: rgba(255, 255, 255, 0.14);
   --color-glow: rgba(210, 214, 230, 0.09);
-  --radius-card: 20px;
-  --radius-control: 999px;
+  --radius-card: 18px;
+  --radius-control: 14px;
 }
 
 @theme inline {
@@ -21,9 +21,9 @@
   --color-muted: var(--color-muted);
   --color-border: var(--color-border);
   --color-border-strong: var(--color-border-strong);
-  --font-sans: var(--font-geist-sans);
-  --font-display: var(--font-instrument);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-satoshi);
+  --font-display: var(--font-zodiak);
+  --font-mono: var(--font-commit);
 }
 
 html {
@@ -33,10 +33,11 @@ html {
 body {
   background: var(--color-bg);
   color: var(--color-ink);
-  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-satoshi), ui-sans-serif, system-ui, sans-serif;
   font-size: 15px;
   line-height: 1.55;
   letter-spacing: -0.011em;
+  font-feature-settings: "ss01" on, "cv11" on;
 }
 
 /* Soft spotlight + film grain — depth without flat black */
@@ -65,16 +66,32 @@ body {
   color: var(--color-ink);
 }
 
+/* Domaine-adjacent display: large, tight, high-contrast serif */
 .display {
-  font-family: var(--font-instrument), ui-serif, Georgia, serif;
+  font-family: var(--font-zodiak), ui-serif, Georgia, "Times New Roman", serif;
   font-weight: 400;
-  letter-spacing: -0.03em;
-  line-height: 1.05;
+  letter-spacing: -0.01em;
+  line-height: 0.98;
+  font-feature-settings: "ss01" on;
+}
+
+.display-gradient {
+  background: linear-gradient(180deg, #f4f4f6 18%, #a8a8b0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .mono {
-  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-family: var(--font-commit), ui-monospace, SFMono-Regular, Menlo, monospace;
   letter-spacing: -0.02em;
+  font-feature-settings: "ss01" on;
+}
+
+.brand {
+  font-family: var(--font-satoshi), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.03em;
 }
 
 .nav-link {
@@ -92,7 +109,7 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 40px;
-  padding: 0 18px;
+  padding: 0 16px;
   border-radius: var(--radius-control);
   font-size: 13px;
   font-weight: 500;
@@ -102,6 +119,7 @@ body {
     background-color 140ms ease,
     border-color 140ms ease,
     color 140ms ease,
+    box-shadow 140ms ease,
     transform 100ms ease;
 }
 
@@ -110,19 +128,27 @@ body {
 }
 
 .btn-primary {
-  background: rgba(255, 255, 255, 0.96);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12), transparent 55%),
+    rgba(255, 255, 255, 0.96);
   color: #121214;
-  border: 1px solid transparent;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.35) inset,
+    0 8px 24px rgba(0, 0, 0, 0.25);
 }
 
 .btn-primary:hover {
-  background: #fff;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.18), transparent 55%),
+    #fff;
 }
 
 .btn-secondary {
-  background: rgba(255, 255, 255, 0.03);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
   color: var(--color-ink);
   border: 1px solid var(--color-border-strong);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset;
 }
 
 .btn-secondary:hover {

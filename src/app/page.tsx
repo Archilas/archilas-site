@@ -22,17 +22,17 @@ export default function HomePage() {
           <div className="hero-rise">
             <Link
               href="/blog"
-              className="inline-flex items-center rounded-full border border-border bg-white/[0.03] px-3 py-1 text-[12px] text-muted transition hover:border-border-strong hover:text-ink"
+              className="inline-flex items-center rounded-[10px] border border-border bg-white/[0.03] px-3 py-1 text-[12px] text-muted transition hover:border-border-strong hover:text-ink"
             >
               New writing on memory vs RAG
               <span className="ml-2 text-ink/50">›</span>
             </Link>
-            <h1 className="display mt-7 max-w-xl text-[48px] text-ink md:text-[64px]">
+            <h1 className="display display-gradient mt-8 max-w-[11ch] text-[clamp(3.25rem,8vw,5.75rem)]">
               Memory for
               <br />
-              AI tools.
+              <em>AI tools.</em>
             </h1>
-            <p className="mt-6 max-w-md text-[16px] leading-relaxed text-muted">
+            <p className="mt-7 max-w-md text-[16px] leading-relaxed text-muted">
               A persistent memory layer that reasons over your history instead of searching old messages and pasting them into a prompt.
             </p>
             <div className="mt-9 flex flex-wrap items-center gap-3">
@@ -61,9 +61,9 @@ export default function HomePage() {
           <div className="orb mx-auto flex h-20 w-20 items-center justify-center rounded-[28px]">
             <span className="mono text-[11px] text-ink/80">mem</span>
           </div>
-          <h2 className="display mt-8 text-[36px] text-ink md:text-[44px]">
+          <h2 className="display mt-8 text-[clamp(2.25rem,5vw,3.25rem)] text-ink">
             Compact tonight.
-            <span className="text-muted"> Reason tomorrow.</span>
+            <em className="text-muted"> Reason tomorrow.</em>
           </h2>
           <p className="mx-auto mt-5 max-w-lg text-[15px] text-muted">
             Keep decisions and open loops as structured facts. Compose only what the record supports. Deliver into the hosts you already use over MCP.
@@ -138,7 +138,9 @@ export default function HomePage() {
       <Section id="waitlist">
         <div className="card mx-auto max-w-3xl px-7 py-10 text-center md:px-12 md:py-14">
           <p className="mono text-[11px] text-muted">early access</p>
-          <h2 className="display mt-4 text-[36px] text-ink md:text-[44px]">Get in early.</h2>
+          <h2 className="display display-gradient mt-4 text-[clamp(2.25rem,5vw,3.25rem)]">
+            Get in early.
+          </h2>
           <p className="mx-auto mt-4 max-w-md text-[15px] text-muted">
             Pre-launch. We email when access opens.
           </p>

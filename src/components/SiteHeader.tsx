@@ -10,7 +10,7 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-bg/70 backdrop-blur-md">
       <div className="mx-auto flex h-14 w-full max-w-[1120px] items-center justify-between px-5 md:px-8">
-        <Link href="/" className="text-[15px] font-medium tracking-tight text-ink">
+        <Link href="/" className="brand text-[15px] text-ink">
           {site.name}
         </Link>
         <nav aria-label="Primary" className="hidden items-center gap-7 md:flex">

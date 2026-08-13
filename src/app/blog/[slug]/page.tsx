@@ -58,7 +58,7 @@ export default async function BlogPostPage({ params }: Props) {
           {" · "}
           {mins} min
         </p>
-        <h1 className="display mt-5 max-w-3xl text-[40px] text-ink md:text-[52px]">{post.title}</h1>
+        <h1 className="display mt-5 max-w-3xl text-[clamp(2.5rem,5vw,3.75rem)] text-ink">{post.title}</h1>
         <p className="mt-5 text-[14px] text-muted">By {post.author}</p>
       </Section>
 

@@ -16,7 +16,7 @@ export default function ResourcesPage() {
     <>
       <Section className="!pb-10 !pt-16">
         <p className="mono text-[11px] text-muted">resources</p>
-        <h1 className="display mt-4 text-[44px] text-ink md:text-[56px]">Resources</h1>
+        <h1 className="display display-gradient mt-4 text-[clamp(2.75rem,6vw,4.5rem)]">Resources</h1>
       </Section>
 
       <Section className="!pt-0">

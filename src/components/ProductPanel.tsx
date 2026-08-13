@@ -7,7 +7,7 @@ export function ProductPanel() {
         <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
         <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
         <span className="mono ml-2 text-[11px] text-muted">mcp://archilas/memory</span>
-        <span className="mono ml-auto rounded-full border border-border px-2 py-0.5 text-[10px] text-muted">
+        <span className="mono ml-auto rounded-[8px] border border-border px-2 py-0.5 text-[10px] text-muted">
           live
         </span>
       </div>
@@ -16,9 +16,9 @@ export function ProductPanel() {
         <aside className="hidden border-r border-border p-4 md:block">
           <p className="mono text-[10px] uppercase tracking-[0.14em] text-muted">tools</p>
           <ul className="mono mt-3 space-y-1.5 text-[12px]">
-            <li className="rounded-full bg-white/[0.06] px-3 py-1.5 text-ink">memory.query</li>
-            <li className="rounded-full px-3 py-1.5 text-muted">memory.write</li>
-            <li className="rounded-full px-3 py-1.5 text-muted">memory.resolve</li>
+            <li className="rounded-[10px] bg-white/[0.06] px-3 py-1.5 text-ink">memory.query</li>
+            <li className="rounded-[10px] px-3 py-1.5 text-muted">memory.write</li>
+            <li className="rounded-[10px] px-3 py-1.5 text-muted">memory.resolve</li>
           </ul>
         </aside>
 

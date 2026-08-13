@@ -1,24 +1,37 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
+import localFont from "next/font/local";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { site } from "@/lib/site";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+/* Resend stack ≈ Domaine + ABC Favorit + Commit Mono.
+   We self-host legal near-equivalents: Zodiak + Satoshi + Commit Mono. */
+const satoshi = localFont({
+  src: [
+    { path: "../fonts/satoshi-400.woff2", weight: "400", style: "normal" },
+    { path: "../fonts/satoshi-500.woff2", weight: "500", style: "normal" },
+    { path: "../fonts/satoshi-700.woff2", weight: "700", style: "normal" },
+  ],
+  variable: "--font-satoshi",
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const zodiak = localFont({
+  src: [
+    { path: "../fonts/zodiak-400.woff2", weight: "400", style: "normal" },
+    { path: "../fonts/zodiak-400i.woff2", weight: "400", style: "italic" },
+    { path: "../fonts/zodiak-700.woff2", weight: "700", style: "normal" },
+    { path: "../fonts/zodiak-700i.woff2", weight: "700", style: "italic" },
+  ],
+  variable: "--font-zodiak",
+  display: "swap",
 });
 
-const instrument = Instrument_Serif({
-  variable: "--font-instrument",
-  subsets: ["latin"],
-  weight: "400",
+const commitMono = localFont({
+  src: [{ path: "../fonts/commit-mono-400.otf", weight: "400", style: "normal" }],
+  variable: "--font-commit",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -48,7 +61,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${instrument.variable} h-full`}
+      className={`${satoshi.variable} ${zodiak.variable} ${commitMono.variable} h-full`}
     >
       <body className="site-atmosphere flex min-h-full flex-col font-sans text-ink antialiased">
         <SiteHeader />

@@ -6,7 +6,7 @@ export function SiteFooter() {
     <footer className="relative z-10 border-t border-border">
       <div className="mx-auto flex w-full max-w-[1120px] flex-col gap-10 px-5 py-14 md:flex-row md:justify-between md:px-8">
         <div className="max-w-sm">
-          <p className="text-[15px] font-medium text-ink">{site.name}</p>
+          <p className="brand text-[15px] text-ink">{site.name}</p>
           <p className="mt-3 text-[13px] leading-relaxed text-muted">{site.description}</p>
         </div>
         <div className="flex gap-16">

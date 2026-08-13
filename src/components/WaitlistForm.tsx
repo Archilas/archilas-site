@@ -47,7 +47,7 @@ export function WaitlistForm({ id = "waitlist" }: { id?: string }) {
           placeholder="you@company.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="min-h-10 flex-1 rounded-full border border-border-strong bg-white/[0.03] px-4 text-[13px] text-ink outline-none placeholder:text-muted focus:border-ink/40"
+          className="min-h-10 flex-1 rounded-[14px] border border-border-strong bg-white/[0.03] px-4 text-[13px] text-ink outline-none placeholder:text-muted focus:border-ink/40"
         />
         <button type="submit" className="btn btn-primary shrink-0" disabled={status === "loading"}>
           {status === "loading" ? "…" : "Join waitlist"}

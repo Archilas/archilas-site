@@ -48,7 +48,7 @@ export default function PricingPage() {
       <JsonLd data={faqJsonLd(faqs)} />
       <Section className="!pb-10 !pt-16">
         <p className="mono text-[11px] text-muted">pricing</p>
-        <h1 className="display mt-4 text-[44px] text-ink md:text-[56px]">Plans</h1>
+        <h1 className="display display-gradient mt-4 text-[clamp(2.75rem,6vw,4.5rem)]">Plans</h1>
         <p className="mt-4 max-w-md text-[15px] text-muted">
           Indicative. Subject to change. Packaging is not final.
         </p>

@@ -30,7 +30,7 @@ export default function SolutionsPage() {
     <>
       <Section className="!pb-10 !pt-16">
         <p className="mono text-[11px] text-muted">solutions</p>
-        <h1 className="display mt-4 max-w-2xl text-[44px] text-ink md:text-[56px]">
+        <h1 className="display display-gradient mt-4 max-w-2xl text-[clamp(2.75rem,6vw,4.5rem)]">
           Built for people already in the tools.
         </h1>
         <p className="mt-5 max-w-lg text-[15px] text-muted">
