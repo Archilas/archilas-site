@@ -18,7 +18,7 @@ export default function HomePage() {
       <JsonLd data={organizationJsonLd()} />
 
       <section className="relative overflow-hidden border-b border-border">
-        {/* Oversized brand stamp — identity, not decoration fluff */}
+        {/* Oversized brand stamp - identity, not decoration fluff */}
         <p
           aria-hidden
           className="pointer-events-none absolute -right-6 top-8 select-none text-[18vw] font-medium leading-none tracking-[-0.06em] text-ink/[0.035] md:top-0 md:text-[12vw]"

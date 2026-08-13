@@ -1,4 +1,4 @@
-/** Dark product surface — the Resend/Cursor contrast move on a light page. */
+/** Dark product surface - the Resend/Cursor contrast move on a light page. */
 export function ProductPanel() {
   return (
     <div className="hero-rise overflow-hidden rounded-sm border border-panel-line bg-panel text-panel-fg shadow-[0_24px_80px_rgba(17,17,19,0.18)]">
