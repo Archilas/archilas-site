@@ -5,18 +5,6 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { site } from "@/lib/site";
 import "./globals.css";
 
-/* Resend stack ≈ Domaine + ABC Favorit + Commit Mono.
-   We self-host legal near-equivalents: Zodiak + Satoshi + Commit Mono. */
-const satoshi = localFont({
-  src: [
-    { path: "../fonts/satoshi-400.woff2", weight: "400", style: "normal" },
-    { path: "../fonts/satoshi-500.woff2", weight: "500", style: "normal" },
-    { path: "../fonts/satoshi-700.woff2", weight: "700", style: "normal" },
-  ],
-  variable: "--font-satoshi",
-  display: "swap",
-});
-
 const zodiak = localFont({
   src: [
     { path: "../fonts/zodiak-400.woff2", weight: "400", style: "normal" },
@@ -59,13 +47,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="en"
-      className={`${satoshi.variable} ${zodiak.variable} ${commitMono.variable} h-full`}
-    >
-      <body className="site-atmosphere flex min-h-full flex-col font-sans text-ink antialiased">
+    <html lang="en" className={`${zodiak.variable} ${commitMono.variable} h-full`}>
+      <body className="site-atmosphere flex min-h-full flex-col text-ink">
         <SiteHeader />
-        <main className="relative z-10 flex-1">{children}</main>
+        <main className="relative z-10 flex-1 pl-7 md:pl-12">{children}</main>
         <SiteFooter />
       </body>
     </html>

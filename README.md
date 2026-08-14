@@ -10,7 +10,7 @@ Public marketing site for [Archilas](https://archilas.com). Persistent memory fo
 
 ## Design system
 
-See [`DESIGN.md`](./DESIGN.md). Dark charcoal, textured. Self-hosted **Zodiak** + **Satoshi** + **Commit Mono**.
+See [`DESIGN.md`](./DESIGN.md). Night archive. Self-hosted **Zodiak** + **Commit Mono**. Brass on warm near-black.
 
 ## Develop
 

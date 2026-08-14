@@ -10,8 +10,8 @@ export function Section({
   id?: string;
 }) {
   return (
-    <section id={id} className={`px-5 py-20 md:px-8 md:py-24 ${className}`}>
-      <div className="mx-auto w-full max-w-[1120px]">{children}</div>
+    <section id={id} className={`px-5 py-16 md:px-8 md:py-20 ${className}`}>
+      <div className="mx-auto w-full max-w-[1080px]">{children}</div>
     </section>
   );
 }

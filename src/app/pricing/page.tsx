@@ -11,19 +11,21 @@ export const metadata = buildMetadata({
 
 const tiers = [
   {
+    n: "01",
     name: "Free",
     price: "€0",
     note: "Early access personal limits.",
     points: ["Personal workspace", "MCP when available", "Community updates"],
   },
   {
+    n: "02",
     name: "Starter",
     price: "TBD",
     note: "Individuals across daily AI tools.",
     points: ["Higher capacity", "Priority access", "Email support at launch"],
-    featured: true,
   },
   {
+    n: "03",
     name: "Team",
     price: "TBD",
     note: "Shared project memory.",
@@ -46,46 +48,46 @@ export default function PricingPage() {
   return (
     <>
       <JsonLd data={faqJsonLd(faqs)} />
-      <Section className="!pb-10 !pt-16">
-        <p className="mono text-[11px] text-muted">pricing</p>
-        <h1 className="display display-gradient mt-4 text-[clamp(2.75rem,6vw,4.5rem)]">Plans</h1>
-        <p className="mt-4 max-w-md text-[15px] text-muted">
+      <Section className="!pb-8 !pt-16">
+        <p className="kicker">Pricing</p>
+        <h1 className="display mt-4 text-[clamp(2.8rem,7vw,5rem)] text-ink">
+          Plans, for now.
+        </h1>
+        <p className="mt-5 max-w-md text-[17px] text-muted">
           Indicative. Subject to change. Packaging is not final.
         </p>
       </Section>
 
       <Section className="!pt-0">
-        <div className="grid gap-4 md:grid-cols-3">
-          {tiers.map((t) => (
-            <article
-              key={t.name}
-              className={`card p-7 ${t.featured ? "border-border-strong bg-white/[0.04]" : ""}`}
-            >
-              <div className="flex items-baseline justify-between">
-                <h2 className="text-[15px] font-medium text-ink">{t.name}</h2>
-                <p className="mono text-[13px] text-ink">{t.price}</p>
+        {tiers.map((t) => (
+          <article key={t.name} className="entry">
+            <p className="entry-num">{t.n}</p>
+            <div className="grid gap-4 md:grid-cols-[minmax(0,1fr)_auto] md:items-start">
+              <div>
+                <h2 className="display text-[32px] text-ink">{t.name}</h2>
+                <p className="mt-2 text-[17px] text-muted">{t.note}</p>
+                <ul className="mt-4 space-y-1 text-[16px] text-ink/90">
+                  {t.points.map((pt) => (
+                    <li key={pt}>{pt}</li>
+                  ))}
+                </ul>
               </div>
-              <p className="mt-3 text-[13px] text-muted">{t.note}</p>
-              <ul className="mt-6 space-y-2 border-t border-border pt-5 text-[13px] text-ink/90">
-                {t.points.map((pt) => (
-                  <li key={pt}>{pt}</li>
-                ))}
-              </ul>
-            </article>
-          ))}
-        </div>
+              <p className="mono text-[13px] tracking-[0.12em] text-brass">{t.price}</p>
+            </div>
+          </article>
+        ))}
       </Section>
 
       <Section className="border-t border-border">
-        <div className="grid gap-8 md:grid-cols-2">
+        <div className="grid gap-10 md:grid-cols-2">
           {faqs.map((f) => (
-            <div key={f.question} className="card p-6">
-              <h2 className="text-[15px] font-medium text-ink">{f.question}</h2>
-              <p className="mt-2 text-[14px] text-muted">{f.answer}</p>
+            <div key={f.question}>
+              <h2 className="text-[22px] italic text-ink">{f.question}</h2>
+              <p className="mt-3 text-[17px] text-muted">{f.answer}</p>
             </div>
           ))}
         </div>
-        <div className="mt-10 max-w-md">
+        <div className="mt-12">
           <WaitlistForm id="pricing-waitlist" />
         </div>
       </Section>
