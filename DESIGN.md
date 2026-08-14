@@ -1,44 +1,47 @@
 # Archilas Site — Design System
 
-Night archive. A memory register, not a SaaS landing. Do not copy Resend. Do not use Geist, Inter, Instrument Serif, Satoshi-as-UI, grain overlays, gradient headlines, floating terminals, or three equal cards.
+Dark, textured, Resend-adjacent craft. Do not copy Resend (no cube, no purple). Do not ship an archive / ledger / brass journal. Do not use Geist, Instrument Serif, or Inter.
 
-## Color
+Unique within that language: pearl node mark, floating memory inspector (product UI, not a terminal).
 
-Warm near-black, paper ink, one brass accent.
+## Color (never pure black / pure white)
 
 | Token | Value | Role |
 |------|-------|------|
-| `--color-bg` | `#13110E` | Page |
-| `--color-surface` | `#1A1714` | Bands / register |
-| `--color-ink` | `#ECE6DC` | Primary text |
-| `--color-muted` | `#9A9186` | Secondary text |
-| `--color-brass` | `#C4A574` | Accent, kickers, live rail |
-| `--color-border` | `rgba(236,230,220,0.10)` | Hairlines |
+| `--color-bg` | `#0B0B0C` | Page (charcoal) |
+| `--color-surface` | `#121214` | Bands / wells |
+| `--color-elevated` | `#17171A` | Cards / panels |
+| `--color-ink` | `#ECECEE` | Primary text |
+| `--color-muted` | `#9B9BA3` | Secondary text |
+| `--color-border` | `rgba(255,255,255,0.08)` | Soft rules |
+| `--color-border-strong` | `rgba(255,255,255,0.14)` | Buttons / focus |
 
-No pure black. No pure white. No purple. No cyan. No film grain.
-
-## Chrome
-
-- Fixed brass registration mark + vertical hairline on the left.
-- Masthead, not a sticky glass bar. Italic wordmark. Volume line in mono.
-- Lists with index numbers, not card grids.
-- The product visual is a **register** of facts, not a fake IDE.
-
-## Type
-
-Two faces only:
-
-| Role | Face |
-|------|------|
-| Display + body | **Zodiak** (editorial serif) |
-| Chrome / register / buttons | **Commit Mono** |
-
-Italics carry emphasis. Brass carries kickers. No gradient text.
+Atmosphere: soft radial light from upper center (cool gray, low opacity) + fine film grain. No neon purple wash. No flat voids.
 
 ## Shape
 
-Tight 5px controls. Hairline rules. Almost no drop shadows.
+- Soft radii: **14px** controls, **18px** cards/panels. Not hard squares. Not full pills by default.
+- Thin 1px borders. Depth from layered charcoal + inset highlights, not drop-shadow spam.
+
+## Type (self-hosted)
+
+Resend uses Domaine + ABC Favorit + Commit Mono. We mirror the *roles*, not the licensed faces:
+
+| Role | Face | Why |
+|------|------|-----|
+| Display | **Zodiak** | High-contrast editorial serif (Domaine energy) |
+| UI / body | **Satoshi** | Geometric neo-grotesque (Favorit energy) |
+| Code | **Commit Mono** | Same mono Resend ships |
+
+- Hero display: ~`clamp(3.25rem, 8vw, 5.75rem)`, tracking `-0.01em`, optional soft vertical text gradient.
+- Italics in Zodiak for emphasis beats. Hierarchy via size + gray, not heavy weight.
+
+## Motion
+
+- Soft fade/rise on hero.
+- Grain is static CSS; caret / line reveal in product panel.
+- Hover: border brightens slightly. No bounce. No glow spam.
 
 ## Copy
 
-Short. Direct. No em dashes. No hype. No fake logos.
+- Short. Direct. No em dashes. No hype.

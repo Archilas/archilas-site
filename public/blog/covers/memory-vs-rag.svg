@@ -1,8 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-  <rect width="1200" height="630" fill="#13110e"/>
-  <rect x="64" y="64" width="12" height="12" fill="#c4a574"/>
-  <line x1="64" y1="1" x2="64" y2="629" stroke="#c4a574" stroke-opacity="0.35"/>
-  <text x="96" y="200" font-family="ui-monospace,Menlo,monospace" font-size="16" letter-spacing="4" fill="#c4a574">01 · MEMORY VS RAG</text>
-  <text x="96" y="320" font-family="Georgia,serif" font-size="48" fill="#ece6dc">Snippets on the left.</text>
-  <text x="96" y="390" font-family="Georgia,serif" font-size="48" font-style="italic" fill="#c4a574">A record on the right.</text>
+  <defs>
+    <radialGradient id="g" cx="50%" cy="20%" r="70%">
+      <stop offset="0%" stop-color="#2a2a32"/>
+      <stop offset="100%" stop-color="#0b0b0c"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#g)"/>
+  
+  <rect x="80" y="160" width="220" height="28" rx="14" fill="#ECECEE" fill-opacity="0.08"/>
+  <rect x="80" y="208" width="280" height="28" rx="14" fill="#ECECEE" fill-opacity="0.06"/>
+  <rect x="80" y="256" width="190" height="28" rx="14" fill="#ECECEE" fill-opacity="0.05"/>
+  <circle cx="780" cy="290" r="120" fill="#ECECEE" fill-opacity="0.12"/>
+  <circle cx="780" cy="290" r="70" fill="#0b0b0c"/>
+
+  <text x="64" y="560" font-family="ui-sans-serif,system-ui,sans-serif" font-size="22" fill="#9B9BA3">Archilas</text>
 </svg>

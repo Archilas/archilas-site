@@ -24,7 +24,7 @@ export function WaitlistForm({ id = "waitlist" }: { id?: string }) {
         return;
       }
       setStatus("done");
-      setMessage("You're on the register.");
+      setMessage("You're on the list.");
       setEmail("");
     } catch {
       setStatus("error");
@@ -33,11 +33,11 @@ export function WaitlistForm({ id = "waitlist" }: { id?: string }) {
   }
 
   return (
-    <form id={id} onSubmit={onSubmit} className="w-full max-w-lg">
+    <form id={id} onSubmit={onSubmit} className="w-full max-w-md">
       <label htmlFor={`${id}-email`} className="sr-only">
         Email
       </label>
-      <div className="flex flex-col gap-2 sm:flex-row sm:items-stretch">
+      <div className="flex flex-col gap-3 sm:flex-row">
         <input
           id={`${id}-email`}
           name="email"
@@ -47,14 +47,14 @@ export function WaitlistForm({ id = "waitlist" }: { id?: string }) {
           placeholder="you@company.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="min-h-[38px] flex-1 rounded-[5px] border border-border-strong bg-transparent px-3 font-[family-name:var(--font-commit)] text-[13px] tracking-wide text-ink outline-none placeholder:text-muted focus:border-brass"
+          className="min-h-10 flex-1 rounded-[14px] border border-border-strong bg-white/[0.03] px-4 text-[13px] text-ink outline-none placeholder:text-muted focus:border-ink/40"
         />
         <button type="submit" className="btn btn-primary shrink-0" disabled={status === "loading"}>
-          {status === "loading" ? "…" : "Join the register"}
+          {status === "loading" ? "…" : "Join waitlist"}
         </button>
       </div>
       {message ? (
-        <p className="mono mt-3 text-[11px] tracking-[0.12em] text-muted" role="status">
+        <p className="mt-3 text-[12px] text-muted" role="status">
           {message}
         </p>
       ) : null}
