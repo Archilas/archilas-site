@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BrandLogo } from "@/components/BrandLogo";
 import { nav, site } from "@/lib/site";
 
 export function SiteFooter() {
@@ -6,10 +7,7 @@ export function SiteFooter() {
     <footer className="relative z-10 border-t border-border">
       <div className="mx-auto flex w-full max-w-[1120px] flex-col gap-10 px-5 py-14 md:flex-row md:justify-between md:px-8">
         <div className="max-w-sm">
-          <p className="brand inline-flex items-center text-[15px] text-ink">
-            <span className="mark" aria-hidden />
-            {site.name}
-          </p>
+          <BrandLogo />
           <p className="mt-3 text-[13px] leading-relaxed text-muted">{site.description}</p>
         </div>
         <div className="flex gap-16">

@@ -66,6 +66,7 @@ export function organizationJsonLd() {
     "@type": "Organization",
     name: site.name,
     url: site.url,
+    logo: absoluteUrl("/archilas-logo.png"),
     description: site.description,
     email: site.email,
     sameAs: [`https://twitter.com/${site.twitter.replace("@", "")}`],
@@ -97,6 +98,7 @@ export function articleJsonLd(input: {
       "@type": "Organization",
       name: site.name,
       url: site.url,
+      logo: absoluteUrl("/archilas-logo.png"),
     },
     mainEntityOfPage: absoluteUrl(input.path),
   };
