@@ -9,7 +9,7 @@ export function SiteHeader() {
   const pathname = usePathname() || "";
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-bg/70 backdrop-blur-md">
+    <header className="sticky top-0 z-40 border-b border-border bg-elevated/85 backdrop-blur-md">
       <div className="mx-auto flex h-14 w-full max-w-[1120px] items-center justify-between px-5 md:px-8">
         <BrandLogo />
         <nav aria-label="Primary" className="hidden items-center gap-7 md:flex">

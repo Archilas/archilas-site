@@ -4,7 +4,7 @@ import { nav, site } from "@/lib/site";
 
 export function SiteFooter() {
   return (
-    <footer className="relative z-10 border-t border-border">
+    <footer className="section-dark relative z-10 border-t border-white/[0.08]">
       <div className="mx-auto flex w-full max-w-[1120px] flex-col gap-10 px-5 py-14 md:flex-row md:justify-between md:px-8">
         <div className="max-w-sm">
           <BrandLogo />
@@ -35,7 +35,7 @@ export function SiteFooter() {
           </div>
         </div>
       </div>
-      <div className="border-t border-border">
+      <div className="border-t border-white/[0.08]">
         <div className="mx-auto flex max-w-[1120px] justify-between px-5 py-4 md:px-8">
           <p className="text-[12px] text-muted">© {new Date().getFullYear()} {site.name}</p>
           <p className="mono text-[11px] text-muted">mcp</p>

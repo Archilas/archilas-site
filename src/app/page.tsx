@@ -22,7 +22,7 @@ export default function HomePage() {
           <div className="hero-rise">
             <Link
               href="/blog"
-              className="inline-flex items-center rounded-[10px] border border-border bg-white/[0.03] px-3 py-1 text-[12px] text-muted transition hover:border-border-strong hover:text-ink"
+              className="inline-flex items-center rounded-[10px] border border-border bg-surface px-3 py-1 text-[12px] text-muted transition hover:border-border-strong hover:text-ink"
             >
               New writing on memory vs RAG
               <span className="ml-2 text-ink/50">›</span>
@@ -101,7 +101,7 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <Section className="border-y border-border bg-surface/60">
+      <Section className="section-dark border-y border-border">
         <div className="grid gap-4 md:grid-cols-2">
           <article className="card p-7 md:p-8">
             <p className="mono text-[11px] text-muted">usual path</p>
