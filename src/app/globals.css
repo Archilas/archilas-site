@@ -240,6 +240,19 @@ section[id] {
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .hero-rise,
+  .float-soft,
+  .line-in,
+  .caret {
+    animation: none;
+  }
+}
+
 .nodes {
   position: relative;
   width: 72px;
