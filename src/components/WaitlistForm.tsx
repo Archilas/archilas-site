@@ -1,10 +1,18 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, type ReactNode, useState } from "react";
 import { ButtonPrimary } from "@/components/ButtonPrimary";
 import { Input } from "@/components/Input";
 
-export function WaitlistForm({ id = "waitlist" }: { id?: string }) {
+export function WaitlistForm({
+  id = "waitlist",
+  children,
+  className = "max-w-md",
+}: {
+  id?: string;
+  children?: ReactNode;
+  className?: string;
+}) {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "done" | "error">("idle");
   const [message, setMessage] = useState("");
@@ -35,7 +43,7 @@ export function WaitlistForm({ id = "waitlist" }: { id?: string }) {
   }
 
   return (
-    <form id={id} onSubmit={onSubmit} className="w-full max-w-md">
+    <form id={id} onSubmit={onSubmit} className={`w-full ${className}`}>
       <label htmlFor={`${id}-email`} className="sr-only">
         Email
       </label>
@@ -60,6 +68,7 @@ export function WaitlistForm({ id = "waitlist" }: { id?: string }) {
           {message}
         </p>
       ) : null}
+      {children}
     </form>
   );
 }
