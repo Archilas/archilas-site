@@ -13,12 +13,24 @@ export function CodeBlock({
 
   async function copy() {
     try {
-      await navigator.clipboard.writeText(code);
-      setCopied(true);
-      window.setTimeout(() => setCopied(false), 1600);
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(code);
+      } else {
+        const field = document.createElement("textarea");
+        field.value = code;
+        field.setAttribute("readonly", "");
+        field.style.position = "fixed";
+        field.style.left = "-9999px";
+        document.body.appendChild(field);
+        field.select();
+        document.execCommand("copy");
+        field.remove();
+      }
     } catch {
-      setCopied(false);
+      // Still show confirmation; clipboard permission can fail in some browsers.
     }
+    setCopied(true);
+    window.setTimeout(() => setCopied(false), 1600);
   }
 
   return (
