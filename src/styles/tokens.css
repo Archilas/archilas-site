@@ -1,0 +1,100 @@
+/* Archilas design tokens. Hex lives here; components use these names. Accent = Vault Teal. */
+
+:root {
+  /* Light */
+  --near-black: #0a0a0a;
+  --ink: #171717;
+  --body: #3f3f46;
+  --muted: #52525b;
+  --border: #e4e4e7;
+  --surface: #fafafa;
+  --elevated: #ffffff;
+  --border-input: #d4d4d8;
+
+  /* Dark */
+  --bg-dark: #09090b;
+  --card-dark: #18181b;
+  --border-dark: #27272a;
+  --text-dark: #d4d4d8;
+
+  /* Vault Teal. Never put white text on --accent. Use --accent-solid for filled buttons. */
+  --accent: #0d9488;
+  --accent-solid: #0f766e;
+  --accent-dark: #2dd4bf;
+
+  /* Confidence */
+  --confidence-high: #15803d;
+  --confidence-mid: #b45309;
+  --confidence-low: #be123c;
+  --confidence-high-dark: #4ade80;
+  --confidence-mid-dark: #fbbf24;
+  --confidence-low-dark: #fb7185;
+
+  /* Type */
+  --text-display: clamp(2.5rem, 5vw, 4rem);
+  --text-h2: clamp(1.75rem, 3vw, 2.5rem);
+  --text-h3: clamp(1.25rem, 2vw, 1.5rem);
+  --text-body: 1.0625rem;
+  --text-label: 0.75rem;
+  --text-mono: 0.8125rem;
+  --leading-body: 1.6;
+
+  /* Shape */
+  --arch-radius-card: 12px;
+  --arch-radius-control: 8px;
+  --arch-radius-pill: 999px;
+
+  /* Space */
+  --max-width: 1160px;
+  --pad-x: 24px;
+  --pad-y: 80px;
+  --pad-y-mobile: 56px;
+  --nav-height: 64px;
+  --control-height: 46px;
+  --scroll-margin: 88px;
+}
+
+@theme inline {
+  --color-near-black: var(--near-black);
+  --color-ink: var(--ink);
+  --color-body: var(--body);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-surface: var(--surface);
+  --color-elevated: var(--elevated);
+  --color-border-input: var(--border-input);
+  --color-bg-dark: var(--bg-dark);
+  --color-card-dark: var(--card-dark);
+  --color-border-dark: var(--border-dark);
+  --color-text-dark: var(--text-dark);
+  --color-accent: var(--accent);
+  --color-accent-solid: var(--accent-solid);
+  --color-accent-dark: var(--accent-dark);
+  --color-confidence-high: var(--confidence-high);
+  --color-confidence-mid: var(--confidence-mid);
+  --color-confidence-low: var(--confidence-low);
+  --color-confidence-high-dark: var(--confidence-high-dark);
+  --color-confidence-mid-dark: var(--confidence-mid-dark);
+  --color-confidence-low-dark: var(--confidence-low-dark);
+  --font-sans: var(--font-geist);
+  --font-mono: var(--font-geist-mono);
+  --radius-card: var(--arch-radius-card);
+  --radius-control: var(--arch-radius-control);
+  --radius-pill: var(--arch-radius-pill);
+}
+
+.theme-dark {
+  --near-black: #d4d4d8;
+  --ink: #d4d4d8;
+  --body: #d4d4d8;
+  --muted: #a1a1aa;
+  --border: #27272a;
+  --surface: #18181b;
+  --elevated: #18181b;
+  --border-input: #27272a;
+  --confidence-high: var(--confidence-high-dark);
+  --confidence-mid: var(--confidence-mid-dark);
+  --confidence-low: var(--confidence-low-dark);
+  color: var(--text-dark);
+  background: var(--bg-dark);
+}

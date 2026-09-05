@@ -1,7 +1,11 @@
-import Link from "next/link";
+import { ButtonPrimary } from "@/components/ButtonPrimary";
+import { ButtonSecondary } from "@/components/ButtonSecondary";
+import { Card } from "@/components/Card";
+import { CodeBlock } from "@/components/CodeBlock";
 import { JsonLd } from "@/components/JsonLd";
 import { ProductPanel } from "@/components/ProductPanel";
 import { Section } from "@/components/Section";
+import { TrustRow } from "@/components/TrustRow";
 import { WaitlistForm } from "@/components/WaitlistForm";
 import { buildMetadata, organizationJsonLd } from "@/lib/seo";
 import { site } from "@/lib/site";
@@ -12,69 +16,54 @@ export const metadata = buildMetadata({
   path: "/",
 });
 
+const mcpSnippet = `{
+  "mcpServers": {
+    "archilas": {
+      "url": "https://mcp.archilas.com"
+    }
+  }
+}`;
+
 export default function HomePage() {
   return (
     <>
       <JsonLd data={organizationJsonLd()} />
 
       <section className="relative overflow-hidden">
-        <div className="mx-auto grid w-full max-w-[1120px] gap-12 px-5 pb-20 pt-16 md:grid-cols-[1fr_1.05fr] md:items-center md:gap-14 md:px-8 md:pb-24 md:pt-20">
+        <div className="mx-auto grid w-full max-w-[var(--max-width)] gap-12 px-[var(--pad-x)] pb-16 pt-14 md:grid-cols-[1fr_1.05fr] md:items-center md:gap-14 md:pb-20 md:pt-16">
           <div className="hero-rise">
-            <Link
-              href="/blog"
-              className="inline-flex items-center rounded-[10px] border border-border bg-surface px-3 py-1 text-[12px] text-muted transition hover:border-border-strong hover:text-ink"
-            >
-              New writing on memory vs RAG
-              <span className="ml-2 text-ink/50">›</span>
-            </Link>
-            <h1 className="display display-gradient mt-8 max-w-[11ch] text-[clamp(3.25rem,8vw,5.75rem)]">
-              Memory for
-              <br />
-              <em>AI tools.</em>
-            </h1>
-            <p className="mt-7 max-w-md text-[16px] leading-relaxed text-muted">
-              A persistent memory layer that reasons over your history instead of searching old messages and pasting them into a prompt.
+            <p className="label">AI memory infrastructure</p>
+            <h1 className="display mt-6 max-w-[12ch]">Memory for AI tools.</h1>
+            <p className="mt-6 max-w-md text-[17px] leading-[1.6] text-body">
+              Structured evidence: claims, commitments, and signals with confidence. Not raw
+              transcripts. MCP native, plus API and SDK.
             </p>
-            <div className="mt-9 flex flex-wrap items-center gap-3">
-              <a href="#waitlist" className="btn btn-primary">
-                Join waitlist
-              </a>
-              <Link href="/blog/what-is-mcp" className="btn btn-secondary">
-                Why MCP
-              </Link>
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <ButtonPrimary href="#waitlist">Join waitlist</ButtonPrimary>
+              <ButtonSecondary href="/#developers">MCP server</ButtonSecondary>
             </div>
-            <p className="mono mt-5 text-[11px] text-muted">claude · chatgpt · cursor</p>
+            <div className="mt-8">
+              <TrustRow items={["MCP native", "API and SDK", "Structured evidence"]} />
+            </div>
           </div>
 
           <div className="relative">
-            <div
-              aria-hidden
-              className="pointer-events-none absolute -inset-8 rounded-[32px] bg-[radial-gradient(circle_at_50%_40%,rgba(190,198,230,0.12),transparent_60%)]"
-            />
             <ProductPanel />
           </div>
         </div>
       </section>
 
-      <Section>
+      <Section id="product">
         <div className="mx-auto max-w-2xl text-center">
-          <div className="mx-auto flex justify-center">
-            <div className="nodes" aria-hidden>
-              <span />
-              <span />
-              <span />
-            </div>
-          </div>
-          <h2 className="display mt-8 text-[clamp(2.25rem,5vw,3.25rem)] text-ink">
-            Compact tonight.
-            <em className="text-muted"> Reason tomorrow.</em>
-          </h2>
-          <p className="mx-auto mt-5 max-w-lg text-[15px] text-muted">
-            Keep decisions and open loops as structured facts. Compose only what the record supports. Deliver into the hosts you already use over MCP.
+          <p className="label">Product</p>
+          <h2 className="h2 mt-4">Compact tonight. Reason tomorrow.</h2>
+          <p className="mx-auto mt-5 max-w-lg text-body">
+            Keep decisions and open loops as structured facts. Compose only what the record
+            supports. Deliver into the hosts you already use over MCP.
           </p>
         </div>
 
-        <div className="mt-14 grid gap-4 md:grid-cols-3">
+        <div className="mt-10 grid gap-4 md:grid-cols-3">
           {[
             {
               k: "compact",
@@ -92,66 +81,77 @@ export default function HomePage() {
               d: "Same memory layer in Claude, ChatGPT, Cursor, and agents.",
             },
           ].map((item) => (
-            <article key={item.k} className="card p-6 md:p-7">
-              <p className="mono text-[11px] text-muted">{item.k}</p>
-              <h3 className="mt-3 text-[16px] font-medium tracking-tight text-ink">{item.t}</h3>
-              <p className="mt-2 text-[14px] leading-relaxed text-muted">{item.d}</p>
-            </article>
+            <Card key={item.k} className="p-6">
+              <p className="mono text-muted">{item.k}</p>
+              <h3 className="h3 mt-3">{item.t}</h3>
+              <p className="mt-2 text-[15px] leading-[1.6] text-body">{item.d}</p>
+            </Card>
           ))}
         </div>
       </Section>
 
-      <Section className="section-dark border-y border-border">
-        <div className="grid gap-4 md:grid-cols-2">
-          <article className="card p-7 md:p-8">
-            <p className="mono text-[11px] text-muted">usual path</p>
-            <h2 className="mt-3 text-[24px] font-medium tracking-tight text-ink">
-              Search. Paste. Hope.
-            </h2>
-            <p className="mt-4 text-[14px] leading-relaxed text-muted">
-              RAG finds snippets. The model stitches them in the prompt. Related facts drift. Gaps get fluent guesses.
+      <Section id="how" className="bg-surface">
+        <p className="label">How it works</p>
+        <h2 className="h2 mt-4 max-w-xl">Search and paste is not memory.</h2>
+        <div className="mt-8 grid gap-4 md:grid-cols-2">
+          <Card className="p-6 md:p-7">
+            <p className="mono text-muted">usual path</p>
+            <h3 className="h3 mt-3">Search. Paste. Hope.</h3>
+            <p className="mt-3 text-[15px] leading-[1.6] text-body">
+              RAG finds snippets. The model stitches them in the prompt. Related facts drift. Gaps
+              get fluent guesses.
             </p>
-          </article>
-          <article className="card p-7 md:p-8">
-            <p className="mono text-[11px] text-muted">archilas</p>
-            <h2 className="mt-3 text-[24px] font-medium tracking-tight text-ink">
-              Compact. Reason. Deliver.
-            </h2>
-            <p className="mt-4 text-[14px] leading-relaxed text-muted">
-              A living record. Composition with restraint. Context pushed into your tools without inventing the missing link.
+          </Card>
+          <Card className="p-6 md:p-7">
+            <p className="mono text-muted">archilas</p>
+            <h3 className="h3 mt-3">Compact. Reason. Deliver.</h3>
+            <p className="mt-3 text-[15px] leading-[1.6] text-body">
+              A living record. Composition with restraint. Context pushed into your tools without
+              inventing the missing link.
             </p>
-          </article>
+          </Card>
         </div>
+      </Section>
 
-        <div className="mt-4 grid gap-4 md:grid-cols-2">
-          <article className="card p-7">
-            <h3 className="text-[15px] font-medium text-ink">Does not fabricate</h3>
-            <p className="mt-2 text-[14px] text-muted">
-              Incomplete memory stays incomplete. Fluency is not permission to invent.
+      <Section id="developers">
+        <div className="grid items-start gap-8 md:grid-cols-2">
+          <div>
+            <p className="label">Developers</p>
+            <h2 className="h2 mt-4">MCP native. API and SDK when you need them.</h2>
+            <p className="mt-4 max-w-md text-body">
+              Point a host at mcp.archilas.com. Same structured evidence over MCP, API, or SDK.
+              Docs expand here in a later pass.
             </p>
-          </article>
-          <article className="card p-7">
-            <h3 className="text-[15px] font-medium text-ink">Combines related facts</h3>
-            <p className="mt-2 text-[14px] text-muted">
-              When two true details belong together, you get one answer. Not competing fragments.
-            </p>
-          </article>
+          </div>
+          <CodeBlock label="MCP" code={mcpSnippet} />
+        </div>
+      </Section>
+
+      <Section id="security" className="bg-surface">
+        <p className="label">Security</p>
+        <h2 className="h2 mt-4 max-w-xl">Evidence you can inspect.</h2>
+        <p className="mt-4 max-w-lg text-body">
+          Claims, commitments, and signals carry confidence. We do not invent certifications we do
+          not hold.
+        </p>
+        <div className="mt-6 flex h-fit flex-wrap gap-3">
+          <span className="text-[13px] font-medium text-confidence-high">High confidence</span>
+          <span className="text-[13px] font-medium text-confidence-mid">Mid confidence</span>
+          <span className="text-[13px] font-medium text-confidence-low">Low confidence</span>
         </div>
       </Section>
 
       <Section id="waitlist">
-        <div className="card mx-auto max-w-3xl px-7 py-10 text-center md:px-12 md:py-14">
-          <p className="mono text-[11px] text-muted">early access</p>
-          <h2 className="display display-gradient mt-4 text-[clamp(2.25rem,5vw,3.25rem)]">
-            Get in early.
-          </h2>
-          <p className="mx-auto mt-4 max-w-md text-[15px] text-muted">
-            Pre-launch. We email when access opens.
+        <Card className="mx-auto max-w-3xl px-7 py-10 text-center md:px-12 md:py-12">
+          <p className="label">Early access</p>
+          <h2 className="h2 mt-4">Get in early.</h2>
+          <p className="mx-auto mt-4 max-w-md text-body">
+            Pre-launch. We email when access opens. Waitlist is the only conversion goal.
           </p>
           <div className="mx-auto mt-8 flex justify-center">
             <WaitlistForm id="waitlist-form" />
           </div>
-        </div>
+        </Card>
       </Section>
     </>
   );

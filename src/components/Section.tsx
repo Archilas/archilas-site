@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 export function Section({
   children,
@@ -10,8 +10,11 @@ export function Section({
   id?: string;
 }) {
   return (
-    <section id={id} className={`px-5 py-20 md:px-8 md:py-24 ${className}`}>
-      <div className="mx-auto w-full max-w-[1120px]">{children}</div>
+    <section
+      id={id}
+      className={`scroll-mt-[var(--scroll-margin)] px-[var(--pad-x)] py-[var(--pad-y-mobile)] md:py-[var(--pad-y)] ${className}`}
+    >
+      <div className="mx-auto w-full max-w-[var(--max-width)]">{children}</div>
     </section>
   );
 }

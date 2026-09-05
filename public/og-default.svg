@@ -1,11 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-  <defs>
-    <radialGradient id="g" cx="50%" cy="0%" r="80%">
-      <stop offset="0%" stop-color="#24242c"/>
-      <stop offset="100%" stop-color="#0b0b0c"/>
-    </radialGradient>
-  </defs>
-  <rect width="1200" height="630" fill="url(#g)"/>
-  <text x="80" y="290" font-family="Georgia, serif" font-size="72" fill="#ECECEE">Archilas</text>
-  <text x="80" y="360" font-family="ui-sans-serif,system-ui" font-size="28" fill="#9B9BA3">Memory for AI tools</text>
+  <rect width="1200" height="630" fill="#09090B"/>
+  <text x="88" y="300" font-family="ui-sans-serif, system-ui, sans-serif" font-size="72" font-weight="650" fill="#FFFFFF">Archilas</text>
+  <rect x="88" y="328" width="160" height="4" fill="#2DD4BF"/>
+  <text x="88" y="390" font-family="ui-sans-serif, system-ui, sans-serif" font-size="28" fill="#D4D4D8">AI memory infrastructure.</text>
 </svg>

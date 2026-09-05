@@ -5,17 +5,25 @@ import { site } from "@/lib/site";
 type BrandLogoProps = {
   className?: string;
   showName?: boolean;
+  inverted?: boolean;
 };
 
-export function BrandLogo({ className = "", showName = true }: BrandLogoProps) {
+export function BrandLogo({
+  className = "",
+  showName = true,
+  inverted = false,
+}: BrandLogoProps) {
   return (
-    <Link href="/" className={`brand inline-flex items-center gap-2.5 text-[15px] text-ink ${className}`}>
+    <Link
+      href="/"
+      className={`brand inline-flex items-center gap-2.5 text-[15px] ${inverted ? "text-text-dark" : "text-near-black"} ${className}`}
+    >
       <Image
         src="/archilas-logo.png"
         alt=""
-        width={188}
-        height={149}
-        className="h-7 w-auto"
+        width={28}
+        height={22}
+        className={`h-7 w-auto ${inverted ? "brightness-0 invert" : ""}`}
         priority
       />
       {showName ? <span>{site.name}</span> : <span className="sr-only">{site.name}</span>}

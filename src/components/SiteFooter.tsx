@@ -1,44 +1,77 @@
 import Link from "next/link";
 import { BrandLogo } from "@/components/BrandLogo";
-import { nav, site } from "@/lib/site";
+import { footerNav, site } from "@/lib/site";
+
+function FooterLink({
+  href,
+  label,
+  external,
+}: {
+  href: string;
+  label: string;
+  external?: boolean;
+}) {
+  const className = "text-[14px] not-italic text-text-dark hover:text-accent-dark";
+  if (external || href.startsWith("mailto:")) {
+    return (
+      <a
+        href={href}
+        className={className}
+        {...(external ? { rel: "noopener noreferrer", target: "_blank" } : {})}
+      >
+        {label}
+      </a>
+    );
+  }
+  return (
+    <Link href={href} className={className}>
+      {label}
+    </Link>
+  );
+}
+
+function FooterColumn({
+  title,
+  links,
+}: {
+  title: string;
+  links: readonly { href: string; label: string; external?: boolean }[];
+}) {
+  return (
+    <div>
+      <p className="label">{title}</p>
+      <ul className="mt-3 space-y-2">
+        {links.map((item) => (
+          <li key={`${item.href}-${item.label}`}>
+            <FooterLink href={item.href} label={item.label} external={item.external} />
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
 export function SiteFooter() {
   return (
-    <footer className="section-dark relative z-10 border-t border-white/[0.08]">
-      <div className="mx-auto flex w-full max-w-[1120px] flex-col gap-10 px-5 py-14 md:flex-row md:justify-between md:px-8">
+    <footer className="theme-dark relative z-10 border-t border-border-dark">
+      <div className="mx-auto flex w-full max-w-[var(--max-width)] flex-col gap-12 px-[var(--pad-x)] py-14 md:flex-row md:justify-between">
         <div className="max-w-sm">
-          <BrandLogo />
-          <p className="mt-3 text-[13px] leading-relaxed text-muted">{site.description}</p>
+          <BrandLogo inverted />
+          <p className="mt-3 text-[14px] leading-relaxed text-text-dark/80">{site.description}</p>
         </div>
-        <div className="flex gap-16">
-          <div>
-            <p className="text-[12px] text-muted">Product</p>
-            <ul className="mt-3 space-y-2">
-              {nav.map((item) => (
-                <li key={item.href}>
-                  <Link href={item.href} className="text-[13px] text-ink/90 hover:text-ink">
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <p className="text-[12px] text-muted">Contact</p>
-            <ul className="mt-3 space-y-2">
-              <li>
-                <a href={`mailto:${site.email}`} className="mono text-[12px] text-ink/90 hover:text-ink">
-                  {site.email}
-                </a>
-              </li>
-            </ul>
-          </div>
+        <div className="grid grid-cols-2 gap-x-10 gap-y-8 sm:grid-cols-4">
+          <FooterColumn title="Product" links={footerNav.product} />
+          <FooterColumn title="Developers" links={footerNav.developers} />
+          <FooterColumn title="Company" links={footerNav.company} />
+          <FooterColumn title="Legal" links={footerNav.legal} />
         </div>
       </div>
-      <div className="border-t border-white/[0.08]">
-        <div className="mx-auto flex max-w-[1120px] justify-between px-5 py-4 md:px-8">
-          <p className="text-[12px] text-muted">© {new Date().getFullYear()} {site.name}</p>
-          <p className="mono text-[11px] text-muted">mcp</p>
+      <div className="border-t border-border-dark">
+        <div className="mx-auto flex max-w-[var(--max-width)] justify-between px-[var(--pad-x)] py-4">
+          <p className="text-[12px] text-text-dark/70">
+            © {new Date().getFullYear()} {site.name}
+          </p>
+          <p className="mono text-text-dark/70">mcp.archilas.com</p>
         </div>
       </div>
     </footer>
