@@ -16,7 +16,7 @@ export default function TermsPage() {
       <div className="mt-6 max-w-2xl space-y-4 text-body">
         <p>
           This site is a marketing page for a product that is not generally available. Joining the
-          waitlist does not create a paid plan, a free plan, or a service commitment.
+          waitlist does not create a paid subscription or a service commitment.
         </p>
         <p>
           Information on this site may change before launch. If something here conflicts with a later
@@ -24,7 +24,7 @@ export default function TermsPage() {
         </p>
         <p>
           Questions:{" "}
-          <a href={`mailto:${site.email}`} className="text-accent-solid underline-offset-4 hover:underline">
+          <a href={`mailto:${site.email}`} className="text-ink underline-offset-4 hover:underline">
             {site.email}
           </a>
           .

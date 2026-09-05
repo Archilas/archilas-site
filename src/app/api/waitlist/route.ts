@@ -2,6 +2,12 @@ import { NextResponse } from "next/server";
 
 const emailOk = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
+/**
+ * Waitlist contract:
+ * - POST { email } → { ok: true } for a valid address
+ * - Repeats of the same email also succeed
+ * Persistence is not wired in this repo. Do not add stores here.
+ */
 export async function POST(request: Request) {
   let body: unknown;
   try {
@@ -21,7 +27,6 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false, error: "Enter a valid email address." }, { status: 400 });
   }
 
-  // Pre-launch: accept and acknowledge. Wire to your ESP (Resend, Loops, etc.) before production traffic.
   console.info("[waitlist]", email);
 
   return NextResponse.json({ ok: true });

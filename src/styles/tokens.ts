@@ -13,12 +13,5 @@ export const tokens = {
   borderDark: "#27272A",
   textDark: "#D4D4D8",
   accent: "#0D9488",
-  accentSolid: "#0F766E",
   accentDark: "#2DD4BF",
-  confidenceHigh: "#15803D",
-  confidenceMid: "#B45309",
-  confidenceLow: "#BE123C",
-  confidenceHighDark: "#4ADE80",
-  confidenceMidDark: "#FBBF24",
-  confidenceLowDark: "#FB7185",
 } as const;

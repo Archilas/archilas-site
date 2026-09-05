@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { BrandLogo } from "@/components/BrandLogo";
 import { ButtonPrimary } from "@/components/ButtonPrimary";
+import { track } from "@/lib/analytics";
 import { nav } from "@/lib/site";
 import { useFocusTrap } from "@/lib/use-focus-trap";
 
@@ -32,7 +33,9 @@ export function SiteHeader() {
               {item.label}
             </a>
           ))}
-          <ButtonPrimary href="/#waitlist">Join waitlist</ButtonPrimary>
+          <ButtonPrimary href="/#waitlist" onClick={() => track("cta_click", { source: "nav" })}>
+            Join waitlist
+          </ButtonPrimary>
         </nav>
         <button
           type="button"
@@ -68,7 +71,14 @@ export function SiteHeader() {
             ))}
           </nav>
           <div className="mt-4 flex flex-col gap-3">
-            <ButtonPrimary href="/#waitlist" className="w-full" onClick={close}>
+            <ButtonPrimary
+              href="/#waitlist"
+              className="w-full"
+              onClick={() => {
+                track("cta_click", { source: "nav-mobile" });
+                close();
+              }}
+            >
               Join waitlist
             </ButtonPrimary>
             <button

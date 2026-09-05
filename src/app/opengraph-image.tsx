@@ -36,7 +36,7 @@ export default function OpenGraphImage() {
           style={{
             marginTop: 20,
             width: 160,
-            height: 4,
+            height: 2,
             background: tokens.accentDark,
           }}
         />
