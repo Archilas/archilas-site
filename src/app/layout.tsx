@@ -1,43 +1,27 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import type { ReactNode } from "react";
+import { Geist, Geist_Mono } from "next/font/google";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { site } from "@/lib/site";
 import "./globals.css";
 
-/* Resend stack ≈ Domaine + ABC Favorit + Commit Mono.
-   We self-host legal near-equivalents: Zodiak + Satoshi + Commit Mono. */
-const satoshi = localFont({
-  src: [
-    { path: "../fonts/satoshi-400.woff2", weight: "400", style: "normal" },
-    { path: "../fonts/satoshi-500.woff2", weight: "500", style: "normal" },
-    { path: "../fonts/satoshi-700.woff2", weight: "700", style: "normal" },
-  ],
-  variable: "--font-satoshi",
+const geist = Geist({
+  subsets: ["latin"],
+  variable: "--font-geist",
   display: "swap",
 });
 
-const zodiak = localFont({
-  src: [
-    { path: "../fonts/zodiak-400.woff2", weight: "400", style: "normal" },
-    { path: "../fonts/zodiak-400i.woff2", weight: "400", style: "italic" },
-    { path: "../fonts/zodiak-700.woff2", weight: "700", style: "normal" },
-    { path: "../fonts/zodiak-700i.woff2", weight: "700", style: "italic" },
-  ],
-  variable: "--font-zodiak",
-  display: "swap",
-});
-
-const commitMono = localFont({
-  src: [{ path: "../fonts/commit-mono-400.otf", weight: "400", style: "normal" }],
-  variable: "--font-commit",
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-geist-mono",
   display: "swap",
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} · Persistent memory for AI`,
+    default: `${site.name} · ${site.tagline}`,
     template: `%s · ${site.name}`,
   },
   description: site.description,
@@ -55,10 +39,13 @@ export const metadata: Metadata = {
     type: "website",
     siteName: site.name,
     locale: site.locale,
-    images: [{ url: "/archilas-logo.png", width: 188, height: 149, alt: site.name }],
+    title: `${site.name} · ${site.tagline}`,
+    description: site.description,
   },
   twitter: {
     card: "summary_large_image",
+    title: `${site.name} · ${site.tagline}`,
+    description: site.description,
   },
   robots: {
     index: true,
@@ -66,15 +53,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html
-      lang="en"
-      className={`${satoshi.variable} ${zodiak.variable} ${commitMono.variable} h-full`}
-    >
-      <body className="site-atmosphere flex min-h-full flex-col font-sans text-ink antialiased">
+    <html lang="en" className={`${geist.variable} ${geistMono.variable} h-full`}>
+      <body className="flex min-h-full flex-col bg-elevated font-sans text-body antialiased">
         <SiteHeader />
-        <main className="relative z-10 flex-1">{children}</main>
+        <main id="main" className="relative z-10 flex-1">
+          {children}
+        </main>
         <SiteFooter />
       </body>
     </html>

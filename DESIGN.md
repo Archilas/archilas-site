@@ -1,47 +1,50 @@
 # Archilas Site — Design System
 
-Dark, textured, Resend-adjacent craft. Do not copy Resend (no cube, no purple). Do not ship an archive / ledger / brass journal. Do not use Geist, Instrument Serif, or Inter.
+Light-primary marketing shell. Accent is Vault Teal. Hex values live in `src/styles/tokens.css` (JS mirror: `src/styles/tokens.ts`).
 
-Unique within that language: pearl node mark, floating memory inspector (product UI, not a terminal).
-
-## Color (never pure black / pure white)
+## Color
 
 | Token | Value | Role |
 |------|-------|------|
-| `--color-bg` | `#0B0B0C` | Page (charcoal) |
-| `--color-surface` | `#121214` | Bands / wells |
-| `--color-elevated` | `#17171A` | Cards / panels |
-| `--color-ink` | `#ECECEE` | Primary text |
-| `--color-muted` | `#9B9BA3` | Secondary text |
-| `--color-border` | `rgba(255,255,255,0.08)` | Soft rules |
-| `--color-border-strong` | `rgba(255,255,255,0.14)` | Buttons / focus |
+| `--near-black` | `#0A0A0A` | Display / headings |
+| `--ink` | `#171717` | Strong UI text |
+| `--body` | `#3F3F46` | Body copy |
+| `--muted` | `#52525B` | Labels |
+| `--border` | `#E4E4E7` | Rules |
+| `--surface` | `#FAFAFA` | Bands |
+| `--elevated` | `#FFFFFF` | Nav, cards, page |
+| `--border-input` | `#D4D4D8` | Inputs / secondary buttons |
+| `--bg-dark` | `#09090B` | Footer / OG / code |
+| `--card-dark` | `#18181B` | Dark cards |
+| `--border-dark` | `#27272A` | Dark rules |
+| `--text-dark` | `#D4D4D8` | Dark text |
+| `--accent` | `#0D9488` | Focus / borders (not white-on-teal fills) |
+| `--accent-solid` | `#0F766E` | Filled buttons with white text |
+| `--accent-dark` | `#2DD4BF` | Accent on dark |
+| Confidence | high / mid / low | `#15803D` / `#B45309` / `#BE123C` |
 
-Atmosphere: soft radial light from upper center (cool gray, low opacity) + fine film grain. No neon purple wash. No flat voids.
+Accent stays under 5% of the viewport. Never put white text on `#0D9488`.
 
-## Shape
+## Type
 
-- Soft radii: **14px** controls, **18px** cards/panels. Not hard squares. Not full pills by default.
-- Thin 1px borders. Depth from layered charcoal + inset highlights, not drop-shadow spam.
+Geist + Geist Mono. Upright only. Italics are allowed on `.pull-quote` only.
 
-## Type (self-hosted)
+- Display: 40–64 / 600–700
+- H2: 28–40 / 600
+- H3: 20–24 / 600
+- Body: 16–18 / 400 / 1.6 / body color
+- Label: 12–13 / uppercase / muted
+- Mono: 13–14
 
-Resend uses Domaine + ABC Favorit + Commit Mono. We mirror the *roles*, not the licensed faces:
+## Shape and space
 
-| Role | Face | Why |
-|------|------|-----|
-| Display | **Zodiak** | High-contrast editorial serif (Domaine energy) |
-| UI / body | **Satoshi** | Geometric neo-grotesque (Favorit energy) |
-| Code | **Commit Mono** | Same mono Resend ships |
-
-- Hero display: ~`clamp(3.25rem, 8vw, 5.75rem)`, tracking `-0.01em`, optional soft vertical text gradient.
-- Italics in Zodiak for emphasis beats. Hierarchy via size + gray, not heavy weight.
-
-## Motion
-
-- Soft fade/rise on hero.
-- Grain is static CSS; caret / line reveal in product panel.
-- Hover: border brightens slightly. No bounce. No glow spam.
+- Cards 12, controls 8, pills 999 only for demo tools
+- Max width 1160, horizontal pad 24
+- Vertical pad 80 desktop / 56 mobile
+- Nav 64, controls 46
+- Section height is content + padding. Cards hug content.
 
 ## Copy
 
-- Short. Direct. No em dashes. No hype.
+- Precise. Builder-facing. Waitlist is the only conversion goal.
+- Do not invent SOC 2, customer logos, counts, or a free plan.

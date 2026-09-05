@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { site } from "@/lib/site";
 
-const defaultOgImage = `${site.url}/og-default.svg`;
+const defaultOgImage = `${site.url}/opengraph-image`;
 
 export function absoluteUrl(path: string): string {
   if (path.startsWith("http")) return path;
@@ -30,9 +30,7 @@ export function buildMetadata({
   const url = absoluteUrl(path);
   // Layout template adds "· Archilas"; home uses absolute title.
   const isHome = title === site.name;
-  const displayTitle = isHome
-    ? `${site.name} · Persistent memory for AI`
-    : title;
+  const displayTitle = isHome ? `${site.name} · ${site.tagline}` : title;
 
   return {
     title: isHome
@@ -69,7 +67,7 @@ export function organizationJsonLd() {
     logo: absoluteUrl("/archilas-logo.png"),
     description: site.description,
     email: site.email,
-    sameAs: [`https://twitter.com/${site.twitter.replace("@", "")}`],
+    sameAs: [site.twitterUrl, site.githubUrl],
   };
 }
 

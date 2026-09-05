@@ -1,6 +1,8 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { ButtonPrimary } from "@/components/ButtonPrimary";
+import { Input } from "@/components/Input";
 
 export function WaitlistForm({ id = "waitlist" }: { id?: string }) {
   const [email, setEmail] = useState("");
@@ -38,7 +40,7 @@ export function WaitlistForm({ id = "waitlist" }: { id?: string }) {
         Email
       </label>
       <div className="flex flex-col gap-3 sm:flex-row">
-        <input
+        <Input
           id={`${id}-email`}
           name="email"
           type="email"
@@ -47,14 +49,14 @@ export function WaitlistForm({ id = "waitlist" }: { id?: string }) {
           placeholder="you@company.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="min-h-10 flex-1 rounded-[14px] border border-border-strong bg-elevated px-4 text-[13px] text-ink outline-none placeholder:text-muted focus:border-ink/40"
+          className="flex-1"
         />
-        <button type="submit" className="btn btn-primary shrink-0" disabled={status === "loading"}>
-          {status === "loading" ? "…" : "Join waitlist"}
-        </button>
+        <ButtonPrimary type="submit" className="shrink-0" disabled={status === "loading"}>
+          {status === "loading" ? "Joining" : "Join waitlist"}
+        </ButtonPrimary>
       </div>
       {message ? (
-        <p className="mt-3 text-[12px] text-muted" role="status">
+        <p className="mt-3 text-[13px] text-muted" role="status">
           {message}
         </p>
       ) : null}
