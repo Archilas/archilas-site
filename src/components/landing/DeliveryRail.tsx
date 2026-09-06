@@ -7,7 +7,7 @@ export function DeliveryRail() {
       <div className="mx-auto max-w-[var(--max-width)] px-[var(--pad-x)]">
         <p className="label">Deliver</p>
         <h2 className="h2 mt-3 max-w-xl">One record. Intended hosts.</h2>
-        <p className="mt-3 text-[14px] text-muted">In development. MCP is the intended path.</p>
+        <p className="mt-3 text-[14px] text-muted">MCP is the intended path.</p>
         <div className="mt-8 grid gap-3 md:grid-cols-3">
           {demoHosts.map((host) => (
             <ArchWindow key={host.name} name={host.name}>

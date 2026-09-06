@@ -108,7 +108,7 @@ export function usePipelineClock() {
         id === "compact"
           ? STAGE_START.reason - 0.01
           : id === "reason"
-            ? STAGE_START.deliver - 0.01
+            ? STAGE_START.reason + 0.13
             : 1;
       scrub(view);
     },
