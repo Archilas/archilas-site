@@ -1,48 +1,45 @@
-export const howSteps = [
-  { id: "transcript", label: "Transcript" },
-  { id: "compact", label: "Compact" },
-  { id: "reason", label: "Reason" },
-  { id: "deliver", label: "Deliver" },
-  { id: "record", label: "Record" },
+export const demoBeats = [
+  { id: "notes", label: "Detailed notes" },
+  { id: "memory", label: "Compacted memory" },
+  { id: "answer", label: "Smart answer" },
 ] as const;
 
-export type HowStepId = (typeof howSteps)[number]["id"];
-export type RecordKind = "Preference" | "Decision" | "Open loop";
+export type DemoBeatId = (typeof demoBeats)[number]["id"];
 
-export const pipelineTranscript = [
-  { id: "n1", keep: false, text: "ok looping back — also grab lunch prefs for the offsite" },
-  { id: "p1", keep: "preference" as const, text: "keep deploys under 15 minutes or we miss the Friday window" },
-  { id: "n2", keep: false, text: "lol the zoom echo is back" },
-  { id: "d1", keep: "decision" as const, text: "we left Northwind after the third rate-limit incident" },
-  { id: "n3", keep: false, text: "paste of last month’s changelog · · · · ·" },
-  { id: "o1", keep: "open loop" as const, text: "rotate the CI deploy keys before Tuesday" },
-  { id: "n4", keep: false, text: "anyway where’s that Figma link" },
-] as const;
-
-export const pipelineRecord = [
-  { id: "p1", kind: "Preference" as const, text: "Keep deploys under 15 minutes." },
-  { id: "d1", kind: "Decision" as const, text: "Left Northwind after repeated rate-limit failures." },
-  { id: "o1", kind: "Open loop" as const, text: "Rotate CI deploy keys before Tuesday." },
-] as const;
-
-export const pipelineQuestions = [
+export const sourceNotes = [
   {
-    id: "budget",
-    q: "What's the deploy budget?",
-    supported: false,
-    a: "Not in the record.",
-    citeIds: [] as readonly string[],
+    id: "chat",
+    kind: "CHAT",
+    text: "Ship Friday only if legal signs. Otherwise we slip the window.",
+    noise: "also the zoom echo is back",
   },
   {
-    id: "vendor",
-    q: "Why did we leave Northwind?",
-    supported: true,
-    a: "Left Northwind after repeated rate-limit failures.",
-    citeIds: ["d1"] as readonly string[],
+    id: "doc",
+    kind: "DOC",
+    text: "Keep launch notes in the written checklist — not Slack dumps.",
+    noise: "paste of last month’s changelog",
+  },
+  {
+    id: "thread",
+    kind: "THREAD",
+    text: "Legal still has not signed the Thursday window.",
+    noise: "lunch poll??",
   },
 ] as const;
 
-export const askCard = [
+export const memoryRows = [
+  { id: "pref", kind: "Preference", text: "Keep launch notes in the written checklist." },
+  { id: "dec", kind: "Decision", text: "Friday ship only after legal signs." },
+  { id: "loop", kind: "Open loop", text: "Legal has not signed the launch window." },
+] as const;
+
+export const demoQuestion = {
+  q: "What's blocking launch?",
+  a: "Legal hasn’t signed the launch window. Friday ship waits on that.",
+  citeIds: ["dec", "loop"] as readonly string[],
+};
+
+export const contrastAsk = [
   {
     id: "catering",
     q: "What's the catering budget?",
@@ -57,23 +54,23 @@ export const askCard = [
   },
 ] as const;
 
-export const compareCard = {
+export const contrastCompare = {
   q: "Who owns weekend pages?",
   passages: [
-    "Pager dump mixed with a birthday thread.",
+    "A pager dump mixed with a birthday thread.",
     "Three retries, then a dashboard rename.",
-    "Handoff still lists two owners.",
+    "The handoff still lists two owners.",
   ],
   answer: "One owner. Page after three failed retries.",
   rows: [
-    { kind: "Preference" as const, text: "Page after three failed retries." },
-    { kind: "Decision" as const, text: "Single on-call owner." },
-    { kind: "Open loop" as const, text: "Name weekend escalation before Friday." },
+    { kind: "Preference", text: "Page after three failed retries." },
+    { kind: "Decision", text: "Single on-call owner." },
+    { kind: "Open loop", text: "Name weekend escalation before Friday." },
   ],
 } as const;
 
 export const demoHosts = [
-  { name: "Claude", line: "The record is the context." },
-  { name: "ChatGPT", line: "Same object. Same lines." },
+  { name: "Claude", line: "Same memory. Intended context." },
+  { name: "ChatGPT", line: "Same lines. Same object." },
   { name: "Cursor", line: "Intended over MCP." },
 ] as const;

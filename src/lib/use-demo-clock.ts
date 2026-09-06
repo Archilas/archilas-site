@@ -2,45 +2,37 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { usePrefersReducedMotion } from "@/lib/use-prefers-reduced-motion";
-import type { HowStepId } from "@/components/landing/demo-data";
+import type { DemoBeatId } from "@/components/landing/demo-data";
 
-export const PIPELINE_MS = 9000;
+export const DEMO_MS = 9000;
 
-export const STAGE_START: Record<HowStepId, number> = {
-  transcript: 0,
-  compact: 0.16,
-  reason: 0.38,
-  deliver: 0.62,
-  record: 0.82,
+export const BEAT_START: Record<DemoBeatId, number> = {
+  notes: 0,
+  memory: 0.34,
+  answer: 0.67,
 };
 
-export const STAGE_VIEW: Record<HowStepId, number> = {
-  transcript: 0.06,
-  compact: 0.36,
-  reason: 0.48,
-  deliver: 0.74,
-  record: 1,
+export const BEAT_VIEW: Record<DemoBeatId, number> = {
+  notes: 0.12,
+  memory: 0.58,
+  answer: 1,
 };
 
-const ORDER: HowStepId[] = ["transcript", "compact", "reason", "deliver", "record"];
-
-export function stageFromProgress(progress: number): HowStepId {
-  if (progress < STAGE_START.compact) return "transcript";
-  if (progress < STAGE_START.reason) return "compact";
-  if (progress < STAGE_START.deliver) return "reason";
-  if (progress < STAGE_START.record) return "deliver";
-  return "record";
+export function beatFromProgress(progress: number): DemoBeatId {
+  if (progress < BEAT_START.memory) return "notes";
+  if (progress < BEAT_START.answer) return "memory";
+  return "answer";
 }
 
-export function stageLocal(progress: number): number {
-  const stage = stageFromProgress(progress);
-  const start = STAGE_START[stage];
-  const index = ORDER.indexOf(stage);
-  const end = index === ORDER.length - 1 ? 1 : STAGE_START[ORDER[index + 1]];
-  return (progress - start) / (end - start);
+export function beatLocal(progress: number): number {
+  if (progress < BEAT_START.memory) return progress / BEAT_START.memory;
+  if (progress < BEAT_START.answer) {
+    return (progress - BEAT_START.memory) / (BEAT_START.answer - BEAT_START.memory);
+  }
+  return (progress - BEAT_START.answer) / (1 - BEAT_START.answer);
 }
 
-export function usePipelineClock() {
+export function useDemoClock() {
   const reduced = usePrefersReducedMotion();
   const [progress, setProgress] = useState(0);
   const [playing, setPlaying] = useState(false);
@@ -58,9 +50,7 @@ export function usePipelineClock() {
     }
 
     playingRef.current = true;
-    const start = window.requestAnimationFrame(() => {
-      setPlaying(true);
-    });
+    const start = window.requestAnimationFrame(() => setPlaying(true));
 
     let frame = 0;
     let last = performance.now();
@@ -70,7 +60,7 @@ export function usePipelineClock() {
         last = now;
         return;
       }
-      const next = Math.min(1, progressRef.current + (now - last) / PIPELINE_MS);
+      const next = Math.min(1, progressRef.current + (now - last) / DEMO_MS);
       last = now;
       progressRef.current = next;
       if (next - lastEmitRef.current >= 0.01 || next >= 1 || next === 0) {
@@ -95,17 +85,6 @@ export function usePipelineClock() {
     setPlaying(false);
   }, []);
 
-  const play = useCallback(() => {
-    if (reduced) return;
-    if (progressRef.current >= 1) {
-      progressRef.current = 0;
-      lastEmitRef.current = 0;
-      setProgress(0);
-    }
-    playingRef.current = true;
-    setPlaying(true);
-  }, [reduced]);
-
   const scrub = useCallback((next: number) => {
     const value = Math.min(1, Math.max(0, next));
     progressRef.current = value;
@@ -116,9 +95,9 @@ export function usePipelineClock() {
     setPlaying(false);
   }, []);
 
-  const jumpStage = useCallback(
-    (id: HowStepId) => {
-      scrub(STAGE_VIEW[id]);
+  const jumpBeat = useCallback(
+    (id: DemoBeatId) => {
+      scrub(BEAT_VIEW[id]);
     },
     [scrub],
   );
@@ -142,12 +121,10 @@ export function usePipelineClock() {
     progress: display,
     playing: reduced ? false : playing,
     reduced,
-    play,
     pause,
-    scrub,
-    jumpStage,
+    jumpBeat,
     replay,
-    stage: stageFromProgress(display),
-    local: stageLocal(display),
+    beat: beatFromProgress(display),
+    local: beatLocal(display),
   };
 }

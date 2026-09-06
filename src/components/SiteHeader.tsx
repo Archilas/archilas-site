@@ -2,17 +2,20 @@
 
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { BrandLogo } from "@/components/BrandLogo";
-import { ButtonPrimary } from "@/components/ButtonPrimary";
-import { track } from "@/lib/analytics";
+import { WaitlistCTA } from "@/components/WaitlistCTA";
 import { scrollToHash } from "@/lib/hash-scroll";
-import { nav } from "@/lib/site";
+import { nav, site } from "@/lib/site";
 import { useFocusTrap } from "@/lib/use-focus-trap";
+import { useWaitlist } from "@/lib/waitlist-context";
+import { track } from "@/lib/analytics";
+import { ButtonPrimary } from "@/components/ButtonPrimary";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const drawerId = useId();
   const drawerRef = useRef<HTMLDivElement>(null);
   const close = useCallback(() => setOpen(false), []);
+  const waitlist = useWaitlist();
   useFocusTrap(open, drawerRef, close);
 
   useEffect(() => {
@@ -41,13 +44,11 @@ export function SiteHeader() {
           ))}
         </nav>
         <div className="hidden justify-self-end lg:block">
-          <ButtonPrimary href="/#waitlist" onClick={() => track("cta_click", { source: "nav" })}>
-            Join waitlist
-          </ButtonPrimary>
+          <WaitlistCTA source="nav" align="end" />
         </div>
         <button
           type="button"
-          className="inline-flex h-10 w-10 justify-self-end items-center justify-center border border-line bg-bg text-ink lg:hidden"
+          className="inline-flex h-10 w-10 items-center justify-center justify-self-end border border-line bg-bg text-ink lg:hidden"
           aria-expanded={open}
           aria-controls={drawerId}
           onClick={() => setOpen((value) => !value)}
@@ -83,15 +84,18 @@ export function SiteHeader() {
           </nav>
           <div className="mt-4 flex flex-col gap-3">
             <ButtonPrimary
-              href="/#waitlist"
               className="w-full"
               onClick={() => {
                 track("cta_click", { source: "nav-mobile" });
+                waitlist.show("nav-mobile");
                 close();
               }}
             >
-              Join waitlist
+              Join waitlist →
             </ButtonPrimary>
+            <a href={`mailto:${site.email}`} className="text-[15px] text-ink underline-offset-4 hover:underline">
+              Contact
+            </a>
             <button type="button" className="self-start text-[14px] font-medium not-italic text-ink" onClick={close}>
               Close
             </button>
