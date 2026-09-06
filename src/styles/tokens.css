@@ -7,9 +7,12 @@
   --body: #3f3f46;
   --muted: #52525b;
   --border: #e4e4e7;
-  --surface: #fafafa;
+  --surface: #f3eee6;
   --elevated: #ffffff;
   --border-input: #d4d4d8;
+  --paper: #f3eee6;
+  --glass: color-mix(in srgb, #ffffff 78%, transparent);
+  --glass-border: color-mix(in srgb, #ffffff 62%, #d4d4d8);
 
   /* Dark */
   --bg-dark: #09090b;
@@ -51,6 +54,8 @@
   --color-muted: var(--muted);
   --color-border: var(--border);
   --color-surface: var(--surface);
+  --color-paper: var(--paper);
+  --color-glass: var(--glass);
   --color-elevated: var(--elevated);
   --color-border-input: var(--border-input);
   --color-bg-dark: var(--bg-dark);

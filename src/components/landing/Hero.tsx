@@ -3,9 +3,9 @@ import { WaitlistForm } from "@/components/WaitlistForm";
 
 export function Hero() {
   return (
-    <section className="bg-surface">
+    <section className="relative">
       <div className="mx-auto flex w-full max-w-[var(--max-width)] flex-col items-center px-[var(--pad-x)] py-[var(--pad-y-mobile)] text-center md:py-[var(--pad-y)]">
-        <p className="label inline-flex rounded-[var(--arch-radius-control)] border border-border bg-elevated px-3 py-1">
+        <p className="label glass-chip inline-flex px-3 py-1">
           Pre-launch
         </p>
         <h1 className="display mt-6 max-w-3xl">

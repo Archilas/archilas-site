@@ -24,6 +24,7 @@ Until an existing persistence path is connected, waitlist signups will not survi
 - Primary CTAs are near-black. Teal is limited to focus rings and the active How-it-works stepper.
 - One content dark section: How it works. Footer stays dark as chrome.
 - Hero is centered on desktop and mobile. No side product panel.
+- Page ground is a warm atmospheric wash (amber / dusk / sky orbs), not flat white. Cards and the header are frosted glass. Body contrast stays ≥4.5:1. This is not a lavender/Mem0 palette.
 
 ## Demos
 
