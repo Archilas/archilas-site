@@ -1,7 +1,5 @@
 import { ImageResponse } from "next/og";
 import { site } from "@/lib/site";
-import { tokens } from "@/styles/tokens";
-
 export const alt = `${site.name} · ${site.headline}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
@@ -17,8 +15,8 @@ export default function OpenGraphImage() {
           flexDirection: "column",
           justifyContent: "center",
           padding: "80px 88px",
-          background: "#DCEBF7",
-          color: tokens.ink,
+          background: "#3F73B8",
+          color: "#FFFFFF",
         }}
       >
         <div
@@ -27,7 +25,7 @@ export default function OpenGraphImage() {
             fontSize: 18,
             letterSpacing: "0.14em",
             textTransform: "uppercase",
-            color: tokens.muted,
+            color: "rgba(255,255,255,0.78)",
           }}
         >
           Archilas
@@ -40,7 +38,7 @@ export default function OpenGraphImage() {
             fontWeight: 550,
             letterSpacing: "-0.04em",
             lineHeight: 1.05,
-            color: tokens.ink,
+            color: "#FFFFFF",
           }}
         >
           {site.headline}

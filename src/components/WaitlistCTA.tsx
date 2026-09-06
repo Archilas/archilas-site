@@ -9,16 +9,18 @@ import { cn } from "@/lib/cn";
 export function WaitlistCTA({
   source,
   align = "center",
+  tone = "paper",
 }: {
   source: WaitlistSource;
   align?: "center" | "end" | "start";
+  tone?: "paper" | "sky";
 }) {
   const waitlist = useWaitlist();
 
   return (
     <div
       className={cn(
-        "flex flex-wrap items-center gap-x-5 gap-y-2",
+        "flex flex-wrap items-center gap-3",
         align === "center" && "justify-center",
         align === "end" && "justify-end",
         align === "start" && "justify-start",
@@ -32,7 +34,10 @@ export function WaitlistCTA({
       >
         Join waitlist →
       </ButtonPrimary>
-      <a href={`mailto:${site.email}`} className="text-[15px] text-ink underline-offset-4 hover:underline">
+      <a
+        href={`mailto:${site.email}`}
+        className={cn("btn-outline", tone === "sky" && "is-sky")}
+      >
         Contact
       </a>
     </div>

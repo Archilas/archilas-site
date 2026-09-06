@@ -39,38 +39,8 @@ export const demoQuestion = {
   citeIds: ["dec", "loop"] as readonly string[],
 };
 
-export const contrastAsk = [
-  {
-    id: "catering",
-    q: "What's the catering budget?",
-    supported: false,
-    a: "Not in the record.",
-  },
-  {
-    id: "friday",
-    q: "How do we ship Friday notes?",
-    supported: true,
-    a: "Written recap. Not a transcript dump.",
-  },
-] as const;
-
-export const contrastCompare = {
-  q: "Who owns weekend pages?",
-  passages: [
-    "A pager dump mixed with a birthday thread.",
-    "Three retries, then a dashboard rename.",
-    "The handoff still lists two owners.",
-  ],
-  answer: "One owner. Page after three failed retries.",
-  rows: [
-    { kind: "Preference", text: "Page after three failed retries." },
-    { kind: "Decision", text: "Single on-call owner." },
-    { kind: "Open loop", text: "Name weekend escalation before Friday." },
-  ],
-} as const;
-
 export const demoHosts = [
-  { name: "Claude", line: "Same memory. Intended context." },
-  { name: "ChatGPT", line: "Same lines. Same object." },
+  { name: "Claude", line: "The memory is the context — not a paste." },
+  { name: "ChatGPT", line: "Same object. Same durable lines." },
   { name: "Cursor", line: "Intended over MCP." },
 ] as const;

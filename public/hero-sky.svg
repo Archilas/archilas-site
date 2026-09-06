@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 820" preserveAspectRatio="xMidYMin slice">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3F73B8"/>
+      <stop offset="36%" stop-color="#7BA8DC"/>
+      <stop offset="66%" stop-color="#C8DDF2"/>
+      <stop offset="100%" stop-color="#F2F6FA"/>
+    </linearGradient>
+    <filter id="cumulus" x="-15%" y="-25%" width="130%" height="160%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.018 0.028" numOctaves="3" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="22" xChannelSelector="R" yChannelSelector="G"/>
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+    <radialGradient id="sun" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.85"/>
+      <stop offset="55%" stop-color="#ffffff" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1280" height="820" fill="url(#sky)"/>
+  <circle cx="1090" cy="118" r="210" fill="url(#sun)"/>
+  <g filter="url(#cumulus)" fill="#ffffff">
+    <g opacity="0.92" transform="translate(40 70)">
+      <ellipse cx="90" cy="70" rx="110" ry="42"/>
+      <ellipse cx="170" cy="58" rx="90" ry="50"/>
+      <ellipse cx="230" cy="78" rx="80" ry="36"/>
+      <ellipse cx="130" cy="90" rx="120" ry="34"/>
+    </g>
+    <g opacity="0.88" transform="translate(430 40)">
+      <ellipse cx="80" cy="56" rx="95" ry="38"/>
+      <ellipse cx="150" cy="46" rx="70" ry="44"/>
+      <ellipse cx="210" cy="62" rx="78" ry="32"/>
+      <ellipse cx="120" cy="74" rx="108" ry="30"/>
+    </g>
+    <g opacity="0.9" transform="translate(820 150)">
+      <ellipse cx="100" cy="64" rx="120" ry="40"/>
+      <ellipse cx="190" cy="50" rx="88" ry="48"/>
+      <ellipse cx="250" cy="72" rx="70" ry="34"/>
+      <ellipse cx="150" cy="86" rx="130" ry="32"/>
+    </g>
+    <g opacity="0.86" transform="translate(180 210)">
+      <ellipse cx="80" cy="50" rx="86" ry="34"/>
+      <ellipse cx="150" cy="40" rx="64" ry="38"/>
+      <ellipse cx="200" cy="56" rx="72" ry="28"/>
+      <ellipse cx="120" cy="66" rx="100" ry="26"/>
+    </g>
+    <g opacity="0.8" transform="translate(690 280)">
+      <ellipse cx="70" cy="44" rx="80" ry="30"/>
+      <ellipse cx="130" cy="36" rx="58" ry="34"/>
+      <ellipse cx="180" cy="50" rx="62" ry="24"/>
+      <ellipse cx="110" cy="58" rx="92" ry="22"/>
+    </g>
+  </g>
+</svg>

@@ -3,17 +3,20 @@ import { WaitlistCTA } from "@/components/WaitlistCTA";
 
 export function Hero() {
   return (
-    <section className="hero-sky px-[var(--pad-x)] pb-12 pt-12 text-center md:pt-16">
+    <section className="hero-sky px-[var(--pad-x)] pb-10 pt-10 text-center md:pt-14">
       <div className="mx-auto max-w-3xl">
-        <h1 className="display mx-auto">AI memory that understands you.</h1>
-        <p className="mx-auto mt-5 max-w-xl text-[18px] leading-[1.45] text-body">
-          Archilas remembers your preferences, decisions, and open loops — so your AI stops asking.
+        <h1 className="display-sky">
+          <span className="h1-strong">AI memory</span>
+          <span className="h1-light">that understands you.</span>
+        </h1>
+        <p className="mx-auto mt-5 max-w-xl text-[18px] leading-[1.45] text-white/90">
+          Detailed notes → compacted memory → smart answers from many sources.
         </p>
         <div className="mt-8">
-          <WaitlistCTA source="hero" />
+          <WaitlistCTA source="hero" tone="sky" />
         </div>
       </div>
-      <div className="mx-auto mt-12 max-w-[var(--max-width)]">
+      <div className="mx-auto mt-10 max-w-[var(--max-width)]">
         <ClarityDemo />
       </div>
     </section>

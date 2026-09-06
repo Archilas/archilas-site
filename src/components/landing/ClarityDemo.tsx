@@ -15,13 +15,12 @@ export function ClarityDemo() {
         ? memoryRows.length
         : Math.min(memoryRows.length, Math.max(1, Math.ceil(local * memoryRows.length)));
 
-  const notesDim = beat !== "notes";
-  const showAnswer = beat === "answer" && (reduced || local > 0.18);
+  const showAnswer = beat === "answer" && (reduced || local > 0.16);
   const cited = showAnswer;
 
   return (
-    <div id="how" className="scroll-mt-[var(--scroll-margin)]">
-      <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+    <div id="how" className="demo-card scroll-mt-[var(--scroll-margin)]" data-beat={beat} data-playing={playing ? "1" : "0"}>
+      <div className="demo-head">
         <div className="agency-rail" role="tablist" aria-label="How memory is built">
           {demoBeats.map((item) => (
             <button
@@ -38,39 +37,26 @@ export function ClarityDemo() {
           ))}
         </div>
         {reduced ? null : (
-          <button
-            type="button"
-            className="run-btn"
-            data-testid="demo-play"
-            onClick={clock.replay}
-          >
+          <button type="button" className="run-btn shrink-0" data-testid="demo-play" onClick={clock.replay}>
             {playing ? "Playing" : clock.progress >= 1 ? "Replay" : "Play"}
           </button>
         )}
       </div>
 
-      <div className="demo-box mt-5" data-beat={beat} data-playing={playing ? "1" : "0"}>
-        {beat === "notes" ? (
-          <NotesView dim={false} />
-        ) : null}
+      <div className="demo-body">
+        {beat === "notes" ? <NotesView dim={false} /> : null}
 
         {beat === "memory" ? (
-          <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-            <NotesView dim={notesDim} />
+          <div className="grid gap-6 lg:grid-cols-2">
+            <NotesView dim />
             <MemoryView count={memoryCount} citeIds={[]} />
           </div>
         ) : null}
 
         {beat === "answer" ? (
-          <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
+          <div className="grid gap-6 lg:grid-cols-[0.92fr_1.08fr]">
             <MemoryView count={memoryRows.length} citeIds={cited ? demoQuestion.citeIds : []} />
-            <div>
-              <p className="demo-kicker">Reason · Deliver</p>
-              <p className="mt-3 text-[18px] font-medium leading-7 text-ink">{demoQuestion.q}</p>
-              {showAnswer ? (
-                <p className="mt-4 text-[17px] leading-7 text-body">{demoQuestion.a}</p>
-              ) : null}
-            </div>
+            <AnswerView ready={showAnswer} />
           </div>
         ) : null}
 
@@ -91,7 +77,7 @@ function NotesView({ dim }: { dim: boolean }) {
     <div className={cn("space-y-3", dim && "opacity-40")}>
       {sourceNotes.map((note) => (
         <article key={note.id} className="source-card">
-          <p className="demo-kicker">{note.kind}</p>
+          <p className="spine-label">{note.kind}</p>
           <p className="mt-2 text-[17px] leading-7 text-ink">{note.text}</p>
           <p className="mt-2 text-[15px] leading-6 text-muted">{note.noise}</p>
         </article>
@@ -103,7 +89,7 @@ function NotesView({ dim }: { dim: boolean }) {
 function MemoryView({ count, citeIds }: { count: number; citeIds: readonly string[] }) {
   return (
     <div>
-      <p className="demo-kicker">Compact</p>
+      <p className="spine-label">Compact</p>
       <div className="mt-3 space-y-4">
         {memoryRows.slice(0, Math.max(0, count)).map((row) => (
           <div key={row.id} className={cn("memory-row", citeIds.includes(row.id) && "is-cited")}>
@@ -112,6 +98,34 @@ function MemoryView({ count, citeIds }: { count: number; citeIds: readonly strin
           </div>
         ))}
       </div>
+    </div>
+  );
+}
+
+function AnswerView({ ready }: { ready: boolean }) {
+  const used = memoryRows.filter((row) => demoQuestion.citeIds.includes(row.id));
+
+  return (
+    <div>
+      <p className="spine-label">Reason · Deliver</p>
+      <p className="mt-3 text-[18px] font-medium leading-7 text-ink">{demoQuestion.q}</p>
+      {ready ? (
+        <>
+          <p className="mt-3 text-[17px] leading-7 text-body">{demoQuestion.a}</p>
+          <p className="mt-5 text-[13px] font-medium uppercase tracking-[0.1em] text-muted">Used from memory</p>
+          <ul className="mt-2 space-y-2">
+            {used.map((row) => (
+              <li key={row.id} className="text-[16px] leading-7 text-ink">
+                <span className="text-muted">{row.kind}: </span>
+                {row.text}
+              </li>
+            ))}
+          </ul>
+          <p className="mt-4 text-[15px] leading-6 text-muted">
+            The checklist preference is in memory. It is not the blocker, so it stays uncited.
+          </p>
+        </>
+      ) : null}
     </div>
   );
 }

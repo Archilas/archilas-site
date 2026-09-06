@@ -48,7 +48,7 @@ export function SiteHeader() {
         </div>
         <button
           type="button"
-          className="inline-flex h-10 w-10 items-center justify-center justify-self-end border border-line bg-bg text-ink lg:hidden"
+          className="header-menu inline-flex h-10 w-10 items-center justify-center justify-self-end lg:hidden"
           aria-expanded={open}
           aria-controls={drawerId}
           onClick={() => setOpen((value) => !value)}
@@ -93,7 +93,7 @@ export function SiteHeader() {
             >
               Join waitlist →
             </ButtonPrimary>
-            <a href={`mailto:${site.email}`} className="text-[15px] text-ink underline-offset-4 hover:underline">
+            <a href={`mailto:${site.email}`} className="btn-outline w-full">
               Contact
             </a>
             <button type="button" className="self-start text-[14px] font-medium not-italic text-ink" onClick={close}>

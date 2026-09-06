@@ -4,7 +4,7 @@ export function Waitlist() {
   return (
     <section
       id="waitlist"
-      className="scroll-mt-[var(--scroll-margin)] px-[var(--pad-x)] py-16 md:py-20"
+      className="scroll-mt-[var(--scroll-margin)] bg-bg px-[var(--pad-x)] py-16 md:py-20"
     >
       <div className="mx-auto max-w-lg text-center">
         <h2 className="h2">Get early access.</h2>
