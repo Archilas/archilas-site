@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
-import { Atmosphere } from "@/components/Atmosphere";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { site } from "@/lib/site";
@@ -59,10 +58,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={`${geist.variable} ${geistMono.variable} h-full`}>
-      <body className="relative flex min-h-full flex-col bg-paper font-sans text-body antialiased">
-        <Atmosphere />
+      <body className="flex min-h-full flex-col bg-paper font-sans text-body antialiased">
         <SiteHeader />
-        <main id="main" className="relative z-10 flex-1">
+        <main id="main" className="flex-1">
           {children}
         </main>
         <SiteFooter />

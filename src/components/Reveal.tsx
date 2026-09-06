@@ -7,5 +7,5 @@ export function Reveal({
   children: ReactNode;
   className?: string;
 }) {
-  return <div className={`reveal-in ${className}`.trim()}>{children}</div>;
+  return <div className={className}>{children}</div>;
 }

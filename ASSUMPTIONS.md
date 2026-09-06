@@ -2,39 +2,31 @@
 
 ## Blocker: waitlist does not persist
 
-**`POST /api/waitlist` exists and returns `{ ok: true }` for a valid email, including duplicates. It does not persist.** The handler only `console.info`s the address. This repo has no database, ESP, KV store, or env-backed waitlist destination. Per instructions, no new database, environment variables, or services were added.
+**This is the only backend blocker.** `POST /api/waitlist` returns `{ ok: true }` for a valid email, including duplicates. It `console.info`s the address and does not persist.
 
-Form UI is still built against the expected contract:
+This repo has no database, ESP, KV, or env-backed waitlist destination. No `RESEND`, `UPSTASH`, `DATABASE`, or similar secrets are present. Persistence was not added (no new services).
+
+Form UX is wired and should succeed in the browser:
 
 - Hero and waitlist section both `POST /api/waitlist`
 - Valid email → success
 - Duplicate / repeat email → success
 - Invalid email → error
 - Network failure → error
+- Nav / mobile "Join waitlist" and in-page anchors use real hash links (`/#waitlist`, `/#how`, `/#product`)
 
-Until an existing persistence path is connected, waitlist signups will not survive a process restart and will not appear in an owned list.
+Until an existing persistence path is connected, signups will not survive a process restart and will not appear in an owned list.
 
 ## Product and copy
 
 - Spine is Compact → Reason → Deliver. Prior theater names are out.
-- MCP is the intended delivery path. Delivery surfaces are in development and are not claimed as live. Host names are text only. No MCP config JSON, tool names, or REST/SDK samples.
-- Blog has five posts, so Resources appears in nav and footer.
-- `/solutions` and `/pricing` redirect to `/#waitlist` so Solutions/Pricing nav and hardened pricing copy are gone.
-- Analytics `track()` emits `waitlist_submit`, `waitlist_success`, `waitlist_error`, and `cta_click`. No analytics vendor is installed; adding one would be a new service.
-- Primary CTAs are near-black. Teal is limited to focus rings and the active How-it-works stepper.
-- One content dark section: How it works. Footer stays dark as chrome.
-- Hero is centered: short display line, waitlist, then a large product window with the Compact → Reason → Deliver loop. No Cursor logos, orange, or IDE chrome.
-- Page ground is a warm atmospheric wash (amber / dusk / sky orbs), not flat white. Cards and the header are frosted glass. Body contrast stays ≥4.5:1. This is not a lavender/Mem0 palette.
-
-## Demos
-
-- How-it-works and contrast stages are illustrative motion, not product recordings.
-- They only show Compact → Reason → Deliver and the existing example record. No Distill / Vault / Skeleton / confidence / tool theater / fake MCP live / REST / SDK.
-- `prefers-reduced-motion: reduce` stops the loops and shows the filled static record.
+- H1 is "Memory that stays." Subhead is the spine.
+- MCP is the intended delivery path. Delivery surfaces are in development and are not claimed as live.
+- Primary CTAs are near-black. Teal is limited to focus rings and the active stepper.
+- Page is a clean light surface with a sharp dark product window. No orbs, frost, or lavender.
+- Motion is only inside the product window and contrast/RAG demos.
 
 ## Unchanged
 
-- Waitlist persistence is still not wired. This branch does not change `POST /api/waitlist`.
-- Production deploy, DNS, and env vars were not touched. There is no `vercel.json` in this repo.
-- This branch is isolation. No feature flag.
+- Production DNS and env vars were not added.
 - No facts were invented (latency, certifications, logos, counts, availability).

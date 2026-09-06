@@ -21,10 +21,16 @@ export function ButtonPrimary({
 }: ButtonPrimaryProps) {
   const cls = `${base} ${className}`;
   if (href) {
+    const hash = href.includes("#");
     const external = href.startsWith("http") || href.startsWith("mailto:");
-    if (external) {
+    if (external || hash) {
       return (
-        <a href={href} className={cls} rel="noopener noreferrer" onClick={onClick}>
+        <a
+          href={href}
+          className={cls}
+          {...(external ? { rel: "noopener noreferrer" } : {})}
+          onClick={onClick}
+        >
           {children}
         </a>
       );
