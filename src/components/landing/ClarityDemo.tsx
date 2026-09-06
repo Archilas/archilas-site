@@ -15,7 +15,7 @@ export function ClarityDemo() {
         ? memoryRows.length
         : Math.min(memoryRows.length, Math.max(1, Math.ceil(local * memoryRows.length)));
 
-  const showAnswer = beat === "answer" && (reduced || local > 0.16);
+  const showAnswer = beat === "answer";
   const cited = showAnswer;
 
   return (

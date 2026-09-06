@@ -12,6 +12,7 @@ import { ButtonPrimary } from "@/components/ButtonPrimary";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [solid, setSolid] = useState(false);
   const drawerId = useId();
   const drawerRef = useRef<HTMLDivElement>(null);
   const close = useCallback(() => setOpen(false), []);
@@ -27,8 +28,15 @@ export function SiteHeader() {
     return () => media.removeEventListener("change", onChange);
   }, []);
 
+  useEffect(() => {
+    const onScroll = () => setSolid(window.scrollY > 48);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="site-header relative sticky top-0 z-40">
+    <header className={`site-header relative sticky top-0 z-40${solid ? " is-solid" : ""}`}>
       <div className="mx-auto grid h-[var(--nav-height)] w-full max-w-[var(--max-width)] grid-cols-[1fr_auto] items-center px-[var(--pad-x)] lg:grid-cols-[1fr_auto_1fr]">
         <BrandLogo />
         <nav aria-label="Primary" className="hidden items-center gap-7 lg:flex">
