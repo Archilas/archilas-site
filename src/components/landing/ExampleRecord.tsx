@@ -17,23 +17,17 @@ export function ExampleRecord({
           return (
             <div
               key={row.kind}
-              className={`record-row relative grid gap-1 sm:grid-cols-[7.5rem_1fr] sm:gap-4 ${
+              className={`record-row grid gap-1 sm:grid-cols-[7.5rem_1fr] sm:gap-4 ${
                 linked ? "is-linked" : ""
-              } ${quiet ? "is-quiet" : ""} ${
-                step === "compact" && !reduced ? "is-forming" : ""
-              }`}
+              } ${quiet ? "is-quiet" : ""}`}
             >
-              <dt className="font-mono text-[12px] uppercase tracking-[0.06em] text-text-dark/70">
+              <dt className="flex flex-wrap items-baseline gap-x-2 font-mono text-[12px] uppercase tracking-[0.06em] text-text-dark/70">
                 {row.kind}
-              </dt>
-              <dd className="relative font-mono text-[13px] leading-[1.55] text-text-dark">
-                {row.text}
                 {step === "compact" && !reduced ? (
-                  <span className="record-scrap" aria-hidden>
-                    {row.scrap}
-                  </span>
+                  <span className="record-scrap-chip">{row.scrap}</span>
                 ) : null}
-              </dd>
+              </dt>
+              <dd className="font-mono text-[13px] leading-[1.55] text-text-dark">{row.text}</dd>
             </div>
           );
         })}

@@ -1,40 +1,56 @@
 "use client";
 
-import { contrastSteps, demoHosts, exampleRows, STEP_MS } from "@/components/landing/demo-data";
+import {
+  contrastSteps,
+  demoHosts,
+  exampleRows,
+  searchSnippets,
+  STEP_MS,
+} from "@/components/landing/demo-data";
 import { usePausedLoop } from "@/lib/use-paused-loop";
-
-const scraps = [88, 64, 76, 52] as const;
 
 export function ContrastDemo() {
   const { index, setIndex, paused, reduced, bind } = usePausedLoop(contrastSteps.length, STEP_MS);
-  const pair = contrastSteps[index];
 
   return (
-    <div className="grid gap-4 md:grid-cols-2" data-paused={paused || reduced} {...bind}>
-      <article className="card p-6 md:p-7">
-        <p className="label">The old way</p>
-        <h2 className="h2 mt-3">Search. Paste. Hope.</h2>
-        <OldWayStage key={reduced ? "old-static" : `old-${index}`} step={index} reduced={reduced} />
-        <StepCaption
-          items={contrastSteps.map((item) => item.old)}
-          active={index}
-          onSelect={setIndex}
-        />
-        <p className="mt-3 text-center text-[14px] text-body">{pair.old}</p>
-      </article>
+    <div data-paused={paused || reduced} {...bind}>
+      <div className="grid gap-4 md:grid-cols-2">
+        <article className="card p-6 md:p-7">
+          <p className="label">The old way</p>
+          <h2 className="h2 mt-3">Search. Paste. Hope.</h2>
+          <OldWayStage
+            key={reduced ? "old-static" : `old-${index}`}
+            step={index}
+            reduced={reduced}
+          />
+          <StepCaption
+            items={contrastSteps.map((item) => item.old)}
+            active={index}
+            onSelect={setIndex}
+          />
+        </article>
 
-      <article className="card p-6 md:p-7">
-        <p className="label">The Archilas way</p>
-        <h2 className="h2 mt-3">Compact. Reason. Deliver.</h2>
-        <NewWayStage key={reduced ? "new-static" : `new-${index}`} step={index} reduced={reduced} />
-        <StepCaption
-          items={contrastSteps.map((item) => item.next)}
-          active={index}
-          onSelect={setIndex}
-          accent
-        />
-        <p className="mt-3 text-center text-[14px] text-body">{pair.next}</p>
-      </article>
+        <article className="card p-6 md:p-7">
+          <p className="label">The Archilas way</p>
+          <h2 className="h2 mt-3">Compact. Reason. Deliver.</h2>
+          <NewWayStage
+            key={reduced ? "new-static" : `new-${index}`}
+            step={index}
+            reduced={reduced}
+          />
+          <StepCaption
+            items={contrastSteps.map((item) => item.next)}
+            active={index}
+            onSelect={setIndex}
+            accent
+          />
+        </article>
+      </div>
+      {reduced ? null : (
+        <p className="mt-4 text-center font-mono text-[12px] text-muted">
+          {paused ? "Paused" : "Hover to pause"}
+        </p>
+      )}
     </div>
   );
 }
@@ -43,24 +59,25 @@ function OldWayStage({ step, reduced }: { step: number; reduced: boolean }) {
   return (
     <div className="demo-frame mt-6" aria-hidden>
       <ul className="space-y-2">
-        {scraps.map((width, index) => (
+        {searchSnippets.map((label, index) => (
           <li
-            key={width}
-            className={`demo-bar ${step === 0 && !reduced ? "is-scanning" : ""} ${
+            key={label}
+            className={`demo-snippet ${step === 0 && !reduced ? "is-scanning" : ""} ${
               step >= 1 ? "is-copied" : ""
             }`}
-            style={{ width: `${width}%`, animationDelay: `${index * 180}ms` }}
-          />
+            style={{ animationDelay: `${index * 180}ms` }}
+          >
+            {label}
+          </li>
         ))}
       </ul>
       <div className={`demo-prompt mt-4 ${step >= 1 ? "is-filled" : ""} ${step === 2 ? "is-hope" : ""}`}>
+        <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.06em] text-muted">prompt</p>
         <div className="flex flex-wrap gap-1.5">
-          {scraps.map((width) => (
-            <span
-              key={width}
-              className="demo-chip"
-              style={{ width: `${Math.max(28, width * 0.42)}px` }}
-            />
+          {searchSnippets.map((label) => (
+            <span key={label} className="demo-chip-label">
+              {label}
+            </span>
           ))}
         </div>
       </div>
@@ -78,17 +95,13 @@ function NewWayStage({ step, reduced }: { step: number; reduced: boolean }) {
           return (
             <li
               key={row.kind}
-              className={`record-row grid gap-1 ${linked ? "is-linked" : ""} ${
-                quiet ? "is-quiet" : ""
-              } ${step === 0 && !reduced ? "is-forming" : ""}`}
+              className={`record-row grid gap-1 ${linked ? "is-linked" : ""} ${quiet ? "is-quiet" : ""}`}
             >
-              <p className="font-mono text-[11px] uppercase tracking-[0.06em] text-muted">{row.kind}</p>
-              <p className="relative font-mono text-[12px] leading-[1.45] text-ink">
-                {row.text}
-                {step === 0 && !reduced ? (
-                  <span className="record-scrap record-scrap-light">{row.scrap}</span>
-                ) : null}
+              <p className="flex flex-wrap items-baseline gap-x-2 font-mono text-[11px] uppercase tracking-[0.06em] text-muted">
+                {row.kind}
+                {step === 0 && !reduced ? <span className="record-scrap-chip">{row.scrap}</span> : null}
               </p>
+              <p className="font-mono text-[12px] leading-[1.45] text-ink">{row.text}</p>
             </li>
           );
         })}

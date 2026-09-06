@@ -28,6 +28,10 @@ export const contrastSteps = [
   { old: "Hope", next: "Deliver" },
 ] as const;
 
+export const searchSnippets = ["old thread", "rate limits", "vendor note", "CI keys"] as const;
+
+export const ragPassages = ["rate limits", "vendor note", "CI keys", "old thread", "session notes"] as const;
+
 export const demoHosts = ["Claude", "ChatGPT", "Cursor"] as const;
 
 export const STEP_MS = 2600;
