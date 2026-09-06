@@ -25,8 +25,8 @@
   --accent-dark: #2dd4bf;
 
   /* Type */
-  --text-display: clamp(2.5rem, 5vw, 4rem);
-  --text-h2: clamp(1.75rem, 3vw, 2.5rem);
+  --text-display: clamp(3rem, 7vw, 4.5rem);
+  --text-h2: clamp(2rem, 4vw, 3rem);
   --text-h3: clamp(1.25rem, 2vw, 1.5rem);
   --text-body: 1.0625rem;
   --text-label: 0.75rem;
@@ -38,11 +38,11 @@
   --arch-radius-control: 8px;
 
   /* Space */
-  --max-width: 1160px;
+  --max-width: 1120px;
   --pad-x: 24px;
-  --pad-y: 80px;
-  --pad-y-mobile: 56px;
-  --nav-height: 64px;
+  --pad-y: 104px;
+  --pad-y-mobile: 64px;
+  --nav-height: 72px;
   --control-height: 46px;
   --scroll-margin: 88px;
 }

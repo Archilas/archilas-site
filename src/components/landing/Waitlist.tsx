@@ -7,12 +7,11 @@ export function Waitlist() {
   return (
     <Section id="waitlist">
       <Reveal>
-        <Card className="mx-auto max-w-3xl px-6 py-10 text-center md:px-12 md:py-12">
+        <Card className="mx-auto max-w-3xl px-6 py-14 text-center md:px-14 md:py-16">
           <p className="label">Waitlist</p>
           <h2 className="h2 mt-4">Get early access.</h2>
           <p className="mx-auto mt-4 max-w-md text-body">
-            Pre-launch. Join the waitlist — that is the only conversion on this site. We email when
-            access opens.
+            Pre-launch. We email when access opens.
           </p>
           <div className="mx-auto mt-8 flex justify-center">
             <WaitlistForm id="waitlist-form" source="waitlist" />
