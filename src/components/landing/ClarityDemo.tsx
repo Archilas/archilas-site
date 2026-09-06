@@ -115,22 +115,22 @@ export function ClarityDemo() {
                 ))}
               </div>
             </div>
-
-            {showAsk ? (
-              <div className="flow-answer" data-testid="flow-answer">
-                <div className="ask-panel">
-                  <span className="note-chip">Ask</span>
-                  <p className="ask-q">{demoQuestion.q}</p>
-                </div>
-                {showReply ? (
-                  <div className="reply-panel">
-                    <span className="note-chip">Answer</span>
-                    <p className="reply-a">{demoQuestion.a}</p>
-                  </div>
-                ) : null}
-              </div>
-            ) : null}
           </div>
+
+          {showAsk ? (
+            <div className="flow-answer" data-testid="flow-answer">
+              <div className="ask-panel">
+                <span className="note-chip">Ask</span>
+                <p className="ask-q">{demoQuestion.q}</p>
+              </div>
+              {showReply ? (
+                <div className="reply-panel">
+                  <span className="note-chip">Answer</span>
+                  <p className="reply-a">{demoQuestion.a}</p>
+                </div>
+              ) : null}
+            </div>
+          ) : null}
         </div>
       </div>
     </div>
