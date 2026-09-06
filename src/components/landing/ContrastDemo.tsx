@@ -1,111 +1,78 @@
 "use client";
 
 import { useState } from "react";
-import { DemoTabs } from "@/components/landing/DemoTabs";
 import { ProductWindow } from "@/components/landing/ProductWindow";
-import { contrastSteps, demoHosts, exampleRows, searchSnippets } from "@/components/landing/demo-data";
+import { compareRows, retrievalPassages } from "@/components/landing/demo-data";
 
 export function ContrastDemo() {
-  const [index, setIndex] = useState(0);
-  const [picked, setPicked] = useState<string[]>([]);
-
-  function pickSnippet(label: string) {
-    setPicked((current) => (current.includes(label) ? current : [...current, label]));
-    setIndex(1);
-  }
+  const [openId, setOpenId] = useState<string | null>(null);
+  const [focusRow, setFocusRow] = useState<number | null>(null);
 
   return (
     <div>
       <div className="grid gap-4 md:grid-cols-2">
-        <ProductWindow title="Search · Paste · Hope" mini>
+        <ProductWindow title="Retrieval" mini>
           <div className="demo-frame">
-            <p className="label mb-3 text-text-dark/55">The old way</p>
+            <p className="label mb-3 text-text-dark/55">Passages</p>
             <ul className="space-y-2">
-              {searchSnippets.map((label) => {
-                const copied = index >= 1 || picked.includes(label);
+              {retrievalPassages.map((passage) => {
+                const open = openId === passage.id;
                 return (
-                  <li key={label}>
+                  <li key={passage.id}>
                     <button
                       type="button"
-                      onClick={() => pickSnippet(label)}
-                      className={`demo-snippet ${copied ? "is-copied" : ""} ${
-                        picked.includes(label) ? "is-picked" : ""
-                      }`}
+                      aria-expanded={open}
+                      onClick={() => setOpenId(open ? null : passage.id)}
+                      className={`demo-passage ${open ? "is-open" : ""}`}
                     >
-                      {label}
+                      <span className="flex items-baseline justify-between gap-3">
+                        <span className="font-mono text-[12px] text-text-dark">{passage.title}</span>
+                        <span className="font-mono text-[10px] uppercase tracking-[0.06em] text-text-dark/50">
+                          {open ? "Close" : "Expand"}
+                        </span>
+                      </span>
+                      <span className="mt-1 block font-mono text-[11px] text-text-dark/55">
+                        {passage.excerpt}
+                      </span>
+                      {open ? (
+                        <span className="mt-2 block font-mono text-[12px] leading-[1.5] text-text-dark/90">
+                          {passage.body}
+                        </span>
+                      ) : null}
                     </button>
                   </li>
                 );
               })}
             </ul>
-            <div
-              className={`demo-prompt mt-4 ${index >= 1 || picked.length ? "is-filled" : ""} ${
-                index === 2 ? "is-hope" : ""
-              }`}
-            >
-              <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.06em] text-text-dark/45">
-                prompt
-              </p>
-              <div className="flex flex-wrap gap-1.5">
-                {(picked.length ? picked : index >= 1 ? [...searchSnippets] : []).map((label) => (
-                  <span key={label} className="demo-chip-label">
-                    {label}
-                  </span>
-                ))}
-              </div>
-            </div>
           </div>
         </ProductWindow>
 
-        <ProductWindow title="Compact · Reason · Deliver" mini>
+        <ProductWindow title="Record" mini>
           <div className="demo-frame">
-            <p className="label mb-3 text-text-dark/55">The Archilas way</p>
+            <p className="label mb-3 text-text-dark/55">The record</p>
             <ul className="space-y-3">
-              {exampleRows.map((row, rowIndex) => {
-                const linked = index === 1 && rowIndex < 2;
-                const quiet = index === 1 && rowIndex === 2;
-                return (
-                  <li key={row.kind}>
-                    <button
-                      type="button"
-                      onClick={() => setIndex(1)}
-                      className={`record-row grid w-full gap-1 text-left ${linked ? "is-linked" : ""} ${
-                        quiet ? "is-quiet" : ""
-                      }`}
-                    >
-                      <p className="font-mono text-[11px] uppercase tracking-[0.06em] text-text-dark/60">
-                        {row.kind}
-                      </p>
-                      <p className="font-mono text-[12px] leading-[1.45] text-text-dark">{row.text}</p>
-                    </button>
-                  </li>
-                );
-              })}
-            </ul>
-            <ul
-              className={`record-hosts mt-4 flex min-h-6 flex-wrap items-center justify-center gap-x-5 ${
-                index === 2 ? "is-on" : ""
-              }`}
-            >
-              {demoHosts.map((host) => (
-                <li key={host} className="text-[12px] font-medium not-italic text-text-dark/80">
-                  {host}
+              {compareRows.map((row, rowIndex) => (
+                <li key={row.kind}>
+                  <button
+                    type="button"
+                    onClick={() => setFocusRow(rowIndex)}
+                    className={`record-row grid w-full gap-1 text-left ${
+                      focusRow === rowIndex ? "is-linked is-focus" : ""
+                    }`}
+                  >
+                    <p className="font-mono text-[11px] uppercase tracking-[0.06em] text-text-dark/60">
+                      {row.kind}
+                    </p>
+                    <p className="font-mono text-[12px] leading-[1.45] text-text-dark">{row.text}</p>
+                  </button>
                 </li>
               ))}
             </ul>
           </div>
         </ProductWindow>
       </div>
-
-      <DemoTabs
-        items={contrastSteps.map((item) => `${item.old} → ${item.next}`)}
-        active={index}
-        onSelect={setIndex}
-        label="Search paste hope versus compact reason deliver"
-        accent
-      />
-      <p className="mt-3 text-center font-mono text-[12px] text-muted">
-        Click a tag, row, or step
+      <p className="mt-4 text-center font-mono text-[12px] text-muted">
+        Try it — expand a passage or open a record row.
       </p>
     </div>
   );

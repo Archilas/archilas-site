@@ -1,7 +1,6 @@
 import { Delivery } from "@/components/landing/Delivery";
 import { Hero } from "@/components/landing/Hero";
 import { MemoryHolds } from "@/components/landing/MemoryHolds";
-import { MemoryVsSearch } from "@/components/landing/MemoryVsSearch";
 import { Problem } from "@/components/landing/Problem";
 import { Waitlist } from "@/components/landing/Waitlist";
 import { JsonLd } from "@/components/JsonLd";
@@ -22,7 +21,6 @@ export default function HomePage() {
       <Problem />
       <MemoryHolds />
       <Delivery />
-      <MemoryVsSearch />
       <Waitlist />
     </>
   );

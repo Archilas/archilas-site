@@ -11,7 +11,7 @@ function FooterLink({
   label: string;
   external?: boolean;
 }) {
-  const className = "text-[14px] not-italic text-text-dark hover:text-accent-dark";
+  const className = "text-[14px] not-italic text-text-dark underline-offset-4 hover:underline";
   if (external || href.startsWith("mailto:")) {
     return (
       <a

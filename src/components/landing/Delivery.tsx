@@ -1,31 +1,42 @@
 import { ButtonPrimary } from "@/components/ButtonPrimary";
+import { DestinationFrames } from "@/components/landing/DestinationFrames";
+import { exampleRows } from "@/components/landing/demo-data";
 import { Section } from "@/components/Section";
-
-const hosts = ["Claude", "ChatGPT", "Cursor", "agents"] as const;
 
 export function Delivery() {
   return (
     <Section id="product" className="theme-dark">
-      <div className="mx-auto max-w-2xl text-center">
+      <div className="mx-auto max-w-3xl text-center">
         <p className="label">Product</p>
         <h2 className="h2 mt-3">One layer. Many surfaces.</h2>
         <p className="mx-auto mt-4 max-w-lg text-body">
-          Archilas is built to deliver memory into the hosts you already use. MCP is the intended
-          path. Delivery surfaces are in development — not available now.
+          Intended delivery — in development. MCP is the intended path. Surfaces are not live.
         </p>
-        <ul className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
-          {hosts.map((host) => (
-            <li
-              key={host}
-              className="rounded-[var(--arch-radius-control)] border border-border-dark px-3 py-1.5 text-[14px] font-medium not-italic text-text-dark"
-            >
-              {host}
-            </li>
-          ))}
-        </ul>
-        <div className="mt-8 flex justify-center">
-          <ButtonPrimary href="/#waitlist">Join waitlist</ButtonPrimary>
+      </div>
+
+      <div className="product-surface mx-auto mt-10 max-w-4xl">
+        <div className="grid gap-4 md:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] md:items-stretch">
+          <div className="host-frame">
+            <div className="host-frame-chrome">
+              <span className="font-mono text-[11px] text-text-dark">Record</span>
+            </div>
+            <dl className="space-y-3 px-4 pb-4">
+              {exampleRows.map((row) => (
+                <div key={row.kind}>
+                  <dt className="font-mono text-[10px] uppercase tracking-[0.06em] text-text-dark/55">
+                    {row.kind}
+                  </dt>
+                  <dd className="mt-1 font-mono text-[12px] leading-[1.45] text-text-dark">{row.text}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+          <DestinationFrames line="Waiting on the intended MCP path." />
         </div>
+      </div>
+
+      <div className="mt-8 flex justify-center">
+        <ButtonPrimary href="/#waitlist">Join waitlist</ButtonPrimary>
       </div>
     </Section>
   );
