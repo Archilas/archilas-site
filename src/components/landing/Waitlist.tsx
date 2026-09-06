@@ -1,27 +1,30 @@
 import { Card } from "@/components/Card";
+import { Reveal } from "@/components/Reveal";
 import { Section } from "@/components/Section";
 import { WaitlistForm } from "@/components/WaitlistForm";
 
 export function Waitlist() {
   return (
     <Section id="waitlist">
-      <Card className="mx-auto max-w-3xl px-6 py-10 text-center md:px-12 md:py-12">
-        <p className="label">Waitlist</p>
-        <h2 className="h2 mt-4">Get early access.</h2>
-        <p className="mx-auto mt-4 max-w-md text-body">
-          Pre-launch. Join the waitlist — that is the only conversion on this site. We email when
-          access opens.
-        </p>
-        <div className="mx-auto mt-8 flex justify-center">
-          <WaitlistForm id="waitlist-form" source="waitlist" />
-        </div>
-        <p className="mt-5 text-[13px] text-muted">
-          <a href="/privacy" className="text-ink underline-offset-4 hover:underline">
-            Privacy
-          </a>
-          . No spam.
-        </p>
-      </Card>
+      <Reveal>
+        <Card className="mx-auto max-w-3xl px-6 py-10 text-center md:px-12 md:py-12">
+          <p className="label">Waitlist</p>
+          <h2 className="h2 mt-4">Get early access.</h2>
+          <p className="mx-auto mt-4 max-w-md text-body">
+            Pre-launch. Join the waitlist — that is the only conversion on this site. We email when
+            access opens.
+          </p>
+          <div className="mx-auto mt-8 flex justify-center">
+            <WaitlistForm id="waitlist-form" source="waitlist" />
+          </div>
+          <p className="mt-5 text-[13px] text-muted">
+            <a href="/privacy" className="text-ink underline-offset-4 hover:underline">
+              Privacy
+            </a>
+            . No spam.
+          </p>
+        </Card>
+      </Reveal>
     </Section>
   );
 }

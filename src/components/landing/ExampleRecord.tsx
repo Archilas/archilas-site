@@ -1,32 +1,50 @@
-const rows = [
-  {
-    kind: "preference",
-    text: "Prefer compact records over pasted history.",
-  },
-  {
-    kind: "decision",
-    text: "Left the prior vendor after repeated rate-limit failures.",
-  },
-  {
-    kind: "open loop",
-    text: "Rotate API keys in CI before the next deploy.",
-  },
-] as const;
+import { demoHosts, exampleRows, type HowStepId } from "@/components/landing/demo-data";
 
-export function ExampleRecord() {
+export function ExampleRecord({
+  step,
+  reduced,
+}: {
+  step: HowStepId;
+  reduced: boolean;
+}) {
   return (
     <figure className="h-fit rounded-[var(--arch-radius-card)] border border-border-dark bg-card-dark p-5">
       <figcaption className="label text-text-dark/70">Example record</figcaption>
       <dl className="mt-4 space-y-4">
-        {rows.map((row) => (
-          <div key={row.kind} className="grid gap-1 sm:grid-cols-[7.5rem_1fr] sm:gap-4">
-            <dt className="font-mono text-[12px] uppercase tracking-[0.06em] text-text-dark/70">
-              {row.kind}
-            </dt>
-            <dd className="font-mono text-[13px] leading-[1.55] text-text-dark">{row.text}</dd>
-          </div>
-        ))}
+        {exampleRows.map((row, index) => {
+          const linked = step === "reason" && index < 2;
+          const quiet = step === "reason" && index === 2;
+          return (
+            <div
+              key={row.kind}
+              className={`record-row grid gap-1 sm:grid-cols-[7.5rem_1fr] sm:gap-4 ${
+                linked ? "is-linked" : ""
+              } ${quiet ? "is-quiet" : ""}`}
+            >
+              <dt className="flex flex-wrap items-baseline gap-x-2 font-mono text-[12px] uppercase tracking-[0.06em] text-text-dark/70">
+                {row.kind}
+                {step === "compact" && !reduced ? (
+                  <span className="record-scrap-chip">{row.scrap}</span>
+                ) : null}
+              </dt>
+              <dd className="font-mono text-[13px] leading-[1.55] text-text-dark">{row.text}</dd>
+            </div>
+          );
+        })}
       </dl>
+
+      <ul
+        className={`record-hosts mt-5 flex min-h-7 flex-wrap items-center justify-center gap-x-6 gap-y-2 ${
+          step === "deliver" || reduced ? "is-on" : ""
+        }`}
+        aria-hidden={step !== "deliver" && !reduced}
+      >
+        {demoHosts.map((host) => (
+          <li key={host} className="text-[13px] font-medium not-italic text-text-dark/80">
+            {host}
+          </li>
+        ))}
+      </ul>
     </figure>
   );
 }
