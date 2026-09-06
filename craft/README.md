@@ -11,3 +11,7 @@ Audit rejects (clarity-cloud live):
 5. Beat 3 was a sparse Q+A. Now it shows used memory rows and what was left uncited.
 6. Mid page was Ask/Compare scraps. Now a coherent keep + surfaces band.
 7. Demo was a 560px empty stadium. Height follows content. COMPACT / REASON·DELIVER are tiny spine labels only.
+
+Waitlist stays non-persisting: `POST /api/waitlist` returns `{ ok: true }` and logs `WAITLIST_SIGNUP`. No DB.
+
+QA shots vs the CustomGPT moodboard live in `craft/qa/`.
