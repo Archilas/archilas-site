@@ -1,13 +1,16 @@
+import type { KeyboardEvent } from "react";
 import { demoHosts, exampleRows, type HowStepId } from "@/components/landing/demo-data";
 
 export function ExampleRecord({
   step,
   reduced,
   bare = false,
+  onRowSelect,
 }: {
   step: HowStepId;
   reduced: boolean;
   bare?: boolean;
+  onRowSelect?: (index: number) => void;
 }) {
   return (
     <figure
@@ -18,16 +21,29 @@ export function ExampleRecord({
       }
     >
       {bare ? null : <figcaption className="label text-text-dark/70">Example record</figcaption>}
-      <dl className={bare ? "space-y-4" : "mt-4 space-y-4"}>
+      <dl className={bare ? "space-y-3" : "mt-4 space-y-3"}>
         {exampleRows.map((row, index) => {
           const linked = step === "reason" && index < 2;
           const quiet = step === "reason" && index === 2;
           return (
             <div
               key={row.kind}
-              className={`record-row grid gap-1 sm:grid-cols-[7.5rem_1fr] sm:gap-4 ${
+              className={`record-row grid w-full gap-1 text-left sm:grid-cols-[7.5rem_1fr] sm:gap-4 ${
                 linked ? "is-linked" : ""
               } ${quiet ? "is-quiet" : ""}`}
+              {...(onRowSelect
+                ? {
+                    role: "button",
+                    tabIndex: 0,
+                    onClick: () => onRowSelect(index),
+                    onKeyDown: (event: KeyboardEvent<HTMLDivElement>) => {
+                      if (event.key === "Enter" || event.key === " ") {
+                        event.preventDefault();
+                        onRowSelect(index);
+                      }
+                    },
+                  }
+                : {})}
             >
               <dt className="flex flex-wrap items-baseline gap-x-2 font-mono text-[12px] uppercase tracking-[0.06em] text-text-dark/70">
                 {row.kind}

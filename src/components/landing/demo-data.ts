@@ -17,9 +17,9 @@ export const exampleRows = [
 ] as const;
 
 export const howSteps = [
-  { id: "compact", label: "Compact", caption: "Keep a living record" },
-  { id: "reason", label: "Reason", caption: "Compose when supported" },
-  { id: "deliver", label: "Deliver", caption: "Into tools you already use" },
+  { id: "compact", label: "Compact", caption: "Keep a living record — not a chat dump." },
+  { id: "reason", label: "Reason", caption: "Compose from linked preferences and decisions." },
+  { id: "deliver", label: "Deliver", caption: "Into tools you already use. MCP is the intended path." },
 ] as const;
 
 export const contrastSteps = [
@@ -34,6 +34,6 @@ export const ragPassages = ["rate limits", "vendor note", "CI keys", "old thread
 
 export const demoHosts = ["Claude", "ChatGPT", "Cursor"] as const;
 
-export const STEP_MS = 2600;
+export const HOW_STEP_MS = 3200;
 
 export type HowStepId = (typeof howSteps)[number]["id"];

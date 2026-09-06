@@ -1,15 +1,20 @@
 "use client";
 
 import { useRef } from "react";
-import { howSteps } from "@/components/landing/demo-data";
 
-export function HowItWorksStepper({
+export function DemoTabs({
+  items,
   active,
   onSelect,
+  label,
+  accent = false,
   playing = false,
 }: {
+  items: readonly string[];
   active: number;
   onSelect: (index: number) => void;
+  label: string;
+  accent?: boolean;
   playing?: boolean;
 }) {
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
@@ -20,21 +25,15 @@ export function HowItWorksStepper({
   }
 
   return (
-    <div
-      role="tablist"
-      aria-label="How Archilas works"
-      className="flex flex-wrap justify-center gap-1 border-b border-border-dark"
-    >
-      {howSteps.map((item, index) => {
+    <div role="tablist" aria-label={label} className="mt-5 flex flex-wrap justify-center gap-1">
+      {items.map((item, index) => {
         const selected = index === active;
         return (
           <button
-            key={item.id}
+            key={item}
             type="button"
             role="tab"
-            id={`how-tab-${item.id}`}
             aria-selected={selected}
-            aria-controls="how-panel-record"
             tabIndex={selected ? 0 : -1}
             ref={(node) => {
               tabRefs.current[index] = node;
@@ -43,25 +42,24 @@ export function HowItWorksStepper({
             onKeyDown={(event) => {
               if (event.key === "ArrowRight") {
                 event.preventDefault();
-                select((index + 1) % howSteps.length);
+                select((index + 1) % items.length);
               }
               if (event.key === "ArrowLeft") {
                 event.preventDefault();
-                select((index - 1 + howSteps.length) % howSteps.length);
+                select((index - 1 + items.length) % items.length);
               }
             }}
-            className={`relative px-3 py-3 text-[15px] font-medium not-italic transition-colors ${
-              selected ? "text-accent-dark" : "text-text-dark/65 hover:text-text-dark"
+            className={`relative px-3 py-2 text-[13px] font-medium not-italic transition-colors ${
+              selected ? (accent ? "text-accent" : "text-ink") : "text-muted hover:text-ink"
             }`}
           >
-            <span className="mr-2 font-mono text-[12px]">{String(index + 1).padStart(2, "0")}</span>
-            {item.label}
+            {item}
             {selected ? (
               <span
                 aria-hidden
-                className={`absolute inset-x-3 -bottom-px h-0.5 bg-accent-dark ${
-                  playing ? "demo-progress" : ""
-                }`}
+                className={`absolute inset-x-2 -bottom-px h-0.5 ${
+                  accent ? "bg-accent" : "bg-near-black"
+                } ${playing ? "demo-progress" : ""}`}
               />
             ) : null}
           </button>
