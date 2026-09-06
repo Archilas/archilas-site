@@ -1,4 +1,4 @@
-/* Archilas paper/ink system. Hex lives here. Signal rust is motion/active/focus only. */
+/* Archilas paper/ink. Signal teal is active tab underline, Run fill, and focus only. */
 
 :root {
   --bg: #f7f7f5;
@@ -8,8 +8,8 @@
   --muted: #737373;
   --line: #e5e5e5;
   --inverse: #0a0a0a;
-  --signal: #c2410c;
-  --focus: #c2410c;
+  --signal: #0f766e;
+  --focus: #0f766e;
 
   --paper: var(--bg);
   --elevated: var(--surface);
@@ -26,25 +26,29 @@
   --accent: var(--focus);
   --accent-dark: var(--focus);
 
-  --text-display: clamp(2.125rem, 4vw, 3.25rem);
+  --hero-shadow: 0 24px 60px rgba(10, 10, 10, 0.09);
+  --card-shadow: 0 16px 40px rgba(10, 10, 10, 0.06);
+
+  --text-display: clamp(2.35rem, 5.4vw, 4.25rem);
   --text-statement: clamp(4rem, 7.4vw, 6rem);
-  --text-h2: clamp(1.75rem, 3vw, 2.25rem);
+  --text-h2: clamp(1.65rem, 2.6vw, 2.1rem);
   --text-h3: 1.125rem;
   --text-body: 1.0625rem;
   --text-label: 0.6875rem;
   --text-mono: 0.75rem;
   --leading-body: 1.5;
 
-  --arch-radius-card: 2px;
+  --arch-radius-card: 16px;
   --arch-radius-control: 2px;
+  --arch-radius-hero: 20px;
 
-  --max-width: 1200px;
+  --max-width: 1120px;
   --pad-x: 28px;
-  --pad-y: 96px;
-  --pad-y-mobile: 56px;
-  --nav-height: 56px;
+  --pad-y: 80px;
+  --pad-y-mobile: 48px;
+  --nav-height: 64px;
   --control-height: 44px;
-  --scroll-margin: 72px;
+  --scroll-margin: 80px;
 }
 
 @theme inline {
@@ -70,19 +74,7 @@
   --color-accent-dark: var(--focus);
   --font-sans: var(--font-geist);
   --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-instrument);
   --radius-card: var(--arch-radius-card);
   --radius-control: var(--arch-radius-control);
-}
-
-.chapter-inverse {
-  --ink: #f7f7f5;
-  --body: #d4d4d8;
-  --muted: #a3a3a3;
-  --line: #2a2a2a;
-  --surface: #111111;
-  --elevated: #111111;
-  --near-black: #f7f7f5;
-  --border: #2a2a2a;
-  color: var(--body);
-  background: var(--inverse);
 }

@@ -6,12 +6,13 @@
 
 ## Product and copy
 
-- H1: "Passages aren't memory. A record is."
-- Sub: "Archilas turns your conversations into a record your tools can use."
-- Spine is Compact → Reason → Deliver.
+- H1: "Archilas keeps a record your AI can use."
+- Only the word "record" is italic.
+- Spine in the hero box: Transcript → Compact → Reason → Deliver → Record.
+- Reason preserves “Not in the record.”
 - MCP is the intended delivery path and is not claimed as live.
-- Paper/ink system. Signal rust `#C2410C` is pipeline motion, active, and focus only.
-- Nav is Pipeline, Record, Waitlist.
+- Signal teal `#0F766E` is the active tab underline, Run fill, and focus rings only.
+- Nav is How it works, Product, Waitlist. No login/signup.
 
 ## Unchanged
 

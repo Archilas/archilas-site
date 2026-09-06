@@ -26,9 +26,9 @@ export function SiteHeader() {
 
   return (
     <header className="site-header relative sticky top-0 z-40">
-      <div className="mx-auto flex h-[var(--nav-height)] w-full max-w-[var(--max-width)] items-center justify-between px-[var(--pad-x)]">
+      <div className="mx-auto grid h-[var(--nav-height)] w-full max-w-[var(--max-width)] grid-cols-[1fr_auto] items-center px-[var(--pad-x)] lg:grid-cols-[1fr_auto_1fr]">
         <BrandLogo />
-        <nav aria-label="Primary" className="hidden items-center gap-6 lg:flex">
+        <nav aria-label="Primary" className="hidden items-center gap-7 lg:flex">
           {nav.map((item) => (
             <a
               key={item.href}
@@ -39,13 +39,15 @@ export function SiteHeader() {
               {item.label}
             </a>
           ))}
+        </nav>
+        <div className="hidden justify-self-end lg:block">
           <ButtonPrimary href="/#waitlist" onClick={() => track("cta_click", { source: "nav" })}>
             Join waitlist
           </ButtonPrimary>
-        </nav>
+        </div>
         <button
           type="button"
-          className="inline-flex h-10 w-10 items-center justify-center border border-line bg-bg text-ink lg:hidden"
+          className="inline-flex h-10 w-10 justify-self-end items-center justify-center border border-line bg-bg text-ink lg:hidden"
           aria-expanded={open}
           aria-controls={drawerId}
           onClick={() => setOpen((value) => !value)}

@@ -4,26 +4,40 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { usePrefersReducedMotion } from "@/lib/use-prefers-reduced-motion";
 import type { HowStepId } from "@/components/landing/demo-data";
 
-export const PIPELINE_MS = 14000;
+export const PIPELINE_MS = 9000;
 
 export const STAGE_START: Record<HowStepId, number> = {
-  compact: 0,
-  reason: 0.34,
-  deliver: 0.67,
+  transcript: 0,
+  compact: 0.16,
+  reason: 0.38,
+  deliver: 0.62,
+  record: 0.82,
 };
 
+export const STAGE_VIEW: Record<HowStepId, number> = {
+  transcript: 0.06,
+  compact: 0.36,
+  reason: 0.48,
+  deliver: 0.74,
+  record: 1,
+};
+
+const ORDER: HowStepId[] = ["transcript", "compact", "reason", "deliver", "record"];
+
 export function stageFromProgress(progress: number): HowStepId {
+  if (progress < STAGE_START.compact) return "transcript";
   if (progress < STAGE_START.reason) return "compact";
   if (progress < STAGE_START.deliver) return "reason";
-  return "deliver";
+  if (progress < STAGE_START.record) return "deliver";
+  return "record";
 }
 
 export function stageLocal(progress: number): number {
-  if (progress < STAGE_START.reason) return progress / STAGE_START.reason;
-  if (progress < STAGE_START.deliver) {
-    return (progress - STAGE_START.reason) / (STAGE_START.deliver - STAGE_START.reason);
-  }
-  return (progress - STAGE_START.deliver) / (1 - STAGE_START.deliver);
+  const stage = stageFromProgress(progress);
+  const start = STAGE_START[stage];
+  const index = ORDER.indexOf(stage);
+  const end = index === ORDER.length - 1 ? 1 : STAGE_START[ORDER[index + 1]];
+  return (progress - start) / (end - start);
 }
 
 export function usePipelineClock() {
@@ -104,13 +118,7 @@ export function usePipelineClock() {
 
   const jumpStage = useCallback(
     (id: HowStepId) => {
-      const view =
-        id === "compact"
-          ? STAGE_START.reason - 0.01
-          : id === "reason"
-            ? STAGE_START.reason + 0.13
-            : 1;
-      scrub(view);
+      scrub(STAGE_VIEW[id]);
     },
     [scrub],
   );
