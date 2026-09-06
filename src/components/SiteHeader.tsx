@@ -34,7 +34,7 @@ export function SiteHeader() {
               key={item.href}
               href={item.href}
               className="nav-link text-[14px]"
-              onClick={(event) => scrollToHash(item.href, event)}
+              onClick={() => scrollToHash(item.href)}
             >
               {item.label}
             </a>
@@ -70,8 +70,8 @@ export function SiteHeader() {
                 key={item.href}
                 href={item.href}
                 className="nav-link rounded-[var(--arch-radius-control)] px-2 py-3 text-[16px]"
-                onClick={(event) => {
-                  scrollToHash(item.href, event);
+                onClick={() => {
+                  scrollToHash(item.href);
                   close();
                 }}
               >

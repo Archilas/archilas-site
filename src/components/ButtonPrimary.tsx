@@ -34,7 +34,7 @@ export function ButtonPrimary({
           {...(external ? { rel: "noopener noreferrer" } : {})}
           onClick={(event) => {
             onClick?.(event);
-            if (hash) scrollToHash(href, event);
+            if (hash) scrollToHash(href);
           }}
         >
           {children}
