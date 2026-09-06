@@ -1,4 +1,4 @@
-/* Archilas paper/ink system. Hex lives here. Teal is focus rings only. */
+/* Archilas paper/ink system. Hex lives here. Signal rust is motion/active/focus only. */
 
 :root {
   --bg: #f7f7f5;
@@ -8,7 +8,8 @@
   --muted: #737373;
   --line: #e5e5e5;
   --inverse: #0a0a0a;
-  --focus: #0f766e;
+  --signal: #c2410c;
+  --focus: #c2410c;
 
   --paper: var(--bg);
   --elevated: var(--surface);
@@ -54,6 +55,7 @@
   --color-muted: var(--muted);
   --color-line: var(--line);
   --color-inverse: var(--inverse);
+  --color-signal: var(--signal);
   --color-focus: var(--focus);
   --color-paper: var(--bg);
   --color-elevated: var(--surface);

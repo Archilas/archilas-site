@@ -17,15 +17,16 @@ export const site = {
 export const showResources = posts.length >= 2;
 
 export const nav = [
+  { href: "/#pipeline", label: "Pipeline" },
   { href: "/#record", label: "Record" },
-  { href: "/#comparison", label: "Comparison" },
   { href: "/#waitlist", label: "Waitlist" },
 ] as const;
 
 export const footerNav = {
   product: [
+    { href: "/#pipeline", label: "Pipeline" },
     { href: "/#record", label: "Record" },
-    { href: "/#comparison", label: "Comparison" },
+    { href: "/#compare", label: "Compare" },
     { href: "/#waitlist", label: "Waitlist" },
   ],
   resources: showResources

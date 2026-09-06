@@ -1,7 +1,8 @@
-import { Delivery } from "@/components/landing/Delivery";
+import { DeliveryRail } from "@/components/landing/DeliveryRail";
 import { Hero } from "@/components/landing/Hero";
-import { MemoryHolds } from "@/components/landing/MemoryHolds";
-import { Problem } from "@/components/landing/Problem";
+import { Pipeline } from "@/components/landing/Pipeline";
+import { RecordExplorer } from "@/components/landing/RecordExplorer";
+import { RetrievalCompare } from "@/components/landing/RetrievalCompare";
 import { Waitlist } from "@/components/landing/Waitlist";
 import { JsonLd } from "@/components/JsonLd";
 import { buildMetadata, organizationJsonLd } from "@/lib/seo";
@@ -18,9 +19,10 @@ export default function HomePage() {
     <>
       <JsonLd data={organizationJsonLd()} />
       <Hero />
-      <Problem />
-      <MemoryHolds />
-      <Delivery />
+      <Pipeline />
+      <RecordExplorer />
+      <RetrievalCompare />
+      <DeliveryRail />
       <Waitlist />
     </>
   );
