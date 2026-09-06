@@ -15,7 +15,7 @@ export function SiteHeader() {
   useFocusTrap(open, drawerRef, close);
 
   useEffect(() => {
-    const media = window.matchMedia("(min-width: 768px)");
+    const media = window.matchMedia("(min-width: 1024px)");
     const onChange = () => {
       if (media.matches) setOpen(false);
     };
@@ -27,7 +27,7 @@ export function SiteHeader() {
     <header className="relative sticky top-0 z-40 border-b border-border bg-elevated">
       <div className="mx-auto flex h-[var(--nav-height)] w-full max-w-[var(--max-width)] items-center justify-between px-[var(--pad-x)]">
         <BrandLogo />
-        <nav aria-label="Primary" className="hidden items-center gap-8 md:flex">
+        <nav aria-label="Primary" className="hidden items-center gap-5 lg:flex">
           {nav.map((item) => (
             <a key={item.href} href={item.href} className="nav-link text-[14px]">
               {item.label}
@@ -39,7 +39,7 @@ export function SiteHeader() {
         </nav>
         <button
           type="button"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-[var(--arch-radius-control)] border border-border-input text-ink md:hidden"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-[var(--arch-radius-control)] border border-border-input text-ink lg:hidden"
           aria-expanded={open}
           aria-controls={drawerId}
           onClick={() => setOpen((value) => !value)}
@@ -56,7 +56,7 @@ export function SiteHeader() {
           aria-modal="true"
           aria-label="Primary"
           data-testid="mobile-drawer"
-          className="absolute left-0 right-0 top-full z-50 border-b border-border bg-elevated px-[var(--pad-x)] py-5 shadow-lg md:hidden"
+          className="absolute left-0 right-0 top-full z-50 border-b border-border bg-elevated px-[var(--pad-x)] py-5 shadow-lg lg:hidden"
         >
           <nav className="flex flex-col gap-1">
             {nav.map((item) => (
