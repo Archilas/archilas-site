@@ -7,7 +7,10 @@ import { HOW_STEP_MS, howSteps } from "@/components/landing/demo-data";
 import { usePausedLoop } from "@/lib/use-paused-loop";
 
 export function HowItWorksStage() {
-  const { index, setIndex, paused, reduced, bind } = usePausedLoop(howSteps.length, HOW_STEP_MS);
+  const { index, setIndex, paused, held, toggleHold, reduced, bind } = usePausedLoop(
+    howSteps.length,
+    HOW_STEP_MS,
+  );
   const step = howSteps[index];
   const [showType, setShowType] = useState(true);
 
@@ -18,7 +21,7 @@ export function HowItWorksStage() {
 
   return (
     <div data-paused={paused || reduced} {...bind}>
-      <HowItWorksStepper active={index} onSelect={setIndex} playing={!paused && !reduced} />
+      <HowItWorksStepper active={index} onSelect={setIndex} />
       <div
         role="tabpanel"
         id="how-panel-record"
@@ -37,9 +40,19 @@ export function HowItWorksStage() {
           {step.caption}
         </p>
         {reduced ? null : (
-          <p className="mt-2 text-center font-mono text-[11px] text-text-dark/45">
-            {paused ? "Paused" : "Hover to pause · click a step"}
-          </p>
+          <div className="mt-3 flex items-center justify-center gap-3">
+            <button
+              type="button"
+              className="rounded-[var(--arch-radius-control)] border border-border-dark px-2.5 py-1 font-mono text-[11px] text-text-dark/80 hover:text-text-dark"
+              aria-pressed={held}
+              onClick={toggleHold}
+            >
+              {held ? "Play" : "Pause"}
+            </button>
+            <p className="font-mono text-[11px] text-text-dark/45">
+              {held ? "Paused" : paused ? "Paused on hover" : "Click a step"}
+            </p>
+          </div>
         )}
       </div>
     </div>

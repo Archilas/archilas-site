@@ -1,5 +1,6 @@
 import type { KeyboardEvent } from "react";
-import { demoHosts, exampleRows, type HowStepId } from "@/components/landing/demo-data";
+import { DestinationFrames } from "@/components/landing/DestinationFrames";
+import { exampleRows, type HowStepId } from "@/components/landing/demo-data";
 
 export function ExampleRecord({
   step,
@@ -14,6 +15,8 @@ export function ExampleRecord({
   typeIn?: boolean;
   onRowSelect?: (index: number) => void;
 }) {
+  const delivering = step === "deliver" || reduced;
+
   return (
     <figure
       className={
@@ -32,7 +35,9 @@ export function ExampleRecord({
               key={row.kind}
               className={`record-row grid w-full gap-1 text-left sm:grid-cols-[7.5rem_1fr] sm:gap-4 ${
                 linked ? "is-linked" : ""
-              } ${quiet ? "is-quiet" : ""} ${typeIn ? "record-type-in" : ""}`}
+              } ${quiet ? "is-quiet" : ""} ${typeIn ? "record-type-in" : ""} ${
+                delivering ? "is-deliver-source" : ""
+              }`}
               {...(onRowSelect
                 ? {
                     role: "button",
@@ -59,18 +64,14 @@ export function ExampleRecord({
         })}
       </dl>
 
-      <ul
-        className={`record-hosts mt-5 flex min-h-7 flex-wrap items-center justify-center gap-x-6 gap-y-2 ${
-          step === "deliver" || reduced ? "is-on" : ""
-        }`}
-        aria-hidden={step !== "deliver" && !reduced}
-      >
-        {demoHosts.map((host) => (
-          <li key={host} className="text-[13px] font-medium not-italic text-text-dark/80">
-            {host}
-          </li>
-        ))}
-      </ul>
+      {delivering ? (
+        <div className="deliver-panel mt-5" aria-hidden={step !== "deliver" && !reduced}>
+          <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.06em] text-text-dark/55">
+            Intended delivery
+          </p>
+          <DestinationFrames compact line={exampleRows[0].text} />
+        </div>
+      ) : null}
     </figure>
   );
 }

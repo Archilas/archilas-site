@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Analytics } from "@/components/Analytics";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { site } from "@/lib/site";
@@ -23,7 +24,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} · ${site.tagline}`,
+    default: `${site.name} · ${site.headline}`,
     template: `%s · ${site.name}`,
   },
   description: site.description,
@@ -41,12 +42,12 @@ export const metadata: Metadata = {
     type: "website",
     siteName: site.name,
     locale: site.locale,
-    title: `${site.name} · ${site.tagline}`,
+    title: `${site.name} · ${site.headline}`,
     description: site.description,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} · ${site.tagline}`,
+    title: `${site.name} · ${site.headline}`,
     description: site.description,
   },
   robots: {
@@ -64,6 +65,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           {children}
         </main>
         <SiteFooter />
+        <Analytics />
       </body>
     </html>
   );

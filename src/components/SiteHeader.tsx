@@ -45,7 +45,7 @@ export function SiteHeader() {
         </nav>
         <button
           type="button"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-[var(--arch-radius-control)] border border-border-input text-ink lg:hidden"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-[var(--arch-radius-control)] border border-border-input bg-elevated text-ink lg:hidden"
           aria-expanded={open}
           aria-controls={drawerId}
           onClick={() => setOpen((value) => !value)}
@@ -62,7 +62,7 @@ export function SiteHeader() {
           aria-modal="true"
           aria-label="Primary"
           data-testid="mobile-drawer"
-          className="site-header absolute left-0 right-0 top-full z-50 border-b border-border px-[var(--pad-x)] py-5 lg:hidden"
+          className="mobile-drawer lg:hidden"
         >
           <nav className="flex flex-col gap-1">
             {nav.map((item) => (

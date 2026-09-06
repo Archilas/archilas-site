@@ -32,7 +32,7 @@ export function WaitlistForm({
       });
       const data = (await res.json()) as { ok?: boolean; error?: string };
 
-      // Contract: valid email and duplicates both succeed.
+      // Contract: valid email and duplicates both succeed. Persistence is not wired.
       if (!res.ok || !data.ok) {
         setStatus("error");
         setMessage(data.error || "Something went wrong. Try again.");
@@ -41,7 +41,7 @@ export function WaitlistForm({
       }
 
       setStatus("success");
-      setMessage("You are on the list. We will email when access opens.");
+      setMessage("You’re on the list. We’ll email when Archilas opens.");
       setEmail("");
       track("waitlist_success", { source });
     } catch {
@@ -58,14 +58,14 @@ export function WaitlistForm({
         role="status"
         aria-live="polite"
       >
-        <p className="text-[16px] font-medium not-italic text-ink">You are on the list.</p>
-        <p className="mt-2 text-[15px] text-body">We will email when early access opens.</p>
+        <p className="text-[16px] font-medium not-italic text-ink">You’re on the list.</p>
+        <p className="mt-2 text-[15px] text-body">We’ll email when Archilas opens.</p>
       </div>
     );
   }
 
   return (
-    <form id={id} onSubmit={onSubmit} className="w-full max-w-md">
+    <form id={id} onSubmit={onSubmit} className="w-full max-w-md" aria-busy={status === "loading"}>
       <label htmlFor={`${id}-email`} className="sr-only">
         Email
       </label>
@@ -82,15 +82,19 @@ export function WaitlistForm({
           className="flex-1"
           disabled={status === "loading"}
           aria-invalid={status === "error"}
-          aria-describedby={message ? `${id}-status` : undefined}
+          aria-describedby={status === "error" && message ? `${id}-status` : undefined}
         />
         <ButtonPrimary type="submit" className="shrink-0" disabled={status === "loading"}>
-          {status === "loading" ? "Joining" : "Join waitlist"}
+          {status === "loading" ? "Joining…" : "Join waitlist"}
         </ButtonPrimary>
       </div>
-      {message ? (
-        <p id={`${id}-status`} className="mt-3 text-[13px] text-body" role="status" aria-live="polite">
+      {status === "error" && message ? (
+        <p id={`${id}-status`} className="mt-3 text-[13px] text-ink" role="alert">
           {message}
+        </p>
+      ) : status === "loading" ? (
+        <p className="mt-3 text-[13px] text-muted" role="status" aria-live="polite">
+          Joining the waitlist…
         </p>
       ) : null}
     </form>

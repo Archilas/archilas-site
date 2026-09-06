@@ -27,7 +27,13 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false, error: "Enter a valid email address." }, { status: 400 });
   }
 
-  console.info("[waitlist]", email);
+  console.info(
+    JSON.stringify({
+      event: "WAITLIST_SIGNUP",
+      email,
+      at: new Date().toISOString(),
+    }),
+  );
 
   return NextResponse.json({ ok: true });
 }

@@ -30,7 +30,7 @@ export function buildMetadata({
   const url = absoluteUrl(path);
   // Layout template adds "· Archilas"; home uses absolute title.
   const isHome = title === site.name;
-  const displayTitle = isHome ? `${site.name} · ${site.tagline}` : title;
+  const displayTitle = isHome ? `${site.name} · ${site.headline}` : title;
 
   return {
     title: isHome

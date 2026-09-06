@@ -10,13 +10,16 @@ export const metadata = buildMetadata({
 });
 
 export default function ResourcesPage() {
-  const latest = getAllPosts().slice(0, 4);
+  const posts = getAllPosts();
 
   return (
     <>
       <Section className="!pb-10 !pt-16">
         <p className="label">Resources</p>
         <h1 className="display mt-4">Resources</h1>
+        <p className="mt-4 max-w-xl text-body">
+          Writing on memory, RAG, agents, and MCP. Setup guides follow when delivery surfaces exist.
+        </p>
       </Section>
 
       <Section className="!pt-0">
@@ -25,29 +28,35 @@ export default function ResourcesPage() {
             <div className="border-b border-border px-5 py-3">
               <p className="label">Blog</p>
             </div>
-            <ul>
-              {latest.map((post, i) => (
-                <li key={post.slug} className={i < latest.length - 1 ? "border-b border-border" : ""}>
-                  <Link href={`/blog/${post.slug}`} className="block px-5 py-4 transition hover:bg-surface">
-                    <p className="text-[14px] font-medium text-ink">{post.title}</p>
-                    <p className="mono mt-1 text-[11px] text-muted">
-                      {post.datePublished} · {readingTimeMinutes(post)} min
-                    </p>
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            {posts.length === 0 ? (
+              <p className="px-5 py-8 text-[14px] text-body">No posts yet.</p>
+            ) : (
+              <ul>
+                {posts.map((post, i) => (
+                  <li key={post.slug} className={i < posts.length - 1 ? "border-b border-border" : ""}>
+                    <Link href={`/blog/${post.slug}`} className="block px-5 py-4 transition hover:bg-surface">
+                      <p className="text-[15px] font-medium text-ink">{post.title}</p>
+                      <p className="mt-1 text-[13px] leading-[1.45] text-body">{post.excerpt}</p>
+                      <p className="mono mt-2 text-[12px] text-muted">
+                        {post.datePublished} · {readingTimeMinutes(post)} min
+                      </p>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
           <div className="space-y-4">
             <div className="card p-6">
               <p className="label">Guides</p>
-              <p className="mt-3 text-[14px] text-ink">Coming as the product opens.</p>
-              <p className="mt-2 text-[13px] text-body">
-                Writing lives here first. Setup guides follow when delivery surfaces exist.
+              <p className="mt-3 text-[15px] text-ink">Coming as the product opens.</p>
+              <p className="mt-2 text-[14px] text-body">
+                Intended delivery is MCP. Surfaces are in development — not live.
               </p>
             </div>
             <div className="card p-6">
               <p className="label">Waitlist</p>
+              <p className="mt-3 text-[14px] text-body">Early access. We email when Archilas opens.</p>
               <Link
                 href="/#waitlist"
                 className="mt-3 inline-block text-[14px] font-medium text-ink underline underline-offset-4"

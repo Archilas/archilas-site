@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import { site } from "@/lib/site";
 import { tokens } from "@/styles/tokens";
 
-export const alt = `${site.name} · ${site.tagline}`;
+export const alt = `${site.name} · ${site.headline}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -44,10 +44,11 @@ export default function OpenGraphImage() {
           style={{
             marginTop: 28,
             fontSize: 28,
+            lineHeight: 1.3,
             color: tokens.textDark,
           }}
         >
-          {site.tagline}
+          {site.headline}
         </div>
       </div>
     ),

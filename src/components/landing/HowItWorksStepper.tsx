@@ -6,11 +6,9 @@ import { howSteps } from "@/components/landing/demo-data";
 export function HowItWorksStepper({
   active,
   onSelect,
-  playing = false,
 }: {
   active: number;
   onSelect: (index: number) => void;
-  playing?: boolean;
 }) {
   const tabRefs = useRef<Array<HTMLButtonElement | null>>([]);
 
@@ -56,14 +54,7 @@ export function HowItWorksStepper({
           >
             <span className="mr-2 font-mono text-[12px]">{String(index + 1).padStart(2, "0")}</span>
             {item.label}
-            {selected ? (
-              <span
-                aria-hidden
-                className={`absolute inset-x-3 -bottom-px h-0.5 bg-accent ${
-                  playing ? "demo-progress" : ""
-                }`}
-              />
-            ) : null}
+            {selected ? <span aria-hidden className="step-underline" /> : null}
           </button>
         );
       })}

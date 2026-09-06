@@ -6,6 +6,7 @@ export const site = {
   description:
     "Persistent memory layer for AI. A compact, grounded, revisable record of preferences, decisions, and open loops — delivered into the tools you already use.",
   tagline: "Persistent memory layer for AI.",
+  headline: "RAG finds passages. Archilas keeps a record.",
   email: "hello@archilas.com",
   twitter: "@archilas",
   twitterUrl: "https://x.com/archilas",

@@ -6,9 +6,10 @@ import { usePrefersReducedMotion } from "@/lib/use-prefers-reduced-motion";
 export function usePausedLoop(length: number, durationMs: number) {
   const [index, setIndex] = useState(0);
   const [hoverPaused, setHoverPaused] = useState(false);
+  const [held, setHeld] = useState(false);
   const [hidden, setHidden] = useState(false);
   const reduced = usePrefersReducedMotion();
-  const paused = hoverPaused || hidden || reduced;
+  const paused = hoverPaused || hidden || reduced || held;
 
   useEffect(() => {
     const onVis = () => setHidden(document.hidden);
@@ -36,5 +37,13 @@ export function usePausedLoop(length: number, durationMs: number) {
     },
   };
 
-  return { index, setIndex, paused: hoverPaused || hidden, reduced, bind };
+  return {
+    index,
+    setIndex,
+    paused: hoverPaused || hidden || held,
+    held,
+    toggleHold: () => setHeld((current) => !current),
+    reduced,
+    bind,
+  };
 }

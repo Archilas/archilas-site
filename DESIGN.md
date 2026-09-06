@@ -4,26 +4,27 @@ Flat warm off-white shell. Solid dark product windows. Hex lives in `src/styles/
 
 ## Color
 
+Three solid page bands only:
+
 | Token | Value | Role |
 |------|-------|------|
-| `--paper` | `#F4F0E8` | Page ground (warm, not flat white) |
-| `--tint` | `#DCECEA` | Teal section band |
-| `--warm` | `#EFE6D6` | Warm section band |
+| `--paper` | `#F4F0E8` | Page ground (hero, holds, waitlist) |
+| `--tint` | `#DCECEA` | One compare band |
+| `--bg-dark` | `#0A0A0A` | Product band, product windows, footer |
 | `--elevated` | `#FFFDF8` | Header, cards, controls |
-| `--border` | `#E4E0D6` | Hairlines |
-| `--near-black` | `#0A0A0A` | Display, headings, primary CTAs |
-| `--bg-dark` | `#0A0A0A` | Product windows, product band, footer |
-| `--accent` | `#0D9488` | Active stepper underline and focus only |
+| `--accent` | `#0D9488` | Stepper underline, focus, hold-card hover. Keep under 2%. |
 
-No orbs, radial washes, blobs, frost, glow, or lavender. Primary CTAs are near-black. Body copy ≥4.5:1.
+No `--warm` section band. No orbs, radial washes, blobs, frost, glow, or lavender. Primary CTAs are near-black. Body copy ≥4.5:1.
 
 ## Motion
 
-- Auto-play only on the Example-record Compact → Reason → Deliver cycle (~4s). Hover pauses. Reduced motion is static and still clickable.
-- Contrast and RAG windows are user-driven. No scan / particle ornament.
+- Auto-play only on the Example-record Compact → Reason → Deliver cycle (~4s). Pause control is wired. Hover also pauses. Reduced motion is static and still clickable.
+- Active step underline springs in 200ms.
+- Compare windows are user-driven.
 
 ## Copy
 
 - H1: RAG finds passages. Archilas keeps a record.
 - Sub: Preferences, decisions, open loops — Compact. Reason. Deliver.
 - Spine: Compact → Reason → Deliver. No Distill / Vault.
+- Waitlist success: You’re on the list / We’ll email when Archilas opens.
