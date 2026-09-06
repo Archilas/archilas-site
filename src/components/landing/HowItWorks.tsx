@@ -7,12 +7,12 @@ const steps = [
   {
     id: "notes",
     label: "Notes",
-    line: "Chat, docs, and threads land as they are — plus a bit of noise.",
+    line: "Chat, a calendar note, and a thread land as they are — plus a bit of noise.",
     status: "Reading sources 1/3…",
     pills: [
-      { text: "Chat: Friday ship if legal signs", on: true },
-      { text: "Doc: checklist, not Slack dumps", on: false },
-      { text: "Thread: window still unsigned", on: false },
+      { text: "Chat: café Fridays, strong flat white", on: true },
+      { text: "Calendar: mornings stay open", on: false },
+      { text: "Thread: Friday coffee still open", on: false },
     ],
   },
   {
@@ -21,9 +21,9 @@ const steps = [
     line: "Archilas keeps the durable lines. Living memory, not a chat log.",
     status: "Compacting 2/3…",
     pills: [
-      { text: "Preference: written checklist", on: true },
-      { text: "Decision: Friday after legal", on: true },
-      { text: "Open loop: unsigned window", on: false },
+      { text: "Preference: café Fridays + flat white", on: true },
+      { text: "Decision: deep work from 10", on: true },
+      { text: "Open loop: Friday coffee unscheduled", on: false },
     ],
   },
   {
@@ -32,9 +32,9 @@ const steps = [
     line: "At query time — a coherent answer from that memory, not a paste.",
     status: "Retrieved.",
     pills: [
+      { text: "Used: Preference", on: true },
       { text: "Used: Decision", on: true },
-      { text: "Used: Open loop", on: true },
-      { text: "Uncited: checklist preference", on: false },
+      { text: "Uncited: open loop", on: false },
     ],
   },
 ] as const;
@@ -70,7 +70,7 @@ export function HowItWorks() {
           </ol>
           <div className="how-stage">
             <div className="how-bubble">
-              <p>What’s blocking launch?</p>
+              <p>When should we book Friday?</p>
             </div>
             <p className="how-status">{step.status}</p>
             <div className="how-pills">

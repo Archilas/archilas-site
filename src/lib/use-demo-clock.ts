@@ -4,16 +4,16 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { usePrefersReducedMotion } from "@/lib/use-prefers-reduced-motion";
 import type { DemoBeatId } from "@/components/landing/demo-data";
 
-export const DEMO_MS = 9000;
+export const DEMO_MS = 14000;
 
 export const BEAT_START: Record<DemoBeatId, number> = {
   notes: 0,
-  memory: 0.34,
-  answer: 0.67,
+  memory: 0.42,
+  answer: 0.7,
 };
 
 export const BEAT_VIEW: Record<DemoBeatId, number> = {
-  notes: 0.12,
+  notes: 0.16,
   memory: 0.58,
   answer: 1,
 };
@@ -40,6 +40,8 @@ export function useDemoClock() {
   const playingRef = useRef(false);
   const progressRef = useRef(0);
   const lastEmitRef = useRef(0);
+  const startedRef = useRef(false);
+  const touchedRef = useRef(false);
 
   const display = reduced && !touched ? 1 : progress;
 
@@ -48,9 +50,6 @@ export function useDemoClock() {
       playingRef.current = false;
       return;
     }
-
-    playingRef.current = true;
-    const start = window.requestAnimationFrame(() => setPlaying(true));
 
     let frame = 0;
     let last = performance.now();
@@ -75,7 +74,6 @@ export function useDemoClock() {
     frame = window.requestAnimationFrame(tick);
 
     return () => {
-      window.cancelAnimationFrame(start);
       window.cancelAnimationFrame(frame);
     };
   }, [reduced]);
@@ -90,6 +88,7 @@ export function useDemoClock() {
     progressRef.current = value;
     lastEmitRef.current = value;
     setProgress(value);
+    touchedRef.current = true;
     setTouched(true);
     playingRef.current = false;
     setPlaying(false);
@@ -102,7 +101,16 @@ export function useDemoClock() {
     [scrub],
   );
 
+  const startOnce = useCallback(() => {
+    if (reduced || startedRef.current || touchedRef.current) return;
+    startedRef.current = true;
+    playingRef.current = true;
+    setPlaying(true);
+  }, [reduced]);
+
   const replay = useCallback(() => {
+    touchedRef.current = true;
+    startedRef.current = true;
     setTouched(true);
     if (reduced) {
       progressRef.current = 1;
@@ -124,6 +132,7 @@ export function useDemoClock() {
     pause,
     jumpBeat,
     replay,
+    startOnce,
     beat: beatFromProgress(display),
     local: beatLocal(display),
   };

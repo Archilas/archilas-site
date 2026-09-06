@@ -10,33 +10,33 @@ export const sourceNotes = [
   {
     id: "chat",
     kind: "CHAT",
-    text: "Ship Friday only if legal signs. Otherwise we slip the window.",
-    noise: "also the zoom echo is back",
+    text: "I usually work from cafés on Fridays. Strong flat white. Deep work around 10.",
+    noise: "atlas wifi is spotty again",
   },
   {
     id: "doc",
-    kind: "DOC",
-    text: "Keep launch notes in the written checklist — not Slack dumps.",
-    noise: "paste of last month’s changelog",
+    kind: "CAL",
+    text: "Friday mornings stay open — no meetings before 11.",
+    noise: "standup notes from last week",
   },
   {
     id: "thread",
     kind: "THREAD",
-    text: "Legal still has not signed the Thursday window.",
+    text: "Want to grab coffee Friday, or book around your focus block?",
     noise: "lunch poll??",
   },
 ] as const;
 
 export const memoryRows = [
-  { id: "pref", kind: "Preference", text: "Keep launch notes in the written checklist." },
-  { id: "dec", kind: "Decision", text: "Friday ship only after legal signs." },
-  { id: "loop", kind: "Open loop", text: "Legal has not signed the launch window." },
+  { id: "pref", kind: "Preference", text: "Café Fridays. Strong flat white." },
+  { id: "dec", kind: "Decision", text: "Deep work from 10 — no meetings before 11." },
+  { id: "loop", kind: "Open loop", text: "Friday coffee still unscheduled." },
 ] as const;
 
 export const demoQuestion = {
-  q: "What's blocking launch?",
-  a: "Legal hasn’t signed the launch window. Friday ship waits on that.",
-  citeIds: ["dec", "loop"] as readonly string[],
+  q: "When should we book Friday?",
+  a: "After 11. You deep-work from 10 in a café — keep the morning clear.",
+  citeIds: ["pref", "dec"] as readonly string[],
 };
 
 export const demoHosts = [

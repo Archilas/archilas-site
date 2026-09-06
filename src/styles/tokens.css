@@ -39,7 +39,7 @@
   --leading-body: 1.5;
 
   --arch-radius-card: 16px;
-  --arch-radius-control: 2px;
+  --arch-radius-control: 999px;
   --arch-radius-hero: 20px;
 
   --max-width: 1120px;
