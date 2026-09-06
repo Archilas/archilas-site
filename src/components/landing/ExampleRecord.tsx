@@ -3,14 +3,22 @@ import { demoHosts, exampleRows, type HowStepId } from "@/components/landing/dem
 export function ExampleRecord({
   step,
   reduced,
+  bare = false,
 }: {
   step: HowStepId;
   reduced: boolean;
+  bare?: boolean;
 }) {
   return (
-    <figure className="h-fit rounded-[var(--arch-radius-card)] border border-border-dark bg-card-dark p-5">
-      <figcaption className="label text-text-dark/70">Example record</figcaption>
-      <dl className="mt-4 space-y-4">
+    <figure
+      className={
+        bare
+          ? "h-fit"
+          : "h-fit rounded-[var(--arch-radius-card)] border border-border-dark bg-card-dark p-5"
+      }
+    >
+      {bare ? null : <figcaption className="label text-text-dark/70">Example record</figcaption>}
+      <dl className={bare ? "space-y-4" : "mt-4 space-y-4"}>
         {exampleRows.map((row, index) => {
           const linked = step === "reason" && index < 2;
           const quiet = step === "reason" && index === 2;

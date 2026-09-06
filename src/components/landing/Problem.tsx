@@ -6,6 +6,7 @@ export function Problem() {
   return (
     <Section>
       <Reveal>
+        <p className="label mb-8 text-center">How we are different</p>
         <ContrastDemo />
       </Reveal>
     </Section>

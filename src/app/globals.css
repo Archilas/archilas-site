@@ -138,10 +138,10 @@ body {
 }
 
 .site-header {
-  border-bottom: 1px solid var(--glass-border);
-  background: color-mix(in srgb, #fffdf8 72%, transparent);
-  backdrop-filter: blur(18px) saturate(1.15);
-  -webkit-backdrop-filter: blur(18px) saturate(1.15);
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
+  background: color-mix(in srgb, #fffdf8 88%, transparent);
+  backdrop-filter: blur(16px) saturate(1.1);
+  -webkit-backdrop-filter: blur(16px) saturate(1.1);
 }
 
 .glass-chip {
@@ -152,28 +152,48 @@ body {
   border-radius: var(--arch-radius-control);
 }
 
-.how-band,
-.how-band.theme-dark {
-  position: relative;
-  isolation: isolate;
+.product-window {
+  width: min(100%, 880px);
+  margin-inline: auto;
   overflow: hidden;
-  background: #100e0c;
+  border: 1px solid color-mix(in srgb, #ffffff 14%, #2a2218);
+  border-radius: 14px;
+  background: #141210;
+  box-shadow:
+    0 28px 80px rgba(40, 22, 8, 0.22),
+    0 1px 0 rgba(255, 255, 255, 0.06) inset;
 }
 
-.how-band::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(60% 80% at 88% -8%, rgba(224, 138, 60, 0.24), transparent 58%),
-    radial-gradient(48% 56% at 4% 108%, rgba(80, 150, 158, 0.16), transparent 52%);
+.product-chrome {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 42px;
+  padding: 0 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  background: #1a1816;
 }
 
-.how-band > * {
-  position: relative;
-  z-index: 1;
+.chrome-marks {
+  display: flex;
+  gap: 6px;
+}
+
+.chrome-marks i {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(212, 212, 216, 0.28);
+}
+
+.product-window .theme-dark {
+  background: transparent;
+}
+
+.product-window .theme-dark .h2,
+.product-window .theme-dark .h3 {
+  color: var(--text-dark);
 }
 
 em,
@@ -192,9 +212,9 @@ cite {
   font-family: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
   font-size: var(--text-display);
   font-style: normal;
-  font-weight: 650;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
+  font-weight: 550;
+  letter-spacing: -0.04em;
+  line-height: 1.08;
 }
 
 .h2 {
@@ -283,8 +303,13 @@ section[id] {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .reveal-in {
+  .reveal-in,
+  .hero-preview-in {
     animation: reveal-up 680ms cubic-bezier(0.22, 0.7, 0.2, 1) both;
+  }
+
+  .hero-preview-in {
+    animation-delay: 80ms;
   }
 }
 
@@ -479,7 +504,8 @@ section[id] {
   .demo-prompt,
   .orb-amber,
   .orb-sky,
-  .orb-dusk {
+  .orb-dusk,
+  .hero-preview-in {
     animation: none !important;
     transition: none !important;
   }

@@ -28,19 +28,20 @@ Accent stays under 2% of the viewport. No `#0D9488` fills, buttons, or section b
 
 Geist + Geist Mono. Upright only. No italics in UI.
 
-- Display: 40–64 / 600–700
-- H2: 28–40 / 600
+- Display: 48–72 / 550 / tight tracking
+- H2: 32–48 / 600
 - H3: 20–24 / 600
-- Body: 16–18 / 400 / 1.6 / body color
+- Body: 16–18 / 400 / 1.45–1.6 / body color
 - Label: 12–13 / uppercase / muted
 - Mono: 13–14, example record only
 
 ## Shape and space
 
-- Cards 12, controls 8
-- Max width 1160, horizontal pad 24
-- Vertical pad 80 desktop / 56 mobile
-- Nav 64, controls 46
+- Cards 12, controls 8, product window 14
+- Max width 1120, horizontal pad 24
+- Vertical pad 104 desktop / 64 mobile
+- Nav 72, controls 46
+- Hero: type, then a large product window. Motion lives inside the frame.
 - Section height is content + padding. Cards hug content.
 
 ## Copy
