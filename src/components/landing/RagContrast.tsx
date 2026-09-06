@@ -1,16 +1,14 @@
 "use client";
 
+import { useState } from "react";
 import { DemoTabs } from "@/components/landing/DemoTabs";
 import { ProductWindow } from "@/components/landing/ProductWindow";
-import { exampleRows, HOW_STEP_MS, ragPassages } from "@/components/landing/demo-data";
-import { useDrivenDemo } from "@/lib/use-driven-demo";
-import { useState } from "react";
+import { exampleRows, ragPassages } from "@/components/landing/demo-data";
 
 export function RagContrast() {
-  const { index, select, driven, playing, reduced, bind } = useDrivenDemo(2, HOW_STEP_MS);
+  const [index, setIndex] = useState(0);
   const [picked, setPicked] = useState<number[]>([]);
   const [focusRow, setFocusRow] = useState<number | null>(null);
-  const finding = index === 0 && picked.length === 0;
 
   function togglePassage(passageIndex: number) {
     setPicked((current) =>
@@ -18,7 +16,7 @@ export function RagContrast() {
         ? current.filter((item) => item !== passageIndex)
         : [...current, passageIndex],
     );
-    select(1);
+    setIndex(1);
   }
 
   const selectedPassages = (picked.length ? picked : index === 1 ? [0, 1] : []).map(
@@ -26,30 +24,29 @@ export function RagContrast() {
   );
 
   return (
-    <div data-paused={!playing} {...bind}>
+    <div>
       <div className="grid gap-4 md:grid-cols-2">
         <ProductWindow title="RAG · find a passage" mini>
           <div className="demo-frame">
             <p className="label mb-3 text-text-dark/55">Passages</p>
-            <div className="relative space-y-2">
+            <div className="space-y-2">
               {ragPassages.map((label, passageIndex) => {
-                const isPicked = picked.includes(passageIndex) || (index === 1 && picked.length === 0 && passageIndex < 2);
+                const isPicked =
+                  picked.includes(passageIndex) ||
+                  (index === 1 && picked.length === 0 && passageIndex < 2);
                 return (
                   <button
                     key={label}
                     type="button"
                     onClick={() => togglePassage(passageIndex)}
-                    className={`demo-snippet ${finding && !reduced && !driven ? "is-scanning" : ""} ${
-                      isPicked ? "is-picked" : ""
-                    }`}
+                    className={`demo-snippet ${isPicked ? "is-picked" : ""}`}
                   >
                     {label}
                   </button>
                 );
               })}
-              {finding && !reduced ? <span className="demo-scan" /> : null}
             </div>
-            <div className={`demo-prompt mt-4 ${selectedPassages.length ? "is-filled is-hope" : ""}`}>
+            <div className={`demo-prompt mt-4 ${selectedPassages.length ? "is-filled" : ""}`}>
               <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.06em] text-text-dark/45">
                 prompt
               </p>
@@ -66,7 +63,7 @@ export function RagContrast() {
 
         <ProductWindow title="Archilas · living record" mini>
           <div className="demo-frame">
-            <p className="label mb-3 text-text-dark/55">The picture</p>
+            <p className="label mb-3 text-text-dark/55">The record</p>
             <ul className="space-y-3">
               {exampleRows.map((row, rowIndex) => (
                 <li key={row.kind}>
@@ -90,19 +87,14 @@ export function RagContrast() {
       </div>
 
       <DemoTabs
-        items={["Find passages", "Paste snippets"]}
+        items={["Find passages", "Keep a record"]}
         active={index}
-        onSelect={select}
-        label="RAG steps"
-        playing={playing}
+        onSelect={setIndex}
+        label="RAG versus record"
       />
-      {reduced ? null : (
-        <p className="mt-3 text-center font-mono text-[12px] text-muted">
-          {driven
-            ? "Your control — click a passage or a record row"
-            : "Click a passage to pick it · hover pauses"}
-        </p>
-      )}
+      <p className="mt-3 text-center font-mono text-[12px] text-muted">
+        Click a passage or a record row
+      </p>
     </div>
   );
 }

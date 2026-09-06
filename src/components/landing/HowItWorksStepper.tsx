@@ -51,7 +51,7 @@ export function HowItWorksStepper({
               }
             }}
             className={`relative px-3 py-3 text-[15px] font-medium not-italic transition-colors ${
-              selected ? "text-accent-dark" : "text-text-dark/65 hover:text-text-dark"
+              selected ? "text-accent" : "text-text-dark/65 hover:text-text-dark"
             }`}
           >
             <span className="mr-2 font-mono text-[12px]">{String(index + 1).padStart(2, "0")}</span>
@@ -59,7 +59,7 @@ export function HowItWorksStepper({
             {selected ? (
               <span
                 aria-hidden
-                className={`absolute inset-x-3 -bottom-px h-0.5 bg-accent-dark ${
+                className={`absolute inset-x-3 -bottom-px h-0.5 bg-accent ${
                   playing ? "demo-progress" : ""
                 }`}
               />

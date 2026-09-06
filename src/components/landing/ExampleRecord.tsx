@@ -5,11 +5,13 @@ export function ExampleRecord({
   step,
   reduced,
   bare = false,
+  typeIn = false,
   onRowSelect,
 }: {
   step: HowStepId;
   reduced: boolean;
   bare?: boolean;
+  typeIn?: boolean;
   onRowSelect?: (index: number) => void;
 }) {
   return (
@@ -30,7 +32,7 @@ export function ExampleRecord({
               key={row.kind}
               className={`record-row grid w-full gap-1 text-left sm:grid-cols-[7.5rem_1fr] sm:gap-4 ${
                 linked ? "is-linked" : ""
-              } ${quiet ? "is-quiet" : ""}`}
+              } ${quiet ? "is-quiet" : ""} ${typeIn ? "record-type-in" : ""}`}
               {...(onRowSelect
                 ? {
                     role: "button",
