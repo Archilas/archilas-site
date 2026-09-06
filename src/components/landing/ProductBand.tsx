@@ -17,7 +17,7 @@ const keeps = [
 
 export function ProductBand() {
   return (
-    <section id="product" className="scroll-mt-[var(--scroll-margin)] bg-[#f2f6fa] px-[var(--pad-x)] py-16 md:py-20">
+    <section id="product" className="scroll-mt-[var(--scroll-margin)] bg-bg px-[var(--pad-x)] py-16 md:py-20">
       <div className="mx-auto max-w-[var(--max-width)]">
         <p className="label">What Archilas keeps</p>
         <h2 className="h2 mt-3 max-w-2xl">A living memory of preferences, decisions, and open loops.</h2>

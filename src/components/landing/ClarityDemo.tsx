@@ -15,9 +15,6 @@ export function ClarityDemo() {
         ? memoryRows.length
         : Math.min(memoryRows.length, Math.max(1, Math.ceil(local * memoryRows.length)));
 
-  const showAnswer = beat === "answer";
-  const cited = showAnswer;
-
   return (
     <div id="how" className="demo-card scroll-mt-[var(--scroll-margin)]" data-beat={beat} data-playing={playing ? "1" : "0"}>
       <div className="demo-head">
@@ -44,19 +41,19 @@ export function ClarityDemo() {
       </div>
 
       <div className="demo-body">
-        {beat === "notes" ? <NotesView dim={false} /> : null}
+        {beat === "notes" ? <NotesBoard /> : null}
 
         {beat === "memory" ? (
-          <div className="grid gap-6 lg:grid-cols-2">
-            <NotesView dim />
-            <MemoryView count={memoryCount} citeIds={[]} />
+          <div className="demo-stage">
+            <NotesBoard compact />
+            <MemoryBoard count={memoryCount} citeIds={[]} />
           </div>
         ) : null}
 
         {beat === "answer" ? (
-          <div className="grid gap-6 lg:grid-cols-[0.92fr_1.08fr]">
-            <MemoryView count={memoryRows.length} citeIds={cited ? demoQuestion.citeIds : []} />
-            <AnswerView ready={showAnswer} />
+          <div className="demo-stage demo-stage-answer">
+            <MemoryBoard count={memoryRows.length} citeIds={demoQuestion.citeIds} />
+            <AnswerBoard />
           </div>
         ) : null}
 
@@ -72,60 +69,85 @@ export function ClarityDemo() {
   );
 }
 
-function NotesView({ dim }: { dim: boolean }) {
+function NotesBoard({ compact = false }: { compact?: boolean }) {
   return (
-    <div className={cn("space-y-3", dim && "opacity-40")}>
-      {sourceNotes.map((note) => (
-        <article key={note.id} className="source-card">
-          <p className="spine-label">{note.kind}</p>
-          <p className="mt-2 text-[17px] leading-7 text-ink">{note.text}</p>
-          <p className="mt-2 text-[15px] leading-6 text-muted">{note.noise}</p>
-        </article>
-      ))}
-    </div>
-  );
-}
-
-function MemoryView({ count, citeIds }: { count: number; citeIds: readonly string[] }) {
-  return (
-    <div>
-      <p className="spine-label">Compact</p>
-      <div className="mt-3 space-y-4">
-        {memoryRows.slice(0, Math.max(0, count)).map((row) => (
-          <div key={row.id} className={cn("memory-row", citeIds.includes(row.id) && "is-cited")}>
-            <p className="text-[12px] font-medium uppercase tracking-[0.12em] text-muted">{row.kind}</p>
-            <p className="mt-1 text-[17px] leading-7 text-ink">{row.text}</p>
-          </div>
+    <div className={cn("note-grid", compact && "is-compact")}>
+      <p className="spine-label">Sources</p>
+      <div className="note-row">
+        {sourceNotes.map((note) => (
+          <article key={note.id} className={cn("note-card", `is-${note.id}`)} data-testid={`note-card-${note.id}`}>
+            <div className="note-card-bar">
+              <span className="note-chip">{note.kind}</span>
+              <span className="note-chip is-mute">{note.id === "chat" ? "standup" : note.id === "doc" ? "checklist" : "launch"}</span>
+            </div>
+            {note.id === "chat" ? (
+              <div className="note-bubble">
+                <p>{note.text}</p>
+              </div>
+            ) : note.id === "doc" ? (
+              <div className="note-doc">
+                <span className="note-doc-rule" />
+                <p>{note.text}</p>
+                <span className="note-doc-rule" />
+              </div>
+            ) : (
+              <div className="note-thread">
+                <span className="note-thread-dot" />
+                <p>{note.text}</p>
+              </div>
+            )}
+            <p className="note-noise">{note.noise}</p>
+          </article>
         ))}
       </div>
     </div>
   );
 }
 
-function AnswerView({ ready }: { ready: boolean }) {
+function MemoryBoard({ count, citeIds }: { count: number; citeIds: readonly string[] }) {
+  return (
+    <div>
+      <p className="spine-label">Compact</p>
+      <div className="mem-row">
+        {memoryRows.slice(0, Math.max(0, count)).map((row) => (
+          <article
+            key={row.id}
+            className={cn("mem-tile", citeIds.includes(row.id) && "is-cited")}
+            data-testid={`mem-tile-${row.id}`}
+          >
+            <span className="note-chip">{row.kind}</span>
+            <p className="mem-line">{row.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function AnswerBoard() {
   const used = memoryRows.filter((row) => demoQuestion.citeIds.includes(row.id));
 
   return (
     <div>
       <p className="spine-label">Reason · Deliver</p>
-      <p className="mt-3 text-[18px] font-medium leading-7 text-ink">{demoQuestion.q}</p>
-      {ready ? (
-        <>
-          <p className="mt-3 text-[17px] leading-7 text-body">{demoQuestion.a}</p>
-          <p className="mt-5 text-[13px] font-medium uppercase tracking-[0.1em] text-muted">Used from memory</p>
-          <ul className="mt-2 space-y-2">
+      <div className="qa-stack">
+        <div className="ask-panel">
+          <span className="note-chip">Ask</span>
+          <p className="ask-q">{demoQuestion.q}</p>
+        </div>
+        <div className="reply-panel">
+          <span className="note-chip">Answer</span>
+          <p className="reply-a">{demoQuestion.a}</p>
+          <div className="used-row">
             {used.map((row) => (
-              <li key={row.id} className="text-[16px] leading-7 text-ink">
-                <span className="text-muted">{row.kind}: </span>
-                {row.text}
-              </li>
+              <span key={row.id} className="used-chip">
+                {row.kind}
+              </span>
             ))}
-          </ul>
-          <p className="mt-4 text-[15px] leading-6 text-muted">
-            The checklist preference is in memory. It is not the blocker, so it stays uncited.
-          </p>
-        </>
-      ) : null}
+          </div>
+          <p className="note-noise">Checklist preference stays in memory. Uncited — not the blocker.</p>
+        </div>
+      </div>
     </div>
   );
 }

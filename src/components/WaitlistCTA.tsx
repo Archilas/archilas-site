@@ -9,11 +9,9 @@ import { cn } from "@/lib/cn";
 export function WaitlistCTA({
   source,
   align = "center",
-  tone = "paper",
 }: {
   source: WaitlistSource;
   align?: "center" | "end" | "start";
-  tone?: "paper" | "sky";
 }) {
   const waitlist = useWaitlist();
 
@@ -34,10 +32,7 @@ export function WaitlistCTA({
       >
         Join waitlist →
       </ButtonPrimary>
-      <a
-        href={`mailto:${site.email}`}
-        className={cn("btn-outline", tone === "sky" && "is-sky")}
-      >
+      <a href={`mailto:${site.email}`} className="btn-outline">
         Contact
       </a>
     </div>

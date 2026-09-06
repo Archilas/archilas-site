@@ -1,17 +1,10 @@
-# Craft clouds — seven fails
+# No cartoon clouds
 
-Moodboard target: CustomGPT sky + white type + dual CTAs + demo card sitting on the fade.
+Hermes rejected the literal cumulus SVG as kids-app weather. The CustomGPT reference is **soft airy light**, not cloud icons.
 
-Audit rejects (clarity-cloud live):
-
-1. Sky was a pale wash. Now `#3F73B8 → #7BA8DC → #C8DDF2 → #F2F6FA` with five SVG cumulus groups.
-2. H1 was one-weight ink. Now two white lines: 600 / 300.
-3. Contact was a text link. Now an outline button next to solid ink Join waitlist →.
-4. Tabs floated in the sky. Now they sit in the card header with Play.
-5. Beat 3 was a sparse Q+A. Now it shows used memory rows and what was left uncited.
-6. Mid page was Ask/Compare scraps. Now a coherent keep + surfaces band.
-7. Demo was a 560px empty stadium. Height follows content. COMPACT / REASON·DELIVER are tiny spine labels only.
-
-Waitlist stays non-persisting: `POST /api/waitlist` returns `{ ok: true }` and logs `WAITLIST_SIGNUP`. No DB.
-
-QA shots vs the CustomGPT moodboard live in `craft/qa/`.
+1. Deleted `public/hero-sky.svg` and every ellipse/turbulence cloud.
+2. Hero is `#EAF3FB → #F7F7F5` plus two huge, faint light blooms. Ink type. Ink topbar.
+3. Dual CTAs unchanged: Join waitlist → (modal) + outline Contact.
+4. Demo rebuilt as visual cards: chat bubble / doc / thread → memory tiles → ask + answer panels.
+5. Tabs + Play stay inside the card header. Height follows content.
+6. Waitlist still does not persist.
