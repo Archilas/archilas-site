@@ -11,9 +11,9 @@ export function ContrastDemo() {
   return (
     <div>
       <div className="grid gap-4 md:grid-cols-2">
-        <ProductWindow title="Retrieval" mini>
+        <ProductWindow title="retrieval" tone="paper">
           <div className="demo-frame">
-            <p className="label mb-3 text-text-dark/55">Passages</p>
+            <p className="label mb-3">Passages</p>
             <ul className="space-y-2">
               {retrievalPassages.map((passage) => {
                 const open = openId === passage.id;
@@ -26,16 +26,16 @@ export function ContrastDemo() {
                       className={`demo-passage ${open ? "is-open" : ""}`}
                     >
                       <span className="flex items-baseline justify-between gap-3">
-                        <span className="font-mono text-[12px] text-text-dark">{passage.title}</span>
-                        <span className="font-mono text-[10px] uppercase tracking-[0.06em] text-text-dark/50">
+                        <span className="font-mono text-[12px] text-ink">{passage.title}</span>
+                        <span className="font-mono text-[10px] uppercase tracking-[0.08em] text-muted">
                           {open ? "Close" : "Expand"}
                         </span>
                       </span>
-                      <span className="mt-1 block font-mono text-[11px] text-text-dark/55">
+                      <span className="mt-1 block font-mono text-[11px] text-muted">
                         {passage.excerpt}
                       </span>
                       {open ? (
-                        <span className="mt-2 block font-mono text-[12px] leading-[1.5] text-text-dark/90">
+                        <span className="mt-2 block font-mono text-[12px] leading-[1.5] text-body">
                           {passage.body}
                         </span>
                       ) : null}
@@ -47,23 +47,23 @@ export function ContrastDemo() {
           </div>
         </ProductWindow>
 
-        <ProductWindow title="Record" mini>
+        <ProductWindow title="record" tone="paper">
           <div className="demo-frame">
-            <p className="label mb-3 text-text-dark/55">The record</p>
+            <p className="label mb-3">The record</p>
             <ul className="space-y-3">
               {compareRows.map((row, rowIndex) => (
                 <li key={row.kind}>
                   <button
                     type="button"
                     onClick={() => setFocusRow(rowIndex)}
-                    className={`record-row grid w-full gap-1 text-left ${
+                    className={`record-row grid w-full gap-1 text-left text-ink ${
                       focusRow === rowIndex ? "is-linked is-focus" : ""
                     }`}
                   >
-                    <p className="font-mono text-[11px] uppercase tracking-[0.06em] text-text-dark/60">
+                    <p className="font-mono text-[11px] uppercase tracking-[0.06em] text-muted">
                       {row.kind}
                     </p>
-                    <p className="font-mono text-[12px] leading-[1.45] text-text-dark">{row.text}</p>
+                    <p className="font-mono text-[12px] leading-[1.45] text-ink">{row.text}</p>
                   </button>
                 </li>
               ))}
@@ -71,7 +71,7 @@ export function ContrastDemo() {
           </div>
         </ProductWindow>
       </div>
-      <p className="mt-4 text-center font-mono text-[12px] text-muted">
+      <p className="mt-4 text-left font-mono text-[12px] text-muted">
         Try it — expand a passage or open a record row.
       </p>
     </div>

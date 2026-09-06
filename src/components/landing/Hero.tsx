@@ -1,22 +1,19 @@
+import { ChapterRule } from "@/components/ChapterRule";
 import { HowItWorksStage } from "@/components/landing/HowItWorksStage";
 import { ProductWindow } from "@/components/landing/ProductWindow";
 import { WaitlistForm } from "@/components/WaitlistForm";
 
 export function Hero() {
   return (
-    <section className="relative">
-      <div className="mx-auto grid w-full max-w-[var(--max-width)] items-center gap-3 px-[var(--pad-x)] pb-8 pt-8 md:grid-cols-2 md:gap-12 md:pb-16 md:pt-14">
-        <div className="max-w-xl text-left">
-          <p className="label inline-flex rounded-[var(--arch-radius-control)] border border-border bg-elevated px-3 py-1">
-            Pre-launch
-          </p>
-          <h1 className="display mt-5 max-w-[16ch] md:max-w-[18ch]">
-            RAG finds passages. Archilas keeps a record.
-          </h1>
-          <p className="mt-5 max-w-xl text-[18px] leading-[1.4] text-body">
+    <section className="hero-chapter">
+      <div className="mx-auto grid w-full max-w-[var(--max-width)] grid-cols-12 items-start gap-x-10 gap-y-6 px-[var(--pad-x)] pb-7 pt-6 lg:pb-8 lg:pt-7">
+        <div className="col-span-12 text-left lg:col-span-6">
+          <ChapterRule index="01" title="Record" />
+          <h1 className="display mt-5 max-w-[14ch]">Passages aren&apos;t memory. A record is.</h1>
+          <p className="mt-4 max-w-md text-[17px] leading-[1.4] text-body">
             Preferences, decisions, open loops — Compact. Reason. Deliver.
           </p>
-          <div className="mt-7">
+          <div className="mt-6">
             <WaitlistForm id="hero-waitlist" source="hero" />
           </div>
           <p className="mt-3 max-w-md text-[13px] text-muted">
@@ -28,8 +25,8 @@ export function Hero() {
           </p>
         </div>
 
-        <div id="how" className="scroll-mt-[var(--scroll-margin)] min-w-0">
-          <ProductWindow title="Example record">
+        <div id="record" className="col-span-12 min-w-0 scroll-mt-[var(--scroll-margin)] lg:col-span-6">
+          <ProductWindow title="record">
             <HowItWorksStage />
           </ProductWindow>
         </div>

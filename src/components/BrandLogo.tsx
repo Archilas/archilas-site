@@ -16,7 +16,7 @@ export function BrandLogo({
   return (
     <Link
       href="/"
-      className={`brand inline-flex items-center gap-2.5 text-[15px] ${inverted ? "text-text-dark" : "text-near-black"} ${className}`}
+      className={`brand inline-flex items-center gap-2.5 text-[15px] ${inverted ? "text-text-dark" : "text-ink"} ${className}`}
     >
       <Image
         src="/archilas-logo.png"

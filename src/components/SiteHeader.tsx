@@ -28,12 +28,12 @@ export function SiteHeader() {
     <header className="site-header relative sticky top-0 z-40">
       <div className="mx-auto flex h-[var(--nav-height)] w-full max-w-[var(--max-width)] items-center justify-between px-[var(--pad-x)]">
         <BrandLogo />
-        <nav aria-label="Primary" className="hidden items-center gap-5 lg:flex">
+        <nav aria-label="Primary" className="hidden items-center gap-6 lg:flex">
           {nav.map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className="nav-link text-[14px]"
+              className="nav-link text-[13px]"
               onClick={() => scrollToHash(item.href)}
             >
               {item.label}
@@ -45,7 +45,7 @@ export function SiteHeader() {
         </nav>
         <button
           type="button"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-[var(--arch-radius-control)] border border-border-input bg-elevated text-ink lg:hidden"
+          className="inline-flex h-10 w-10 items-center justify-center border border-line bg-bg text-ink lg:hidden"
           aria-expanded={open}
           aria-controls={drawerId}
           onClick={() => setOpen((value) => !value)}
@@ -69,7 +69,7 @@ export function SiteHeader() {
               <a
                 key={item.href}
                 href={item.href}
-                className="nav-link rounded-[var(--arch-radius-control)] px-2 py-3 text-[16px]"
+                className="nav-link px-1 py-3 text-[16px]"
                 onClick={() => {
                   scrollToHash(item.href);
                   close();
@@ -90,11 +90,7 @@ export function SiteHeader() {
             >
               Join waitlist
             </ButtonPrimary>
-            <button
-              type="button"
-              className="self-start text-[14px] font-medium not-italic text-ink"
-              onClick={close}
-            >
+            <button type="button" className="self-start text-[14px] font-medium not-italic text-ink" onClick={close}>
               Close
             </button>
           </div>

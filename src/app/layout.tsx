@@ -59,7 +59,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={`${geist.variable} ${geistMono.variable} h-full`}>
-      <body className="flex min-h-full flex-col bg-paper font-sans text-body antialiased">
+      <body className="flex min-h-full flex-col bg-bg font-sans text-body antialiased">
         <SiteHeader />
         <main id="main" className="flex-1">
           {children}

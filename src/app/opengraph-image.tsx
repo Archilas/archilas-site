@@ -17,35 +17,30 @@ export default function OpenGraphImage() {
           flexDirection: "column",
           justifyContent: "center",
           padding: "80px 88px",
-          background: tokens.bgDark,
-          color: tokens.textDark,
+          background: tokens.bg,
+          color: tokens.ink,
         }}
       >
         <div
           style={{
             display: "flex",
-            fontSize: 72,
-            fontWeight: 650,
-            letterSpacing: "-0.04em",
-            color: tokens.elevated,
+            fontSize: 18,
+            letterSpacing: "0.14em",
+            textTransform: "uppercase",
+            color: tokens.muted,
           }}
         >
-          {site.name}
+          01 ——— RECORD
         </div>
         <div
           style={{
-            marginTop: 20,
-            width: 160,
-            height: 2,
-            background: tokens.accentDark,
-          }}
-        />
-        <div
-          style={{
+            display: "flex",
             marginTop: 28,
-            fontSize: 28,
-            lineHeight: 1.3,
-            color: tokens.textDark,
+            fontSize: 56,
+            fontWeight: 550,
+            letterSpacing: "-0.04em",
+            lineHeight: 1.05,
+            color: tokens.ink,
           }}
         >
           {site.headline}

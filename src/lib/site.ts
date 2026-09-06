@@ -6,7 +6,7 @@ export const site = {
   description:
     "Persistent memory layer for AI. A compact, grounded, revisable record of preferences, decisions, and open loops — delivered into the tools you already use.",
   tagline: "Persistent memory layer for AI.",
-  headline: "RAG finds passages. Archilas keeps a record.",
+  headline: "Passages aren't memory. A record is.",
   email: "hello@archilas.com",
   twitter: "@archilas",
   twitterUrl: "https://x.com/archilas",
@@ -16,20 +16,16 @@ export const site = {
 
 export const showResources = posts.length >= 2;
 
-const primaryNav = [
-  { href: "/#how", label: "How it works" },
-  { href: "/#product", label: "Product" },
+export const nav = [
+  { href: "/#record", label: "Record" },
+  { href: "/#comparison", label: "Comparison" },
   { href: "/#waitlist", label: "Waitlist" },
 ] as const;
 
-export const nav = showResources
-  ? ([...primaryNav, { href: "/resources", label: "Resources" }] as const)
-  : primaryNav;
-
 export const footerNav = {
   product: [
-    { href: "/#how", label: "How it works" },
-    { href: "/#product", label: "Product" },
+    { href: "/#record", label: "Record" },
+    { href: "/#comparison", label: "Comparison" },
     { href: "/#waitlist", label: "Waitlist" },
   ],
   resources: showResources
