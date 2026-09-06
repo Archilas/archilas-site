@@ -24,7 +24,7 @@ export function SiteHeader() {
   }, []);
 
   return (
-    <header className="relative sticky top-0 z-40 border-b border-border bg-elevated">
+    <header className="site-header relative sticky top-0 z-40">
       <div className="mx-auto flex h-[var(--nav-height)] w-full max-w-[var(--max-width)] items-center justify-between px-[var(--pad-x)]">
         <BrandLogo />
         <nav aria-label="Primary" className="hidden items-center gap-5 lg:flex">
@@ -56,7 +56,7 @@ export function SiteHeader() {
           aria-modal="true"
           aria-label="Primary"
           data-testid="mobile-drawer"
-          className="absolute left-0 right-0 top-full z-50 border-b border-border bg-elevated px-[var(--pad-x)] py-5 shadow-lg lg:hidden"
+          className="site-header absolute left-0 right-0 top-full z-50 border-b border-border px-[var(--pad-x)] py-5 lg:hidden"
         >
           <nav className="flex flex-col gap-1">
             {nav.map((item) => (

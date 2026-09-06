@@ -1,6 +1,6 @@
 # Archilas Site — Design System
 
-Light-primary marketing shell. Hex values live in `src/styles/tokens.css` (JS mirror: `src/styles/tokens.ts`).
+Light-primary marketing shell on a warm atmospheric ground. Hex values live in `src/styles/tokens.css` (JS mirror: `src/styles/tokens.ts`).
 
 ## Color
 
@@ -11,8 +11,9 @@ Light-primary marketing shell. Hex values live in `src/styles/tokens.css` (JS mi
 | `--body` | `#3F3F46` | Body copy |
 | `--muted` | `#52525B` | Labels |
 | `--border` | `#E4E4E7` | Rules |
-| `--surface` | `#FAFAFA` | Bands |
-| `--elevated` | `#FFFFFF` | Nav, cards, page |
+| `--surface` / `--paper` | `#F3EEE6` | Warm page ground |
+| `--elevated` | `#FFFFFF` | Solid controls |
+| `--glass` | white 78% | Frosted cards / header |
 | `--border-input` | `#D4D4D8` | Inputs / secondary buttons |
 | `--bg-dark` | `#09090B` | Footer / OG / one content section |
 | `--card-dark` | `#18181B` | Dark cards |
@@ -21,7 +22,7 @@ Light-primary marketing shell. Hex values live in `src/styles/tokens.css` (JS mi
 | `--accent` | `#0D9488` | Focus rings and the active stepper only |
 | `--accent-dark` | `#2DD4BF` | Accent on dark |
 
-Accent stays under 2% of the viewport. No teal fills, buttons, gradients, or section backgrounds. Every primary CTA is solid near-black with white text.
+Accent stays under 2% of the viewport. No `#0D9488` fills, buttons, or section backgrounds. Soft amber / dusk / sky orbs are atmosphere only — not brand fills, not lavender. Every primary CTA is solid near-black with white text. Body copy stays ≥4.5:1 on paper and glass.
 
 ## Type
 

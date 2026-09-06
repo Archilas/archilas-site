@@ -6,7 +6,7 @@ const hosts = ["Claude", "ChatGPT", "Cursor", "agents"] as const;
 
 export function Delivery() {
   return (
-    <Section id="product" className="bg-surface">
+    <Section id="product">
       <Reveal>
         <div className="mx-auto max-w-2xl text-center">
           <p className="label">Product</p>
