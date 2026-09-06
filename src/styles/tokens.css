@@ -5,12 +5,13 @@
   --ink: #171717;
   --body: #3f3f46;
   --muted: #52525b;
-  --border: #e8e8e6;
-  --surface: #f7f7f5;
-  --elevated: #ffffff;
+  --border: #e4e0d6;
+  --surface: #efeae0;
+  --elevated: #fffdf8;
   --border-input: #d4d4d8;
-  --paper: #fafaf9;
-  --tint: #f5f5f4;
+  --paper: #f4f0e8;
+  --tint: #dcecea;
+  --warm: #efe6d6;
 
   --bg-dark: #0a0a0a;
   --card-dark: #161616;
@@ -51,6 +52,7 @@
   --color-elevated: var(--elevated);
   --color-border-input: var(--border-input);
   --color-tint: var(--tint);
+  --color-warm: var(--warm);
   --color-bg-dark: var(--bg-dark);
   --color-card-dark: var(--card-dark);
   --color-border-dark: var(--border-dark);

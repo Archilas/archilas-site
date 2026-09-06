@@ -9,7 +9,7 @@ const holds = [
 
 export function MemoryHolds() {
   return (
-    <Section>
+    <Section className="section-warm">
       <div className="mx-auto max-w-2xl text-center">
         <p className="label">What memory holds</p>
         <h2 className="h2 mt-3">A compact record. Not a chat log.</h2>

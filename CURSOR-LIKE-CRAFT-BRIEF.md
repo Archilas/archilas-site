@@ -5,8 +5,7 @@ Waitlist stays non-persisting. No Distill / Vault. MCP is intended, not live.
 ## Surface
 
 - No orbs, radial washes, blobs, frost, or glow halos.
-- Page ground: `#FAFAF9`. Hairlines: `#E8E8E6`.
-- Color from crisp solid section bands + teal interactive accent + solid `#0A0A0A` product windows.
+- Color from crisp solid section bands (teal `#DCECEA`, warm `#EFE6D6`) + teal interactive accent + solid `#0A0A0A` product windows. Not flat white. Not muddy orbs.
 - Hero product module: solid `#0A0A0A`. No box-shadow halo.
 
 ## Copy (locked)

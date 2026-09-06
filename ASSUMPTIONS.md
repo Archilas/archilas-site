@@ -14,7 +14,7 @@ Form UX is wired: hero + waitlist `POST /api/waitlist`. Nav / mobile Join waitli
 - Locked sub: "Preferences, decisions, open loops — Compact. Reason. Deliver."
 - Spine is Compact → Reason → Deliver. Distill / Vault are out.
 - MCP is the intended delivery path and is not claimed as live.
-- Ground is `#FAFAF9` with hairline `#E8E8E6` and solid section bands. No atmospheric orbs or glow.
+- Ground is warm sand with crisp teal and warm section bands. Dark product windows. Teal `#0D9488` is the interactive accent. No atmospheric orbs.
 - Auto motion is only the Example-record tab cycle.
 
 ## Unchanged

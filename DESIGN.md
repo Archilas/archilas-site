@@ -6,10 +6,11 @@ Flat warm off-white shell. Solid dark product windows. Hex lives in `src/styles/
 
 | Token | Value | Role |
 |------|-------|------|
-| `--paper` | `#FAFAF9` | Page ground |
-| `--tint` | `#F5F5F4` | Crisp section bands |
-| `--elevated` | `#FFFFFF` | Header, cards, controls |
-| `--border` | `#E8E8E6` | Hairlines |
+| `--paper` | `#F4F0E8` | Page ground (warm, not flat white) |
+| `--tint` | `#DCECEA` | Teal section band |
+| `--warm` | `#EFE6D6` | Warm section band |
+| `--elevated` | `#FFFDF8` | Header, cards, controls |
+| `--border` | `#E4E0D6` | Hairlines |
 | `--near-black` | `#0A0A0A` | Display, headings, primary CTAs |
 | `--bg-dark` | `#0A0A0A` | Product windows, product band, footer |
 | `--accent` | `#0D9488` | Active stepper underline and focus only |

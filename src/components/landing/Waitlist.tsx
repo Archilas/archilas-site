@@ -4,8 +4,8 @@ import { WaitlistForm } from "@/components/WaitlistForm";
 
 export function Waitlist() {
   return (
-    <Section id="waitlist">
-      <Card className="mx-auto max-w-3xl border-accent/25 px-6 py-12 text-center md:px-14 md:py-14">
+    <Section id="waitlist" className="section-warm">
+      <Card className="mx-auto max-w-3xl border-accent/40 px-6 py-12 text-center md:px-14 md:py-14">
         <p className="label">Waitlist</p>
         <h2 className="h2 mt-3">Get early access.</h2>
         <p className="mx-auto mt-4 max-w-md text-body">Pre-launch. We email when access opens.</p>

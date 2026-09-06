@@ -91,6 +91,7 @@ export function RagContrast() {
         active={index}
         onSelect={setIndex}
         label="RAG versus record"
+        accent
       />
       <p className="mt-3 text-center font-mono text-[12px] text-muted">
         Click a passage or a record row
