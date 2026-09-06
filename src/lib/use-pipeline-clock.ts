@@ -33,40 +33,48 @@ export function usePipelineClock() {
   const [touched, setTouched] = useState(false);
   const playingRef = useRef(false);
   const progressRef = useRef(0);
+  const lastEmitRef = useRef(0);
 
   const display = reduced && !touched ? 1 : progress;
 
   useEffect(() => {
-    if (reduced) return;
-    let frame = 0;
-    const kick = () => {
-      playingRef.current = true;
-      setPlaying(true);
-    };
-    frame = window.requestAnimationFrame(kick);
-    return () => window.cancelAnimationFrame(frame);
-  }, [reduced]);
+    if (reduced) {
+      playingRef.current = false;
+      return;
+    }
 
-  useEffect(() => {
-    if (reduced || !playing) return;
+    playingRef.current = true;
+    const start = window.requestAnimationFrame(() => {
+      setPlaying(true);
+    });
+
     let frame = 0;
     let last = performance.now();
     const tick = (now: number) => {
-      if (!playingRef.current) return;
+      frame = window.requestAnimationFrame(tick);
+      if (!playingRef.current) {
+        last = now;
+        return;
+      }
       const next = Math.min(1, progressRef.current + (now - last) / PIPELINE_MS);
       last = now;
       progressRef.current = next;
-      setProgress(next);
+      if (next - lastEmitRef.current >= 0.01 || next >= 1 || next === 0) {
+        lastEmitRef.current = next;
+        setProgress(next);
+      }
       if (next >= 1) {
         playingRef.current = false;
         setPlaying(false);
-        return;
       }
-      frame = window.requestAnimationFrame(tick);
     };
     frame = window.requestAnimationFrame(tick);
-    return () => window.cancelAnimationFrame(frame);
-  }, [playing, reduced]);
+
+    return () => {
+      window.cancelAnimationFrame(start);
+      window.cancelAnimationFrame(frame);
+    };
+  }, [reduced]);
 
   const pause = useCallback(() => {
     playingRef.current = false;
@@ -77,6 +85,7 @@ export function usePipelineClock() {
     if (reduced) return;
     if (progressRef.current >= 1) {
       progressRef.current = 0;
+      lastEmitRef.current = 0;
       setProgress(0);
     }
     playingRef.current = true;
@@ -86,6 +95,7 @@ export function usePipelineClock() {
   const scrub = useCallback((next: number) => {
     const value = Math.min(1, Math.max(0, next));
     progressRef.current = value;
+    lastEmitRef.current = value;
     setProgress(value);
     setTouched(true);
     playingRef.current = false;
@@ -109,10 +119,12 @@ export function usePipelineClock() {
     setTouched(true);
     if (reduced) {
       progressRef.current = 1;
+      lastEmitRef.current = 1;
       setProgress(1);
       return;
     }
     progressRef.current = 0;
+    lastEmitRef.current = 0;
     setProgress(0);
     playingRef.current = true;
     setPlaying(true);

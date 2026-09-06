@@ -64,7 +64,14 @@ export function WaitlistForm({
   }
 
   return (
-    <form id={id} onSubmit={onSubmit} className="w-full max-w-md" aria-busy={status === "loading"}>
+    <form
+      id={id}
+      onSubmit={onSubmit}
+      className="w-full max-w-md"
+      aria-busy={status === "loading"}
+      method="post"
+      action="/api/waitlist"
+    >
       <label htmlFor={`${id}-email`} className="sr-only">
         Email
       </label>

@@ -53,7 +53,7 @@ export function Pipeline() {
 
   return (
     <section id="pipeline" className="scroll-mt-[var(--scroll-margin)]">
-      <div className="pipeline-frame">
+      <div className="pipeline-frame" data-stage={stage} data-playing={playing ? "1" : "0"}>
         <div className="mx-auto flex w-full max-w-[var(--max-width)] flex-col gap-4 px-[var(--pad-x)] py-7">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <p className="label text-text-dark/50">The pipeline</p>
@@ -64,6 +64,7 @@ export function Pipeline() {
                   type="button"
                   className={cn("pipeline-tab", stage === item.id && "is-on")}
                   aria-pressed={stage === item.id}
+                  data-testid={`pipeline-tab-${item.id}`}
                   onClick={() => selectStage(item.id)}
                 >
                   {item.label}
