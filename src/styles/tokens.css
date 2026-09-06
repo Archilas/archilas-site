@@ -1,48 +1,50 @@
 /* Archilas design tokens. Hex lives here; components use these names. */
 
 :root {
-  /* Light */
+  /* Warm light — not sterile white, not muddy. */
   --near-black: #0a0a0a;
   --ink: #171717;
   --body: #3f3f46;
-  --muted: #52525b;
-  --border: #e4e4e7;
-  --surface: #f7f7f4;
-  --elevated: #ffffff;
-  --border-input: #d4d4d8;
-  --paper: #f7f7f4;
+  --muted: #5c564c;
+  --border: #d4cbb8;
+  --surface: #e7e1d4;
+  --elevated: #fffbf4;
+  --border-input: #c9bfab;
+  --paper: #f0ebe1;
+  --tint: #e4eee9;
 
-  /* Dark */
-  --bg-dark: #09090b;
-  --card-dark: #18181b;
-  --border-dark: #27272a;
+  /* Dark product stage */
+  --bg-dark: #0a0a0a;
+  --card-dark: #161616;
+  --border-dark: #2a2a2a;
   --text-dark: #d4d4d8;
 
-  /* Accent: focus rings and the active stepper only. Never a fill. */
+  /* Accent: steppers, focus, one wash. Not a CTA fill. */
   --accent: #0d9488;
   --accent-dark: #2dd4bf;
+  --ember: #c26a3a;
 
   /* Type */
-  --text-display: clamp(3rem, 7vw, 4.5rem);
-  --text-h2: clamp(2rem, 4vw, 3rem);
-  --text-h3: clamp(1.25rem, 2vw, 1.5rem);
+  --text-display: clamp(2.75rem, 6.4vw, 4.25rem);
+  --text-h2: clamp(1.75rem, 3.4vw, 2.5rem);
+  --text-h3: clamp(1.2rem, 2vw, 1.45rem);
   --text-body: 1.0625rem;
   --text-label: 0.75rem;
   --text-mono: 0.8125rem;
-  --leading-body: 1.6;
+  --leading-body: 1.55;
 
   /* Shape */
   --arch-radius-card: 12px;
   --arch-radius-control: 8px;
 
-  /* Space */
+  /* Space — denser Cursor-like rhythm */
   --max-width: 1120px;
   --pad-x: 24px;
-  --pad-y: 104px;
-  --pad-y-mobile: 64px;
-  --nav-height: 72px;
-  --control-height: 46px;
-  --scroll-margin: 88px;
+  --pad-y: 88px;
+  --pad-y-mobile: 56px;
+  --nav-height: 64px;
+  --control-height: 44px;
+  --scroll-margin: 80px;
 }
 
 @theme inline {
@@ -55,12 +57,14 @@
   --color-paper: var(--paper);
   --color-elevated: var(--elevated);
   --color-border-input: var(--border-input);
+  --color-tint: var(--tint);
   --color-bg-dark: var(--bg-dark);
   --color-card-dark: var(--card-dark);
   --color-border-dark: var(--border-dark);
   --color-text-dark: var(--text-dark);
   --color-accent: var(--accent);
   --color-accent-dark: var(--accent-dark);
+  --color-ember: var(--ember);
   --font-sans: var(--font-geist);
   --font-mono: var(--font-geist-mono);
   --radius-card: var(--arch-radius-card);
@@ -72,10 +76,10 @@
   --ink: #d4d4d8;
   --body: #d4d4d8;
   --muted: #a1a1aa;
-  --border: #27272a;
-  --surface: #18181b;
-  --elevated: #18181b;
-  --border-input: #27272a;
+  --border: #2a2a2a;
+  --surface: #161616;
+  --elevated: #161616;
+  --border-input: #2a2a2a;
   color: var(--text-dark);
   background: var(--bg-dark);
 }

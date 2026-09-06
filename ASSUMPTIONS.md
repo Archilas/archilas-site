@@ -4,7 +4,7 @@
 
 **This is the only backend blocker.** `POST /api/waitlist` returns `{ ok: true }` for a valid email, including duplicates. It `console.info`s the address and does not persist.
 
-This repo has no database, ESP, KV, or env-backed waitlist destination. No `RESEND`, `UPSTASH`, `DATABASE`, or similar secrets are present. Persistence was not added (no new services).
+Hermes: leave waitlist non-persisting. Do not add Supabase/DB.
 
 Form UX is wired and should succeed in the browser:
 
@@ -15,16 +15,14 @@ Form UX is wired and should succeed in the browser:
 - Network failure → error
 - Nav / mobile "Join waitlist" and in-page anchors use real hash links (`/#waitlist`, `/#how`, `/#product`)
 
-Until an existing persistence path is connected, signups will not survive a process restart and will not appear in an owned list.
-
 ## Product and copy
 
-- Spine is Compact → Reason → Deliver. Prior theater names are out.
-- H1 is "Memory that stays." Subhead is the spine.
+- Spine is Compact → Reason → Deliver. Distill / Vault / Skeleton are out.
+- H1: "RAG finds passages. Archilas keeps the picture." Subhead is the spine.
 - MCP is the intended delivery path. Delivery surfaces are in development and are not claimed as live.
-- Primary CTAs are near-black. Teal is limited to focus rings and the active stepper.
-- Page is a clean light surface with a sharp dark product window. No orbs, frost, or lavender.
-- Motion is only inside the product window and contrast/RAG demos.
+- Primary CTAs are near-black. Teal is steppers, focus, and one static wash.
+- Ground is warm sand with two static washes. Not sterile #FAFAF9. Not multi-orb bokeh.
+- Demos are interactive product windows. Auto-play stops on first click.
 
 ## Unchanged
 
