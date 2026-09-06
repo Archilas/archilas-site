@@ -4,6 +4,7 @@ import { FormEvent, useState } from "react";
 import { ButtonPrimary } from "@/components/ButtonPrimary";
 import { Input } from "@/components/Input";
 import { track } from "@/lib/analytics";
+import type { WaitlistSource } from "@/lib/waitlist-context";
 
 type FormStatus = "idle" | "loading" | "success" | "error";
 
@@ -12,7 +13,7 @@ export function WaitlistForm({
   source = "waitlist",
 }: {
   id?: string;
-  source?: "hero" | "waitlist";
+  source?: WaitlistSource;
 }) {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<FormStatus>("idle");
