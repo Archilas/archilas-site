@@ -122,3 +122,221 @@ section[id] {
 .theme-dark .h3 {
   color: var(--text-dark);
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  .reveal-in {
+    animation: reveal-up 680ms cubic-bezier(0.22, 0.7, 0.2, 1) both;
+  }
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.demo-progress {
+  transform-origin: left center;
+  animation: demo-progress-fill 2.6s linear forwards;
+}
+
+@keyframes demo-progress-fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.record-row {
+  border-left: 2px solid transparent;
+  padding-left: 10px;
+  transition:
+    opacity 360ms ease,
+    border-color 360ms ease;
+}
+
+.record-row.is-linked {
+  border-left-color: var(--accent);
+}
+
+.theme-dark .record-row.is-linked {
+  border-left-color: var(--accent-dark);
+}
+
+.record-row.is-quiet {
+  opacity: 0.42;
+}
+
+.record-row.is-forming {
+  animation: row-form 720ms ease both;
+}
+
+@keyframes row-form {
+  from {
+    opacity: 0.32;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.record-scrap {
+  position: absolute;
+  inset: 0 auto auto 0;
+  font-size: 12px;
+  color: var(--text-dark);
+  background: var(--card-dark);
+  pointer-events: none;
+  animation: scrap-fade 1.15s ease forwards;
+}
+
+.record-scrap-light {
+  color: var(--ink);
+  background: var(--surface);
+}
+
+@keyframes scrap-fade {
+  0% {
+    opacity: 0.85;
+    transform: translateX(-8px);
+  }
+  45% {
+    opacity: 0.85;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+}
+
+.record-hosts {
+  opacity: 0;
+  transition: opacity 400ms ease;
+}
+
+.record-hosts.is-on {
+  opacity: 1;
+}
+
+.demo-frame {
+  min-height: 220px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: var(--arch-radius-card);
+  padding: 16px;
+}
+
+.demo-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: #d4d4d8;
+}
+
+.demo-bar.is-scanning {
+  animation: bar-pulse 1.3s ease-in-out infinite;
+}
+
+.demo-bar.is-copied {
+  opacity: 0.35;
+}
+
+.demo-bar.is-picked {
+  background: #a1a1aa;
+}
+
+.demo-prompt {
+  min-height: 56px;
+  border: 1px dashed var(--border-input);
+  border-radius: var(--arch-radius-control);
+  padding: 10px;
+  opacity: 0.35;
+  transition:
+    opacity 300ms ease,
+    border-color 300ms ease;
+}
+
+.demo-prompt.is-filled {
+  opacity: 1;
+  border-style: solid;
+}
+
+.demo-prompt.is-hope {
+  border-style: dashed;
+}
+
+.demo-chip {
+  display: inline-block;
+  height: 8px;
+  border-radius: 999px;
+  background: #a1a1aa;
+}
+
+.demo-scan {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 14px;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--ink) 8%, transparent);
+  pointer-events: none;
+  animation: scan-move 2.6s linear infinite;
+}
+
+@keyframes scan-move {
+  from {
+    top: 0;
+  }
+  to {
+    top: calc(100% - 14px);
+  }
+}
+
+@keyframes bar-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+
+[data-paused="true"] .demo-progress,
+[data-paused="true"] .demo-scan,
+[data-paused="true"] .demo-bar.is-scanning,
+[data-paused="true"] .record-row.is-forming,
+[data-paused="true"] .record-scrap {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-in,
+  .demo-progress,
+  .record-row.is-forming,
+  .record-scrap,
+  .demo-bar.is-scanning,
+  .demo-scan,
+  .record-hosts,
+  .record-row,
+  .demo-prompt {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .record-hosts {
+    opacity: 1;
+  }
+
+  .record-scrap,
+  .demo-scan {
+    display: none;
+  }
+}

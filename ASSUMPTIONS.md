@@ -25,8 +25,15 @@ Until an existing persistence path is connected, waitlist signups will not survi
 - One content dark section: How it works. Footer stays dark as chrome.
 - Hero is centered on desktop and mobile. No side product panel.
 
+## Demos
+
+- How-it-works and contrast stages are illustrative motion, not product recordings.
+- They only show Compact → Reason → Deliver and the existing example record. No Distill / Vault / Skeleton / confidence / tool theater / fake MCP live / REST / SDK.
+- `prefers-reduced-motion: reduce` stops the loops and shows the filled static record.
+
 ## Unchanged
 
+- Waitlist persistence is still not wired. This branch does not change `POST /api/waitlist`.
 - Production deploy, DNS, and env vars were not touched. There is no `vercel.json` in this repo.
 - This branch is isolation. No feature flag.
 - No facts were invented (latency, certifications, logos, counts, availability).
