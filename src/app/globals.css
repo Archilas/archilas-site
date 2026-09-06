@@ -29,6 +29,11 @@ body {
 
 .section-tint {
   background: var(--tint);
+  border-block: 1px solid color-mix(in srgb, var(--accent) 22%, var(--border));
+}
+
+.section-warm {
+  background: var(--warm);
   border-block: 1px solid var(--border);
 }
 
