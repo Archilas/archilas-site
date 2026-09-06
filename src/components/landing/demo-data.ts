@@ -1,88 +1,86 @@
-export const exampleRows = [
-  {
-    kind: "preference",
-    text: "Prefer compact records over pasted history.",
-    scrap: "session notes",
-  },
-  {
-    kind: "decision",
-    text: "Left the prior vendor after repeated rate-limit failures.",
-    scrap: "why we left",
-  },
-  {
-    kind: "open loop",
-    text: "Rotate API keys in CI before the next deploy.",
-    scrap: "still open",
-  },
-] as const;
-
-/** Compare windows use a different example than the hero record. */
-export const compareRows = [
-  {
-    kind: "preference",
-    text: "Ship Friday notes as a written recap, not a transcript dump.",
-  },
-  {
-    kind: "decision",
-    text: "Kept the design system in-repo after the Figma-only trial stalled.",
-  },
-  {
-    kind: "open loop",
-    text: "Confirm the launch window with legal before Thursday.",
-  },
-] as const;
-
-export const retrievalPassages = [
-  {
-    id: "notes",
-    title: "Friday standup transcript",
-    excerpt: "1,842 tokens · chat export",
-    body: "A long dump of the Friday call. Design-system talk is mixed with lunch plans, a hiring aside, and a paste of last month’s changelog.",
-  },
-  {
-    id: "figma",
-    title: "Figma trial thread",
-    excerpt: "966 tokens · Slack search",
-    body: "A search hit about the Figma-only trial. It mentions tokens drifting from production and a stalled handoff, then jumps to an unrelated file rename.",
-  },
-  {
-    id: "legal",
-    title: "Launch checklist draft",
-    excerpt: "2,210 tokens · doc snippet",
-    body: "A retrieved checklist with legal still unchecked. Nearby paragraphs cover pricing experiments and an old domain question.",
-  },
-] as const;
-
 export const howSteps = [
-  { id: "compact", label: "Compact", caption: "Keep a living record — not a chat dump." },
-  { id: "reason", label: "Reason", caption: "Compose from linked preferences and decisions." },
-  { id: "deliver", label: "Deliver", caption: "Into tools you already use. MCP is the intended path." },
+  { id: "compact", label: "Compact" },
+  { id: "reason", label: "Reason" },
+  { id: "deliver", label: "Deliver" },
 ] as const;
-
-export const demoHosts = ["Claude", "ChatGPT", "Cursor"] as const;
-
-export const holdCards = [
-  {
-    title: "Preferences",
-    body: "How you like to work. A line in the record, not a pasted chat.",
-    kind: "preference",
-    inset: "Prefer written recaps over transcript dumps.",
-  },
-  {
-    title: "Decisions",
-    body: "What you chose, and why. The reason stays attached to the choice.",
-    kind: "decision",
-    inset: "Kept the design system in-repo.",
-  },
-  {
-    title: "Open loops",
-    body: "Work still in play. Unfinished work stays visible until it closes.",
-    kind: "open loop",
-    inset: "Confirm the launch window with legal.",
-  },
-] as const;
-
-/** Full Compact → Reason → Deliver loop is ~4.2s. */
-export const HOW_STEP_MS = 1400;
 
 export type HowStepId = (typeof howSteps)[number]["id"];
+export type RecordKind = "Preference" | "Decision" | "Open loop";
+
+export const pipelineTranscript = [
+  { id: "n1", keep: false, text: "ok looping back — also grab lunch prefs for the offsite" },
+  { id: "p1", keep: "preference" as const, text: "keep deploys under 15 minutes or we miss the Friday window" },
+  { id: "n2", keep: false, text: "lol the zoom echo is back" },
+  { id: "d1", keep: "decision" as const, text: "we left Northwind after the third rate-limit incident" },
+  { id: "n3", keep: false, text: "paste of last month’s changelog · · · · ·" },
+  { id: "o1", keep: "open loop" as const, text: "rotate the CI deploy keys before Tuesday" },
+  { id: "n4", keep: false, text: "anyway where’s that Figma link" },
+] as const;
+
+export const pipelineRecord = [
+  { id: "p1", kind: "Preference" as const, text: "Keep deploys under 15 minutes." },
+  { id: "d1", kind: "Decision" as const, text: "Left Northwind after repeated rate-limit failures." },
+  { id: "o1", kind: "Open loop" as const, text: "Rotate CI deploy keys before Tuesday." },
+] as const;
+
+export const pipelineQuestions = [
+  {
+    id: "budget",
+    q: "What's the deploy budget?",
+    supported: false,
+    a: "Not in the record.",
+    citeIds: [] as readonly string[],
+  },
+  {
+    id: "vendor",
+    q: "Why did we leave Northwind?",
+    supported: true,
+    a: "Left Northwind after repeated rate-limit failures.",
+    citeIds: ["d1"] as readonly string[],
+  },
+] as const;
+
+export const explorerRecord = [
+  {
+    id: "e1",
+    kind: "Preference" as const,
+    text: "Ship Friday notes as a written recap, not a transcript dump.",
+    source: "standup.txt",
+    quote: "“Write the Friday recap. Don’t paste the raw dump.”",
+  },
+  {
+    id: "e2",
+    kind: "Decision" as const,
+    text: "Kept the design system in-repo after the Figma-only trial stalled.",
+    source: "review.txt",
+    quote: "“The Figma-only trial stalled. Keep the system in-repo.”",
+  },
+  {
+    id: "e3",
+    kind: "Open loop" as const,
+    text: "Confirm the launch window with legal before Thursday.",
+    source: "checklist.txt",
+    quote: "“Legal still has to sign the Thursday window.”",
+  },
+] as const;
+
+export const compareDemo = {
+  q: "Who owns weekend pages?",
+  passages: [
+    "Pager dump — retry talk mixed with a birthday thread and an old hostname.",
+    "Search hit: three retries, then a jump to an unrelated dashboard rename.",
+    "Handoff still lists two owners and a parked escalation.",
+  ],
+  answer: "One on-call owner. Page after three failed retries. Weekend escalation is still open.",
+  rows: [
+    { id: "c1", kind: "Preference" as const, text: "Page after three failed retries, not on the first timeout." },
+    { id: "c2", kind: "Decision" as const, text: "Kept a single on-call owner after the split rotation failed." },
+    { id: "c3", kind: "Open loop" as const, text: "Name the weekend escalation before Friday." },
+  ],
+} as const;
+
+export const demoHosts = [
+  { name: "Claude", line: "The record is the context. Not a paste." },
+  { name: "ChatGPT", line: "Same object. Same lines." },
+  { name: "Cursor", line: "Intended over MCP. Not live." },
+] as const;

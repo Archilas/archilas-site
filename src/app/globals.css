@@ -38,35 +38,6 @@ body {
   overflow-y: auto;
 }
 
-.chapter-rule {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-.chapter-rule-line {
-  display: inline-block;
-  width: 2.5rem;
-  height: 1px;
-  background: currentColor;
-}
-
-.statement {
-  color: var(--ink);
-  font-family: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
-  font-size: var(--text-statement);
-  font-style: normal;
-  font-weight: 500;
-  letter-spacing: -0.045em;
-  line-height: 0.98;
-}
-
 .display {
   color: var(--ink);
   font-family: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
@@ -84,15 +55,6 @@ body {
   font-weight: 550;
   letter-spacing: -0.03em;
   line-height: 1.15;
-}
-
-.h3 {
-  color: var(--ink);
-  font-size: var(--text-h3);
-  font-style: normal;
-  font-weight: 550;
-  letter-spacing: -0.02em;
-  line-height: 1.25;
 }
 
 .label {
@@ -140,32 +102,44 @@ section[id] {
   border-radius: var(--arch-radius-card);
 }
 
-.product-window {
+.arch-window {
   width: 100%;
   overflow: hidden;
-  border: 1px solid var(--border-dark);
+  border: 1px solid var(--line);
   border-radius: 2px;
-  background: var(--inverse);
-}
-
-.product-window.is-paper {
-  border-color: var(--line);
   background: var(--surface);
 }
 
-.product-chrome {
+.arch-window.is-ink {
+  border-color: #2a2a2a;
+  background: #111111;
+  color: var(--text-dark);
+}
+
+.arch-chrome {
   display: flex;
   align-items: center;
-  height: 32px;
+  height: 30px;
   padding: 0 12px;
-  border-bottom: 1px solid var(--border-dark);
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
 }
 
-.product-window.is-paper .product-chrome {
-  border-bottom-color: var(--line);
+.arch-window.is-ink .arch-chrome {
+  border-bottom-color: #2a2a2a;
+  color: #a3a3a3;
 }
 
-.product-window.is-paper .product-body {
+.pill {
+  display: inline-flex;
+  align-items: center;
+  height: 26px;
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--ink);
 }
 
@@ -180,79 +154,118 @@ cite {
   color: var(--ink);
 }
 
-.step-underline {
-  position: absolute;
-  inset-inline: 10px;
-  bottom: -1px;
-  height: 1px;
-  background: currentColor;
-  transform-origin: left center;
-  animation: step-underline-in 200ms cubic-bezier(0.22, 1.2, 0.36, 1) both;
+.pipeline-frame {
+  min-height: 560px;
+  background: var(--inverse);
+  color: #f7f7f5;
 }
 
-@keyframes step-underline-in {
-  from {
-    transform: scaleX(0);
-  }
-  to {
-    transform: scaleX(1);
-  }
-}
-
-.record-row {
-  border-left: 1px solid transparent;
-  padding-left: 10px;
-  transition:
-    opacity 220ms ease,
-    border-color 220ms ease,
-    background-color 160ms ease;
-}
-
-.record-row.is-linked {
-  border-left-color: currentColor;
-}
-
-.record-row.is-quiet {
-  opacity: 0.42;
-}
-
-.record-row.is-focus,
-button.record-row:hover,
-button.record-row:focus-visible {
-  background: color-mix(in srgb, currentColor 6%, transparent);
-}
-
-.record-scrap-chip {
+.pipeline-tab {
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid #2a2a2a;
+  background: transparent;
+  color: #a3a3a3;
+  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 11px;
-  font-weight: 400;
-  letter-spacing: 0;
-  text-transform: none;
-  color: var(--muted);
-  animation: scrap-chip 1.1s ease forwards;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
 }
 
-@keyframes scrap-chip {
-  0% {
-    opacity: 0;
-    transform: translateX(-6px);
-  }
-  30% {
-    opacity: 0.9;
-    transform: translateX(0);
-  }
-  100% {
-    opacity: 0.55;
-  }
+.pipeline-tab:hover {
+  color: #f7f7f5;
 }
 
-.record-type-in dd {
-  animation: record-type-in 0.55s ease both;
+.pipeline-tab:focus-visible {
+  color: #f7f7f5;
+  outline: none;
+  box-shadow: inset 0 0 0 1px var(--signal);
 }
 
-@keyframes record-type-in {
+.pipeline-tab.is-on {
+  color: #f7f7f5;
+  box-shadow: inset 0 -1px 0 var(--signal);
+}
+
+.ask-chip {
+  padding: 6px 10px;
+  border: 1px solid #2a2a2a;
+  background: transparent;
+  color: #a3a3a3;
+  font-size: 12px;
+  line-height: 1.35;
+  text-align: left;
+  cursor: pointer;
+}
+
+.ask-chip:hover,
+.ask-chip:focus-visible {
+  color: #f7f7f5;
+  outline: none;
+}
+
+.ask-chip:focus-visible {
+  box-shadow: inset 0 0 0 1px var(--signal);
+}
+
+.ask-chip.is-on {
+  color: #f7f7f5;
+  box-shadow: inset 0 -1px 0 var(--signal);
+}
+
+.scrubber {
+  appearance: none;
+  width: 100%;
+  height: 2px;
+  background: #2a2a2a;
+  outline: none;
+}
+
+.scrubber::-webkit-slider-thumb {
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 0;
+  background: var(--signal);
+  cursor: pointer;
+}
+
+.scrubber::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border: 0;
+  border-radius: 0;
+  background: var(--signal);
+  cursor: pointer;
+}
+
+.tx-line {
+  padding: 6px 8px;
+  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+  line-height: 1.45;
+  color: #a3a3a3;
+}
+
+.tx-line.is-noise {
+  opacity: 0.45;
+}
+
+.tx-line.is-signal {
+  color: #f7f7f5;
+  background: color-mix(in srgb, var(--signal) 16%, transparent);
+  box-shadow: inset 2px 0 0 var(--signal);
+}
+
+.record-arrive {
+  animation: record-arrive 380ms ease both;
+}
+
+@keyframes record-arrive {
   from {
     opacity: 0;
-    transform: translateY(3px);
+    transform: translateX(-14px);
   }
   to {
     opacity: 1;
@@ -260,107 +273,33 @@ button.record-row:focus-visible {
   }
 }
 
-.record-row.is-deliver-source {
-  opacity: 0.88;
+.cite-row {
+  border-left: 2px solid transparent;
+  padding-left: 10px;
 }
 
-.host-frame {
-  overflow: hidden;
-  border: 1px solid var(--border-dark);
-  border-radius: 2px;
-  background: #111111;
+.cite-row.is-on {
+  border-left-color: var(--signal);
+  background: color-mix(in srgb, var(--signal) 12%, transparent);
 }
 
-.host-frame-chrome {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  min-height: 30px;
-  padding: 6px 10px;
-  border-bottom: 1px solid var(--border-dark);
+.host-slot {
+  border: 1px solid #2a2a2a;
+  background: #161616;
+  min-height: 88px;
 }
 
-.host-frame-badge {
-  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 10px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: #a3a3a3;
-}
-
-.intended-pill {
-  display: inline-flex;
-  align-items: center;
-  height: 28px;
-  padding: 0 10px;
-  border: 1px solid var(--line);
-  background: var(--surface);
-  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ink);
-}
-
-.hold-row {
-  padding: 18px 0;
-  border-bottom: 1px solid var(--line);
-}
-
-.hold-row:first-child {
-  border-top: 1px solid var(--line);
-}
-
-.hold-inset {
-  margin-top: 10px;
-  padding: 8px 10px;
-  border: 1px solid var(--line);
-  background: var(--surface);
-  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 12px;
-  line-height: 1.45;
-  color: var(--ink);
-}
-
-.demo-passage {
-  display: block;
-  width: 100%;
-  text-align: left;
+.compare-chunk {
   border: 1px solid var(--line);
   background: var(--bg);
   padding: 10px 12px;
   color: var(--ink);
-  cursor: pointer;
-}
-
-.demo-passage:hover,
-.demo-passage:focus-visible,
-.demo-passage.is-open {
-  background: var(--surface);
-  border-color: var(--ink);
-}
-
-.demo-frame {
-  min-height: 200px;
-  padding: 14px;
-}
-
-[data-paused="true"] .record-scrap-chip,
-[data-paused="true"] .step-underline {
-  animation-play-state: paused;
+  font-size: 14px;
+  line-height: 1.5;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .step-underline,
-  .record-scrap-chip,
-  .record-row,
-  .record-type-in {
+  .record-arrive {
     animation: none !important;
-    transition: none !important;
-  }
-
-  .record-scrap-chip {
-    display: none;
   }
 }

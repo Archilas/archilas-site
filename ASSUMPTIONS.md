@@ -7,11 +7,11 @@
 ## Product and copy
 
 - H1: "Passages aren't memory. A record is."
-- Sub: "Preferences, decisions, open loops — Compact. Reason. Deliver."
+- Sub: "Archilas turns your conversations into a record your tools can use."
 - Spine is Compact → Reason → Deliver.
 - MCP is the intended delivery path and is not claimed as live.
-- Paper/ink system. One inverse chapter. Teal `#0F766E` is focus rings only.
-- Nav is Record, Comparison, Waitlist.
+- Paper/ink system. Signal rust `#C2410C` is pipeline motion, active, and focus only.
+- Nav is Pipeline, Record, Waitlist.
 
 ## Unchanged
 

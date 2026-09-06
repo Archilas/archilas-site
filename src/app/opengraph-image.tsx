@@ -30,7 +30,7 @@ export default function OpenGraphImage() {
             color: tokens.muted,
           }}
         >
-          01 ——— RECORD
+          Pre-launch
         </div>
         <div
           style={{

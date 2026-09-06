@@ -7,7 +7,8 @@ export const tokens = {
   muted: "#737373",
   line: "#E5E5E5",
   inverse: "#0A0A0A",
-  focus: "#0F766E",
+  signal: "#C2410C",
+  focus: "#C2410C",
   bgDark: "#0A0A0A",
   textDark: "#F7F7F5",
 } as const;
