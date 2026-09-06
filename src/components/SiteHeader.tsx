@@ -4,6 +4,7 @@ import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { BrandLogo } from "@/components/BrandLogo";
 import { ButtonPrimary } from "@/components/ButtonPrimary";
 import { track } from "@/lib/analytics";
+import { scrollToHash } from "@/lib/hash-scroll";
 import { nav } from "@/lib/site";
 import { useFocusTrap } from "@/lib/use-focus-trap";
 
@@ -29,7 +30,12 @@ export function SiteHeader() {
         <BrandLogo />
         <nav aria-label="Primary" className="hidden items-center gap-5 lg:flex">
           {nav.map((item) => (
-            <a key={item.href} href={item.href} className="nav-link text-[14px]">
+            <a
+              key={item.href}
+              href={item.href}
+              className="nav-link text-[14px]"
+              onClick={(event) => scrollToHash(item.href, event)}
+            >
               {item.label}
             </a>
           ))}
@@ -64,7 +70,10 @@ export function SiteHeader() {
                 key={item.href}
                 href={item.href}
                 className="nav-link rounded-[var(--arch-radius-control)] px-2 py-3 text-[16px]"
-                onClick={close}
+                onClick={(event) => {
+                  scrollToHash(item.href, event);
+                  close();
+                }}
               >
                 {item.label}
               </a>

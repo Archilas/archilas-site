@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import type { ButtonHTMLAttributes, MouseEventHandler, ReactNode } from "react";
+import { scrollToHash } from "@/lib/hash-scroll";
 
 const base =
   "inline-flex h-[var(--control-height)] items-center justify-center rounded-[var(--arch-radius-control)] bg-near-black px-5 text-[15px] font-medium not-italic text-elevated no-underline transition-colors hover:bg-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60";
@@ -29,7 +32,10 @@ export function ButtonPrimary({
           href={href}
           className={cls}
           {...(external ? { rel: "noopener noreferrer" } : {})}
-          onClick={onClick}
+          onClick={(event) => {
+            onClick?.(event);
+            if (hash) scrollToHash(href, event);
+          }}
         >
           {children}
         </a>
