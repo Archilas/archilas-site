@@ -1,5 +1,6 @@
+import { FeatureBand } from "@/components/landing/FeatureBand";
 import { Hero } from "@/components/landing/Hero";
-import { ShowCards } from "@/components/landing/ShowCards";
+import { HowItWorks } from "@/components/landing/HowItWorks";
 import { Waitlist } from "@/components/landing/Waitlist";
 import { JsonLd } from "@/components/JsonLd";
 import { buildMetadata, organizationJsonLd } from "@/lib/seo";
@@ -16,7 +17,8 @@ export default function HomePage() {
     <>
       <JsonLd data={organizationJsonLd()} />
       <Hero />
-      <ShowCards />
+      <FeatureBand />
+      <HowItWorks />
       <Waitlist />
     </>
   );

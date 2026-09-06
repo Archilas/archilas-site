@@ -43,9 +43,14 @@ body {
   z-index: 50;
   min-height: calc(100dvh - var(--nav-height));
   padding: 20px var(--pad-x) 32px;
-  background: #f7f9fa;
+  background: #f6f3ed;
   border-bottom: 1px solid var(--line);
   overflow-y: auto;
+}
+
+.mobile-drawer .nav-link {
+  font-size: 13px;
+  letter-spacing: 0.14em;
 }
 
 .display {
@@ -94,8 +99,11 @@ body {
 
 .nav-link {
   color: var(--body);
+  font-size: 12px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 450;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 }
 
 .nav-link:hover,
@@ -107,17 +115,15 @@ section[id] {
   scroll-margin-top: var(--scroll-margin);
 }
 
-.hero-air {
+.hero-cream {
+  display: flex;
+  min-height: calc(100svh - 8px);
+  flex-direction: column;
+  justify-content: center;
   margin-top: calc(var(--nav-height) * -1);
-  padding-top: calc(var(--nav-height) + 48px);
-  background:
-    radial-gradient(90% 48% at 50% -12%, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 62%),
-    radial-gradient(70% 40% at 92% 8%, rgba(186, 214, 236, 0.35) 0%, rgba(186, 214, 236, 0) 70%),
-    linear-gradient(180deg, #d7e8f6 0%, #eaf3fb 38%, #f4f6f5 72%, #f7f7f5 100%);
-}
-
-.hero-halo {
-  filter: drop-shadow(0 0 48px rgba(186, 214, 236, 0.45));
+  padding-top: calc(var(--nav-height) + 96px);
+  padding-bottom: 96px;
+  background: #f6f3ed;
 }
 
 .btn-outline {
@@ -594,6 +600,302 @@ section[id] {
   background: #ffffff;
   border: 1px solid var(--line);
   box-shadow: var(--hero-shadow);
+}
+
+.feature-ink {
+  background: #0a0a0a;
+  color: #f7f7f5;
+}
+
+.feature-title {
+  color: #d4b46a;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 650;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+}
+
+.flow-shell {
+  overflow: hidden;
+  border-radius: 22px;
+  background: #141414;
+  border: 1px solid #2a2a2a;
+}
+
+.flow-shell .demo-head {
+  border-bottom-color: #2a2a2a;
+}
+
+.flow-gold {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin: 0 12px 12px;
+  padding: 28px 18px 22px;
+  border-radius: 16px;
+  background:
+    radial-gradient(80% 50% at 50% 0%, rgba(255, 255, 255, 0.18) 0%, transparent 55%),
+    #e4d3b0;
+}
+
+.phone {
+  width: min(320px, 100%);
+  padding: 12px 12px 16px;
+  border-radius: 28px;
+  background: #111111;
+  box-shadow: 0 18px 40px rgba(10, 10, 10, 0.28);
+}
+
+.phone-notch {
+  width: 72px;
+  height: 6px;
+  margin: 4px auto 14px;
+  border-radius: 999px;
+  background: #2a2a2a;
+}
+
+.phone-thread {
+  display: grid;
+  gap: 8px;
+}
+
+.bubble {
+  padding: 10px 12px;
+  border-radius: 16px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.bubble-user {
+  justify-self: end;
+  max-width: 92%;
+  background: #f3e6d2;
+  color: #0a0a0a;
+  border-radius: 16px 16px 4px 16px;
+}
+
+.bubble-doc {
+  justify-self: start;
+  max-width: 94%;
+  background: #2a2a2a;
+  color: #f7f7f5;
+}
+
+.bubble-ai {
+  justify-self: start;
+  max-width: 88%;
+  background: #1c1c1c;
+  color: rgba(247, 247, 245, 0.78);
+}
+
+.flow-join {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  height: 28px;
+  opacity: 0.2;
+}
+
+.flow-join.is-on {
+  opacity: 1;
+}
+
+.flow-join span {
+  width: 1px;
+  height: 100%;
+  background: #b8924a;
+}
+
+.saved-pill {
+  display: inline-flex;
+  height: 32px;
+  align-items: center;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: #b8924a;
+  color: #0a0a0a;
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.25;
+}
+
+.saved-pill.is-on {
+  opacity: 1;
+}
+
+.bundle {
+  width: min(420px, 100%);
+  padding: 14px;
+  border-radius: 14px;
+  background: #1a1a1a;
+  color: #f7f7f5;
+  opacity: 0.28;
+}
+
+.bundle.is-on {
+  opacity: 1;
+}
+
+.bundle-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.bundle-title {
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.bundle-rows {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.bundle-row {
+  padding: 10px 11px;
+  background: #111111;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.bundle-kind {
+  display: block;
+  margin-bottom: 4px;
+  color: #d4b46a;
+  font-size: 10px;
+  font-weight: 650;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.bundle-row.is-cited {
+  box-shadow: inset 0 0 0 1px #d4b46a;
+}
+
+.flow-answer {
+  width: min(420px, 100%);
+  display: grid;
+  gap: 10px;
+}
+
+.flow-gold .ask-panel,
+.flow-gold .reply-panel {
+  border-color: #2a2a2a;
+  background: #141414;
+}
+
+.flow-gold .ask-q,
+.flow-gold .reply-a {
+  color: #f7f7f5;
+}
+
+.how-band {
+  background: #f6f3ed;
+}
+
+.stepper {
+  display: grid;
+  gap: 0;
+}
+
+.stepper-item {
+  display: flex;
+  width: 100%;
+  gap: 14px;
+  padding: 0 0 22px;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+
+.stepper-dot {
+  display: inline-flex;
+  height: 22px;
+  width: 22px;
+  flex: 0 0 22px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: #ddd8cf;
+  color: var(--ink);
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.stepper-item.is-on .stepper-dot {
+  background: var(--ink);
+  color: #f6f3ed;
+}
+
+.stepper-label {
+  display: block;
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.stepper-line {
+  display: block;
+  margin-top: 4px;
+  color: var(--body);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.how-stage {
+  min-height: 280px;
+  padding: 22px;
+  border-radius: 18px;
+  background: #e7ddd0;
+}
+
+.how-bubble {
+  margin-left: auto;
+  max-width: 92%;
+  padding: 12px 14px;
+  border-radius: 16px 16px 4px 16px;
+  background: #f6f3ed;
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.how-status {
+  margin-top: 14px;
+  color: var(--body);
+  font-size: 13px;
+}
+
+.how-pills {
+  display: grid;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.how-pill {
+  display: inline-flex;
+  width: fit-content;
+  min-height: 34px;
+  align-items: center;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: rgba(246, 243, 237, 0.45);
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.how-pill.is-on {
+  background: #f6f3ed;
+  color: var(--ink);
 }
 
 em,

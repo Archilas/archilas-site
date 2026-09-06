@@ -1,9 +1,7 @@
-# Moodboard copy
+# Mem0 rhythm
 
-Restored the agreed mixed type and the hero product box.
-
-- Geist bold H1 + Instrument Serif italic on “understands” only.
-- Soft airy wash, no cartoon clouds.
-- Agency tabs over a dark glass product stage.
-- Two Finova-style supporting cards under the hero.
+- Topbar is all-caps with open tracking.
+- H1 sits mid-viewport on cream. Instrument Serif italic only on “understands.”
+- Demo is phone → ✓ Saved → Memory bundle. Not labeled paragraph cards.
+- Black feature band, then a light stepper with pills.
 - Waitlist still does not persist.

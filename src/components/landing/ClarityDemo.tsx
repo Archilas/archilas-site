@@ -4,13 +4,11 @@ import { demoBeats, demoQuestion, memoryRows, sourceNotes } from "@/components/l
 import { useDemoClock } from "@/lib/use-demo-clock";
 import { cn } from "@/lib/cn";
 
-const avatars = { chat: "AL", doc: "JN", thread: "KR" } as const;
-
 export function ClarityDemo() {
   const clock = useDemoClock();
   const { beat, local, playing, reduced } = clock;
-
-  const memoryCount =
+  const showSaved = beat !== "notes" || reduced || local > 0.55;
+  const bundleCount =
     beat === "notes"
       ? 0
       : beat === "answer" || reduced
@@ -18,7 +16,7 @@ export function ClarityDemo() {
         : Math.min(memoryRows.length, Math.max(1, Math.ceil(local * memoryRows.length)));
 
   return (
-    <div id="how" className="demo-card scroll-mt-[var(--scroll-margin)]" data-beat={beat} data-playing={playing ? "1" : "0"}>
+    <div className="flow-shell" data-beat={beat} data-playing={playing ? "1" : "0"}>
       <div className="demo-head">
         <div className="agency-rail" role="tablist" aria-label="How memory is built">
           {demoBeats.map((item) => (
@@ -42,121 +40,63 @@ export function ClarityDemo() {
         )}
       </div>
 
-      <div className="demo-glass">
-        {beat === "notes" ? <NotesBoard /> : null}
-
-        {beat === "memory" ? (
-          <div className="demo-stage">
-            <NotesBoard compact />
-            <MemoryBoard count={memoryCount} citeIds={[]} />
-          </div>
-        ) : null}
-
-        {beat === "answer" ? (
-          <div className="demo-stage demo-stage-answer">
-            <MemoryBoard count={memoryRows.length} citeIds={demoQuestion.citeIds} />
-            <AnswerBoard />
-          </div>
-        ) : null}
-
-        <p className="demo-caption">
-          {beat === "notes"
-            ? "Notes live in different places — plus a bit of noise."
-            : beat === "memory"
-              ? "Many sources → one memory. Living, not a chat log."
-              : "At query time — coherent, not copy-paste."}
-        </p>
-      </div>
-    </div>
-  );
-}
-
-function NotesBoard({ compact = false }: { compact?: boolean }) {
-  return (
-    <div className={cn("note-grid", compact && "is-compact")}>
-      <p className="spine-label">Sources</p>
-      <div className="note-row">
-        {sourceNotes.map((note) => (
-          <article key={note.id} className={cn("note-card", `is-${note.id}`)} data-testid={`note-card-${note.id}`}>
-            <div className="note-card-bar">
-              <span className="avatar" aria-hidden="true">
-                {avatars[note.id]}
-              </span>
-              <span className="note-chip">{note.kind}</span>
-              <span className="note-chip is-mute">{note.id === "chat" ? "standup" : note.id === "doc" ? "checklist" : "launch"}</span>
+      <div className="flow-gold">
+        <div className="phone" data-testid="flow-phone">
+          <p className="phone-notch" aria-hidden="true" />
+          <div className="phone-thread">
+            <div className="bubble bubble-user">
+              <p>{sourceNotes[0].text}</p>
             </div>
-            {note.id === "chat" ? (
-              <div className="note-bubble">
-                <p>{note.text}</p>
-              </div>
-            ) : note.id === "doc" ? (
-              <div className="note-doc">
-                <span className="note-doc-rule" />
-                <p>{note.text}</p>
-                <span className="note-doc-rule" />
-                <span className="note-doc-rule is-short" />
-              </div>
-            ) : (
-              <div className="note-thread">
-                <span className="note-thread-dot" />
-                <p>{note.text}</p>
-              </div>
-            )}
-            <p className="note-noise">{note.noise}</p>
-          </article>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function MemoryBoard({ count, citeIds }: { count: number; citeIds: readonly string[] }) {
-  const filled = Math.max(0, count);
-  return (
-    <div>
-      <p className="spine-label">Compact</p>
-      <div className="mem-meter" aria-hidden="true">
-        <span style={{ width: `${(filled / memoryRows.length) * 100}%` }} />
-      </div>
-      <div className="mem-row">
-        {memoryRows.slice(0, filled).map((row) => (
-          <article
-            key={row.id}
-            className={cn("mem-tile", citeIds.includes(row.id) && "is-cited")}
-            data-testid={`mem-tile-${row.id}`}
-          >
-            <span className="note-chip">{row.kind}</span>
-            <p className="mem-line">{row.text}</p>
-          </article>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function AnswerBoard() {
-  const used = memoryRows.filter((row) => demoQuestion.citeIds.includes(row.id));
-
-  return (
-    <div>
-      <p className="spine-label">Reason · Deliver</p>
-      <div className="qa-stack">
-        <div className="ask-panel">
-          <span className="note-chip">Ask</span>
-          <p className="ask-q">{demoQuestion.q}</p>
+            <div className="bubble bubble-doc">
+              <p>{sourceNotes[1].text}</p>
+            </div>
+            <div className="bubble bubble-ai">
+              <p>{sourceNotes[2].text}</p>
+            </div>
+          </div>
         </div>
-        <div className="reply-panel">
-          <span className="note-chip">Answer</span>
-          <p className="reply-a">{demoQuestion.a}</p>
-          <div className="used-row">
-            {used.map((row) => (
-              <span key={row.id} className="used-chip">
-                {row.kind}
-              </span>
+
+        <div className={cn("flow-join", showSaved && "is-on")} aria-hidden="true">
+          <span />
+          <span />
+          <span />
+        </div>
+
+        <div className={cn("saved-pill", showSaved && "is-on")} data-testid="flow-saved">
+          ✓ Saved
+        </div>
+
+        <div className={cn("bundle", bundleCount > 0 && "is-on")} data-testid="flow-bundle">
+          <div className="bundle-bar">
+            <p className="bundle-title">Memory bundle</p>
+            <span className="note-chip">{bundleCount} lines</span>
+          </div>
+          <div className="bundle-rows">
+            {memoryRows.slice(0, bundleCount).map((row) => (
+              <div
+                key={row.id}
+                className={cn("bundle-row", beat === "answer" && demoQuestion.citeIds.includes(row.id) && "is-cited")}
+                data-testid={`mem-tile-${row.id}`}
+              >
+                <span className="bundle-kind">{row.kind}</span>
+                <span>{row.text}</span>
+              </div>
             ))}
           </div>
-          <p className="note-noise">Checklist preference stays in memory. Uncited — not the blocker.</p>
         </div>
+
+        {beat === "answer" ? (
+          <div className="flow-answer">
+            <div className="ask-panel">
+              <span className="note-chip">Ask</span>
+              <p className="ask-q">{demoQuestion.q}</p>
+            </div>
+            <div className="reply-panel">
+              <span className="note-chip">Answer</span>
+              <p className="reply-a">{demoQuestion.a}</p>
+            </div>
+          </div>
+        ) : null}
       </div>
     </div>
   );

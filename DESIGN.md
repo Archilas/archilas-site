@@ -1,25 +1,25 @@
 # Archilas Site — Design System
 
-Moodboard copy: CustomGPT air + Agent OS type + Finova supporting cards + Agency tabs.
+Mem0 rhythm: cream hero, black feature stage, light how-it-works.
 
 ## Type
 
-- Geist 650 for the H1.
-- Instrument Serif italic on **one** word: “understands”. No other italics.
+- Topbar: all-caps Geist, weight 450, tracking `0.16em`.
+- H1: Geist 650 + Instrument Serif italic on **understands** only.
 - Dual CTAs: solid ink Join waitlist → + outline Contact.
 
-## Atmosphere
+## Rhythm
 
-Soft airy wash `#D7E8F6 → #EAF3FB → #F7F7F5`. No cumulus SVG. No weather icons.
-
-## Hero box
-
-Premium framed stage. Agency pill tabs. Dark glass product overlay (Agent OS). Visual notes / memory tiles / ask-answer panels.
+- Hero: warm cream `#F6F3ED`, catchphrase mid-viewport.
+- Feature: black stage, gold accent title, phone → saved → bundle.
+- How it works: cream again, stepper + pills.
+- Waitlist: cream, dual buttons.
 
 ## Color
 
 | Token | Value | Role |
 |------|-------|------|
-| `--bg` | `#F7F7F5` | Page ground |
+| `--bg` | `#F6F3ED` | Cream ground |
 | `--ink` | `#0A0A0A` | Type, Join waitlist |
-| `--signal` | `#0F766E` | Play fill, focus, meter |
+| `--signal` | `#0F766E` | Play, focus |
+| Gold | `#D4B46A` | Feature headline, bundle kinds |

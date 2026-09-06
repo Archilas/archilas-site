@@ -1,8 +1,8 @@
-# Moodboard — craft cues copied
+# Moodboard — Mem0 rhythm
 
-1. **CustomGPT** — Airy sky atmosphere (soft premium light, not cartoon ovals). Catchphrase, then dual CTAs, then a stunning hero product box as the star.
-2. **Agent OS** — Big bold Geist display + one Instrument Serif italic word (`understands`). Dark glass UI overlay inside the hero box.
-3. **Finova** — Clean topbar, dual CTAs, then two show-not-tell supporting cards with mini UI (Ask switcher + Surfaces rows). No gold hourglass, no cloned marks.
-4. **Agency** — Pill tab switcher over an informative dashboard-like preview. Interactive, clear, premium soft frame.
+Craft copied from the four Mem0 laptop shots. Not cloned copy, purple, or YC.
 
-Do not clone host logos or brand colors. Copy structure and craft depth only.
+1. **Hero light topbar** — All-caps spaced nav. Large air under the bar. Catchphrase mid-viewport. Warm cream, not cartoon sky.
+2. **Phone → saved → bundle** — Chat in a phone, lines to a ✓ Saved pill, then a Memory bundle of durable rows.
+3. **Black efficiency band** — Deep black section, gold accent headline, the flow lives on a warm beige stage.
+4. **How it works pills** — Light band, stepper (Notes / Compact / Answer), visual pills instead of essays.

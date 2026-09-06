@@ -44,7 +44,7 @@ export function SiteHeader() {
             <a
               key={item.href}
               href={item.href}
-              className="nav-link text-[13px]"
+              className="nav-link"
               onClick={() => scrollToHash(item.href)}
             >
               {item.label}
