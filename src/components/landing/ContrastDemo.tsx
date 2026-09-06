@@ -1,28 +1,21 @@
 "use client";
 
+import { useState } from "react";
 import { DemoTabs } from "@/components/landing/DemoTabs";
 import { ProductWindow } from "@/components/landing/ProductWindow";
-import {
-  contrastSteps,
-  demoHosts,
-  exampleRows,
-  HOW_STEP_MS,
-  searchSnippets,
-} from "@/components/landing/demo-data";
-import { useDrivenDemo } from "@/lib/use-driven-demo";
-import { useState } from "react";
+import { contrastSteps, demoHosts, exampleRows, searchSnippets } from "@/components/landing/demo-data";
 
 export function ContrastDemo() {
-  const { index, select, driven, playing, reduced, bind } = useDrivenDemo(3, HOW_STEP_MS);
+  const [index, setIndex] = useState(0);
   const [picked, setPicked] = useState<string[]>([]);
 
   function pickSnippet(label: string) {
     setPicked((current) => (current.includes(label) ? current : [...current, label]));
-    select(1);
+    setIndex(1);
   }
 
   return (
-    <div data-paused={!playing} {...bind}>
+    <div>
       <div className="grid gap-4 md:grid-cols-2">
         <ProductWindow title="Search · Paste · Hope" mini>
           <div className="demo-frame">
@@ -35,9 +28,9 @@ export function ContrastDemo() {
                     <button
                       type="button"
                       onClick={() => pickSnippet(label)}
-                      className={`demo-snippet ${index === 0 && !reduced && !driven ? "is-scanning" : ""} ${
-                        copied ? "is-copied" : ""
-                      } ${picked.includes(label) ? "is-picked" : ""}`}
+                      className={`demo-snippet ${copied ? "is-copied" : ""} ${
+                        picked.includes(label) ? "is-picked" : ""
+                      }`}
                     >
                       {label}
                     </button>
@@ -54,7 +47,7 @@ export function ContrastDemo() {
                 prompt
               </p>
               <div className="flex flex-wrap gap-1.5">
-                {(picked.length ? picked : index >= 1 ? searchSnippets : []).map((label) => (
+                {(picked.length ? picked : index >= 1 ? [...searchSnippets] : []).map((label) => (
                   <span key={label} className="demo-chip-label">
                     {label}
                   </span>
@@ -75,16 +68,13 @@ export function ContrastDemo() {
                   <li key={row.kind}>
                     <button
                       type="button"
-                      onClick={() => select(1)}
+                      onClick={() => setIndex(1)}
                       className={`record-row grid w-full gap-1 text-left ${linked ? "is-linked" : ""} ${
                         quiet ? "is-quiet" : ""
                       }`}
                     >
-                      <p className="flex flex-wrap items-baseline gap-x-2 font-mono text-[11px] uppercase tracking-[0.06em] text-text-dark/60">
+                      <p className="font-mono text-[11px] uppercase tracking-[0.06em] text-text-dark/60">
                         {row.kind}
-                        {index === 0 && !reduced ? (
-                          <span className="record-scrap-chip">{row.scrap}</span>
-                        ) : null}
                       </p>
                       <p className="font-mono text-[12px] leading-[1.45] text-text-dark">{row.text}</p>
                     </button>
@@ -94,7 +84,7 @@ export function ContrastDemo() {
             </ul>
             <ul
               className={`record-hosts mt-4 flex min-h-6 flex-wrap items-center justify-center gap-x-5 ${
-                index === 2 || reduced ? "is-on" : ""
+                index === 2 ? "is-on" : ""
               }`}
             >
               {demoHosts.map((host) => (
@@ -110,16 +100,13 @@ export function ContrastDemo() {
       <DemoTabs
         items={contrastSteps.map((item) => `${item.old} → ${item.next}`)}
         active={index}
-        onSelect={select}
+        onSelect={setIndex}
         label="Search paste hope versus compact reason deliver"
         accent
-        playing={playing}
       />
-      {reduced ? null : (
-        <p className="mt-3 text-center font-mono text-[12px] text-muted">
-          {driven ? "Your control — click a snippet, row, or step" : "Click a snippet to paste · hover pauses"}
-        </p>
-      )}
+      <p className="mt-3 text-center font-mono text-[12px] text-muted">
+        Click a tag, row, or step
+      </p>
     </div>
   );
 }

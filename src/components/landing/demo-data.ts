@@ -34,6 +34,7 @@ export const ragPassages = ["rate limits", "vendor note", "CI keys", "old thread
 
 export const demoHosts = ["Claude", "ChatGPT", "Cursor"] as const;
 
-export const HOW_STEP_MS = 3200;
+/** Full Compact → Reason → Deliver loop is ~4.2s. */
+export const HOW_STEP_MS = 1400;
 
 export type HowStepId = (typeof howSteps)[number]["id"];

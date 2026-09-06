@@ -22,42 +22,14 @@ body {
   line-height: var(--leading-body);
 }
 
-.atmosphere {
-  pointer-events: none;
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  overflow: hidden;
-}
-
-.wash {
-  position: absolute;
-}
-
-.wash-hero {
-  top: -18vh;
-  left: 50%;
-  width: min(92vw, 1100px);
-  height: 72vh;
-  transform: translateX(-50%);
-  background: radial-gradient(ellipse at 50% 42%, rgb(13 148 136 / 0.2), transparent 68%);
-}
-
-.wash-foot {
-  right: -12vw;
-  bottom: -8vh;
-  width: min(58vw, 720px);
-  height: 46vh;
-  background: radial-gradient(ellipse at 50% 50%, rgb(194 106 58 / 0.12), transparent 72%);
-}
-
 .site-header {
   border-bottom: 1px solid var(--border);
-  background: color-mix(in srgb, var(--elevated) 92%, var(--paper));
+  background: var(--elevated);
 }
 
 .section-tint {
   background: var(--tint);
+  border-block: 1px solid var(--border);
 }
 
 .product-window {
@@ -67,12 +39,10 @@ body {
   border: 1px solid var(--border-dark);
   border-radius: 12px;
   background: #0a0a0a;
-  box-shadow: 0 28px 56px -32px rgb(10 10 10 / 0.5);
 }
 
 .product-window.is-mini {
   width: 100%;
-  box-shadow: 0 18px 36px -28px rgb(10 10 10 / 0.4);
 }
 
 .product-chrome {
@@ -82,7 +52,7 @@ body {
   height: 40px;
   padding: 0 14px;
   border-bottom: 1px solid var(--border-dark);
-  background: #121212;
+  background: #0a0a0a;
 }
 
 .chrome-marks {
@@ -210,7 +180,7 @@ section[id] {
 
 .demo-progress {
   transform-origin: left center;
-  animation: demo-progress-fill 3.2s linear forwards;
+  animation: demo-progress-fill 1.4s linear forwards;
 }
 
 @keyframes demo-progress-fill {
@@ -272,6 +242,21 @@ button.record-row:focus-visible {
   }
 }
 
+.record-type-in dd {
+  animation: record-type-in 0.55s ease both;
+}
+
+@keyframes record-type-in {
+  from {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 .record-hosts {
   opacity: 0;
   transition: opacity 320ms ease;
@@ -306,17 +291,14 @@ button.record-row:focus-visible {
   color: #fff;
 }
 
-.demo-snippet.is-scanning {
-  animation: bar-pulse 1.3s ease-in-out infinite;
-}
-
 .demo-snippet.is-copied {
-  opacity: 0.4;
+  opacity: 0.55;
 }
 
 .demo-snippet.is-picked {
-  border-color: var(--accent-dark);
-  background: color-mix(in srgb, var(--accent) 18%, #1a1a1a);
+  border-color: #e4e4e7;
+  background: #262626;
+  color: #fafafa;
 }
 
 .demo-prompt {
@@ -343,48 +325,23 @@ button.record-row:focus-visible {
 .demo-chip-label {
   display: inline-flex;
   align-items: center;
-  border: 1px solid var(--border-dark);
-  background: #222;
+  border: 1px solid #a1a1aa;
+  background: #fafafa;
   border-radius: var(--arch-radius-control);
   padding: 3px 7px;
   font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 11px;
-  color: var(--text-dark);
+  font-weight: 500;
+  color: #171717;
 }
 
-.demo-scan {
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 14px;
-  border-radius: 6px;
-  background: color-mix(in srgb, var(--accent-dark) 22%, transparent);
-  pointer-events: none;
-  animation: scan-move 2.4s linear infinite;
-}
-
-@keyframes scan-move {
-  from {
-    top: 0;
-  }
-  to {
-    top: calc(100% - 14px);
-  }
-}
-
-@keyframes bar-pulse {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.45;
-  }
+.theme-dark .demo-chip-label {
+  border-color: #d4d4d8;
+  background: #fafafa;
+  color: #171717;
 }
 
 [data-paused="true"] .demo-progress,
-[data-paused="true"] .demo-scan,
-[data-paused="true"] .demo-snippet.is-scanning,
 [data-paused="true"] .record-scrap-chip {
   animation-play-state: paused;
 }
@@ -392,11 +349,10 @@ button.record-row:focus-visible {
 @media (prefers-reduced-motion: reduce) {
   .demo-progress,
   .record-scrap-chip,
-  .demo-snippet.is-scanning,
-  .demo-scan,
   .record-hosts,
   .record-row,
-  .demo-prompt {
+  .demo-prompt,
+  .record-type-in {
     animation: none !important;
     transition: none !important;
   }
@@ -405,8 +361,7 @@ button.record-row:focus-visible {
     opacity: 1;
   }
 
-  .record-scrap-chip,
-  .demo-scan {
+  .record-scrap-chip {
     display: none;
   }
 }
