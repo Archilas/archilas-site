@@ -38,9 +38,3 @@ export const demoQuestion = {
   a: "After 11. You deep-work from 10 in a café — keep the morning clear.",
   citeIds: ["pref", "dec"] as readonly string[],
 };
-
-export const demoHosts = [
-  { name: "Claude", line: "The memory is the context — not a paste." },
-  { name: "ChatGPT", line: "Same object. Same durable lines." },
-  { name: "Cursor", line: "Intended over MCP." },
-] as const;

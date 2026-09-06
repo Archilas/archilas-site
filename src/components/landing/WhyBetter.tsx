@@ -1,11 +1,11 @@
 const points = [
   {
-    title: "Many sources, one living record.",
-    body: "Notes, chats, and threads compact into preferences, decisions, and open loops — not a chat dump.",
+    title: "Living memory from many sources.",
+    body: "Preferences, decisions, and open loops compact from notes, chats, and threads — revisable living memory, not a chat dump.",
   },
   {
-    title: "The model reasons at query time.",
-    body: "It reads that memory and answers in one pass — not copy-paste retrieval.",
+    title: "Coherent answers at query time.",
+    body: "The model reasons over that memory for one coherent answer — not copy-paste retrieval.",
   },
   {
     title: "Deliver into tools you already use.",
@@ -17,7 +17,7 @@ export function WhyBetter() {
   return (
     <section id="product" className="why-band scroll-mt-[var(--scroll-margin)] px-[var(--pad-x)] py-16 md:py-20">
       <div className="mx-auto max-w-[var(--max-width)]">
-        <p className="label">Architecture</p>
+        <p className="label">Why Archilas</p>
         <h2 className="h2 mt-3 max-w-xl">Built different from paste memory.</h2>
         <div className="why-grid">
           {points.map((point, index) => (

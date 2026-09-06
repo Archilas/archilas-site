@@ -67,7 +67,7 @@ body {
   font-family: var(--font-instrument), ui-serif, Georgia, serif;
   font-style: italic;
   font-weight: 400;
-  font-size: 1.08em;
+  font-size: 1.09em;
   letter-spacing: -0.03em;
   line-height: 0.95;
 }
@@ -121,11 +121,14 @@ section[id] {
   flex-direction: column;
   align-items: center;
   margin-top: calc(var(--nav-height) * -1);
-  padding-top: calc(var(--nav-height) + 44px);
-  padding-bottom: 36px;
+  padding-top: calc(var(--nav-height) + 64px);
+  padding-bottom: 48px;
+  color: var(--ink);
   background:
-    radial-gradient(92% 52% at 50% -6%, rgba(176, 212, 238, 0.9) 0%, rgba(176, 212, 238, 0) 58%),
-    linear-gradient(180deg, #e7f1fa 0%, #edf4fa 36%, #f3f6f4 70%, #f6f3ed 100%);
+    radial-gradient(120% 78% at 50% -18%, rgba(198, 220, 238, 0.62) 0%, transparent 58%),
+    radial-gradient(70% 58% at 6% 28%, rgba(214, 230, 242, 0.48) 0%, transparent 64%),
+    radial-gradient(68% 52% at 96% 16%, rgba(206, 224, 238, 0.4) 0%, transparent 60%),
+    linear-gradient(180deg, #e8f0f9 0%, #eef4fa 34%, #f5f8fb 70%, #f7f7f5 100%);
 }
 
 .hero-stack {
@@ -135,15 +138,11 @@ section[id] {
   align-items: center;
 }
 
-.hero-sky .display {
-  font-size: clamp(2.4rem, 5.8vw, 4.5rem);
-}
-
 .hero-badge {
   display: inline-flex;
   height: 28px;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   padding: 0 12px;
   border: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
   border-radius: 999px;
@@ -154,7 +153,7 @@ section[id] {
 }
 
 .hero-sub {
-  margin-top: 12px;
+  margin-top: 20px;
   max-width: 28rem;
   color: var(--body);
   font-size: 17px;
@@ -162,12 +161,17 @@ section[id] {
 }
 
 .hero-actions {
-  margin-top: 16px;
+  margin-top: 28px;
+}
+
+.hero-actions .btn-outline,
+.hero-actions button {
+  height: 46px;
 }
 
 .hero-demo {
   width: 100%;
-  margin-top: 16px;
+  margin-top: 40px;
 }
 
 .hero-selectors {
