@@ -1,10 +1,9 @@
-# No cartoon clouds
+# Moodboard copy
 
-Hermes rejected the literal cumulus SVG as kids-app weather. The CustomGPT reference is **soft airy light**, not cloud icons.
+Restored the agreed mixed type and the hero product box.
 
-1. Deleted `public/hero-sky.svg` and every ellipse/turbulence cloud.
-2. Hero is `#EAF3FB → #F7F7F5` plus two huge, faint light blooms. Ink type. Ink topbar.
-3. Dual CTAs unchanged: Join waitlist → (modal) + outline Contact.
-4. Demo rebuilt as visual cards: chat bubble / doc / thread → memory tiles → ask + answer panels.
-5. Tabs + Play stay inside the card header. Height follows content.
-6. Waitlist still does not persist.
+- Geist bold H1 + Instrument Serif italic on “understands” only.
+- Soft airy wash, no cartoon clouds.
+- Agency tabs over a dark glass product stage.
+- Two Finova-style supporting cards under the hero.
+- Waitlist still does not persist.

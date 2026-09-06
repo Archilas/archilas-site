@@ -6,7 +6,7 @@
 
 ## Product and copy
 
-- H1: “AI memory” / “that understands you.”
+- H1: “AI memory that *understands* you.” — Geist bold + Instrument Serif italic on “understands” only.
 - Reinforce: Detailed notes → compacted memory → smart answers from many sources.
 - Dual CTAs: Join waitlist → (modal) and outline Contact in topbar, hero, and waitlist band.
 - MCP is intended, not live. Surfaces state that as a fact, not an apology.

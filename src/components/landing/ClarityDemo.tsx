@@ -4,6 +4,8 @@ import { demoBeats, demoQuestion, memoryRows, sourceNotes } from "@/components/l
 import { useDemoClock } from "@/lib/use-demo-clock";
 import { cn } from "@/lib/cn";
 
+const avatars = { chat: "AL", doc: "JN", thread: "KR" } as const;
+
 export function ClarityDemo() {
   const clock = useDemoClock();
   const { beat, local, playing, reduced } = clock;
@@ -40,7 +42,7 @@ export function ClarityDemo() {
         )}
       </div>
 
-      <div className="demo-body">
+      <div className="demo-glass">
         {beat === "notes" ? <NotesBoard /> : null}
 
         {beat === "memory" ? (
@@ -77,6 +79,9 @@ function NotesBoard({ compact = false }: { compact?: boolean }) {
         {sourceNotes.map((note) => (
           <article key={note.id} className={cn("note-card", `is-${note.id}`)} data-testid={`note-card-${note.id}`}>
             <div className="note-card-bar">
+              <span className="avatar" aria-hidden="true">
+                {avatars[note.id]}
+              </span>
               <span className="note-chip">{note.kind}</span>
               <span className="note-chip is-mute">{note.id === "chat" ? "standup" : note.id === "doc" ? "checklist" : "launch"}</span>
             </div>
@@ -89,6 +94,7 @@ function NotesBoard({ compact = false }: { compact?: boolean }) {
                 <span className="note-doc-rule" />
                 <p>{note.text}</p>
                 <span className="note-doc-rule" />
+                <span className="note-doc-rule is-short" />
               </div>
             ) : (
               <div className="note-thread">
@@ -105,11 +111,15 @@ function NotesBoard({ compact = false }: { compact?: boolean }) {
 }
 
 function MemoryBoard({ count, citeIds }: { count: number; citeIds: readonly string[] }) {
+  const filled = Math.max(0, count);
   return (
     <div>
       <p className="spine-label">Compact</p>
+      <div className="mem-meter" aria-hidden="true">
+        <span style={{ width: `${(filled / memoryRows.length) * 100}%` }} />
+      </div>
       <div className="mem-row">
-        {memoryRows.slice(0, Math.max(0, count)).map((row) => (
+        {memoryRows.slice(0, filled).map((row) => (
           <article
             key={row.id}
             className={cn("mem-tile", citeIds.includes(row.id) && "is-cited")}

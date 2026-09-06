@@ -1,5 +1,5 @@
 import { Hero } from "@/components/landing/Hero";
-import { ProductBand } from "@/components/landing/ProductBand";
+import { ShowCards } from "@/components/landing/ShowCards";
 import { Waitlist } from "@/components/landing/Waitlist";
 import { JsonLd } from "@/components/JsonLd";
 import { buildMetadata, organizationJsonLd } from "@/lib/seo";
@@ -16,7 +16,7 @@ export default function HomePage() {
     <>
       <JsonLd data={organizationJsonLd()} />
       <Hero />
-      <ProductBand />
+      <ShowCards />
       <Waitlist />
     </>
   );

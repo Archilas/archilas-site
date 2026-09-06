@@ -1,22 +1,25 @@
 # Archilas Site — Design System
 
-Airy wash hero, paper below. Hex lives in `src/styles/tokens.css`. No cloud art.
+Moodboard copy: CustomGPT air + Agent OS type + Finova supporting cards + Agency tabs.
+
+## Type
+
+- Geist 650 for the H1.
+- Instrument Serif italic on **one** word: “understands”. No other italics.
+- Dual CTAs: solid ink Join waitlist → + outline Contact.
 
 ## Atmosphere
 
-`#EAF3FB` → `#F7F7F5` plus two huge, low-contrast light blooms. No cumulus, no weather icons, no silhouettes that read as clouds. Hero type is ink.
+Soft airy wash `#D7E8F6 → #EAF3FB → #F7F7F5`. No cumulus SVG. No weather icons.
+
+## Hero box
+
+Premium framed stage. Agency pill tabs. Dark glass product overlay (Agent OS). Visual notes / memory tiles / ask-answer panels.
 
 ## Color
 
 | Token | Value | Role |
 |------|-------|------|
 | `--bg` | `#F7F7F5` | Page ground |
-| `--surface` | `#FFFFFF` | Demo card, modal, tiles |
 | `--ink` | `#0A0A0A` | Type, Join waitlist |
-| `--signal` | `#0F766E` | Active demo tab underline, Play |
-
-## Signatures
-
-- H1: “AI memory” (600) / “that understands you.” (300)
-- Dual CTAs: solid ink Join waitlist → + outline Contact
-- Demo is visual product UI inside the white card
+| `--signal` | `#0F766E` | Play fill, focus, meter |

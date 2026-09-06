@@ -1,9 +1,8 @@
-# Moodboard principles
+# Moodboard — craft cues copied
 
-Craft target: CustomGPT **airy light** — not cartoon weather, not a deep blue sky with oval clouds.
+1. **CustomGPT** — Airy sky atmosphere (soft premium light, not cartoon ovals). Catchphrase, then dual CTAs, then a stunning hero product box as the star.
+2. **Agent OS** — Big bold Geist display + one Instrument Serif italic word (`understands`). Dark glass UI overlay inside the hero box.
+3. **Finova** — Clean topbar, dual CTAs, then two show-not-tell supporting cards with mini UI (Ask switcher + Surfaces rows). No gold hourglass, no cloned marks.
+4. **Agency** — Pill tab switcher over an informative dashboard-like preview. Interactive, clear, premium soft frame.
 
-- Atmosphere: `#EAF3FB → #F7F7F5` with soft diffuse light. No cumulus SVG. No ellipse cloud clusters.
-- H1 is two ink sans-serif lines: “AI memory” (600) / “that understands you.” (300).
-- Dual CTAs: solid ink Join waitlist → (modal) + outline Contact.
-- Demo chrome lives inside the white card. Beats are visual panels, not a labeled text dump.
-- Signal teal `#0F766E` only on the active tab underline, Play fill, and focus rings.
+Do not clone host logos or brand colors. Copy structure and craft depth only.
