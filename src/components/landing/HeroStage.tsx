@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { ArchWindow } from "@/components/landing/ArchWindow";
 import {
+  demoHosts,
   howSteps,
   pipelineQuestions,
   pipelineRecord,
@@ -12,14 +13,13 @@ import {
 import { usePipelineClock } from "@/lib/use-pipeline-clock";
 import { cn } from "@/lib/cn";
 
-export function Pipeline() {
-  const clock = usePipelineClock();
-  const { stage, local, playing, progress, reduced } = clock;
+export function HeroStage({ clock }: { clock: ReturnType<typeof usePipelineClock> }) {
+  const { stage, local, playing, reduced } = clock;
   const [askId, setAskId] = useState<string | null>(null);
 
-  const compactHighlight = reduced || local > 0.12;
-  const compactFly = reduced || local > 0.28;
-  const compactCount = reduced || local > 0.72;
+  const compactHighlight = stage !== "transcript" && (reduced || stage !== "compact" || local > 0.18);
+  const compactFly = stage === "compact" ? reduced || local > 0.28 : stage !== "transcript";
+  const compactCount = stage === "record" || (stage === "compact" && (reduced || local > 0.72));
 
   const reasonIndex = local < 0.48 ? 0 : 1;
   const clockQuestion = pipelineQuestions[reasonIndex];
@@ -32,19 +32,19 @@ export function Pipeline() {
   const showAnswer = askId ? true : local < 0.48 ? local > 0.26 : local > 0.68;
   const typedQ = question.q.slice(0, Math.ceil(question.q.length * reasonTyped));
 
-  const deliverReveal = reduced ? 1 : Math.min(1, local / 0.55);
-
+  const deliverReveal = reduced ? 1 : Math.min(1, local / 0.5);
   const kept = pipelineTranscript.filter((line) => line.keep).length;
   const discarded = pipelineTranscript.length - kept;
 
   const visibleRows = useMemo(() => {
-    if (reduced) return pipelineRecord.length;
+    if (stage === "transcript") return 0;
+    if (stage !== "compact" || reduced) return pipelineRecord.length;
     if (!compactFly) return 0;
     return Math.min(
       pipelineRecord.length,
       Math.floor(((local - 0.28) / 0.5) * pipelineRecord.length) + 1,
     );
-  }, [compactFly, local, reduced]);
+  }, [compactFly, local, reduced, stage]);
 
   function selectStage(id: HowStepId) {
     setAskId(null);
@@ -52,58 +52,41 @@ export function Pipeline() {
   }
 
   return (
-    <section id="pipeline" className="scroll-mt-[var(--scroll-margin)]">
-      <div className="pipeline-frame" data-stage={stage} data-playing={playing ? "1" : "0"}>
-        <div className="mx-auto flex w-full max-w-[var(--max-width)] flex-col gap-4 px-[var(--pad-x)] py-7">
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <p className="label text-text-dark/50">The pipeline</p>
-            <div className="flex flex-wrap items-center gap-2">
-              {howSteps.map((item) => (
-                <button
-                  key={item.id}
-                  type="button"
-                  className={cn("pipeline-tab", stage === item.id && "is-on")}
-                  aria-pressed={stage === item.id}
-                  data-testid={`pipeline-tab-${item.id}`}
-                  onClick={() => selectStage(item.id)}
-                >
-                  {item.label}
-                </button>
-              ))}
-            </div>
-          </div>
+    <div id="how" className="scroll-mt-[var(--scroll-margin)]">
+      <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+        <div className="agency-rail" role="tablist" aria-label="Demo stages">
+          {howSteps.map((item) => (
+            <button
+              key={item.id}
+              type="button"
+              role="tab"
+              className={cn("agency-tab", stage === item.id && "is-on")}
+              aria-selected={stage === item.id}
+              data-testid={`pipeline-tab-${item.id}`}
+              onClick={() => selectStage(item.id)}
+            >
+              {item.label}
+            </button>
+          ))}
+        </div>
+        {reduced ? null : (
+          <button
+            type="button"
+            className="run-btn"
+            data-testid="pipeline-run"
+            onClick={() => {
+              setAskId(null);
+              clock.replay();
+            }}
+          >
+            {playing ? "Running" : "Run"}
+          </button>
+        )}
+      </div>
 
-          {reduced ? null : (
-            <div className="flex flex-wrap items-center gap-3">
-              <button
-                type="button"
-                className="pipeline-tab"
-                onClick={() => (playing ? clock.pause() : clock.play())}
-                aria-label={playing ? "Pause pipeline" : "Play pipeline"}
-              >
-                {playing ? "Pause" : progress >= 1 ? "Replay" : "Play"}
-              </button>
-              <button type="button" className="pipeline-tab" onClick={() => { setAskId(null); clock.replay(); }}>
-                Run
-              </button>
-              <input
-                type="range"
-                className="scrubber min-w-[160px] flex-1"
-                min={0}
-                max={1}
-                step={0.001}
-                value={progress}
-                aria-label="Pipeline progress"
-                onChange={(event) => {
-                  setAskId(null);
-                  clock.scrub(Number(event.target.value));
-                }}
-              />
-              <span className="mono text-text-dark/40">{Math.round(progress * 100)}%</span>
-            </div>
-          )}
-
-          {stage === "compact" ? (
+      <div className="hero-box mt-5" data-stage={stage} data-playing={playing ? "1" : "0"}>
+        <div className="p-4 md:p-5">
+          {stage === "transcript" || stage === "compact" ? (
             <div className="grid gap-4 lg:grid-cols-2">
               <ArchWindow name="standup.txt" dark>
                 <div className="space-y-0.5 p-4">
@@ -161,14 +144,12 @@ export function Pipeline() {
                   </div>
                   <p className="font-mono text-[15px] leading-7 text-text-dark">
                     {typedQ}
-                    {reasonTyped < 1 ? <span className="text-signal">|</span> : null}
+                    {reasonTyped < 1 ? <span className="text-text-dark/50">|</span> : null}
                   </p>
                   {showAnswer ? (
-                    question.supported ? (
-                      <p className="text-[16px] leading-7 text-text-dark">{question.a}</p>
-                    ) : (
-                      <p className="text-[16px] leading-7 text-text-dark/70">Not in the record.</p>
-                    )
+                    <p className="text-[16px] leading-7 text-text-dark/85">
+                      {question.supported ? question.a : "Not in the record."}
+                    </p>
                   ) : null}
                 </div>
               </ArchWindow>
@@ -189,16 +170,16 @@ export function Pipeline() {
           ) : null}
 
           {stage === "deliver" ? (
-            <div className="space-y-3">
+            <div className="space-y-3 p-1">
               <p className="text-[12px] text-text-dark/50">In development</p>
               <div className="grid gap-3 md:grid-cols-3">
-                {(["Claude", "ChatGPT", "Cursor"] as const).map((host, index) => (
+                {demoHosts.map((host, index) => (
                   <div
-                    key={host}
+                    key={host.name}
                     className="host-slot p-4"
-                    style={{ opacity: deliverReveal > index * 0.22 ? 1 : 0.28 }}
+                    style={{ opacity: deliverReveal > index * 0.2 ? 1 : 0.28 }}
                   >
-                    <p className="mb-3 mono uppercase tracking-[0.14em] text-text-dark/40">{host}</p>
+                    <p className="mb-3 mono uppercase tracking-[0.14em] text-text-dark/40">{host.name}</p>
                     <p className="mono text-text-dark/45">record.json</p>
                     <p className="mt-2 text-[13px] leading-6 text-text-dark/85">
                       {pipelineRecord[index % pipelineRecord.length].text}
@@ -208,8 +189,24 @@ export function Pipeline() {
               </div>
             </div>
           ) : null}
+
+          {stage === "record" ? (
+            <ArchWindow name="record.json" dark>
+              <div className="space-y-3 p-5">
+                {pipelineRecord.map((row) => (
+                  <div key={row.id}>
+                    <p className="mono uppercase tracking-[0.14em] text-text-dark/40">{row.kind}</p>
+                    <p className="mt-1 text-[15px] leading-7 text-text-dark">{row.text}</p>
+                  </div>
+                ))}
+                <p className="pt-2 font-mono text-[11px] text-text-dark/45">
+                  {kept} kept · {discarded} discarded
+                </p>
+              </div>
+            </ArchWindow>
+          ) : null}
         </div>
       </div>
-    </section>
+    </div>
   );
 }

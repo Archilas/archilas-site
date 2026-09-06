@@ -30,7 +30,7 @@ export default function OpenGraphImage() {
             color: tokens.muted,
           }}
         >
-          Pre-launch
+          Archilas
         </div>
         <div
           style={{

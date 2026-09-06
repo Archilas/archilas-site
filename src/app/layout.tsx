@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import { Analytics } from "@/components/Analytics";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -19,6 +19,15 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   display: "swap",
   preload: false,
+});
+
+const instrument = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  style: "italic",
+  variable: "--font-instrument",
+  display: "swap",
+  preload: true,
 });
 
 export const metadata: Metadata = {
@@ -58,7 +67,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={`${geist.variable} ${geistMono.variable} h-full`}>
+    <html lang="en" className={`${geist.variable} ${geistMono.variable} ${instrument.variable} h-full`}>
       <body className="flex min-h-full flex-col bg-bg font-sans text-body antialiased">
         <SiteHeader />
         <main id="main" className="flex-1">

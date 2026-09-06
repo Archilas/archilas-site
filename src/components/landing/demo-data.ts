@@ -1,7 +1,9 @@
 export const howSteps = [
+  { id: "transcript", label: "Transcript" },
   { id: "compact", label: "Compact" },
   { id: "reason", label: "Reason" },
   { id: "deliver", label: "Deliver" },
+  { id: "record", label: "Record" },
 ] as const;
 
 export type HowStepId = (typeof howSteps)[number]["id"];
@@ -40,47 +42,38 @@ export const pipelineQuestions = [
   },
 ] as const;
 
-export const explorerRecord = [
+export const askCard = [
   {
-    id: "e1",
-    kind: "Preference" as const,
-    text: "Ship Friday notes as a written recap, not a transcript dump.",
-    source: "standup.txt",
-    quote: "“Write the Friday recap. Don’t paste the raw dump.”",
+    id: "catering",
+    q: "What's the catering budget?",
+    supported: false,
+    a: "Not in the record.",
   },
   {
-    id: "e2",
-    kind: "Decision" as const,
-    text: "Kept the design system in-repo after the Figma-only trial stalled.",
-    source: "review.txt",
-    quote: "“The Figma-only trial stalled. Keep the system in-repo.”",
-  },
-  {
-    id: "e3",
-    kind: "Open loop" as const,
-    text: "Confirm the launch window with legal before Thursday.",
-    source: "checklist.txt",
-    quote: "“Legal still has to sign the Thursday window.”",
+    id: "friday",
+    q: "How do we ship Friday notes?",
+    supported: true,
+    a: "Written recap. Not a transcript dump.",
   },
 ] as const;
 
-export const compareDemo = {
+export const compareCard = {
   q: "Who owns weekend pages?",
   passages: [
-    "Pager dump — retry talk mixed with a birthday thread and an old hostname.",
-    "Search hit: three retries, then a jump to an unrelated dashboard rename.",
-    "Handoff still lists two owners and a parked escalation.",
+    "Pager dump mixed with a birthday thread.",
+    "Three retries, then a dashboard rename.",
+    "Handoff still lists two owners.",
   ],
-  answer: "One on-call owner. Page after three failed retries. Weekend escalation is still open.",
+  answer: "One owner. Page after three failed retries.",
   rows: [
-    { id: "c1", kind: "Preference" as const, text: "Page after three failed retries, not on the first timeout." },
-    { id: "c2", kind: "Decision" as const, text: "Kept a single on-call owner after the split rotation failed." },
-    { id: "c3", kind: "Open loop" as const, text: "Name the weekend escalation before Friday." },
+    { kind: "Preference" as const, text: "Page after three failed retries." },
+    { kind: "Decision" as const, text: "Single on-call owner." },
+    { kind: "Open loop" as const, text: "Name weekend escalation before Friday." },
   ],
 } as const;
 
 export const demoHosts = [
-  { name: "Claude", line: "The record is the context. Not a paste." },
+  { name: "Claude", line: "The record is the context." },
   { name: "ChatGPT", line: "Same object. Same lines." },
-  { name: "Cursor", line: "Intended over MCP. Not live." },
+  { name: "Cursor", line: "Intended over MCP." },
 ] as const;
