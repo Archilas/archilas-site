@@ -1,6 +1,6 @@
 # Archilas Site — Design System
 
-Light-primary marketing shell on a warm atmospheric ground. Hex values live in `src/styles/tokens.css` (JS mirror: `src/styles/tokens.ts`).
+Clean light marketing shell. Sharp product window. Hex values live in `src/styles/tokens.css` (JS mirror: `src/styles/tokens.ts`).
 
 ## Color
 
@@ -10,19 +10,18 @@ Light-primary marketing shell on a warm atmospheric ground. Hex values live in `
 | `--ink` | `#171717` | Strong UI text |
 | `--body` | `#3F3F46` | Body copy |
 | `--muted` | `#52525B` | Labels |
-| `--border` | `#E4E4E7` | Rules |
-| `--surface` / `--paper` | `#F3EEE6` | Warm page ground |
-| `--elevated` | `#FFFFFF` | Solid controls |
-| `--glass` | white 78% | Frosted cards / header |
+| `--border` | `#E4E4E7` | Hairlines |
+| `--surface` / `--paper` | `#F7F7F4` | Page ground |
+| `--elevated` | `#FFFFFF` | Header, cards, controls |
 | `--border-input` | `#D4D4D8` | Inputs / secondary buttons |
-| `--bg-dark` | `#09090B` | Footer / OG / one content section |
+| `--bg-dark` | `#09090B` | Footer / OG / product window |
 | `--card-dark` | `#18181B` | Dark cards |
 | `--border-dark` | `#27272A` | Dark rules |
 | `--text-dark` | `#D4D4D8` | Dark text |
 | `--accent` | `#0D9488` | Focus rings and the active stepper only |
 | `--accent-dark` | `#2DD4BF` | Accent on dark |
 
-Accent stays under 2% of the viewport. No `#0D9488` fills, buttons, or section backgrounds. Soft amber / dusk / sky orbs are atmosphere only — not brand fills, not lavender. Every primary CTA is solid near-black with white text. Body copy stays ≥4.5:1 on paper and glass.
+No atmospheric orbs, frosted glass, or lavender. Accent stays under 2%. Every primary CTA is solid near-black with white text. Body copy ≥4.5:1.
 
 ## Type
 
@@ -31,18 +30,17 @@ Geist + Geist Mono. Upright only. No italics in UI.
 - Display: 48–72 / 550 / tight tracking
 - H2: 32–48 / 600
 - H3: 20–24 / 600
-- Body: 16–18 / 400 / 1.45–1.6 / body color
+- Body: 16–18 / 400
 - Label: 12–13 / uppercase / muted
 - Mono: 13–14, example record only
 
 ## Shape and space
 
-- Cards 12, controls 8, product window 14
+- Cards 12, controls 8, product window 12
 - Max width 1120, horizontal pad 24
 - Vertical pad 104 desktop / 64 mobile
 - Nav 72, controls 46
-- Hero: type, then a large product window. Motion lives inside the frame.
-- Section height is content + padding. Cards hug content.
+- Hero: punchy H1, then a sharp product window. Motion lives only inside product/demo frames.
 
 ## Copy
 
