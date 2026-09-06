@@ -26,7 +26,7 @@ export function HowItWorksStage() {
         role="tabpanel"
         id="how-panel-record"
         aria-labelledby={`how-tab-${step.id}`}
-        className="px-5 pb-5 pt-5 sm:px-6"
+        className="px-4 pb-4 pt-4"
       >
         <ExampleRecord
           key={reduced ? "static" : step.id}
@@ -36,14 +36,14 @@ export function HowItWorksStage() {
           typeIn={showType && !reduced && step.id === "compact"}
           onRowSelect={() => setIndex(1)}
         />
-        <p className="mt-4 text-center text-[14px] text-text-dark/75" aria-live="polite">
+        <p className="mt-3 text-left text-[13px] text-text-dark/70" aria-live="polite">
           {step.caption}
         </p>
         {reduced ? null : (
-          <div className="mt-3 flex items-center justify-center gap-3">
+          <div className="mt-2 flex items-center gap-3">
             <button
               type="button"
-              className="rounded-[var(--arch-radius-control)] border border-border-dark px-2.5 py-1 font-mono text-[11px] text-text-dark/80 hover:text-text-dark"
+              className="border border-border-dark px-2 py-1 font-mono text-[11px] text-text-dark/80 hover:text-text-dark"
               aria-pressed={held}
               onClick={toggleHold}
             >

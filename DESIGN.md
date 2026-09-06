@@ -1,30 +1,37 @@
 # Archilas Site — Design System
 
-Flat warm off-white shell. Solid dark product windows. Hex lives in `src/styles/tokens.css` (JS mirror: `src/styles/tokens.ts`).
+Paper and ink. One inverse chapter. Hex lives in `src/styles/tokens.css` (JS mirror: `src/styles/tokens.ts`).
 
 ## Color
 
-Three solid page bands only:
-
 | Token | Value | Role |
 |------|-------|------|
-| `--paper` | `#F4F0E8` | Page ground (hero, holds, waitlist) |
-| `--tint` | `#DCECEA` | One compare band |
-| `--bg-dark` | `#0A0A0A` | Product band, product windows, footer |
-| `--elevated` | `#FFFDF8` | Header, cards, controls |
-| `--accent` | `#0D9488` | Stepper underline, focus, hold-card hover. Keep under 2%. |
+| `--bg` | `#F7F7F5` | Page ground |
+| `--surface` | `#FFFFFF` | Forms, compare windows, waitlist panel |
+| `--ink` | `#0A0A0A` | Display, headings, primary CTAs |
+| `--body` | `#3F3F46` | Body |
+| `--muted` | `#737373` | Chapter rules, captions |
+| `--line` | `#E5E5E5` | Hairlines |
+| `--inverse` | `#0A0A0A` | Chapter 02 only |
+| `--focus` | `#0F766E` | Focus rings only |
 
-No `--warm` section band. No orbs, radial washes, blobs, frost, glow, or lavender. Primary CTAs are near-black. Body copy ≥4.5:1.
+No aqua, mint, cream, warm bands, or teal chrome. No orbs, gradients, blobs. No traffic-light dots.
 
-## Motion
+## Signatures
 
-- Auto-play only on the Example-record Compact → Reason → Deliver cycle (~4s). Pause control is wired. Hover also pauses. Reduced motion is static and still clickable.
-- Active step underline springs in 200ms.
-- Compare windows are user-driven.
+- Chapter rules: `01 ——— RECORD` through `05 ——— WAITLIST`
+- One 64–96px statement on inverse: Searching old text is not the same as remembering what matters.
+- Record chrome is mono `record`. No macOS dots.
+
+## Layout
+
+- Above 640px, left-align. Waitlist is the centered exception.
+- Hero is 6/6 and must fit 1280×800 with the record window fully visible.
+- Memory is 7/5 dense list + sticky record. Not three equal cards.
+- Hosts is one Intended pill, not three destination frames.
 
 ## Copy
 
-- H1: RAG finds passages. Archilas keeps a record.
+- H1: Passages aren't memory. A record is.
 - Sub: Preferences, decisions, open loops — Compact. Reason. Deliver.
 - Spine: Compact → Reason → Deliver. No Distill / Vault.
-- Waitlist success: You’re on the list / We’ll email when Archilas opens.

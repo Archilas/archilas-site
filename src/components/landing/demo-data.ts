@@ -64,19 +64,19 @@ export const demoHosts = ["Claude", "ChatGPT", "Cursor"] as const;
 export const holdCards = [
   {
     title: "Preferences",
-    body: "How you like to work.",
+    body: "How you like to work. A line in the record, not a pasted chat.",
     kind: "preference",
     inset: "Prefer written recaps over transcript dumps.",
   },
   {
     title: "Decisions",
-    body: "What you chose, and why.",
+    body: "What you chose, and why. The reason stays attached to the choice.",
     kind: "decision",
     inset: "Kept the design system in-repo.",
   },
   {
     title: "Open loops",
-    body: "Work still in play.",
+    body: "Work still in play. Unfinished work stays visible until it closes.",
     kind: "open loop",
     inset: "Confirm the launch window with legal.",
   },

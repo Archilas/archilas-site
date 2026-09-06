@@ -32,7 +32,6 @@ export function WaitlistForm({
       });
       const data = (await res.json()) as { ok?: boolean; error?: string };
 
-      // Contract: valid email and duplicates both succeed. Persistence is not wired.
       if (!res.ok || !data.ok) {
         setStatus("error");
         setMessage(data.error || "Something went wrong. Try again.");
@@ -54,7 +53,7 @@ export function WaitlistForm({
   if (status === "success") {
     return (
       <div
-        className="w-full max-w-md rounded-[var(--arch-radius-card)] border border-border bg-elevated px-5 py-6 text-center"
+        className="w-full max-w-md border border-line bg-surface px-5 py-6 text-left"
         role="status"
         aria-live="polite"
       >

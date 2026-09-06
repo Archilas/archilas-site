@@ -21,7 +21,7 @@ export function HowItWorksStepper({
     <div
       role="tablist"
       aria-label="How Archilas works"
-      className="flex flex-wrap justify-center gap-1 border-b border-border-dark"
+      className="flex flex-wrap gap-1 border-b border-border-dark"
     >
       {howSteps.map((item, index) => {
         const selected = index === active;
@@ -48,11 +48,11 @@ export function HowItWorksStepper({
                 select((index - 1 + howSteps.length) % howSteps.length);
               }
             }}
-            className={`relative px-3 py-3 text-[15px] font-medium not-italic transition-colors ${
-              selected ? "text-accent" : "text-text-dark/65 hover:text-text-dark"
+            className={`relative px-3 py-2.5 text-[13px] font-medium not-italic ${
+              selected ? "text-text-dark" : "text-text-dark/50 hover:text-text-dark"
             }`}
           >
-            <span className="mr-2 font-mono text-[12px]">{String(index + 1).padStart(2, "0")}</span>
+            <span className="mr-2 font-mono text-[11px]">{String(index + 1).padStart(2, "0")}</span>
             {item.label}
             {selected ? <span aria-hidden className="step-underline" /> : null}
           </button>

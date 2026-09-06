@@ -1,43 +1,33 @@
-import { ButtonPrimary } from "@/components/ButtonPrimary";
-import { DestinationFrames } from "@/components/landing/DestinationFrames";
-import { exampleRows } from "@/components/landing/demo-data";
-import { Section } from "@/components/Section";
+import { ChapterRule } from "@/components/ChapterRule";
+import { demoHosts } from "@/components/landing/demo-data";
 
 export function Delivery() {
   return (
-    <Section id="product" className="theme-dark">
-      <div className="mx-auto max-w-3xl text-center">
-        <p className="label">Product</p>
-        <h2 className="h2 mt-3">One layer. Many surfaces.</h2>
-        <p className="mx-auto mt-4 max-w-lg text-body">
-          Intended delivery — in development. MCP is the intended path. Surfaces are not live.
-        </p>
-      </div>
-
-      <div className="product-surface mx-auto mt-10 max-w-4xl">
-        <div className="grid gap-4 md:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] md:items-stretch">
-          <div className="host-frame">
-            <div className="host-frame-chrome">
-              <span className="font-mono text-[11px] text-text-dark">Record</span>
-            </div>
-            <dl className="space-y-3 px-4 pb-4">
-              {exampleRows.map((row) => (
-                <div key={row.kind}>
-                  <dt className="font-mono text-[10px] uppercase tracking-[0.06em] text-text-dark/55">
-                    {row.kind}
-                  </dt>
-                  <dd className="mt-1 font-mono text-[12px] leading-[1.45] text-text-dark">{row.text}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-          <DestinationFrames line="Waiting on the intended MCP path." />
+    <section
+      id="hosts"
+      className="scroll-mt-[var(--scroll-margin)] border-y border-line px-[var(--pad-x)] py-[var(--pad-y-mobile)] md:py-[var(--pad-y)]"
+    >
+      <div className="mx-auto grid w-full max-w-[var(--max-width)] grid-cols-12 gap-x-12 gap-y-8">
+        <div className="col-span-12 text-left lg:col-span-7">
+          <ChapterRule index="04" title="One record every host" />
+          <h2 className="h2 mt-6 max-w-[16ch]">One record. Every host.</h2>
+          <p className="mt-4 max-w-lg text-[17px] leading-[1.5] text-body">
+            The same compact record is meant to reach the tools you already use. MCP is the intended
+            path. Surfaces are not live.
+          </p>
+          <p className="intended-pill mt-8">Intended</p>
         </div>
+        <ul className="col-span-12 flex flex-col justify-end gap-3 text-left lg:col-span-5">
+          {demoHosts.map((host) => (
+            <li
+              key={host}
+              className="border-b border-line pb-3 font-mono text-[15px] tracking-[-0.01em] text-ink"
+            >
+              {host}
+            </li>
+          ))}
+        </ul>
       </div>
-
-      <div className="mt-8 flex justify-center">
-        <ButtonPrimary href="/#waitlist">Join waitlist</ButtonPrimary>
-      </div>
-    </Section>
+    </section>
   );
 }

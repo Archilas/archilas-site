@@ -1,79 +1,86 @@
-/* Archilas design tokens. Hex lives here; components use these names. */
+/* Archilas paper/ink system. Hex lives here. Teal is focus rings only. */
 
 :root {
-  --near-black: #0a0a0a;
-  --ink: #171717;
+  --bg: #f7f7f5;
+  --surface: #ffffff;
+  --ink: #0a0a0a;
   --body: #3f3f46;
-  --muted: #52525b;
-  --border: #e4e0d6;
-  --surface: #efeae0;
-  --elevated: #fffdf8;
-  --border-input: #d4d4d8;
-  --paper: #f4f0e8;
-  --tint: #dcecea;
-  --warm: #efe6d6;
+  --muted: #737373;
+  --line: #e5e5e5;
+  --inverse: #0a0a0a;
+  --focus: #0f766e;
 
-  --bg-dark: #0a0a0a;
-  --card-dark: #161616;
-  --border-dark: #27272a;
-  --text-dark: #e4e4e7;
+  --paper: var(--bg);
+  --elevated: var(--surface);
+  --near-black: var(--ink);
+  --border: var(--line);
+  --border-input: var(--line);
+  --surface-legacy: var(--surface);
 
-  --accent: #0d9488;
-  --accent-dark: #0d9488;
+  --bg-dark: var(--inverse);
+  --card-dark: #111111;
+  --border-dark: #2a2a2a;
+  --text-dark: #f7f7f5;
 
-  --text-display: clamp(2.75rem, 6.4vw, 4.25rem);
-  --text-h2: clamp(1.75rem, 3.4vw, 2.5rem);
-  --text-h3: clamp(1.2rem, 2vw, 1.45rem);
+  --accent: var(--focus);
+  --accent-dark: var(--focus);
+
+  --text-display: clamp(2.125rem, 4vw, 3.25rem);
+  --text-statement: clamp(4rem, 7.4vw, 6rem);
+  --text-h2: clamp(1.75rem, 3vw, 2.25rem);
+  --text-h3: 1.125rem;
   --text-body: 1.0625rem;
-  --text-label: 0.75rem;
-  --text-mono: 0.8125rem;
-  --leading-body: 1.55;
+  --text-label: 0.6875rem;
+  --text-mono: 0.75rem;
+  --leading-body: 1.5;
 
-  --arch-radius-card: 12px;
-  --arch-radius-control: 8px;
+  --arch-radius-card: 2px;
+  --arch-radius-control: 2px;
 
-  --max-width: 1120px;
-  --pad-x: 24px;
-  --pad-y: 88px;
+  --max-width: 1200px;
+  --pad-x: 28px;
+  --pad-y: 96px;
   --pad-y-mobile: 56px;
-  --nav-height: 64px;
+  --nav-height: 56px;
   --control-height: 44px;
-  --scroll-margin: 80px;
+  --scroll-margin: 72px;
 }
 
 @theme inline {
-  --color-near-black: var(--near-black);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
   --color-ink: var(--ink);
   --color-body: var(--body);
   --color-muted: var(--muted);
-  --color-border: var(--border);
-  --color-surface: var(--surface);
-  --color-paper: var(--paper);
-  --color-elevated: var(--elevated);
-  --color-border-input: var(--border-input);
-  --color-tint: var(--tint);
-  --color-warm: var(--warm);
-  --color-bg-dark: var(--bg-dark);
+  --color-line: var(--line);
+  --color-inverse: var(--inverse);
+  --color-focus: var(--focus);
+  --color-paper: var(--bg);
+  --color-elevated: var(--surface);
+  --color-near-black: var(--ink);
+  --color-border: var(--line);
+  --color-border-input: var(--line);
+  --color-bg-dark: var(--inverse);
   --color-card-dark: var(--card-dark);
   --color-border-dark: var(--border-dark);
   --color-text-dark: var(--text-dark);
-  --color-accent: var(--accent);
-  --color-accent-dark: var(--accent-dark);
+  --color-accent: var(--focus);
+  --color-accent-dark: var(--focus);
   --font-sans: var(--font-geist);
   --font-mono: var(--font-geist-mono);
   --radius-card: var(--arch-radius-card);
   --radius-control: var(--arch-radius-control);
 }
 
-.theme-dark {
-  --near-black: #e4e4e7;
-  --ink: #e4e4e7;
+.chapter-inverse {
+  --ink: #f7f7f5;
   --body: #d4d4d8;
-  --muted: #a1a1aa;
-  --border: #27272a;
-  --surface: #161616;
-  --elevated: #161616;
-  --border-input: #27272a;
-  color: var(--text-dark);
-  background: var(--bg-dark);
+  --muted: #a3a3a3;
+  --line: #2a2a2a;
+  --surface: #111111;
+  --elevated: #111111;
+  --near-black: #f7f7f5;
+  --border: #2a2a2a;
+  color: var(--body);
+  background: var(--inverse);
 }
