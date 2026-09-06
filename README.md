@@ -1,16 +1,16 @@
 # Archilas marketing site
 
-Public marketing site for [Archilas](https://archilas.com). Persistent memory for AI.
+Public marketing site for [Archilas](https://archilas.com). Persistent memory layer for AI.
 
 ## Stack
 
-- Next.js App Router (SSR / static generation for SEO and AEO)
+- Next.js App Router
 - TypeScript
 - Tailwind CSS v4
 
 ## Design system
 
-See [`DESIGN.md`](./DESIGN.md). Dark charcoal, textured. Self-hosted **Zodiak** + **Satoshi** + **Commit Mono**.
+See [`DESIGN.md`](./DESIGN.md). Light-primary. Geist + Geist Mono.
 
 ## Develop
 
@@ -29,15 +29,14 @@ npm start
 ## Pages
 
 - `/` landing
-- `/solutions` personas
-- `/pricing` indicative tiers
-- `/resources` hub
+- `/resources` hub (shown when the blog has two or more posts)
 - `/blog` index and posts
+- `/privacy` and `/terms`
 
-Waitlist submissions hit `POST /api/waitlist` (logs email; wire an ESP before production).
+Waitlist submissions hit `POST /api/waitlist`. The handler acknowledges valid emails, including repeats. Persistence is not wired in this repo.
 
 ## Constraints
 
-- Marketing only. No dashboard, auth, or connection UI.
-- No internal codenames or eval scoreboards.
+- Marketing only. No dashboard or auth.
+- Waitlist is the only conversion.
 - No fabricated logos, testimonials, or usage stats.

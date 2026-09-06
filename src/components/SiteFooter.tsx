@@ -37,6 +37,7 @@ function FooterColumn({
   title: string;
   links: readonly { href: string; label: string; external?: boolean }[];
 }) {
+  if (links.length === 0) return null;
   return (
     <div>
       <p className="label">{title}</p>
@@ -61,17 +62,19 @@ export function SiteFooter() {
         </div>
         <div className="grid grid-cols-2 gap-x-10 gap-y-8 sm:grid-cols-4">
           <FooterColumn title="Product" links={footerNav.product} />
-          <FooterColumn title="Developers" links={footerNav.developers} />
+          <FooterColumn title="Resources" links={footerNav.resources} />
           <FooterColumn title="Company" links={footerNav.company} />
           <FooterColumn title="Legal" links={footerNav.legal} />
         </div>
       </div>
       <div className="border-t border-border-dark">
-        <div className="mx-auto flex max-w-[var(--max-width)] justify-between px-[var(--pad-x)] py-4">
+        <div className="mx-auto flex max-w-[var(--max-width)] justify-between gap-4 px-[var(--pad-x)] py-4">
           <p className="text-[12px] text-text-dark/70">
             © {new Date().getFullYear()} {site.name}
           </p>
-          <p className="mono text-text-dark/70">mcp.archilas.com</p>
+          <a href={`mailto:${site.email}`} className="text-[12px] text-text-dark/70 hover:text-accent-dark">
+            {site.email}
+          </a>
         </div>
       </div>
     </footer>

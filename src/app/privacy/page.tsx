@@ -24,7 +24,7 @@ export default function PrivacyPage() {
         </p>
         <p>
           You can ask us to remove your email by writing to{" "}
-          <a href={`mailto:${site.email}`} className="text-accent-solid underline-offset-4 hover:underline">
+          <a href={`mailto:${site.email}`} className="text-ink underline-offset-4 hover:underline">
             {site.email}
           </a>
           .

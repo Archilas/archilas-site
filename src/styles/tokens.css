@@ -1,4 +1,4 @@
-/* Archilas design tokens. Hex lives here; components use these names. Accent = Vault Teal. */
+/* Archilas design tokens. Hex lives here; components use these names. */
 
 :root {
   /* Light */
@@ -17,18 +17,9 @@
   --border-dark: #27272a;
   --text-dark: #d4d4d8;
 
-  /* Vault Teal. Never put white text on --accent. Use --accent-solid for filled buttons. */
+  /* Accent: focus rings and the active stepper only. Never a fill. */
   --accent: #0d9488;
-  --accent-solid: #0f766e;
   --accent-dark: #2dd4bf;
-
-  /* Confidence */
-  --confidence-high: #15803d;
-  --confidence-mid: #b45309;
-  --confidence-low: #be123c;
-  --confidence-high-dark: #4ade80;
-  --confidence-mid-dark: #fbbf24;
-  --confidence-low-dark: #fb7185;
 
   /* Type */
   --text-display: clamp(2.5rem, 5vw, 4rem);
@@ -42,7 +33,6 @@
   /* Shape */
   --arch-radius-card: 12px;
   --arch-radius-control: 8px;
-  --arch-radius-pill: 999px;
 
   /* Space */
   --max-width: 1160px;
@@ -68,19 +58,11 @@
   --color-border-dark: var(--border-dark);
   --color-text-dark: var(--text-dark);
   --color-accent: var(--accent);
-  --color-accent-solid: var(--accent-solid);
   --color-accent-dark: var(--accent-dark);
-  --color-confidence-high: var(--confidence-high);
-  --color-confidence-mid: var(--confidence-mid);
-  --color-confidence-low: var(--confidence-low);
-  --color-confidence-high-dark: var(--confidence-high-dark);
-  --color-confidence-mid-dark: var(--confidence-mid-dark);
-  --color-confidence-low-dark: var(--confidence-low-dark);
   --font-sans: var(--font-geist);
   --font-mono: var(--font-geist-mono);
   --radius-card: var(--arch-radius-card);
   --radius-control: var(--arch-radius-control);
-  --radius-pill: var(--arch-radius-pill);
 }
 
 .theme-dark {
@@ -92,9 +74,6 @@
   --surface: #18181b;
   --elevated: #18181b;
   --border-input: #27272a;
-  --confidence-high: var(--confidence-high-dark);
-  --confidence-mid: var(--confidence-mid-dark);
-  --confidence-low: var(--confidence-low-dark);
   color: var(--text-dark);
   background: var(--bg-dark);
 }

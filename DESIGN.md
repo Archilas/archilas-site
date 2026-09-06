@@ -1,12 +1,12 @@
 # Archilas Site — Design System
 
-Light-primary marketing shell. Accent is Vault Teal. Hex values live in `src/styles/tokens.css` (JS mirror: `src/styles/tokens.ts`).
+Light-primary marketing shell. Hex values live in `src/styles/tokens.css` (JS mirror: `src/styles/tokens.ts`).
 
 ## Color
 
 | Token | Value | Role |
 |------|-------|------|
-| `--near-black` | `#0A0A0A` | Display / headings |
+| `--near-black` | `#0A0A0A` | Display, headings, primary CTAs |
 | `--ink` | `#171717` | Strong UI text |
 | `--body` | `#3F3F46` | Body copy |
 | `--muted` | `#52525B` | Labels |
@@ -14,31 +14,29 @@ Light-primary marketing shell. Accent is Vault Teal. Hex values live in `src/sty
 | `--surface` | `#FAFAFA` | Bands |
 | `--elevated` | `#FFFFFF` | Nav, cards, page |
 | `--border-input` | `#D4D4D8` | Inputs / secondary buttons |
-| `--bg-dark` | `#09090B` | Footer / OG / code |
+| `--bg-dark` | `#09090B` | Footer / OG / one content section |
 | `--card-dark` | `#18181B` | Dark cards |
 | `--border-dark` | `#27272A` | Dark rules |
 | `--text-dark` | `#D4D4D8` | Dark text |
-| `--accent` | `#0D9488` | Focus / borders (not white-on-teal fills) |
-| `--accent-solid` | `#0F766E` | Filled buttons with white text |
+| `--accent` | `#0D9488` | Focus rings and the active stepper only |
 | `--accent-dark` | `#2DD4BF` | Accent on dark |
-| Confidence | high / mid / low | `#15803D` / `#B45309` / `#BE123C` |
 
-Accent stays under 5% of the viewport. Never put white text on `#0D9488`.
+Accent stays under 2% of the viewport. No teal fills, buttons, gradients, or section backgrounds. Every primary CTA is solid near-black with white text.
 
 ## Type
 
-Geist + Geist Mono. Upright only. Italics are allowed on `.pull-quote` only.
+Geist + Geist Mono. Upright only. No italics in UI.
 
 - Display: 40–64 / 600–700
 - H2: 28–40 / 600
 - H3: 20–24 / 600
 - Body: 16–18 / 400 / 1.6 / body color
 - Label: 12–13 / uppercase / muted
-- Mono: 13–14
+- Mono: 13–14, example record only
 
 ## Shape and space
 
-- Cards 12, controls 8, pills 999 only for demo tools
+- Cards 12, controls 8
 - Max width 1160, horizontal pad 24
 - Vertical pad 80 desktop / 56 mobile
 - Nav 64, controls 46
@@ -47,4 +45,5 @@ Geist + Geist Mono. Upright only. Italics are allowed on `.pull-quote` only.
 ## Copy
 
 - Precise. Builder-facing. Waitlist is the only conversion goal.
-- Do not invent SOC 2, customer logos, counts, or a free plan.
+- Spine: Compact → Reason → Deliver.
+- Do not invent certifications, customer logos, counts, or paid plans.
