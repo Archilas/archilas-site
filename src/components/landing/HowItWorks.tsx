@@ -8,8 +8,8 @@ const steps = [
     id: "notes",
     label: "Notes",
     spine: "Compact",
-    line: "Every conversation, decision, and detail gets written down as a structured note. Nothing gets lost in a wall of raw text.",
-    status: "Writing notes…",
+    line: "Every conversation, decision, and detail is written down as a structured note. Nothing is lost in a wall of raw text.",
+    status: "Written as notes.",
     pills: [
       { text: "Chat: Can we still ship Friday?", on: true },
       { text: "Thread: Tests aren’t green yet", on: true },
@@ -20,23 +20,24 @@ const steps = [
     id: "compact",
     label: "Compact",
     spine: "Reason",
-    line: "Notes get compressed into living memory — dense, structured, ready to search in milliseconds.",
-    status: "Compacting into living memory…",
+    line: "Those notes compact into living memory — preferences, decisions, and open loops.",
+    status: "Compacted into living memory.",
     pills: [
-      { text: "Decision: Ship Friday if tests are green", on: true },
-      { text: "Constraint: Tests still failing", on: true },
+      { text: "Preference: Ship Friday when ready", on: true },
+      { text: "Decision: Don’t ship until tests are green", on: true },
       { text: "Open loop: Alex asked about Monday", on: true },
     ],
   },
   {
-    id: "retrieve",
-    label: "Retrieve",
+    id: "reason",
+    label: "Reason",
     spine: "Deliver",
-    line: "At query time, Archilas pulls the exact notes your question needs — not everything, just what matters.",
-    status: "Loaded the notes this question needs.",
+    line: "At query time, only the memory this question needs is loaded — not everything.",
+    status: "Right memory for this question.",
     pills: [
+      { text: "Ask: Ship Friday?", on: true },
+      { text: "Loaded: Preference", on: true },
       { text: "Loaded: Decision", on: true },
-      { text: "Loaded: Constraint", on: true },
       { text: "Held back: open loop", on: false },
     ],
   },
@@ -46,11 +47,7 @@ const steps = [
     spine: "Deliver",
     line: "One clear, grounded answer. No guessing. No dump of irrelevant context.",
     status: "One grounded answer.",
-    pills: [
-      { text: "Yes — if tests go green.", on: true },
-      { text: "Hold the Monday slip for now", on: true },
-      { text: "Open loop held back", on: false },
-    ],
+    pills: [{ text: "Yes — if tests go green. Hold the Monday slip.", on: true }],
   },
 ] as const;
 
@@ -62,7 +59,7 @@ export function HowItWorks() {
     <section id="how" className="how-band scroll-mt-[var(--scroll-margin)] px-[var(--pad-x)] py-16 md:py-20">
       <div className="mx-auto max-w-[var(--max-width)]">
         <p className="label">How it works</p>
-        <h2 className="h2 mt-3">Notes. Compact. Then one clear answer.</h2>
+        <h2 className="h2 mt-3">Notes. Compact. Reason. Answer.</h2>
         <div className="mt-10 grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
           <ol className="stepper">
             {steps.map((item, index) => (

@@ -1,6 +1,6 @@
 # Archilas Site — Design System
 
-Mem0 rhythm: blue-wash hero with peeking demo tabs, Why Archilas band, cream how-it-works.
+Mem0 rhythm: blue-wash hero (chip + H1 + reinforce + CTAs), demo below the fold, Why Archilas band, cream how-it-works.
 
 ## Type
 
@@ -12,10 +12,10 @@ Mem0 rhythm: blue-wash hero with peeking demo tabs, Why Archilas band, cream how
 ## Rhythm
 
 - Hero wash: `#E8F0F9 → #EEF4FA → #F5F8FB → #F7F7F5` plus large soft radials. Ink type. No cartoon clouds.
-- Stack: chip→H1 20px, H1→reinforce 20px, reinforce→CTAs 28px, CTAs→demo 40px. Top pad 64px. Demo tabs peek above the fold at 1280.
-- Demo: full stage switch, “Ship Friday?” thread. Notes → Compact → Retrieve (cited rows only) → Answer. ~22s, once in view, Replay. No phone stack.
+- Stack: chip→H1 16px, H1→reinforce 16px, reinforce→CTAs 24px. Hero fills the viewport so the demo starts below the fold.
+- Demo: exclusive stages, “Ship Friday?” thread. Notes (bubbles) → Compact (Preference / Decision / Open loop) → Reason (ask + cited rows) → Answer. 36s, ≥50% in view, pause off-screen, Replay. No phone stack.
 - Why Archilas: SLM differentiator band. In development / early access — not live. Chat + agents, one memory layer. Footer: MCP support — coming soon.
-- How it works: cream stepper — Notes, Compact, Retrieve, Answer.
+- How it works: cream stepper — Notes, Compact, Reason, Answer.
 - Waitlist: cream, dual buttons.
 
 ## Color

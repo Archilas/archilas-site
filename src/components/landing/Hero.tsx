@@ -1,4 +1,3 @@
-import { ClarityDemo } from "@/components/landing/ClarityDemo";
 import { WaitlistCTA } from "@/components/WaitlistCTA";
 
 export function Hero() {
@@ -10,14 +9,13 @@ export function Hero() {
           AI memory that <em className="word-accent">understands</em> you.
         </h1>
         <p className="hero-sub">
-          Notes → compact → at query time the right memory loads for deep understanding →
+          Notes compact into living memory. At query time the right context loads —
           <br />
-          one clear answer.
+          then one clear answer.
         </p>
         <div className="hero-actions">
           <WaitlistCTA source="hero" />
         </div>
-        <ClarityDemo />
       </div>
     </section>
   );

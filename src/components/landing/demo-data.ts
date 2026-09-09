@@ -1,8 +1,8 @@
 export const demoBeats = [
-  { id: "notes", label: "Notes", spine: "Compact" },
-  { id: "memory", label: "Compact", spine: "Reason" },
-  { id: "retrieve", label: "Retrieve", spine: "Deliver" },
-  { id: "answer", label: "Answer", spine: "Deliver" },
+  { id: "notes", label: "Notes", spine: "Compact", caption: "Written as notes." },
+  { id: "compact", label: "Compact", spine: "Reason", caption: "Compacted into living memory." },
+  { id: "reason", label: "Reason", spine: "Deliver", caption: "Right memory for this question." },
+  { id: "answer", label: "Answer", spine: "Deliver", caption: "One grounded answer." },
 ] as const;
 
 export type DemoBeatId = (typeof demoBeats)[number]["id"];
@@ -14,13 +14,13 @@ export const sourceNotes = [
 ] as const;
 
 export const memoryRows = [
-  { id: "dec", kind: "Decision", text: "Ship Friday if tests are green." },
-  { id: "con", kind: "Constraint", text: "Tests still failing." },
-  { id: "loop", kind: "Open loop", text: "Alex asked about Monday." },
+  { id: "pref", kind: "Preference", text: "Ship Friday when the work is ready." },
+  { id: "dec", kind: "Decision", text: "Don’t ship until tests are green." },
+  { id: "loop", kind: "Open loop", text: "Alex asked about slipping to Monday." },
 ] as const;
 
 export const demoQuestion = {
   q: "Ship Friday?",
   a: "Yes — if tests go green. Hold the Monday slip until they don’t.",
-  citeIds: ["dec", "con"] as readonly string[],
+  citeIds: ["pref", "dec"] as readonly string[],
 };

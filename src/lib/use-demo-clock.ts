@@ -4,28 +4,29 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { usePrefersReducedMotion } from "@/lib/use-prefers-reduced-motion";
 import type { DemoBeatId } from "@/components/landing/demo-data";
 
-export const DEMO_MS = 22000;
+/** 9s × 4 stages. */
+export const DEMO_MS = 36000;
 
 export const BEAT_START: Record<DemoBeatId, number> = {
   notes: 0,
-  memory: 0.26,
-  retrieve: 0.5,
-  answer: 0.74,
+  compact: 0.25,
+  reason: 0.5,
+  answer: 0.75,
 };
 
 export const BEAT_VIEW: Record<DemoBeatId, number> = {
-  notes: 0.22,
-  memory: 0.42,
-  retrieve: 0.66,
+  notes: 0.24,
+  compact: 0.49,
+  reason: 0.74,
   answer: 1,
 };
 
-const BEAT_ORDER: DemoBeatId[] = ["notes", "memory", "retrieve", "answer"];
+const BEAT_ORDER: DemoBeatId[] = ["notes", "compact", "reason", "answer"];
 
 export function beatFromProgress(progress: number): DemoBeatId {
-  if (progress < BEAT_START.memory) return "notes";
-  if (progress < BEAT_START.retrieve) return "memory";
-  if (progress < BEAT_START.answer) return "retrieve";
+  if (progress < BEAT_START.compact) return "notes";
+  if (progress < BEAT_START.reason) return "compact";
+  if (progress < BEAT_START.answer) return "reason";
   return "answer";
 }
 
@@ -48,8 +49,8 @@ export function useDemoClock() {
   const playingRef = useRef(false);
   const progressRef = useRef(0);
   const lastEmitRef = useRef(0);
-  const startedRef = useRef(false);
-  const touchedRef = useRef(false);
+  const heldRef = useRef(false);
+  const visibleRef = useRef(false);
 
   const display = reduced && !touched ? 1 : progress;
 
@@ -91,12 +92,19 @@ export function useDemoClock() {
     setPlaying(false);
   }, []);
 
+  const playIfAllowed = useCallback(() => {
+    if (reduced || heldRef.current || !visibleRef.current) return;
+    if (progressRef.current >= 1) return;
+    playingRef.current = true;
+    setPlaying(true);
+  }, [reduced]);
+
   const scrub = useCallback((next: number) => {
     const value = Math.min(1, Math.max(0, next));
     progressRef.current = value;
     lastEmitRef.current = value;
     setProgress(value);
-    touchedRef.current = true;
+    heldRef.current = true;
     setTouched(true);
     playingRef.current = false;
     setPlaying(false);
@@ -109,16 +117,18 @@ export function useDemoClock() {
     [scrub],
   );
 
-  const startOnce = useCallback(() => {
-    if (reduced || startedRef.current || touchedRef.current) return;
-    startedRef.current = true;
-    playingRef.current = true;
-    setPlaying(true);
-  }, [reduced]);
+  const setVisible = useCallback(
+    (visible: boolean) => {
+      visibleRef.current = visible;
+      if (reduced) return;
+      if (visible) playIfAllowed();
+      else pause();
+    },
+    [pause, playIfAllowed, reduced],
+  );
 
   const replay = useCallback(() => {
-    touchedRef.current = true;
-    startedRef.current = true;
+    heldRef.current = false;
     setTouched(true);
     if (reduced) {
       progressRef.current = 1;
@@ -129,8 +139,10 @@ export function useDemoClock() {
     progressRef.current = 0;
     lastEmitRef.current = 0;
     setProgress(0);
-    playingRef.current = true;
-    setPlaying(true);
+    if (visibleRef.current) {
+      playingRef.current = true;
+      setPlaying(true);
+    }
   }, [reduced]);
 
   return {
@@ -140,7 +152,7 @@ export function useDemoClock() {
     pause,
     jumpBeat,
     replay,
-    startOnce,
+    setVisible,
     beat: beatFromProgress(display),
     local: beatLocal(display),
   };

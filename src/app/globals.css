@@ -58,13 +58,13 @@ body {
 }
 
 .display {
-  color: var(--ink);
+  color: #050505;
   font-family: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
   font-size: var(--text-display);
   font-style: normal;
-  font-weight: 650;
-  letter-spacing: -0.045em;
-  line-height: 1.04;
+  font-weight: 680;
+  letter-spacing: -0.05em;
+  line-height: 1.02;
 }
 
 .word-accent {
@@ -124,9 +124,10 @@ section[id] {
   min-height: 100svh;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   margin-top: calc(var(--nav-height) * -1);
-  padding-top: calc(var(--nav-height) + 64px);
-  padding-bottom: 48px;
+  padding-top: calc(var(--nav-height) + 48px);
+  padding-bottom: 56px;
   color: var(--ink);
   background:
     radial-gradient(90% 70% at 16% 6%, rgba(255, 255, 255, 0.28) 0%, transparent 58%),
@@ -147,7 +148,7 @@ section[id] {
   display: inline-flex;
   height: 28px;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   padding: 0 12px;
   border: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
   border-radius: 999px;
@@ -158,20 +159,29 @@ section[id] {
 }
 
 .hero-sub {
-  margin-top: 20px;
-  max-width: 28rem;
-  color: var(--body);
-  font-size: 17px;
+  margin-top: 16px;
+  max-width: 34rem;
+  color: #27272a;
+  font-size: 18px;
+  font-weight: 450;
   line-height: 1.45;
 }
 
 .hero-actions {
-  margin-top: 28px;
+  margin-top: 24px;
 }
 
 .hero-actions .btn-outline,
 .hero-actions button {
   height: 46px;
+}
+
+.hero-actions button {
+  box-shadow: 0 12px 28px rgba(10, 10, 10, 0.18);
+}
+
+.hero-actions .btn-outline {
+  box-shadow: 0 8px 20px rgba(10, 10, 10, 0.08);
 }
 
 .hero-demo {
@@ -364,6 +374,60 @@ section[id] {
   font-weight: 500;
   letter-spacing: -0.02em;
   line-height: 1.4;
+}
+
+.stage-bubbles {
+  display: grid;
+  gap: 10px;
+}
+
+.stage-bubble {
+  max-width: 92%;
+  padding: 10px 12px;
+  border-radius: 16px;
+  animation: tile-in 400ms ease both;
+}
+
+.stage-bubble.is-chat {
+  justify-self: end;
+  background: #f3e6d2;
+  color: #0a0a0a;
+  border-radius: 16px 16px 4px 16px;
+}
+
+.stage-bubble.is-thread {
+  justify-self: start;
+  background: #1c1c1c;
+  color: #f7f7f5;
+  border: 1px solid #2a2a2a;
+}
+
+.stage-bubble .stage-kind {
+  margin-bottom: 4px;
+}
+
+.stage-bubble.is-chat .stage-kind {
+  color: #7a5c2e;
+}
+
+.stage-bubble p {
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.stage-bubble.is-chat p {
+  color: #0a0a0a;
+}
+
+.demo-caption {
+  margin-top: 14px;
+  color: var(--body);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.demo-band {
+  background: #eef2f6;
 }
 
 .slm-sub {
@@ -654,7 +718,8 @@ section[id] {
   .flow-join span,
   .flow-join.is-on span,
   .stage-note,
-  .stage-row {
+  .stage-row,
+  .stage-bubble {
     animation: none;
     transition: none;
     opacity: 1;

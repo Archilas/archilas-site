@@ -31,7 +31,7 @@ export async function POST(request: Request) {
     const stored = await persistWaitlistEmail(email);
     if (!stored) {
       return NextResponse.json(
-        { ok: false, error: "Waitlist is temporarily unavailable. Try again." },
+        { ok: false, error: "We couldn’t save your email just now. Try again shortly, or email hello@archilas.com." },
         { status: 503 },
       );
     }
@@ -39,7 +39,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true });
   } catch {
     return NextResponse.json(
-      { ok: false, error: "Waitlist is temporarily unavailable. Try again." },
+      { ok: false, error: "We couldn’t save your email just now. Try again shortly, or email hello@archilas.com." },
       { status: 503 },
     );
   }

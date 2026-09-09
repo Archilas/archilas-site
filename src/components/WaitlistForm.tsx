@@ -35,7 +35,12 @@ export function WaitlistForm({
 
       if (!res.ok || !data.ok) {
         setStatus("error");
-        setMessage(data.error || "We couldn’t save that just now. Try again.");
+        setMessage(
+          res.status === 503
+            ? data.error ||
+                "We couldn’t save your email just now — the waitlist isn’t taking signups at the moment. Email hello@archilas.com, or try again shortly."
+            : data.error || "We couldn’t save that just now. Try again.",
+        );
         track("waitlist_error", { source });
         return;
       }

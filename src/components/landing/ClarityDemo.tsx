@@ -5,34 +5,34 @@ import { demoBeats, demoQuestion, memoryRows, sourceNotes } from "@/components/l
 import { useDemoClock } from "@/lib/use-demo-clock";
 import { cn } from "@/lib/cn";
 
-const NOTE_AT = [0.04, 0.32, 0.58] as const;
+const NOTE_AT = [0.06, 0.34, 0.62] as const;
+const BUBBLE_TONE = ["is-chat", "is-thread", "is-chat"] as const;
 
 export function ClarityDemo() {
   const clock = useDemoClock();
-  const { beat, local, playing, reduced, startOnce } = clock;
-  const rootRef = useRef<HTMLDivElement>(null);
+  const { beat, local, playing, reduced, setVisible } = clock;
+  const boardRef = useRef<HTMLDivElement>(null);
+  const active = demoBeats.find((item) => item.id === beat) ?? demoBeats[0];
 
   useEffect(() => {
-    const node = rootRef.current;
+    const node = boardRef.current;
     if (!node) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          startOnce();
-          observer.disconnect();
-        }
+        setVisible(entry.isIntersecting && entry.intersectionRatio >= 0.5);
       },
-      { threshold: 0.08, rootMargin: "0px 0px -6% 0px" },
+      { threshold: [0, 0.5, 0.75, 1] },
     );
     observer.observe(node);
     return () => observer.disconnect();
-  }, [startOnce]);
+  }, [setVisible]);
 
   const noteCount =
     beat !== "notes" ? sourceNotes.length : Math.max(1, NOTE_AT.filter((at) => local >= at).length);
+  const citedRows = memoryRows.filter((row) => demoQuestion.citeIds.includes(row.id));
 
   return (
-    <div className="hero-demo" ref={rootRef} data-beat={beat} data-playing={playing ? "1" : "0"}>
+    <div className="hero-demo" data-beat={beat} data-playing={playing ? "1" : "0"}>
       <div className="hero-selectors">
         <div className="agency-rail" role="tablist" aria-label="How memory is built">
           {demoBeats.map((item) => (
@@ -57,14 +57,16 @@ export function ClarityDemo() {
         )}
       </div>
 
-      <div className="stage-board" data-testid="demo-stage">
+      <div className="stage-board" ref={boardRef} data-testid="demo-stage">
         {beat === "notes" ? (
           <div className="stage-view" data-testid="stage-notes">
-            <p className="stage-kicker">Notes</p>
-            <p className="stage-ask">{demoQuestion.q}</p>
-            <div className="stage-list">
-              {sourceNotes.slice(0, noteCount).map((note) => (
-                <div key={note.id} className="stage-note" data-testid={`flow-note-${note.id}`}>
+            <div className="stage-bubbles">
+              {sourceNotes.slice(0, noteCount).map((note, index) => (
+                <div
+                  key={note.id}
+                  className={cn("stage-bubble", BUBBLE_TONE[index])}
+                  data-testid={`flow-note-${note.id}`}
+                >
                   <span className="stage-kind">{note.kind}</span>
                   <p>{note.text}</p>
                 </div>
@@ -73,10 +75,8 @@ export function ClarityDemo() {
           </div>
         ) : null}
 
-        {beat === "memory" ? (
+        {beat === "compact" ? (
           <div className="stage-view" data-testid="flow-bundle">
-            <p className="stage-kicker">Living memory</p>
-            <p className="stage-ask">Compacted from the thread.</p>
             <div className="stage-list">
               {memoryRows.map((row) => (
                 <div key={row.id} className="stage-row" data-testid={`mem-tile-${row.id}`}>
@@ -88,31 +88,30 @@ export function ClarityDemo() {
           </div>
         ) : null}
 
-        {beat === "retrieve" ? (
-          <div className="stage-view" data-testid="stage-retrieve">
-            <p className="stage-kicker">Retrieve</p>
+        {beat === "reason" ? (
+          <div className="stage-view" data-testid="stage-reason">
             <p className="stage-ask">{demoQuestion.q}</p>
             <div className="stage-list">
-              {memoryRows
-                .filter((row) => demoQuestion.citeIds.includes(row.id))
-                .map((row) => (
-                  <div key={row.id} className="stage-row is-cited" data-testid={`mem-tile-${row.id}`}>
-                    <span className="stage-kind">{row.kind}</span>
-                    <p>{row.text}</p>
-                  </div>
-                ))}
+              {citedRows.map((row) => (
+                <div key={row.id} className="stage-row is-cited" data-testid={`mem-tile-${row.id}`}>
+                  <span className="stage-kind">{row.kind}</span>
+                  <p>{row.text}</p>
+                </div>
+              ))}
             </div>
           </div>
         ) : null}
 
         {beat === "answer" ? (
           <div className="stage-view" data-testid="flow-answer">
-            <p className="stage-kicker">Answer</p>
             <p className="stage-ask">{demoQuestion.q}</p>
             <p className="stage-reply">{demoQuestion.a}</p>
           </div>
         ) : null}
       </div>
+      <p className="demo-caption" data-testid="demo-caption">
+        {active.caption}
+      </p>
     </div>
   );
 }

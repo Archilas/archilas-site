@@ -33,7 +33,23 @@ npm start
 - `/blog` index and posts
 - `/privacy` and `/terms`
 
-Waitlist submissions hit `POST /api/waitlist`, which stores `{ email, created_at }` in Upstash Redis when `KV_REST_API_*` or `UPSTASH_REDIS_REST_*` env vars are set. Duplicates are idempotent. The handler fails closed (503) if the store is missing.
+Waitlist submissions hit `POST /api/waitlist`, which stores `{ email, created_at }` in Upstash Redis.
+
+Set **either** pair on Vercel (Production + Preview). Do not commit secrets:
+
+```
+KV_REST_API_URL
+KV_REST_API_TOKEN
+```
+
+or
+
+```
+UPSTASH_REDIS_REST_URL
+UPSTASH_REDIS_REST_TOKEN
+```
+
+Valid emails persist and return `{ ok: true }`. Duplicate emails are idempotent and still `{ ok: true }`. If the store env is missing, the handler fails closed with **503** and the form shows an error — it never fakes success. See [`.env.example`](./.env.example).
 
 ## Constraints
 

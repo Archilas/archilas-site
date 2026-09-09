@@ -12,11 +12,11 @@ Required env (set on Vercel; never commit secrets):
 ## Product and copy
 
 - H1: “AI memory that *understands* you.” — Geist bold + Instrument Serif italic on “understands” only. Display size ~10% smaller than the previous clamp.
-- Reinforce: Notes → compact → at query time the right memory loads for deep understanding → one clear answer.
+- Reinforce: Notes compact into living memory; at query time the right context loads — one clear answer.
 - Dual CTAs: Join waitlist → (modal) and outline Contact.
-- Hero: `#E8F0F9→#F7F7F5` wash plus large soft white radials. No cartoon clouds.
-- Demo is a full stage switch (Notes / Compact / Retrieve / Answer), “Ship Friday?” thread. No phone+bundle+answer stack, no 0-lines first paint.
-- How it works: Notes, Compact, Retrieve, Answer. Why: SLM differentiator band (in development / early access — not live). Footer: “MCP support — coming soon.”
+- Hero: `#E8F0F9→#F7F7F5` wash plus large soft white radials. No cartoon clouds. Demo is not in the hero.
+- Demo sits below the fold (Notes / Compact / Reason / Answer). Exclusive stage switch, “Ship Friday?” thread. 36s (9s × 4), starts when ≥50% of the board is in view, pauses off-screen. Reduced motion shows the Answer end-state. Replay from Notes.
+- How it works: Notes, Compact, Reason, Answer. Why: SLM differentiator band (in development / early access — not live). Footer: “MCP support — coming soon.”
 - Sticky topbar is z-50 with blur so demo/cards cannot paint over it.
 
 ## Unchanged

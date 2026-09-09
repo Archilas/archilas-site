@@ -1,4 +1,5 @@
 import { Hero } from "@/components/landing/Hero";
+import { DemoSection } from "@/components/landing/DemoSection";
 import { HowItWorks } from "@/components/landing/HowItWorks";
 import { Waitlist } from "@/components/landing/Waitlist";
 import { WhyBetter } from "@/components/landing/WhyBetter";
@@ -17,6 +18,7 @@ export default function HomePage() {
     <>
       <JsonLd data={organizationJsonLd()} />
       <Hero />
+      <DemoSection />
       <WhyBetter />
       <HowItWorks />
       <Waitlist />
