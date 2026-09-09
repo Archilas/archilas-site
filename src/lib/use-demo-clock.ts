@@ -14,9 +14,9 @@ export const BEAT_START: Record<DemoBeatId, number> = {
 };
 
 export const BEAT_VIEW: Record<DemoBeatId, number> = {
-  notes: 0.14,
-  memory: 0.38,
-  retrieve: 0.62,
+  notes: 0.22,
+  memory: 0.42,
+  retrieve: 0.66,
   answer: 1,
 };
 

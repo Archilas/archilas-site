@@ -30,8 +30,6 @@ export function ClarityDemo() {
 
   const noteCount =
     beat !== "notes" ? sourceNotes.length : Math.max(1, NOTE_AT.filter((at) => local >= at).length);
-  const compactCount =
-    beat !== "memory" ? memoryRows.length : Math.min(memoryRows.length, Math.max(1, 1 + Math.floor(local * 2.1)));
 
   return (
     <div className="hero-demo" ref={rootRef} data-beat={beat} data-playing={playing ? "1" : "0"}>
@@ -80,7 +78,7 @@ export function ClarityDemo() {
             <p className="stage-kicker">Living memory</p>
             <p className="stage-ask">Compacted from the thread.</p>
             <div className="stage-list">
-              {memoryRows.slice(0, compactCount).map((row) => (
+              {memoryRows.map((row) => (
                 <div key={row.id} className="stage-row" data-testid={`mem-tile-${row.id}`}>
                   <span className="stage-kind">{row.kind}</span>
                   <p>{row.text}</p>
