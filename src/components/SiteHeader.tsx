@@ -36,7 +36,7 @@ export function SiteHeader() {
   }, []);
 
   return (
-    <header className={`site-header relative sticky top-0 z-40${solid ? " is-solid" : ""}`}>
+    <header className={`site-header sticky top-0 z-50 isolate${solid ? " is-solid" : ""}`}>
       <div className="mx-auto grid h-[var(--nav-height)] w-full max-w-[var(--max-width)] grid-cols-[1fr_auto] items-center px-[var(--pad-x)] lg:grid-cols-[1fr_auto_1fr]">
         <BrandLogo />
         <nav aria-label="Primary" className="hidden items-center gap-7 lg:flex">

@@ -1,7 +1,7 @@
 export const demoBeats = [
-  { id: "notes", label: "Detailed notes" },
-  { id: "memory", label: "Compacted memory" },
-  { id: "answer", label: "Smart answer" },
+  { id: "notes", label: "Notes", spine: "Compact" },
+  { id: "memory", label: "Compact", spine: "Reason" },
+  { id: "answer", label: "Answer", spine: "Deliver" },
 ] as const;
 
 export type DemoBeatId = (typeof demoBeats)[number]["id"];

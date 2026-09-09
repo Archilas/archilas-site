@@ -55,7 +55,8 @@ export function ClarityDemo() {
               data-testid={`demo-tab-${item.id}`}
               onClick={() => clock.jumpBeat(item.id)}
             >
-              {item.label}
+              <span>{item.label}</span>
+              <span className="agency-tab-spine">{item.spine}</span>
             </button>
           ))}
         </div>
@@ -94,27 +95,29 @@ export function ClarityDemo() {
               ✓ Saved
             </div>
 
-            <div className={cn("bundle", bundleCount > 0 && "is-on")} data-testid="flow-bundle">
-              <div className="bundle-bar">
-                <p className="bundle-title">Memory bundle</p>
-                <span className="note-chip">{bundleCount} lines</span>
+            {bundleCount > 0 ? (
+              <div className="bundle is-on" data-testid="flow-bundle">
+                <div className="bundle-bar">
+                  <p className="bundle-title">Memory bundle</p>
+                  <span className="note-chip">{bundleCount} lines</span>
+                </div>
+                <div className="bundle-rows">
+                  {memoryRows.slice(0, bundleCount).map((row) => (
+                    <div
+                      key={row.id}
+                      className={cn(
+                        "bundle-row",
+                        beat === "answer" && demoQuestion.citeIds.includes(row.id) && "is-cited",
+                      )}
+                      data-testid={`mem-tile-${row.id}`}
+                    >
+                      <span className="bundle-kind">{row.kind}</span>
+                      <span>{row.text}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <div className="bundle-rows">
-                {memoryRows.slice(0, bundleCount).map((row) => (
-                  <div
-                    key={row.id}
-                    className={cn(
-                      "bundle-row",
-                      beat === "answer" && demoQuestion.citeIds.includes(row.id) && "is-cited",
-                    )}
-                    data-testid={`mem-tile-${row.id}`}
-                  >
-                    <span className="bundle-kind">{row.kind}</span>
-                    <span>{row.text}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
+            ) : null}
           </div>
 
           {showAsk ? (

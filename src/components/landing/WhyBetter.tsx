@@ -1,15 +1,15 @@
 const points = [
   {
-    title: "Living memory from many sources.",
-    body: "Preferences, decisions, and open loops compact from notes, chats, and threads — revisable living memory, not a chat dump.",
+    title: "Notes compact into living memory.",
+    body: "Preferences, decisions, and open loops from many sources — revisable, not a chat dump.",
   },
   {
-    title: "Coherent answers at query time.",
-    body: "The model reasons over that memory for one coherent answer — not copy-paste retrieval.",
+    title: "The right memory loads at query time.",
+    body: "At query time the right notes and memory load for deep understanding — not copy-paste retrieval.",
   },
   {
-    title: "Deliver into tools you already use.",
-    body: "Unsupported bridges are refused. MCP is intended, in development — not live yet.",
+    title: "One clear, clean answer.",
+    body: "Then one answer, delivered into tools you already use. Unsupported bridges are refused. MCP is intended, in development — not live yet.",
   },
 ] as const;
 

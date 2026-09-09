@@ -15,7 +15,7 @@ export default function PrivacyPage() {
       <h1 className="h2 mt-4">Privacy</h1>
       <div className="mt-6 max-w-2xl space-y-4 text-body">
         <p>
-          Archilas is pre-launch. The marketing site collects an email address when you join the
+          Archilas is pre-launch. The marketing site stores an email address when you join the
           waitlist so we can tell you when access opens.
         </p>
         <p>

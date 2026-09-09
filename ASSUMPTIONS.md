@@ -1,21 +1,26 @@
 # Assumptions
 
-## Waitlist does not persist
+## Waitlist persistence
 
-`POST /api/waitlist` returns `{ ok: true }` for a valid email, including duplicates, and writes a `WAITLIST_SIGNUP` log line. No DB. The form lives only in a shared modal.
+`POST /api/waitlist` durably stores `{ email, created_at }` in Upstash Redis (Vercel KV REST). Duplicates are idempotent and still return `{ ok: true }`. Missing store env or store errors return 503 — the UI never fakes success. The form lives in a shared modal.
+
+Required env (set on Vercel; never commit secrets):
+
+- `KV_REST_API_URL` + `KV_REST_API_TOKEN`
+- or `UPSTASH_REDIS_REST_URL` + `UPSTASH_REDIS_REST_TOKEN`
 
 ## Product and copy
 
-- H1: “AI memory that *understands* you.” — Geist bold + Instrument Serif italic on “understands” only.
-- Reinforce: Detailed notes → compacted memory → smart answers from many sources.
-- Dual CTAs: Join waitlist → (modal) and outline Contact in topbar, hero, and waitlist band.
-- Hero: `#E8F0F9→#F7F7F5` wash, dense stack with specified gaps, peeking demo tabs. No cartoon clouds.
-- Demo story is everyday work life (café Fridays / flat white / deep work 10am). Not legal or launch dates.
-- Why-better band states the architecture: compacted living memory, query-time reasoning, refuse unsupported bridges. MCP is intended, in development — not live.
-- MCP is intended, not live. Surfaces state that as a fact, not an apology.
+- H1: “AI memory that *understands* you.” — Geist bold + Instrument Serif italic on “understands” only. Display size ~10% smaller than the previous clamp.
+- Reinforce: Notes → compact → the right memory loads at query time → one clear answer.
+- Dual CTAs: Join waitlist → (modal) and outline Contact.
+- Hero: `#E8F0F9→#F7F7F5` wash plus large soft white radials. No cartoon clouds.
+- Demo story is everyday work life (café Fridays). Not legal or launch dates. No “0 lines” first paint.
+- Why-better: notes compact; query-time load; one clear answer. MCP intended, in development.
+- Sticky topbar is z-50 with blur so demo/cards cannot paint over it.
 
 ## Unchanged
 
-- Production DNS and env vars were not added.
+- Production DNS was not added in this repo.
 - Optional analytics scripts load only when env vars are set.
 - No facts were invented.

@@ -29,7 +29,7 @@
   --hero-shadow: 0 32px 80px rgba(10, 10, 10, 0.14);
   --card-shadow: 0 16px 40px rgba(10, 10, 10, 0.06);
 
-  --text-display: clamp(2.8rem, 7vw, 5.4rem);
+  --text-display: clamp(2.52rem, 6.3vw, 4.86rem);
   --text-statement: clamp(4rem, 7.4vw, 6rem);
   --text-h2: clamp(1.65rem, 2.6vw, 2.1rem);
   --text-h3: 1.125rem;

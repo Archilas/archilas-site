@@ -7,8 +7,9 @@ const steps = [
   {
     id: "notes",
     label: "Notes",
+    spine: "Compact",
     line: "Chat, a calendar note, and a thread land as they are — plus a bit of noise.",
-    status: "Reading sources 1/3…",
+    status: "Reading notes 1/3…",
     pills: [
       { text: "Chat: café Fridays, strong flat white", on: true },
       { text: "Calendar: mornings stay open", on: false },
@@ -18,7 +19,8 @@ const steps = [
   {
     id: "compact",
     label: "Compact",
-    line: "Archilas keeps the durable lines. Living memory, not a chat log.",
+    spine: "Reason",
+    line: "Durable prefs, decisions, and open loops — living memory, not a chat dump.",
     status: "Compacting 2/3…",
     pills: [
       { text: "Preference: café Fridays + flat white", on: true },
@@ -29,12 +31,13 @@ const steps = [
   {
     id: "answer",
     label: "Answer",
-    line: "At query time — a coherent answer from that memory, not a paste.",
-    status: "Retrieved.",
+    spine: "Deliver",
+    line: "At query time the right notes and memory load — one clear, clean answer.",
+    status: "Loaded the right context.",
     pills: [
-      { text: "Used: Preference", on: true },
-      { text: "Used: Decision", on: true },
-      { text: "Uncited: open loop", on: false },
+      { text: "Loaded: Preference", on: true },
+      { text: "Loaded: Decision", on: true },
+      { text: "Held back: open loop", on: false },
     ],
   },
 ] as const;
@@ -47,7 +50,7 @@ export function HowItWorks() {
     <section id="how" className="how-band scroll-mt-[var(--scroll-margin)] px-[var(--pad-x)] py-16 md:py-20">
       <div className="mx-auto max-w-[var(--max-width)]">
         <p className="label">How it works</p>
-        <h2 className="h2 mt-3">Notes in. A record out. An answer when you ask.</h2>
+        <h2 className="h2 mt-3">Notes. Compact. Then one clear answer.</h2>
         <div className="mt-10 grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
           <ol className="stepper">
             {steps.map((item, index) => (
@@ -61,7 +64,10 @@ export function HowItWorks() {
                     {index + 1}
                   </span>
                   <span>
-                    <span className="stepper-label">{item.label}</span>
+                    <span className="stepper-label">
+                      {item.label}
+                      <span className="stepper-spine"> {item.spine}</span>
+                    </span>
                     <span className="stepper-line">{item.line}</span>
                   </span>
                 </button>

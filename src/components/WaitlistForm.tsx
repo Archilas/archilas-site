@@ -35,13 +35,13 @@ export function WaitlistForm({
 
       if (!res.ok || !data.ok) {
         setStatus("error");
-        setMessage(data.error || "Something went wrong. Try again.");
+        setMessage(data.error || "We couldn’t save that just now. Try again.");
         track("waitlist_error", { source });
         return;
       }
 
       setStatus("success");
-      setMessage("You’re on the list. We’ll email when Archilas opens.");
+      setMessage("Thanks — we’ll email when Archilas opens.");
       setEmail("");
       track("waitlist_success", { source });
     } catch {
@@ -58,8 +58,7 @@ export function WaitlistForm({
         role="status"
         aria-live="polite"
       >
-        <p className="text-[16px] font-medium not-italic text-ink">You’re on the list.</p>
-        <p className="mt-2 text-[15px] text-body">We’ll email when Archilas opens.</p>
+        <p className="text-[16px] font-medium not-italic text-ink">Thanks — we’ll email when Archilas opens.</p>
       </div>
     );
   }

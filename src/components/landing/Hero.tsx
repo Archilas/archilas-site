@@ -10,9 +10,9 @@ export function Hero() {
           AI memory that <em className="word-accent">understands</em> you.
         </h1>
         <p className="hero-sub">
-          Detailed notes → compacted memory →
+          Notes → compact → the right memory loads at query time →
           <br />
-          smart answers from many sources.
+          one clear answer.
         </p>
         <div className="hero-actions">
           <WaitlistCTA source="hero" />

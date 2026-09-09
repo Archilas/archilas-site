@@ -1,12 +1,12 @@
 import { NextResponse } from "next/server";
+import { persistWaitlistEmail } from "@/lib/waitlist-store";
 
 const emailOk = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
 /**
- * Waitlist contract:
- * - POST { email } → { ok: true } for a valid address
- * - Repeats of the same email also succeed
- * Persistence is not wired in this repo. Do not add stores here.
+ * POST { email } → { ok: true } after durable store.
+ * Duplicates are idempotent and still succeed.
+ * Missing store env or store errors fail closed (503).
  */
 export async function POST(request: Request) {
   let body: unknown;
@@ -27,13 +27,20 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false, error: "Enter a valid email address." }, { status: 400 });
   }
 
-  console.info(
-    JSON.stringify({
-      event: "WAITLIST_SIGNUP",
-      email,
-      at: new Date().toISOString(),
-    }),
-  );
+  try {
+    const stored = await persistWaitlistEmail(email);
+    if (!stored) {
+      return NextResponse.json(
+        { ok: false, error: "Waitlist is temporarily unavailable. Try again." },
+        { status: 503 },
+      );
+    }
 
-  return NextResponse.json({ ok: true });
+    return NextResponse.json({ ok: true });
+  } catch {
+    return NextResponse.json(
+      { ok: false, error: "Waitlist is temporarily unavailable. Try again." },
+      { status: 503 },
+    );
+  }
 }

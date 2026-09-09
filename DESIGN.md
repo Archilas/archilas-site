@@ -5,7 +5,8 @@ Mem0 rhythm: blue-wash hero with peeking demo tabs, Why Archilas band, cream how
 ## Type
 
 - Topbar: all-caps Geist, weight 450, tracking `0.16em`.
-- H1: Geist 650 + Instrument Serif italic on **understands** only (+8–10% optical).
+- H1: Geist 650 + Instrument Serif italic on **understands** only (+8–10% optical). Display ~10% smaller than the prior clamp.
+- Sticky topbar: z-50, blur, isolation — always paints above demo/cards.
 - Dual CTAs: 46px pills, radius 999. Join waitlist → + outline Contact.
 
 ## Rhythm

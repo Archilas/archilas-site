@@ -33,7 +33,7 @@ npm start
 - `/blog` index and posts
 - `/privacy` and `/terms`
 
-Waitlist submissions hit `POST /api/waitlist`. The handler acknowledges valid emails, including repeats. Persistence is not wired in this repo.
+Waitlist submissions hit `POST /api/waitlist`, which stores `{ email, created_at }` in Upstash Redis when `KV_REST_API_*` or `UPSTASH_REDIS_REST_*` env vars are set. Duplicates are idempotent. The handler fails closed (503) if the store is missing.
 
 ## Constraints
 
