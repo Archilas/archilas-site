@@ -15,8 +15,8 @@ Required env (set on Vercel; never commit secrets):
 - Reinforce: Notes → compact → at query time the right memory loads for deep understanding → one clear answer.
 - Dual CTAs: Join waitlist → (modal) and outline Contact.
 - Hero: `#E8F0F9→#F7F7F5` wash plus large soft white radials. No cartoon clouds.
-- Demo story is everyday work life (café Fridays). Four beats: Notes → Compact → Retrieve (cited rows) → Answer. No legal/launch dates. No “0 lines” first paint.
-- How it works: Notes, Compact, Retrieve, Answer. Why: agents, fast retrieve, honest when unclear. Footer: “MCP support — coming soon.”
+- Demo is a full stage switch (Notes / Compact / Retrieve / Answer), “Ship Friday?” thread. No phone+bundle+answer stack, no 0-lines first paint.
+- How it works: Notes, Compact, Retrieve, Answer. Why: SLM differentiator band (in development / early access — not live). Footer: “MCP support — coming soon.”
 - Sticky topbar is z-50 with blur so demo/cards cannot paint over it.
 
 ## Unchanged

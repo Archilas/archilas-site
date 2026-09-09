@@ -11,9 +11,9 @@ const steps = [
     line: "Every conversation, decision, and detail gets written down as a structured note. Nothing gets lost in a wall of raw text.",
     status: "Writing notes…",
     pills: [
-      { text: "Chat: café Fridays, strong flat white", on: true },
-      { text: "Calendar: mornings stay open", on: true },
-      { text: "Thread: Friday coffee still open", on: true },
+      { text: "Chat: Can we still ship Friday?", on: true },
+      { text: "Thread: Tests aren’t green yet", on: true },
+      { text: "Chat: Alex asked about Monday", on: true },
     ],
   },
   {
@@ -23,9 +23,9 @@ const steps = [
     line: "Notes get compressed into living memory — dense, structured, ready to search in milliseconds.",
     status: "Compacting into living memory…",
     pills: [
-      { text: "Preference: café Fridays + flat white", on: true },
-      { text: "Decision: deep work from 10", on: true },
-      { text: "Open loop: Friday coffee unscheduled", on: true },
+      { text: "Decision: Ship Friday if tests are green", on: true },
+      { text: "Constraint: Tests still failing", on: true },
+      { text: "Open loop: Alex asked about Monday", on: true },
     ],
   },
   {
@@ -35,8 +35,8 @@ const steps = [
     line: "At query time, Archilas pulls the exact notes your question needs — not everything, just what matters.",
     status: "Loaded the notes this question needs.",
     pills: [
-      { text: "Loaded: Preference", on: true },
       { text: "Loaded: Decision", on: true },
+      { text: "Loaded: Constraint", on: true },
       { text: "Held back: open loop", on: false },
     ],
   },
@@ -47,8 +47,8 @@ const steps = [
     line: "One clear, grounded answer. No guessing. No dump of irrelevant context.",
     status: "One grounded answer.",
     pills: [
-      { text: "After 11. Keep the morning clear.", on: true },
-      { text: "Deep work from 10 in a café", on: true },
+      { text: "Yes — if tests go green.", on: true },
+      { text: "Hold the Monday slip for now", on: true },
       { text: "Open loop held back", on: false },
     ],
   },
@@ -88,7 +88,7 @@ export function HowItWorks() {
           </ol>
           <div className="how-stage">
             <div className="how-bubble">
-              <p>When should we book Friday?</p>
+              <p>Ship Friday?</p>
             </div>
             <p className="how-status">{step.status}</p>
             <div className="how-pills">

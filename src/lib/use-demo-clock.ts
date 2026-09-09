@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { usePrefersReducedMotion } from "@/lib/use-prefers-reduced-motion";
 import type { DemoBeatId } from "@/components/landing/demo-data";
 
-export const DEMO_MS = 18000;
+export const DEMO_MS = 22000;
 
 export const BEAT_START: Record<DemoBeatId, number> = {
   notes: 0,

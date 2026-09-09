@@ -8,34 +8,19 @@ export const demoBeats = [
 export type DemoBeatId = (typeof demoBeats)[number]["id"];
 
 export const sourceNotes = [
-  {
-    id: "chat",
-    kind: "CHAT",
-    text: "I usually work from cafés on Fridays. Strong flat white. Deep work around 10.",
-    noise: "atlas wifi is spotty again",
-  },
-  {
-    id: "doc",
-    kind: "CAL",
-    text: "Friday mornings stay open — no meetings before 11.",
-    noise: "standup notes from last week",
-  },
-  {
-    id: "thread",
-    kind: "THREAD",
-    text: "Want to grab coffee Friday, or book around your focus block?",
-    noise: "lunch poll??",
-  },
+  { id: "ask", kind: "CHAT", text: "Can we still ship Friday?" },
+  { id: "tests", kind: "THREAD", text: "Tests aren’t green yet." },
+  { id: "slip", kind: "CHAT", text: "Alex asked if we should slip to Monday." },
 ] as const;
 
 export const memoryRows = [
-  { id: "pref", kind: "Preference", text: "Café Fridays. Strong flat white." },
-  { id: "dec", kind: "Decision", text: "Deep work from 10 — no meetings before 11." },
-  { id: "loop", kind: "Open loop", text: "Friday coffee still unscheduled." },
+  { id: "dec", kind: "Decision", text: "Ship Friday if tests are green." },
+  { id: "con", kind: "Constraint", text: "Tests still failing." },
+  { id: "loop", kind: "Open loop", text: "Alex asked about Monday." },
 ] as const;
 
 export const demoQuestion = {
-  q: "When should we book Friday?",
-  a: "After 11. You deep-work from 10 in a café — keep the morning clear.",
-  citeIds: ["pref", "dec"] as readonly string[],
+  q: "Ship Friday?",
+  a: "Yes — if tests go green. Hold the Monday slip until they don’t.",
+  citeIds: ["dec", "con"] as readonly string[],
 };

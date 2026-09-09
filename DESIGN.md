@@ -13,8 +13,8 @@ Mem0 rhythm: blue-wash hero with peeking demo tabs, Why Archilas band, cream how
 
 - Hero wash: `#E8F0F9 → #EEF4FA → #F5F8FB → #F7F7F5` plus large soft radials. Ink type. No cartoon clouds.
 - Stack: chip→H1 20px, H1→reinforce 20px, reinforce→CTAs 28px, CTAs→demo 40px. Top pad 64px. Demo tabs peek above the fold at 1280.
-- Demo: café Fridays. Notes → Compact → Retrieve (cited rows, rest dimmed) → Answer. ~18s, once in view, Replay.
-- Why Archilas: agents, millisecond retrieve, honest when unclear. Footer: MCP support — coming soon.
+- Demo: full stage switch, “Ship Friday?” thread. Notes → Compact → Retrieve (cited rows only) → Answer. ~22s, once in view, Replay. No phone stack.
+- Why Archilas: SLM differentiator band. In development / early access — not live. Chat + agents, one memory layer. Footer: MCP support — coming soon.
 - How it works: cream stepper — Notes, Compact, Retrieve, Answer.
 - Waitlist: cream, dual buttons.
 

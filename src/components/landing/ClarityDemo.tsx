@@ -5,8 +5,7 @@ import { demoBeats, demoQuestion, memoryRows, sourceNotes } from "@/components/l
 import { useDemoClock } from "@/lib/use-demo-clock";
 import { cn } from "@/lib/cn";
 
-const NOTE_AT = [0.08, 0.34, 0.58] as const;
-const BUBBLE_CLASS = ["bubble-user", "bubble-doc", "bubble-ai"] as const;
+const NOTE_AT = [0.04, 0.32, 0.58] as const;
 
 export function ClarityDemo() {
   const clock = useDemoClock();
@@ -29,18 +28,10 @@ export function ClarityDemo() {
     return () => observer.disconnect();
   }, [startOnce]);
 
-  const citing = beat === "retrieve" || beat === "answer";
-  const showNote = (index: number) => beat !== "notes" || local >= NOTE_AT[index];
-  const showLines = beat !== "notes" || local > 0.74;
-  const showSaved = beat !== "notes" || local > 0.86;
-  const bundleCount =
-    beat === "retrieve" || beat === "answer"
-      ? memoryRows.length
-      : beat === "notes"
-        ? 0
-        : Math.min(memoryRows.length, 1 + Math.floor(local * 2.05));
-  const showAsk = beat === "retrieve" || beat === "answer";
-  const showReply = beat === "answer" && (reduced || local > 0.18);
+  const noteCount =
+    beat !== "notes" ? sourceNotes.length : Math.max(1, NOTE_AT.filter((at) => local >= at).length);
+  const compactCount =
+    beat !== "memory" ? memoryRows.length : Math.min(memoryRows.length, Math.max(1, 1 + Math.floor(local * 2.1)));
 
   return (
     <div className="hero-demo" ref={rootRef} data-beat={beat} data-playing={playing ? "1" : "0"}>
@@ -68,75 +59,61 @@ export function ClarityDemo() {
         )}
       </div>
 
-      <div className="flow-shell">
-        <div className="flow-gold">
-          <div className="phone" data-testid="flow-phone">
-            <p className="phone-notch" aria-hidden="true" />
-            <div className="phone-thread">
-              {sourceNotes.map((note, index) => (
-                <div
-                  key={note.id}
-                  className={cn("bubble", BUBBLE_CLASS[index], showNote(index) && "is-in")}
-                  data-testid={`flow-note-${note.id}`}
-                >
+      <div className="stage-board" data-testid="demo-stage">
+        {beat === "notes" ? (
+          <div className="stage-view" data-testid="stage-notes">
+            <p className="stage-kicker">Notes</p>
+            <p className="stage-ask">{demoQuestion.q}</p>
+            <div className="stage-list">
+              {sourceNotes.slice(0, noteCount).map((note) => (
+                <div key={note.id} className="stage-note" data-testid={`flow-note-${note.id}`}>
+                  <span className="stage-kind">{note.kind}</span>
                   <p>{note.text}</p>
                 </div>
               ))}
             </div>
           </div>
+        ) : null}
 
-          <div className="flow-trail">
-            <div className={cn("flow-join", showLines && "is-on")} aria-hidden="true">
-              <span />
-              <span />
-              <span />
-            </div>
-
-            <div className={cn("saved-pill", showSaved && "is-on")} data-testid="flow-saved">
-              ✓ Saved
-            </div>
-
-            {bundleCount > 0 ? (
-              <div className="bundle is-on" data-testid="flow-bundle">
-                <div className="bundle-bar">
-                  <p className="bundle-title">Memory bundle</p>
-                  <span className="note-chip">{bundleCount} lines</span>
+        {beat === "memory" ? (
+          <div className="stage-view" data-testid="flow-bundle">
+            <p className="stage-kicker">Living memory</p>
+            <p className="stage-ask">Compacted from the thread.</p>
+            <div className="stage-list">
+              {memoryRows.slice(0, compactCount).map((row) => (
+                <div key={row.id} className="stage-row" data-testid={`mem-tile-${row.id}`}>
+                  <span className="stage-kind">{row.kind}</span>
+                  <p>{row.text}</p>
                 </div>
-                <div className="bundle-rows">
-                  {memoryRows.slice(0, bundleCount).map((row) => (
-                    <div
-                      key={row.id}
-                      className={cn(
-                        "bundle-row",
-                        citing && demoQuestion.citeIds.includes(row.id) && "is-cited",
-                        citing && !demoQuestion.citeIds.includes(row.id) && "is-dim",
-                      )}
-                      data-testid={`mem-tile-${row.id}`}
-                    >
-                      <span className="bundle-kind">{row.kind}</span>
-                      <span>{row.text}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ) : null}
+              ))}
+            </div>
           </div>
+        ) : null}
 
-          {showAsk ? (
-            <div className="flow-answer" data-testid="flow-answer">
-              <div className="ask-panel">
-                <span className="note-chip">Ask</span>
-                <p className="ask-q">{demoQuestion.q}</p>
-              </div>
-              {showReply ? (
-                <div className="reply-panel">
-                  <span className="note-chip">Answer</span>
-                  <p className="reply-a">{demoQuestion.a}</p>
-                </div>
-              ) : null}
+        {beat === "retrieve" ? (
+          <div className="stage-view" data-testid="stage-retrieve">
+            <p className="stage-kicker">Retrieve</p>
+            <p className="stage-ask">{demoQuestion.q}</p>
+            <div className="stage-list">
+              {memoryRows
+                .filter((row) => demoQuestion.citeIds.includes(row.id))
+                .map((row) => (
+                  <div key={row.id} className="stage-row is-cited" data-testid={`mem-tile-${row.id}`}>
+                    <span className="stage-kind">{row.kind}</span>
+                    <p>{row.text}</p>
+                  </div>
+                ))}
             </div>
-          ) : null}
-        </div>
+          </div>
+        ) : null}
+
+        {beat === "answer" ? (
+          <div className="stage-view" data-testid="flow-answer">
+            <p className="stage-kicker">Answer</p>
+            <p className="stage-ask">{demoQuestion.q}</p>
+            <p className="stage-reply">{demoQuestion.a}</p>
+          </div>
+        ) : null}
       </div>
     </div>
   );

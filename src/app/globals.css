@@ -289,6 +289,119 @@ section[id] {
   box-shadow: 0 0 0 2px #f7f9fa, 0 0 0 4px var(--focus);
 }
 
+.stage-board {
+  position: relative;
+  z-index: 0;
+  min-height: 320px;
+  padding: 24px 22px 22px;
+  border-radius: 20px;
+  background: #111111;
+  color: #f7f7f5;
+  text-align: left;
+  box-shadow: var(--hero-shadow);
+}
+
+.stage-kicker {
+  color: #d4b46a;
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.stage-ask {
+  margin-top: 8px;
+  color: #f7f7f5;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.25;
+}
+
+.stage-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.stage-note,
+.stage-row {
+  padding: 12px 14px;
+  border: 1px solid #2a2a2a;
+  background: #1a1a1a;
+  animation: tile-in 360ms ease both;
+}
+
+.stage-kind {
+  display: block;
+  margin-bottom: 4px;
+  color: #d4b46a;
+  font-size: 10px;
+  font-weight: 650;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.stage-note p,
+.stage-row p {
+  color: #f7f7f5;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.stage-row.is-cited {
+  box-shadow: inset 0 0 0 1px #d4b46a;
+}
+
+.stage-row.is-dim {
+  opacity: 0.38;
+}
+
+.stage-reply {
+  margin-top: 18px;
+  color: #f7f7f5;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.4;
+}
+
+.slm-sub {
+  margin-top: 12px;
+  max-width: 36rem;
+  color: rgba(247, 247, 245, 0.62);
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.slm-list {
+  display: grid;
+  gap: 16px;
+  margin-top: 32px;
+  max-width: 44rem;
+}
+
+.slm-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 14px;
+  align-items: start;
+}
+
+.slm-copy {
+  color: rgba(247, 247, 245, 0.88);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.slm-eng {
+  margin-top: 28px;
+  max-width: 40rem;
+  color: rgba(247, 247, 245, 0.72);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
 .demo-card {
   overflow: hidden;
   border-radius: 28px;
@@ -539,7 +652,9 @@ section[id] {
   .bubble,
   .bubble.is-in,
   .flow-join span,
-  .flow-join.is-on span {
+  .flow-join.is-on span,
+  .stage-note,
+  .stage-row {
     animation: none;
     transition: none;
     opacity: 1;
