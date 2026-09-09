@@ -4,32 +4,40 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { usePrefersReducedMotion } from "@/lib/use-prefers-reduced-motion";
 import type { DemoBeatId } from "@/components/landing/demo-data";
 
-export const DEMO_MS = 15000;
+export const DEMO_MS = 18000;
 
 export const BEAT_START: Record<DemoBeatId, number> = {
   notes: 0,
-  memory: 0.42,
-  answer: 0.7,
+  memory: 0.26,
+  retrieve: 0.5,
+  answer: 0.74,
 };
 
 export const BEAT_VIEW: Record<DemoBeatId, number> = {
-  notes: 0.16,
-  memory: 0.58,
+  notes: 0.14,
+  memory: 0.38,
+  retrieve: 0.62,
   answer: 1,
 };
 
+const BEAT_ORDER: DemoBeatId[] = ["notes", "memory", "retrieve", "answer"];
+
 export function beatFromProgress(progress: number): DemoBeatId {
   if (progress < BEAT_START.memory) return "notes";
-  if (progress < BEAT_START.answer) return "memory";
+  if (progress < BEAT_START.retrieve) return "memory";
+  if (progress < BEAT_START.answer) return "retrieve";
   return "answer";
 }
 
 export function beatLocal(progress: number): number {
-  if (progress < BEAT_START.memory) return progress / BEAT_START.memory;
-  if (progress < BEAT_START.answer) {
-    return (progress - BEAT_START.memory) / (BEAT_START.answer - BEAT_START.memory);
+  for (let i = 0; i < BEAT_ORDER.length; i++) {
+    const start = BEAT_START[BEAT_ORDER[i]];
+    const end = i === BEAT_ORDER.length - 1 ? 1 : BEAT_START[BEAT_ORDER[i + 1]];
+    if (progress < end || i === BEAT_ORDER.length - 1) {
+      return (progress - start) / (end - start || 1);
+    }
   }
-  return (progress - BEAT_START.answer) / (1 - BEAT_START.answer);
+  return 1;
 }
 
 export function useDemoClock() {

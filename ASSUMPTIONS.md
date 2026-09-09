@@ -12,11 +12,11 @@ Required env (set on Vercel; never commit secrets):
 ## Product and copy
 
 - H1: “AI memory that *understands* you.” — Geist bold + Instrument Serif italic on “understands” only. Display size ~10% smaller than the previous clamp.
-- Reinforce: Notes → compact → the right memory loads at query time → one clear answer.
+- Reinforce: Notes → compact → at query time the right memory loads for deep understanding → one clear answer.
 - Dual CTAs: Join waitlist → (modal) and outline Contact.
 - Hero: `#E8F0F9→#F7F7F5` wash plus large soft white radials. No cartoon clouds.
-- Demo story is everyday work life (café Fridays). Not legal or launch dates. No “0 lines” first paint.
-- Why-better: notes compact; query-time load; one clear answer. MCP intended, in development.
+- Demo story is everyday work life (café Fridays). Four beats: Notes → Compact → Retrieve (cited rows) → Answer. No legal/launch dates. No “0 lines” first paint.
+- How it works: Notes, Compact, Retrieve, Answer. Why: agents, fast retrieve, honest when unclear. Footer: “MCP support — coming soon.”
 - Sticky topbar is z-50 with blur so demo/cards cannot paint over it.
 
 ## Unchanged

@@ -1,6 +1,7 @@
 export const demoBeats = [
   { id: "notes", label: "Notes", spine: "Compact" },
   { id: "memory", label: "Compact", spine: "Reason" },
+  { id: "retrieve", label: "Retrieve", spine: "Deliver" },
   { id: "answer", label: "Answer", spine: "Deliver" },
 ] as const;
 

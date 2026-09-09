@@ -40,10 +40,21 @@ export async function persistWaitlistEmail(email: string): Promise<WaitlistEntry
   const entry: WaitlistEntry = { email, created_at: new Date().toISOString() };
   const wrote = await redis.set(key, entry, { nx: true });
   if (wrote === null) {
-    const raced = await redis.get<WaitlistEntry>(key);
+    const raced = await redis.get<WaitlistEntry | string>(key);
     if (raced && typeof raced === "object") return raced;
-    return entry;
+    if (typeof raced === "string") {
+      try {
+        return JSON.parse(raced) as WaitlistEntry;
+      } catch {
+        return { email, created_at: raced };
+      }
+    }
+    throw new Error("Waitlist write raced without a stored entry.");
   }
-  await redis.sadd("waitlist:emails", email);
+  try {
+    await redis.sadd("waitlist:emails", email);
+  } catch {
+    // Entry key is the source of truth; the set is an index.
+  }
   return entry;
 }

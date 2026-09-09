@@ -1,15 +1,15 @@
 const points = [
   {
-    title: "Notes compact into living memory.",
-    body: "Preferences, decisions, and open loops from many sources — revisable, not a chat dump.",
+    title: "Built for agents, not chat windows.",
+    body: "Memory that scales with real work, not just conversation history.",
   },
   {
-    title: "The right memory loads at query time.",
-    body: "At query time the right notes and memory load for deep understanding — not copy-paste retrieval.",
+    title: "Fast and cheap.",
+    body: "Retrieval in milliseconds, not full-document re-reads on every query.",
   },
   {
-    title: "One clear, clean answer.",
-    body: "Then one answer, delivered into tools you already use. Unsupported bridges are refused. MCP is intended, in development — not live yet.",
+    title: "Honest by design.",
+    body: "When something’s genuinely unclear, Archilas says so instead of guessing.",
   },
 ] as const;
 

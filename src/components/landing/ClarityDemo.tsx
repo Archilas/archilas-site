@@ -29,17 +29,18 @@ export function ClarityDemo() {
     return () => observer.disconnect();
   }, [startOnce]);
 
+  const citing = reduced || beat === "retrieve" || beat === "answer";
   const showNote = (index: number) => reduced || beat !== "notes" || local >= NOTE_AT[index];
   const showLines = reduced || beat !== "notes" || local > 0.74;
   const showSaved = reduced || beat !== "notes" || local > 0.86;
   const bundleCount =
-    reduced || beat === "answer"
+    reduced || beat === "retrieve" || beat === "answer"
       ? memoryRows.length
       : beat === "notes"
         ? 0
         : Math.min(memoryRows.length, 1 + Math.floor(local * 2.05));
-  const showAsk = reduced || beat === "answer";
-  const showReply = reduced || (beat === "answer" && local > 0.22);
+  const showAsk = reduced || beat === "retrieve" || beat === "answer";
+  const showReply = reduced || (beat === "answer" && local > 0.18);
 
   return (
     <div className="hero-demo" ref={rootRef} data-beat={beat} data-playing={playing ? "1" : "0"}>
@@ -107,7 +108,8 @@ export function ClarityDemo() {
                       key={row.id}
                       className={cn(
                         "bundle-row",
-                        beat === "answer" && demoQuestion.citeIds.includes(row.id) && "is-cited",
+                        citing && demoQuestion.citeIds.includes(row.id) && "is-cited",
+                        citing && !demoQuestion.citeIds.includes(row.id) && "is-dim",
                       )}
                       data-testid={`mem-tile-${row.id}`}
                     >

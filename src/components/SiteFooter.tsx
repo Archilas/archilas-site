@@ -68,10 +68,11 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="border-t border-line">
-        <div className="mx-auto flex max-w-[var(--max-width)] justify-between gap-4 px-[var(--pad-x)] py-4">
+        <div className="mx-auto flex max-w-[var(--max-width)] flex-wrap items-center justify-between gap-x-4 gap-y-2 px-[var(--pad-x)] py-4">
           <p className="text-[12px] text-muted">
             © {new Date().getFullYear()} {site.name}
           </p>
+          <p className="text-[12px] text-muted">MCP support — coming soon.</p>
           <a href={`mailto:${site.email}`} className="text-[12px] text-muted hover:text-ink">
             {site.email}
           </a>

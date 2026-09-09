@@ -1,6 +1,6 @@
 # Editorial infra brief
 
-Waitlist stays non-persisting. No Distill / Vault. MCP is intended, not live.
+Waitlist persists via Upstash Redis. No Distill / Vault. MCP is intended, not live.
 
 ## Surface
 

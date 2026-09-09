@@ -10,7 +10,7 @@ export function Hero() {
           AI memory that <em className="word-accent">understands</em> you.
         </h1>
         <p className="hero-sub">
-          Notes → compact → the right memory loads at query time →
+          Notes → compact → at query time the right memory loads for deep understanding →
           <br />
           one clear answer.
         </p>
