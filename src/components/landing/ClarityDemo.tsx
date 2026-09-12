@@ -32,32 +32,32 @@ export function ClarityDemo() {
   const citedRows = memoryRows.filter((row) => demoQuestion.citeIds.includes(row.id));
 
   return (
-    <div className="hero-demo" data-beat={beat} data-playing={playing ? "1" : "0"}>
-      <div className="demo-window">
-        <div className="demo-chrome">
-          <div className="agency-rail" role="tablist" aria-label="How memory is built">
-            {demoBeats.map((item) => (
-              <button
-                key={item.id}
-                type="button"
-                role="tab"
-                className={cn("agency-tab", beat === item.id && "is-on")}
-                aria-selected={beat === item.id}
-                data-testid={`demo-tab-${item.id}`}
-                onClick={() => clock.jumpBeat(item.id)}
-              >
-                <span>{item.label}</span>
-                <span className="agency-tab-spine">{item.spine}</span>
-              </button>
-            ))}
-          </div>
-          {reduced ? null : (
-            <button type="button" className="run-btn shrink-0" data-testid="demo-play" onClick={clock.replay}>
-              {playing ? "Playing" : "Replay"}
+    <div className="hero-demo" id="demo" data-beat={beat} data-playing={playing ? "1" : "0"}>
+      <div className="hero-selectors">
+        <div className="agency-rail" role="tablist" aria-label="How memory is built">
+          {demoBeats.map((item) => (
+            <button
+              key={item.id}
+              type="button"
+              role="tab"
+              className={cn("agency-tab", beat === item.id && "is-on")}
+              aria-selected={beat === item.id}
+              data-testid={`demo-tab-${item.id}`}
+              onClick={() => clock.jumpBeat(item.id)}
+            >
+              <span>{item.label}</span>
+              <span className="agency-tab-spine">{item.spine}</span>
             </button>
-          )}
+          ))}
         </div>
+        {reduced ? null : (
+          <button type="button" className="run-btn shrink-0" data-testid="demo-play" onClick={clock.replay}>
+            {playing ? "Playing" : "Replay"}
+          </button>
+        )}
+      </div>
 
+      <div className="demo-window">
         <div className="stage-board" ref={boardRef} data-testid="demo-stage">
           {beat === "notes" ? (
             <div className="stage-view" data-testid="stage-notes">

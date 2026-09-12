@@ -1,6 +1,6 @@
 # Archilas Site — Design System
 
-Mem0 rhythm: blue-wash hero (chip + H1 + reinforce + CTAs), demo below the fold, Why Archilas band, cream how-it-works.
+Mem0 rhythm: dense hero (chip + H1 + reinforce + CTAs + tabs + peeking product window), Why Archilas band, cream how-it-works.
 
 ## Type
 
@@ -11,9 +11,9 @@ Mem0 rhythm: blue-wash hero (chip + H1 + reinforce + CTAs), demo below the fold,
 
 ## Rhythm
 
-- Hero wash: deeper `#D5E4F4 → #F7F7F5` plus airy white/blue radials. Ink type. No cartoon clouds, no lavender.
-- Stack: chip→H1 18px, H1→reinforce 22px, reinforce→CTAs 32px. SLM early-access line under CTAs. Hero fills the viewport so the demo starts below the fold.
-- Demo: elevated cream/ink product window. Exclusive stages, “Ship Friday?” thread. Notes → Compact → Reason (cited + refuse) → Answer. 36s, ≥50% in view, pause off-screen, Replay. No phone stack.
+- Hero wash: near-white `#F4F8FB → #F7F7F5` with a soft blue tint. No cartoon clouds, no lavender.
+- Stack: badge→H1 16px, H1→sub 16px, sub→CTAs 24px, SLM line, then selector tabs and a peeking product window (mass in the first viewport at 1280×800).
+- Demo: elevated cream/ink product window under the tab strip. Exclusive stages, “Ship Friday?” thread. Notes → Compact → Reason (cited + refuse) → Answer. 36s, ≥50% in view, Replay. No phone stack.
 - Why Archilas: SLM differentiator band. In development / early access — not live. Chat + agents, one memory layer. Footer: MCP support — coming soon.
 - How it works: cream stepper — Notes, Compact, Reason, Answer.
 - Waitlist: cream, dual buttons.
