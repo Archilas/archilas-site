@@ -15,7 +15,7 @@ Required env (set on Vercel; never commit secrets):
 - One-line reinforce: Detailed notes → compacted memory → smart answers.
 - Dual CTAs: white Join waitlist → (modal) and outline Contact.
 - Landing follows TRYCLEAN-RESTORE-SPARSE: dark canvas, floating pill nav, photographic atmosphere plates, 2-col bands. Inner UI is opaque dark chrome; landscape stays on the outer plate only.
-- Hero: coded React product-chrome loop (REACT-HERO-DEMO.md). Same pricing storyboard, no `/hero-demo.mp4`. Reduced-motion shows the answer state.
+- Hero: one continuous AI chat loop (REACT-HERO-DEMO.md). User bubble → `archilas_memory` tool accordion → streamed answer. No mp4. No scene cuts.
 - Hero plate: Product demo / Demo video coming soon / Walkthrough on the way. Play glyph disabled. No Ship Friday.
 - Compare: sparse chips on a landscape photo plate. Old way vs Archilas. No demo UI. Old: Search · Inject all · Heavy tokens · No long-term · No sense of time. Us: Compact · Reason · Deliver.
 - How: Notes in. Answers out. / Compact what matters. Reason when you ask. Stage switch on the plate. Spine Compact → Reason → Deliver.

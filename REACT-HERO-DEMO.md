@@ -1,24 +1,18 @@
-# React hero demo — USE EXACTLY
+# React hero demo — continuous chat
 
-Replace `/hero-demo.mp4` with an opaque React product-chrome loop (CSS / rAF). Do not serve the Seedance clip.
+One AI chat transcript the entire loop. No cuts to Memory Field / Reason screens.
 
-## Storyboard
+## Flow
 
-1. Type: `What should we tell the customer about pricing — based on what we already decided and what’s still open?`
-2. Soft tool/gas pulse → memory field; timestamped shards float; pick:
-   - Mar 3 · Pref · Cap annual plans at 20% discount
-   - Mar 18 · Decision · Enterprise floor stays $12k
-   - Apr 2 · Open · Legal still reviewing usage add-on
-   - Apr 9 · Note · Customer asked for multi-year in Q2 call
-3. Compact → Preference / Decision / Open loop rows
-4. Reason highlight on supporting rows
-5. Answer card: `Keep the $12k floor. Offer ≤20% on annual. Don’t promise the usage add-on until legal clears.`
-6. Soft dissolve → empty input → loop (~18–24s)
+1. User bubble types (caret):
+   `We’re jumping on with Acme in 10 minutes. What should I tell them about enterprise pricing — only what we already decided, and call out anything still open so I don’t overpromise?`
+2. Send → `archilas_memory` tool-call row smoothly expands.
+3. Inside that panel: Searching living memory… → shards dim→lit → Pref / Decision / Open micros → Done · 4 memories.
+4. Panel collapses to a completed tool chip.
+5. Assistant streams:
+   `Keep the $12k floor. Offer up to 20% on annual. Don’t promise the usage add-on until legal clears.`
+6. Soft loop reset. Same layout always. ~20s.
 
 ## Craft
 
-- ALWAYS crisp readable type — no melt/morph/warp, no lens-flare soup, no UI sitting on 3D rocks
-- Opaque filled chrome on existing landscape photo plates; keep varied L/R plates elsewhere
-- Looks like a real app (minimal sidebar + main), Clean density
-- Optional tiny plate drift only
-- Locks: H1 with italic understands · Compact→Reason→Deliver · no Ship Friday · no Distill/Vault · no fake metrics · SLM/MCP not live
+Real chatbot chrome (bubbles, tool accordion, streaming). Opaque plate. Crisp type. Compact → Reason → Deliver as a tiny chrome hint only. No Ship Friday. SLM/MCP not live.
