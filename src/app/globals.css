@@ -1408,7 +1408,7 @@ cite {
   padding: 8px 10px 8px 16px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 999px;
-  background: color-mix(in srgb, #0c0d11 78%, transparent);
+  background: color-mix(in srgb, #0c0d11 92%, transparent);
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
   backdrop-filter: saturate(1.2) blur(18px);
   -webkit-backdrop-filter: saturate(1.2) blur(18px);
@@ -1788,8 +1788,8 @@ cite {
 
 .reveal {
   opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 640ms ease, transform 640ms ease;
+  transform: translateY(14px);
+  transition: opacity 420ms ease, transform 420ms ease;
 }
 
 .reveal.is-in {
