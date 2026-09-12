@@ -57,15 +57,18 @@ export function HowItWorks() {
   return (
     <section id="how" className="how-band split-band scroll-mt-[var(--scroll-margin)] px-[var(--pad-x)]">
       <Reveal>
-        <div className="split-grid mx-auto max-w-[1120px]">
+        <div className="split-grid is-how is-reverse mx-auto max-w-[1180px]">
           <div className="split-copy">
             <p className="label">How it works</p>
             <h2 className="h2 mt-3">Notes in. Answers out.</h2>
             <p className="split-lede">Compact what matters. Reason when you ask.</p>
           </div>
-          <div className="band-plate is-a plate-drift">
+          <div className="band-plate is-mid plate-drift">
             <div className="plate-sky is-alpine" aria-hidden="true" />
-            <div className="frost-panel how-stage" data-testid="how-stage">
+            <div className="chrome-window how-stage" data-testid="how-stage">
+              <div className="demo-chrome">
+                <span>How it works</span>
+              </div>
               <div className="chip-row how-tabs">
                 {steps.map((item) => (
                   <button

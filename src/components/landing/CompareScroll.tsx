@@ -8,7 +8,7 @@ export function CompareScroll() {
       className="compare-band split-band scroll-mt-[var(--scroll-margin)] px-[var(--pad-x)]"
       data-testid="compare-scroll"
     >
-      <div className="split-grid mx-auto max-w-[1120px]">
+      <div className="split-grid is-compare mx-auto max-w-[1180px]">
         <div className="split-copy">
           <p className="label">Compare</p>
           <h2 className="h2 mt-3">The old way vs Archilas</h2>
@@ -21,30 +21,38 @@ export function CompareScroll() {
             See how it works →
           </a>
         </div>
-        <div className="band-plate compare-plate plate-drift">
+        <div className="band-plate compare-plate is-tall plate-drift">
           <div className="plate-sky is-fjord" aria-hidden="true" />
           <div className="frost-stack">
-            <div className="frost-panel is-dim" data-testid="compare-typical">
-              <p className="ui-kicker">The old way</p>
-              <div className="chip-row">
-                {oldChips.map((chip) => (
-                  <span key={chip} className="chip">
-                    {chip}
-                  </span>
-                ))}
+            <div className="chrome-window is-dim" data-testid="compare-typical">
+              <div className="demo-chrome">
+                <span>The old way</span>
               </div>
-              <p className="compare-micro">Search. Paste. Hope.</p>
+              <div className="chrome-body">
+                <div className="chip-row">
+                  {oldChips.map((chip) => (
+                    <span key={chip} className="chip">
+                      {chip}
+                    </span>
+                  ))}
+                </div>
+                <p className="compare-micro">Search. Paste. Hope.</p>
+              </div>
             </div>
-            <div className="frost-panel" data-testid="compare-ours">
-              <p className="ui-kicker">Archilas</p>
-              <div className="chip-row">
-                {usChips.map((chip) => (
-                  <span key={chip} className="chip is-on">
-                    {chip}
-                  </span>
-                ))}
+            <div className="chrome-window" data-testid="compare-ours">
+              <div className="demo-chrome">
+                <span>Archilas</span>
               </div>
-              <p className="compare-micro">Keep what matters. Answer clearly.</p>
+              <div className="chrome-body">
+                <div className="chip-row">
+                  {usChips.map((chip) => (
+                    <span key={chip} className="chip is-on">
+                      {chip}
+                    </span>
+                  ))}
+                </div>
+                <p className="compare-micro">Keep what matters. Answer clearly.</p>
+              </div>
             </div>
           </div>
         </div>
