@@ -2,21 +2,25 @@
 
 One continuous chat. The user talks to a main LLM (Claude). Archilas is the tool, not the chatbot.
 
-Compact already happened over time via the memory SLM. Ask time is retrieve → rank → return context.
+Compact already happened over time via the memory SLM. Ask time is retrieve → select → return context.
 
 ## Flow
 
-1. Composer types L→R (caret at the end):
-   `We’re on a call about pricing. What did we already decide, what’s still open, and what should we not promise yet?`
-2. Send → composer clears, user bubble appears. Claude opens `search_living_memory`.
-3. Tool subtitle: Archilas · Memory SLM · early access.
-   Status: Retrieving… → Ranking… → Done.
-   Steps: Retrieve from living memory (already compacted) → Rank prefs / decisions / open loops → Return context to model.
-   Already-compacted rows light up. A **Returned to model** block shows the Archilas → LLM payload.
-4. Panel collapses. Claude streams:
-   `Keep the $12k floor. You can offer up to 20% off on annual. Don’t promise the usage add-on until legal clears.`
-5. Soft loop reset. Same Claude frame always. ~20s.
+1. Composer types L→R:
+   `We’re negotiating pricing with Acme. What did we already decide, what’s still open, and what must we not promise?`
+2. Send → Claude opens `archilas_get_context`.
+3. Steps (never compacting now): Calling Archilas… → Retrieving living memory… → Selecting what matters… → Returning context…
+4. Already-compacted rows light up. Payload returned to the model:
+   ```
+   preference: Cap annual discount at 20%
+   decision: Enterprise floor stays $12k
+   open_loop: Usage add-on — legal not cleared
+   ```
+   Micro: Living memory · memory SLM · early access
+5. Claude streams:
+   `Keep the $12k floor. You can offer up to 20% on annual. Don’t promise the usage add-on until legal clears.`
+6. Chrome difference: We don’t dump old chats into the prompt — we return the living record.
 
 ## Craft
 
-Persistent app frame. Living record · not paste. No Memory Field cuts. No live-compacting step. Opaque plate. Compact → Reason → Deliver as a tiny chrome hint only. SLM/MCP not live. No Ship Friday.
+Persistent Claude frame. Archilas is the tool. No Memory Field cuts. Opaque plate. Compact → Reason → Deliver as a tiny chrome hint. SLM/MCP not live. No Ship Friday.

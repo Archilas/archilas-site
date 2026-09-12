@@ -8,16 +8,17 @@ import {
   HERO_ANSWER_AT,
   HERO_ANSWER_MS,
   HERO_FADE,
+  HERO_DIFF,
   HERO_LOOP_MS,
   HERO_PICK_AT,
   HERO_QUERY,
   HERO_RESULT,
   HERO_RESULT_AT,
+  HERO_RESULT_NOTE,
+  HERO_RETRIEVE_AT,
   HERO_SEND,
   HERO_SHARDS,
   HERO_STATUS_DONE,
-  HERO_STATUS_SEARCH,
-  HERO_STATUS_SELECT,
   HERO_STEPS,
   HERO_TOOL,
   HERO_TOOL_AT,
@@ -29,7 +30,7 @@ import {
   HERO_TYPE_START,
 } from "@/components/landing/hero-storyboard";
 
-type ToolStatus = typeof HERO_STATUS_SEARCH | typeof HERO_STATUS_SELECT | typeof HERO_STATUS_DONE;
+type ToolStatus = (typeof HERO_STEPS)[number]["label"] | typeof HERO_STATUS_DONE;
 
 type Snap = {
   typed: number;
@@ -58,12 +59,16 @@ function snapAt(ms: number): Snap {
     ms < HERO_PICK_AT ? 0 : Math.min(4, 1 + Math.floor((ms - HERO_PICK_AT) / 520));
   const result = open && ms >= HERO_RESULT_AT;
   const done = tool && ms >= HERO_TOOL_DONE;
-  const step = !tool ? 0 : done || result ? 3 : picks > 0 ? 2 : 1;
-  const status: ToolStatus = done
-    ? HERO_STATUS_DONE
-    : picks > 0
-      ? HERO_STATUS_SELECT
-      : HERO_STATUS_SEARCH;
+  const step = !tool
+    ? 0
+    : result || done
+      ? 4
+      : picks > 0
+        ? 3
+        : ms >= HERO_RETRIEVE_AT
+          ? 2
+          : 1;
+  const status: ToolStatus = done ? HERO_STATUS_DONE : HERO_STEPS[Math.max(0, step - 1)].label;
   const answer =
     ms < HERO_ANSWER_AT
       ? 0
@@ -86,7 +91,7 @@ const REDUCED: Snap = {
   picks: 4,
   result: false,
   done: true,
-  step: 3,
+  step: 4,
   status: HERO_STATUS_DONE,
   answer: HERO_ANSWER.length,
   fade: false,
@@ -179,7 +184,7 @@ export function HeroProductDemo() {
         <div className="hero-app-bar">
           <div className="hero-app-tabs">
             <span className="hero-app-tab is-on">Chat</span>
-            <span className="hero-app-diff">Living record · not paste</span>
+            <span className="hero-app-diff">{HERO_DIFF}</span>
           </div>
           <span className="hero-app-spine">Compact → Reason → Deliver</span>
         </div>
@@ -242,12 +247,10 @@ export function HeroProductDemo() {
                   {snap.result ? (
                     <div className="hero-result" data-testid="hero-result">
                       <p className="hero-result-kicker">Returned to model</p>
-                      {HERO_RESULT.map((row) => (
-                        <p key={row.id} className="hero-result-row">
-                          <em>{row.kind}</em>
-                          {row.text}
-                        </p>
-                      ))}
+                      <pre className="hero-result-pre">
+                        {HERO_RESULT.map((row) => `${row.kind}: ${row.text}`).join("\n")}
+                      </pre>
+                      <p className="hero-result-note">{HERO_RESULT_NOTE}</p>
                     </div>
                   ) : null}
                 </div>
