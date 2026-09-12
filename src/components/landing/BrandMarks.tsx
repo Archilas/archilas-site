@@ -23,7 +23,7 @@ export function ChatGptMark({ className }: { className?: string }) {
 export function CursorMark({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" className={className ?? "surface-mark"} aria-hidden="true">
-      <path fill="currentColor" d="M5.2 2.1 19.6 12.2l-8.3 1.9-2.1 7.7Z" />
+      <path fill="currentColor" d="M4.2 2.1v16.8l4.3-4.1 3.5 8.2 2.5-1.1-3.5-8.1h6.7Z" />
     </svg>
   );
 }
