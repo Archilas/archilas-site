@@ -31,9 +31,10 @@ export function CompareScroll() {
     const measure = () => {
       const rect = node.getBoundingClientRect();
       const vh = window.innerHeight;
-      const start = vh * 0.7;
-      const end = vh * 0.24;
-      const next = Math.min(1, Math.max(0, (start - rect.top) / (start - end || 1)));
+      const start = vh * 0.42;
+      const end = vh * 0.16;
+      const raw = Math.min(1, Math.max(0, (start - rect.top) / (start - end || 1)));
+      const next = raw < 0.12 ? 0 : raw > 0.88 ? 1 : (raw - 0.12) / 0.76;
       setProgress(next);
     };
 

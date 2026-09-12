@@ -1926,14 +1926,16 @@ cite {
 
 .compare-typical,
 .compare-ours {
-  transition: opacity 220ms linear;
+  transition: opacity 180ms linear;
 }
 
 .compare-typical {
+  z-index: 1;
   opacity: calc(1 - var(--compare, 0));
 }
 
 .compare-ours {
+  z-index: 2;
   opacity: var(--compare, 0);
 }
 
