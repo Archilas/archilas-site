@@ -2592,6 +2592,17 @@ cite {
   height: 40px;
 }
 
+.surface-lockup {
+  display: inline-flex;
+  height: 40px;
+  align-items: center;
+  color: var(--ink);
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 15px;
+  font-weight: 620;
+  letter-spacing: 0.14em;
+}
+
 .surface-state {
   color: var(--muted);
   font-size: 11px;

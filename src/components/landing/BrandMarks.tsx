@@ -23,26 +23,11 @@ export function ChatGptMark({ className }: { className?: string }) {
 export function CursorMark({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" className={className ?? "surface-mark"} aria-hidden="true">
-      <path fill="currentColor" d="M11.9 1.6 21.6 7.2v9.6L11.9 22.4 2.2 16.8V7.2Z" />
-      <path fill="currentColor" opacity="0.38" d="M11.9 12.4 21.6 7.2 11.9 1.6 2.2 7.2Z" />
-      <path fill="currentColor" opacity="0.62" d="M11.9 12.4 21.6 7.2v9.6L11.9 22.4Z" />
+      <path fill="currentColor" d="M5.2 2.1 19.6 12.2l-8.3 1.9-2.1 7.7Z" />
     </svg>
   );
 }
 
 export function McpMark({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" className={className ?? "surface-mark"} aria-hidden="true">
-      <circle cx="6.2" cy="12" r="2.35" fill="currentColor" />
-      <circle cx="17.8" cy="6.4" r="2.35" fill="currentColor" />
-      <circle cx="17.8" cy="17.6" r="2.35" fill="currentColor" />
-      <path
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2.1"
-        strokeLinecap="round"
-        d="M8.3 11.1 15.6 7.5M8.3 12.9 15.6 16.5"
-      />
-    </svg>
-  );
+  return <span className={className ?? "surface-lockup"}>MCP</span>;
 }
