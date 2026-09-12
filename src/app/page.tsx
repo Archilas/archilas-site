@@ -1,3 +1,5 @@
+import { PlateDrift } from "@/components/PlateDrift";
+import { CompareScroll } from "@/components/landing/CompareScroll";
 import { Hero } from "@/components/landing/Hero";
 import { HowItWorks } from "@/components/landing/HowItWorks";
 import { Surfaces } from "@/components/landing/Surfaces";
@@ -18,7 +20,9 @@ export default function HomePage() {
   return (
     <>
       <JsonLd data={organizationJsonLd()} />
+      <PlateDrift />
       <Hero />
+      <CompareScroll />
       <WhyCompare />
       <HowItWorks />
       <WhyBetter />

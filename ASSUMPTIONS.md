@@ -15,8 +15,9 @@ Required env (set on Vercel; never commit secrets):
 - One-line reinforce: Notes compact into living memory — then one clear answer.
 - Dual CTAs: white Join waitlist → (modal) and outline Contact.
 - Landing follows TRYCLEAN-CRAFT-BRIEF: dark canvas, floating pill nav, atmospheric plates, 2-col bands.
-- Demo: Notes / Compact / Reason / Answer. Exclusive stage switch, “Ship Friday?” thread. 36s, starts when ≥50% of the board is in view. Replay from Notes.
-- Why plate: paste vs living memory (preferences, decisions, open loops) and refuse bridges.
+- Hero plate: “Demo video coming soon” placeholder — not a fake playing video, no Ship Friday thread.
+- Compare plate: scroll-linked typical AI memory → Archilas (no competitor names). Reduced motion shows the Archilas end state.
+- How: Notes / Compact / Reason / Answer. Exclusive stage switch. Spine Compact → Reason → Deliver.
 - SLM band: in development / early access — not live. Surfaces: Claude / ChatGPT / Cursor intended; MCP coming soon.
 - Footer: “MCP support — coming soon.”
 

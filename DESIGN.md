@@ -11,10 +11,10 @@ Tryclean-craft: near-black canvas, warm-white type, electric-blue focus only, fl
 
 ## Rhythm
 
-- Hero: chip → H1 → one-line sub → CTAs → SLM line → atmospheric demo plate peeking.
-- Demo: dark chrome on plate. Exclusive Notes → Compact → Reason → Answer. 36s, ≥50% in view, Replay.
-- Why: 2-col plate — paste vs living memory / refuse bridges.
+- Hero: chip → H1 → one-line sub → CTAs → SLM line → video-coming-soon plate peeking.
+- Compare: scroll morph from typical paste-search-hope to Archilas living memory. No named competitors.
 - How: 2-col — short steps + staged UI on plate. Spine Compact → Reason → Deliver.
+- Plates drift slightly on scroll; reduced-motion is static.
 - SLM: in development / early access — not live.
 - Surfaces: Claude / ChatGPT / Cursor text pills. MCP — coming soon.
 - Waitlist: honest. Footer: minimal dark + MCP coming soon.

@@ -1,4 +1,4 @@
-import { ClarityDemo } from "@/components/landing/ClarityDemo";
+import { HeroVideo } from "@/components/landing/HeroVideo";
 import { WaitlistCTA } from "@/components/WaitlistCTA";
 
 export function Hero() {
@@ -15,7 +15,7 @@ export function Hero() {
         </div>
         <p className="hero-slm">Powered by a memory SLM · early access</p>
       </div>
-      <ClarityDemo />
+      <HeroVideo />
     </section>
   );
 }
