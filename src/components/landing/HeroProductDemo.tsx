@@ -56,7 +56,7 @@ function snapAt(ms: number): Snap {
   const tool = ms >= HERO_TOOL_AT;
   const open = tool && ms >= HERO_TOOL_OPEN && ms < HERO_TOOL_CLOSE;
   const picks =
-    ms < HERO_PICK_AT ? 0 : Math.min(4, 1 + Math.floor((ms - HERO_PICK_AT) / 520));
+    ms < HERO_PICK_AT ? 0 : Math.min(3, 1 + Math.floor((ms - HERO_PICK_AT) / 520));
   const result = open && ms >= HERO_RESULT_AT;
   const done = tool && ms >= HERO_TOOL_DONE;
   const step = !tool
@@ -88,7 +88,7 @@ const REDUCED: Snap = {
   sent: true,
   tool: true,
   open: false,
-  picks: 4,
+  picks: 3,
   result: false,
   done: true,
   step: 4,

@@ -2198,8 +2198,8 @@ cite {
 
 .hero-steps {
   display: grid;
-  gap: 6px;
-  margin: 0 0 10px;
+  gap: 4px;
+  margin: 0 0 8px;
   padding: 0;
   list-style: none;
 }
