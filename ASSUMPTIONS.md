@@ -16,7 +16,7 @@ Required env (set on Vercel; never commit secrets):
 - Dual CTAs: white Join waitlist → (modal) and outline Contact.
 - Landing follows TRYCLEAN-CRAFT-BRIEF: dark canvas, floating pill nav, photographic atmosphere plates, 2-col bands.
 - Hero plate: Product demo / Demo video coming soon / Notes → Compact → Reason → Answer — filmed walkthrough on the way. Play glyph disabled. No Ship Friday.
-- Compare plate: two-column copy contrast (The old way vs Archilas). No demo UI. Under-plate: Most memory is still paste. Archilas keeps a living record.
+- Compare plate: locked pack in archilas-redesign/COMPARE-OLD-VS-US.md. Two-column typographic contrast. No demo UI.
 - How: Notes / Compact / Reason / Answer. Exclusive stage switch. Spine Compact → Reason → Deliver.
 - SLM band: in development / early access — not live. Surfaces: Claude / ChatGPT / Cursor intended; MCP coming soon.
 - Footer: “MCP support — coming soon.”

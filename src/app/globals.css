@@ -1936,10 +1936,18 @@ cite {
   width: 100%;
 }
 
+.compare-head {
+  max-width: 36rem;
+}
+
+.compare-title {
+  margin: 12px 0 0;
+}
+
 .compare-cols {
   display: grid;
   gap: 32px;
-  margin-top: 22px;
+  margin-top: 28px;
 }
 
 @media (min-width: 900px) {
@@ -1950,25 +1958,36 @@ cite {
 }
 
 .compare-side.is-old {
-  opacity: 0.78;
+  opacity: 0.82;
 }
 
-.compare-title {
+.compare-side-title {
   margin: 0;
+  color: var(--ink);
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
 .compare-micro {
-  margin-top: 16px;
+  margin-top: 18px;
   color: var(--ink);
   font-size: 15px;
   font-weight: 500;
   letter-spacing: -0.01em;
 }
 
+.compare-honest {
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
 .compare-beats {
   display: grid;
-  gap: 12px;
-  margin: 22px 0 0;
+  gap: 14px;
+  margin: 20px 0 0;
   padding: 0;
   list-style: none;
 }
@@ -1976,6 +1995,10 @@ cite {
 .compare-beats li {
   padding: 0 0 0 14px;
   border-left: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.compare-beats li p {
+  margin-top: 4px;
   color: var(--ink);
   font-size: 15px;
   line-height: 1.4;
