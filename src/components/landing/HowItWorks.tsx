@@ -8,8 +8,6 @@ const steps = [
   {
     id: "notes",
     label: "Notes",
-    spine: "Compact",
-    line: "Written as notes — not a wall of raw text.",
     status: "Written as notes.",
     ask: "Meet Tuesday?",
     pills: [
@@ -21,8 +19,6 @@ const steps = [
   {
     id: "compact",
     label: "Compact",
-    spine: "Reason",
-    line: "Preferences, decisions, open loops — living memory.",
     status: "Compacted into living memory.",
     ask: "Meet Tuesday?",
     pills: [
@@ -34,8 +30,6 @@ const steps = [
   {
     id: "reason",
     label: "Reason",
-    spine: "Deliver",
-    line: "Only the memory this question needs.",
     status: "Right memory for this question.",
     ask: "Meet Tuesday?",
     pills: [
@@ -47,8 +41,6 @@ const steps = [
   {
     id: "answer",
     label: "Answer",
-    spine: "Deliver",
-    line: "One grounded answer. No invented time.",
     status: "One grounded answer.",
     ask: "Meet Tuesday?",
     pills: [
@@ -68,33 +60,24 @@ export function HowItWorks() {
         <div className="split-grid mx-auto max-w-[1120px]">
           <div className="split-copy">
             <p className="label">How it works</p>
-            <h2 className="h2 mt-3">Notes. Compact. Reason. Answer.</h2>
-            <ol className="stepper mt-8">
-              {steps.map((item, index) => (
-                <li key={item.id}>
-                  <button
-                    type="button"
-                    className={cn("stepper-item", id === item.id && "is-on")}
-                    onClick={() => setId(item.id)}
-                  >
-                    <span className="stepper-dot" aria-hidden="true">
-                      {index + 1}
-                    </span>
-                    <span>
-                      <span className="stepper-label">
-                        {item.label}
-                        <span className="stepper-spine"> {item.spine}</span>
-                      </span>
-                      <span className="stepper-line">{item.line}</span>
-                    </span>
-                  </button>
-                </li>
-              ))}
-            </ol>
+            <h2 className="h2 mt-3">Notes in. Answers out.</h2>
+            <p className="split-lede">Compact what matters. Reason when you ask.</p>
           </div>
           <div className="band-plate is-a plate-drift">
             <div className="plate-sky is-alpine" aria-hidden="true" />
             <div className="frost-panel how-stage" data-testid="how-stage">
+              <div className="chip-row how-tabs">
+                {steps.map((item) => (
+                  <button
+                    key={item.id}
+                    type="button"
+                    className={cn("chip", id === item.id && "is-on")}
+                    onClick={() => setId(item.id)}
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
               <div className="how-bubble">
                 <p>{step.ask}</p>
               </div>

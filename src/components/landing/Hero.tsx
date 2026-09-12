@@ -9,7 +9,7 @@ export function Hero() {
         <h1 className="display">
           AI memory that <em className="word-accent">understands</em> you.
         </h1>
-        <p className="hero-sub">Notes compact into living memory — then one clear answer.</p>
+        <p className="hero-sub">Detailed notes → compacted memory → smart answers.</p>
         <div className="hero-actions">
           <WaitlistCTA source="hero" />
         </div>

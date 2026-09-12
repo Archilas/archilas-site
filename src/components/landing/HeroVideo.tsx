@@ -14,7 +14,7 @@ export function HeroVideo() {
               </svg>
             </button>
             <p className="video-ph-label">Demo video coming soon</p>
-            <p className="video-ph-sub">Notes → Compact → Reason → Answer — filmed walkthrough on the way.</p>
+            <p className="video-ph-sub">Walkthrough on the way.</p>
           </div>
         </div>
       </div>

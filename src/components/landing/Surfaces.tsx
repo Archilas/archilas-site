@@ -9,8 +9,8 @@ export function Surfaces() {
         <div className="split-grid mx-auto max-w-[1120px]">
           <div className="split-copy">
             <p className="label">Surfaces</p>
-            <h2 className="h2 mt-3">The tools you already use.</h2>
-            <p className="split-lede">MCP coming soon — not live yet.</p>
+            <h2 className="h2 mt-3">Built for tools you use.</h2>
+            <p className="split-lede">Claude · ChatGPT · Cursor. MCP coming soon.</p>
           </div>
           <div className="band-plate plate-drift">
             <div className="plate-sky is-fjord" aria-hidden="true" />

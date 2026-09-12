@@ -1,4 +1,4 @@
-const oldChips = ["Search", "Inject all", "Tokens", "No long-term", "No time"] as const;
+const oldChips = ["Search", "Inject all", "Heavy tokens", "No long-term", "No sense of time"] as const;
 const usChips = ["Compact", "Reason", "Deliver"] as const;
 
 export function CompareScroll() {
@@ -12,7 +12,7 @@ export function CompareScroll() {
         <div className="split-copy">
           <p className="label">Compare</p>
           <h2 className="h2 mt-3">The old way vs Archilas</h2>
-          <p className="split-lede">Same problem. Two ways to handle memory.</p>
+          <p className="split-lede">Same problem. Two memories.</p>
           <a
             href="#how"
             data-testid="why-explain"
@@ -44,8 +44,7 @@ export function CompareScroll() {
                   </span>
                 ))}
               </div>
-              <p className="compare-micro">Compact. Reason. Deliver.</p>
-              <p className="compare-honest">MCP coming soon — not live yet.</p>
+              <p className="compare-micro">Keep what matters. Answer clearly.</p>
             </div>
           </div>
         </div>

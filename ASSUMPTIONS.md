@@ -12,13 +12,13 @@ Required env (set on Vercel; never commit secrets):
 ## Product and copy
 
 - H1: “AI memory that *understands* you.” — Geist + Instrument Serif italic on “understands” only.
-- One-line reinforce: Notes compact into living memory — then one clear answer.
+- One-line reinforce: Detailed notes → compacted memory → smart answers.
 - Dual CTAs: white Join waitlist → (modal) and outline Contact.
-- Landing follows TRYCLEAN-CRAFT-BRIEF: dark canvas, floating pill nav, photographic atmosphere plates, 2-col bands.
-- Hero plate: Product demo / Demo video coming soon / Notes → Compact → Reason → Answer — filmed walkthrough on the way. Play glyph disabled. No Ship Friday.
-- Compare: sparse chips on a landscape photo plate. Old way vs Archilas. No demo UI.
-- How: Notes / Compact / Reason / Answer. Exclusive stage switch. Spine Compact → Reason → Deliver.
-- SLM band: in development / early access — not live. Surfaces: Claude / ChatGPT / Cursor intended; MCP coming soon.
+- Landing follows TRYCLEAN-RESTORE-SPARSE: dark canvas, floating pill nav, photographic atmosphere plates, 2-col bands.
+- Hero plate: Product demo / Demo video coming soon / Walkthrough on the way. Play glyph disabled. No Ship Friday.
+- Compare: sparse chips on a landscape photo plate. Old way vs Archilas. No demo UI. Old: Search · Inject all · Heavy tokens · No long-term · No sense of time. Us: Compact · Reason · Deliver.
+- How: Notes in. Answers out. / Compact what matters. Reason when you ask. Stage switch on the plate. Spine Compact → Reason → Deliver.
+- SLM band: early access — not live. Surfaces: Built for tools you use. / Claude · ChatGPT · Cursor. MCP coming soon.
 - Footer: “MCP support — coming soon.”
 
 ## Unchanged
