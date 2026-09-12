@@ -3,17 +3,33 @@
 import { useEffect, useRef, useState } from "react";
 
 const typical = [
-  { k: "Snippets", v: "Finds a passage — not a decision." },
-  { k: "Dump", v: "Pastes the chat log back into context." },
-  { k: "Bridges", v: "Invented links when memory is thin." },
-  { k: "Clutter", v: "Raw notes ride along every turn." },
+  {
+    k: "Search & paste",
+    v: "Dig through old chats, drop snippets into the prompt, hope it holds.",
+  },
+  {
+    k: "Passages, not a picture",
+    v: "Retrieval finds text; it doesn’t keep a current record of what matters.",
+  },
+  {
+    k: "Breaks across sessions",
+    v: "Context dies when the thread does; you rebuild from scratch.",
+  },
 ] as const;
 
 const ours = [
-  { k: "Compact", v: "Preferences, decisions, open loops." },
-  { k: "Reason", v: "Only the memory this question needs." },
-  { k: "Refuse", v: "Unsupported bridges are held back." },
-  { k: "One layer", v: "Same record for chat and agents." },
+  {
+    k: "Living memory",
+    v: "Preferences, decisions, and open loops; compacted, revisable — not a chat dump.",
+  },
+  {
+    k: "Reason at query time",
+    v: "Answers from that compact record when it supports them; no invented bridges.",
+  },
+  {
+    k: "One record, many surfaces",
+    v: "Claude, ChatGPT, Cursor. MCP coming soon — not live yet.",
+  },
 ] as const;
 
 export function CompareScroll() {
@@ -72,12 +88,12 @@ export function CompareScroll() {
         <div className="compare-head">
           <p className="label">Compare</p>
           <div className="compare-titles">
-            <h2 className="h2 compare-title compare-typical">Typical AI memory</h2>
+            <h2 className="h2 compare-title compare-typical">The usual approach</h2>
             <h2 className="h2 compare-title compare-ours">Archilas</h2>
           </div>
           <p className="split-lede compare-lede">
-            <span className="compare-typical">Paste, search, hope — snippets in, clutter out.</span>
-            <span className="compare-ours">Living memory. Reason when supported. Refuse the rest.</span>
+            <span className="compare-typical">Search. Paste. Hope.</span>
+            <span className="compare-ours">Compact. Reason. Deliver.</span>
           </p>
         </div>
 
@@ -104,26 +120,26 @@ export function CompareScroll() {
           <div className="compare-visual">
             <div className="compare-typical ui-stack" data-testid="compare-visual-typical">
               <div className="ui-card is-dim is-skew-a">
-                <span className="ui-kicker">Paste</span>
-                <p>notes dump — maybe Monday? tests?? another search hit</p>
+                <span className="ui-kicker">Paste memory</span>
+                <p>Search. Paste. Hope.</p>
               </div>
               <div className="ui-card is-dim is-skew-b">
-                <span className="ui-kicker">Snippet</span>
-                <p>“…green yet…” · other turns riding along</p>
+                <span className="ui-kicker">Search & paste</span>
+                <p>Dig through old chats, drop snippets into the prompt, hope it holds.</p>
               </div>
               <div className="ui-card is-dim">
-                <span className="ui-kicker">Invented</span>
-                <p>A bridge that was never decided.</p>
+                <span className="ui-kicker">Breaks across sessions</span>
+                <p>Context dies when the thread does; you rebuild from scratch.</p>
               </div>
             </div>
             <div className="compare-ours ui-stack" data-testid="compare-visual-ours">
               <div className="ui-card">
                 <span className="ui-kicker">Living memory</span>
-                <p>Preference · Decision · Open loop</p>
+                <p>Preferences, decisions, and open loops; compacted, revisable — not a chat dump.</p>
               </div>
               <div className="ui-card">
-                <span className="ui-kicker">Answer</span>
-                <p>One grounded reply. Held back: unsupported slip.</p>
+                <span className="ui-kicker">Deliver</span>
+                <p>Compact. Reason. Deliver.</p>
               </div>
             </div>
           </div>

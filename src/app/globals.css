@@ -1882,6 +1882,11 @@ cite {
   box-shadow: 0 0 32px rgba(61, 139, 255, 0.18);
 }
 
+.video-ph-play:disabled {
+  cursor: default;
+  opacity: 0.72;
+}
+
 .video-ph-label {
   position: relative;
   z-index: 1;
@@ -1894,7 +1899,7 @@ cite {
 .video-ph-sub {
   position: relative;
   z-index: 1;
-  max-width: 22rem;
+  max-width: 26rem;
   color: var(--muted);
   font-size: 14px;
   line-height: 1.4;

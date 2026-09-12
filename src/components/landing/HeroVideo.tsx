@@ -4,17 +4,16 @@ export function HeroVideo() {
       <div className="demo-plate plate-drift">
         <div className="demo-window video-ph">
           <div className="demo-chrome">
-            <span>Archilas</span>
-            <span>Preview</span>
+            <span>Product demo</span>
           </div>
-          <div className="video-ph-stage" aria-label="Demo video coming soon">
-            <span className="video-ph-play" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 22 22">
+          <div className="video-ph-stage">
+            <button type="button" className="video-ph-play" disabled aria-disabled="true" aria-label="Demo video coming soon">
+              <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true">
                 <path d="M8 5.5 L17 11 L8 16.5 Z" fill="currentColor" />
               </svg>
-            </span>
+            </button>
             <p className="video-ph-label">Demo video coming soon</p>
-            <p className="video-ph-sub">A short look at living memory — Compact, Reason, Deliver.</p>
+            <p className="video-ph-sub">Notes → Compact → Reason → Answer — filmed walkthrough on the way.</p>
           </div>
         </div>
       </div>
