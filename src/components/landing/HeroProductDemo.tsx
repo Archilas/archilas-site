@@ -150,23 +150,34 @@ export function HeroProductDemo() {
   return (
     <div
       ref={rootRef}
-      className={cn("hero-app", snap.fade && "is-dissolve")}
+      className="hero-app"
       data-testid="hero-product-demo"
       data-phase={snap.phase}
     >
       <aside className="hero-app-side" aria-hidden="true">
-        <p className="hero-app-brand">Archilas</p>
+        <p className="hero-app-brand">
+          <span className="hero-app-mark" />
+          Archilas
+        </p>
+        <p className="hero-app-search">Search</p>
         <nav className="hero-app-nav">
           <span className="hero-app-nav-item is-on">Chat</span>
-          <span className="hero-app-nav-item">History</span>
+        </nav>
+        <p className="hero-app-kicker">History</p>
+        <nav className="hero-app-nav">
+          <span className="hero-app-nav-item">Pricing call</span>
+          <span className="hero-app-nav-item">Legal review</span>
         </nav>
       </aside>
       <div className="hero-app-main">
         <div className="hero-app-bar">
-          <span>Chat</span>
+          <div className="hero-app-tabs">
+            <span className="hero-app-tab is-on">Chat</span>
+            <span className="hero-app-tab">History</span>
+          </div>
           <span className="hero-app-spine">Compact → Reason → Deliver</span>
         </div>
-        <div className="hero-thread" data-testid="hero-thread">
+        <div className={cn("hero-thread", snap.fade && "is-dissolve")} data-testid="hero-thread">
           {userText ? (
             <div className="hero-bubble is-user" data-testid="hero-user">
               {userText}
@@ -183,6 +194,7 @@ export function HeroProductDemo() {
                 <span className="hero-tool-mark" aria-hidden="true" />
                 <span className="hero-tool-name">{HERO_TOOL}</span>
                 <span className="hero-tool-status">{snap.status}</span>
+                <span className="hero-tool-chev" aria-hidden="true" />
               </div>
               <div className="hero-tool-body">
                 <div className="hero-tool-inner">
@@ -225,7 +237,7 @@ export function HeroProductDemo() {
         </div>
         <div className={cn("hero-composer", !snap.sent && snap.typed > 0 && "is-live")}>
           <p className="hero-composer-text">
-            {snap.sent ? "" : <span className="hero-composer-ph">Message Archilas…</span>}
+            <span className="hero-composer-ph">Message Archilas…</span>
           </p>
           <span className={cn("hero-composer-go", snap.sent && snap.tool && "is-sent")} aria-hidden="true">
             →

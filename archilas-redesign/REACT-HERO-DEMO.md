@@ -15,4 +15,4 @@ One AI chat transcript the entire loop. No cuts to Memory Field / Reason screens
 
 ## Craft
 
-Real chatbot chrome (bubbles, tool accordion, streaming). Opaque plate. Crisp type. Compact → Reason → Deliver as a tiny chrome hint only. No Ship Friday. SLM/MCP not live.
+One persistent app frame (sidebar + header + composer stay put). Content transitions in place: type → tool accordion → stream. No Memory Field / Reason page cuts. Opaque plate. Compact → Reason → Deliver as a tiny chrome hint only. No Ship Friday. SLM/MCP not live.
