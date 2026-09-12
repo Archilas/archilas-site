@@ -1,6 +1,6 @@
 # Archilas Site — Design System
 
-Tryclean-craft: near-black canvas, warm-white type, electric-blue focus only, floating pill nav, dense UI on dark depth plates (vignette + grain — not color orbs).
+Tryclean-craft: near-black canvas, warm-white type, electric-blue focus only, floating pill nav, dense UI on photographic atmosphere plates.
 
 ## Type
 
@@ -12,9 +12,9 @@ Tryclean-craft: near-black canvas, warm-white type, electric-blue focus only, fl
 ## Rhythm
 
 - Hero: chip → H1 → one-line sub → CTAs → SLM line → video-coming-soon plate peeking.
-- Compare: sticky scrub, lerped progress, exclusive stages (usual approach → Archilas). No named competitors. No overlapping titles.
+- Compare: sticky visual show — one short line + messy paste UI → living-memory UI. Exclusive stages. No jargon essay.
 - How: 2-col — short steps + staged UI on plate. Spine Compact → Reason → Deliver.
-- Plates: near-black `#07080a` + soft vignette/grain. No neon orbs. Light drift on the hero plate; reduced-motion is static.
+- Plates: huge rounded cards with photographic night/fog depth (not neon orbs, not flat black). Lerped sky drift on scroll; reduced-motion is static.
 - SLM: in development / early access — not live.
 - Surfaces: Claude / ChatGPT / Cursor text pills. MCP — coming soon.
 - Waitlist: honest. Footer: minimal dark + MCP coming soon.

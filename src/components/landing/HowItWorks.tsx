@@ -61,7 +61,8 @@ export function HowItWorks() {
   return (
     <section id="how" className="how-band split-band scroll-mt-[var(--scroll-margin)] px-[var(--pad-x)]">
       <Reveal>
-        <div className="band-plate is-a mx-auto max-w-[1120px]">
+        <div className="band-plate is-a plate-drift mx-auto max-w-[1120px]">
+          <div className="plate-sky is-night" aria-hidden="true" />
           <div className="split-grid">
             <div className="split-copy">
               <p className="label">How it works</p>

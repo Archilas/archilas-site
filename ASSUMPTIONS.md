@@ -14,9 +14,9 @@ Required env (set on Vercel; never commit secrets):
 - H1: “AI memory that *understands* you.” — Geist + Instrument Serif italic on “understands” only.
 - One-line reinforce: Notes compact into living memory — then one clear answer.
 - Dual CTAs: white Join waitlist → (modal) and outline Contact.
-- Landing follows TRYCLEAN-CRAFT-BRIEF: dark canvas, floating pill nav, atmospheric plates, 2-col bands.
+- Landing follows TRYCLEAN-CRAFT-BRIEF: dark canvas, floating pill nav, photographic atmosphere plates, 2-col bands.
 - Hero plate: Product demo / Demo video coming soon / Notes → Compact → Reason → Answer — filmed walkthrough on the way. Play glyph disabled. No Ship Friday.
-- Compare plate: sticky pin for ~1.3 viewport of scrub. Progress is lerped. Exclusive stages (The usual approach, then Archilas) — never both titles at once. Cue “Scroll to compare”. Reduced motion skips the pin and shows Archilas.
+- Compare plate: sticky visual show. Short lines only (Search. Paste. Hope. → Compact. Reason. Deliver.). Messy paste UI → living-memory UI. Exclusive mount, lerped progress, longer start hold. Under-plate is one sentence: Paste memory forgets. Living memory holds. Reduced motion skips the pin and shows Archilas.
 - How: Notes / Compact / Reason / Answer. Exclusive stage switch. Spine Compact → Reason → Deliver.
 - SLM band: in development / early access — not live. Surfaces: Claude / ChatGPT / Cursor intended; MCP coming soon.
 - Footer: “MCP support — coming soon.”

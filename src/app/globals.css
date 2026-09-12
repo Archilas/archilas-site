@@ -1491,25 +1491,11 @@ cite {
   position: relative;
   overflow: hidden;
   border-radius: 32px 32px 0 0;
-  padding: 22px 22px 0;
-  background:
-    radial-gradient(120% 80% at 50% -12%, rgba(255, 255, 255, 0.04) 0%, transparent 52%),
-    radial-gradient(80% 55% at 50% 120%, rgba(0, 0, 0, 0.55) 0%, transparent 58%),
-    #07080a;
+  padding: 28px 28px 0;
+  background: #07080a;
   box-shadow:
     0 -1px 0 rgba(255, 255, 255, 0.06) inset,
     var(--hero-shadow);
-}
-
-.demo-plate::before,
-.band-plate::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.16;
-  mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
 }
 
 .hero-selectors {
@@ -1608,19 +1594,43 @@ cite {
   overflow: hidden;
   border-radius: 32px;
   padding: clamp(28px, 4vw, 48px);
-  background:
-    radial-gradient(120% 80% at 50% -10%, rgba(255, 255, 255, 0.04) 0%, transparent 50%),
-    radial-gradient(70% 50% at 50% 115%, rgba(0, 0, 0, 0.5) 0%, transparent 56%),
-    #07080a;
+  background: #07080a;
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: var(--card-shadow);
 }
 
 .band-plate.is-a {
-  background:
-    radial-gradient(110% 75% at 50% -8%, rgba(255, 255, 255, 0.032) 0%, transparent 52%),
-    radial-gradient(70% 50% at 50% 118%, rgba(0, 0, 0, 0.52) 0%, transparent 58%),
-    #07080a;
+  background: #07080a;
+}
+
+.plate-sky {
+  position: absolute;
+  inset: -18%;
+  z-index: 0;
+  pointer-events: none;
+  background: url("/atmosphere/plate-mist.png") center / cover no-repeat;
+  transform: translate3d(0, var(--drift, 0px), 0);
+  will-change: transform;
+}
+
+.plate-sky.is-night {
+  background-image: url("/atmosphere/plate-night.png");
+}
+
+.demo-plate::after,
+.band-plate::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(7, 8, 10, 0.22) 0%, rgba(7, 8, 10, 0.52) 100%);
+}
+
+.demo-plate > *:not(.plate-sky),
+.band-plate > *:not(.plate-sky) {
+  position: relative;
+  z-index: 1;
 }
 
 .split-band {
@@ -1833,7 +1843,8 @@ cite {
 }
 
 .plate-drift {
-  transform: translate3d(0, var(--drift, 0px), 0);
+  --drift: 0px;
+  transform: translate3d(0, calc(var(--drift) * 0.35), 0);
   will-change: transform;
 }
 
@@ -1932,8 +1943,6 @@ cite {
 
 .compare-plate {
   width: 100%;
-  max-height: calc(100svh - var(--nav-height) - 28px);
-  overflow: auto;
 }
 
 .compare-scrub {
@@ -1976,19 +1985,22 @@ cite {
 
 .compare-dots {
   display: inline-flex;
-  gap: 6px;
+  align-items: center;
+  gap: 8px;
 }
 
 .compare-dots i {
   display: block;
-  width: 6px;
-  height: 6px;
+  width: 9px;
+  height: 9px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.28);
 }
 
 .compare-dots i.is-on {
   background: var(--ink);
+  box-shadow: none;
 }
 
 .compare-stage {
@@ -2012,48 +2024,12 @@ cite {
   margin: 12px 0 0;
 }
 
-.compare-grid {
-  display: grid;
-  gap: 28px;
-  margin-top: 28px;
+.compare-stage.split-grid {
+  margin-top: 8px;
 }
 
-@media (min-width: 900px) {
-  .compare-grid {
-    grid-template-columns: 0.95fr 1.05fr;
-    align-items: start;
-  }
-}
-
-.compare-visual {
-  min-height: 0;
-}
-
-.compare-list {
-  display: grid;
-  gap: 10px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.compare-row {
-  padding: 12px 14px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  background: rgba(14, 16, 20, 0.92);
-}
-
-.compare-row.is-noise {
-  border-style: dashed;
-  background: rgba(18, 16, 16, 0.78);
-}
-
-.compare-row p {
-  margin-top: 6px;
-  color: var(--ink);
-  font-size: 15px;
-  line-height: 1.4;
+.compare-visual .ui-card p + p {
+  margin-top: 8px;
 }
 
 .is-skew-a {
@@ -2100,8 +2076,9 @@ cite {
     padding-bottom: 8px;
   }
 
-  .compare-plate {
-    max-height: none;
+  .plate-sky {
+    transform: none;
+    will-change: auto;
   }
 
   .compare-stage {

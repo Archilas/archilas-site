@@ -6,7 +6,8 @@ export function Surfaces() {
   return (
     <section id="surfaces" className="surfaces-band split-band scroll-mt-[var(--scroll-margin)] px-[var(--pad-x)]">
       <Reveal>
-        <div className="band-plate mx-auto max-w-[1120px]">
+        <div className="band-plate plate-drift mx-auto max-w-[1120px]">
+          <div className="plate-sky" aria-hidden="true" />
           <p className="label">Surfaces</p>
           <h2 className="h2 mt-3">Built for the tools you already use.</h2>
           <p className="split-lede">

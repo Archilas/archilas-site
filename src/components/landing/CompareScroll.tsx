@@ -3,37 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/cn";
 
-const typical = [
-  {
-    k: "Search & paste",
-    v: "Dig through old chats, drop snippets into the prompt, hope it holds.",
-  },
-  {
-    k: "Passages, not a picture",
-    v: "Retrieval finds text; it doesn’t keep a current record of what matters.",
-  },
-  {
-    k: "Breaks across sessions",
-    v: "Context dies when the thread does; you rebuild from scratch.",
-  },
-] as const;
-
-const ours = [
-  {
-    k: "Living memory",
-    v: "Preferences, decisions, and open loops; compacted, revisable — not a chat dump.",
-  },
-  {
-    k: "Reason at query time",
-    v: "Answers from that compact record when it supports them; no invented bridges.",
-  },
-  {
-    k: "One record, many surfaces",
-    v: "Claude, ChatGPT, Cursor. MCP coming soon — not live yet.",
-  },
-] as const;
-
-/** Hard cut in the 0.15–0.55 window. Only one title tree is mounted. */
 const CUT = 0.5;
 
 function stageFrom(progress: number): "typical" | "ours" {
@@ -105,7 +74,6 @@ export function CompareScroll() {
       const dt = Math.min(40, now - last);
       last = now;
       readTarget();
-      // ~160ms time-constant: progress keeps gliding after wheel/touch stops.
       const k = 1 - Math.exp(-dt / 160);
       current.v += (target.v - current.v) * k;
       if (Math.abs(target.v - current.v) < 0.0008) current.v = target.v;
@@ -127,7 +95,7 @@ export function CompareScroll() {
     window.scrollTo({ top, behavior: "auto" });
   };
 
-  const rows = stage === "ours" ? ours : typical;
+  const ours = stage === "ours";
 
   return (
     <section
@@ -138,71 +106,54 @@ export function CompareScroll() {
       data-stage={stage}
     >
       <div className="compare-sticky">
-        <div className="band-plate compare-plate mx-auto w-full max-w-[1120px]">
+        <div className="band-plate compare-plate plate-drift mx-auto w-full max-w-[1120px]">
+          <div className="plate-sky" aria-hidden="true" />
           <div className="compare-scrub" aria-hidden="true" />
 
           <button
             type="button"
             className="compare-cue"
             data-testid="compare-cue"
-            hidden={reduced || stage === "ours"}
+            hidden={reduced || ours}
             onClick={() => jumpTo(0.72)}
           >
             Scroll to compare
             <span className="compare-dots" aria-hidden="true">
-              <i className={stage === "typical" ? "is-on" : undefined} />
-              <i className={stage === "ours" ? "is-on" : undefined} />
+              <i className={!ours ? "is-on" : undefined} />
+              <i className={ours ? "is-on" : undefined} />
             </span>
           </button>
 
-          <div key={stage} className="compare-stage" data-testid={`compare-stage-${stage}`}>
-            <div className="compare-head">
+          <div key={stage} className="compare-stage split-grid" data-testid={`compare-stage-${stage}`}>
+            <div className="split-copy compare-head">
               <p className="label">Compare</p>
-              <h2 className="h2 compare-title">{stage === "ours" ? "Archilas" : "The usual approach"}</h2>
-              <p className="split-lede">
-                {stage === "ours" ? "Compact. Reason. Deliver." : "Search. Paste. Hope."}
-              </p>
+              <h2 className="h2 compare-title">{ours ? "Archilas" : "The usual approach"}</h2>
+              <p className="split-lede">{ours ? "Compact. Reason. Deliver." : "Search. Paste. Hope."}</p>
             </div>
 
-            <div className="compare-grid">
-              <ul className="compare-list" data-testid={stage === "ours" ? "compare-ours" : "compare-typical"}>
-                {rows.map((row) => (
-                  <li key={row.k} className={cn("compare-row", stage === "typical" && "is-noise")}>
-                    <span className="ui-kicker">{row.k}</span>
-                    <p>{row.v}</p>
-                  </li>
-                ))}
-              </ul>
-
-              <div className="compare-visual">
-                {stage === "typical" ? (
-                  <div className="ui-stack" data-testid="compare-visual-typical">
-                    <div className="ui-card is-dim is-skew-a">
-                      <span className="ui-kicker">Paste memory</span>
-                      <p>Search. Paste. Hope.</p>
-                    </div>
-                    <div className="ui-card is-dim is-skew-b">
-                      <span className="ui-kicker">Search & paste</span>
-                      <p>Dig through old chats, drop snippets into the prompt, hope it holds.</p>
-                    </div>
-                    <div className="ui-card is-dim">
-                      <span className="ui-kicker">Breaks across sessions</span>
-                      <p>Context dies when the thread does; you rebuild from scratch.</p>
-                    </div>
+            <div className="compare-visual">
+              {ours ? (
+                <div className="ui-stack" data-testid="compare-ours">
+                  <div className="ui-card">
+                    <span className="ui-kicker">Living memory</span>
+                    <p>Preference: Ship Friday when the work is ready.</p>
+                    <p>Decision: Don’t ship until tests are green.</p>
+                    <p>Open loop: Alex asked about Monday.</p>
+                    <p className="ui-held">Held back: Monday slip — not enough to invent a new plan.</p>
                   </div>
-                ) : (
-                  <div className="ui-stack" data-testid="compare-visual-ours">
-                    <div className="ui-card">
-                      <span className="ui-kicker">Living memory</span>
-                      <p>Preferences, decisions, and open loops; compacted, revisable — not a chat dump.</p>
-                    </div>
-                    <div className="ui-card">
-                      <span className="ui-kicker">Deliver</span>
-                      <p>Compact. Reason. Deliver.</p>
-                    </div>
+                </div>
+              ) : (
+                <div className="ui-stack" data-testid="compare-typical">
+                  <div className="ui-card is-dim is-skew-a">
+                    <span className="ui-kicker">Paste</span>
+                    <p>Ship Friday? Monday? tests?? Alex said something — maybe slip it.</p>
                   </div>
-                )}
-              </div>
+                  <div className="ui-card is-dim is-skew-b">
+                    <span className="ui-kicker">Search</span>
+                    <p>Old chat. Drop it in. Hope it holds.</p>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
