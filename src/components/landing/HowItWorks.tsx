@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Reveal } from "@/components/Reveal";
 import { cn } from "@/lib/cn";
 
 const steps = [
@@ -58,49 +59,53 @@ export function HowItWorks() {
   const step = steps.find((item) => item.id === id) ?? steps[0];
 
   return (
-    <section id="how" className="how-band scroll-mt-[var(--scroll-margin)] px-[var(--pad-x)] py-12 md:py-16">
-      <div className="mx-auto max-w-[920px]">
-        <p className="label">How it works</p>
-        <h2 className="h2 mt-3">Notes. Compact. Reason. Answer.</h2>
-        <div className="mt-8 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-          <ol className="stepper">
-            {steps.map((item, index) => (
-              <li key={item.id}>
-                <button
-                  type="button"
-                  className={cn("stepper-item", id === item.id && "is-on")}
-                  onClick={() => setId(item.id)}
-                >
-                  <span className="stepper-dot" aria-hidden="true">
-                    {index + 1}
-                  </span>
-                  <span>
-                    <span className="stepper-label">
-                      {item.label}
-                      <span className="stepper-spine"> {item.spine}</span>
-                    </span>
-                    <span className="stepper-line">{item.line}</span>
-                  </span>
-                </button>
-              </li>
-            ))}
-          </ol>
-          <div className="how-stage">
-            <div className="how-bubble">
-              <p>Ship Friday?</p>
+    <section id="how" className="how-band split-band scroll-mt-[var(--scroll-margin)] px-[var(--pad-x)]">
+      <Reveal>
+        <div className="band-plate is-a mx-auto max-w-[1120px]">
+          <div className="split-grid">
+            <div className="split-copy">
+              <p className="label">How it works</p>
+              <h2 className="h2 mt-3">Notes. Compact. Reason. Answer.</h2>
+              <ol className="stepper mt-8">
+                {steps.map((item, index) => (
+                  <li key={item.id}>
+                    <button
+                      type="button"
+                      className={cn("stepper-item", id === item.id && "is-on")}
+                      onClick={() => setId(item.id)}
+                    >
+                      <span className="stepper-dot" aria-hidden="true">
+                        {index + 1}
+                      </span>
+                      <span>
+                        <span className="stepper-label">
+                          {item.label}
+                          <span className="stepper-spine"> {item.spine}</span>
+                        </span>
+                        <span className="stepper-line">{item.line}</span>
+                      </span>
+                    </button>
+                  </li>
+                ))}
+              </ol>
             </div>
-            <p className="how-status">{step.status}</p>
-            <div className="how-pills">
-              {step.pills.map((pill) => (
-                <span key={pill.text} className={cn("how-pill", pill.on && "is-on")}>
-                  {pill.on ? "✓ " : ""}
-                  {pill.text}
-                </span>
-              ))}
+            <div className="how-stage ui-card" data-testid="how-stage">
+              <div className="how-bubble">
+                <p>Ship Friday?</p>
+              </div>
+              <p className="how-status">{step.status}</p>
+              <div className="how-pills">
+                {step.pills.map((pill) => (
+                  <span key={pill.text} className={cn("how-pill", pill.on && "is-on")}>
+                    {pill.on ? "✓ " : ""}
+                    {pill.text}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }

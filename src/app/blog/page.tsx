@@ -14,7 +14,7 @@ export default function BlogIndexPage() {
 
   return (
     <>
-      <Section className="!pb-8 !pt-16">
+      <Section className="!pb-8">
         <p className="mono text-[11px] text-muted">blog</p>
         <h1 className="display mt-4">Blog</h1>
         <p className="mt-4 max-w-lg text-[15px] text-muted">

@@ -5,7 +5,7 @@ import type { ButtonHTMLAttributes, MouseEventHandler, ReactNode } from "react";
 import { scrollToHash } from "@/lib/hash-scroll";
 
 const base =
-  "inline-flex h-[var(--control-height)] items-center justify-center rounded-[var(--arch-radius-control)] bg-ink px-5 text-[15px] font-medium not-italic text-surface no-underline hover:bg-ink/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-bg disabled:cursor-not-allowed disabled:opacity-60";
+  "inline-flex h-[var(--control-height)] items-center justify-center rounded-[var(--arch-radius-control)] bg-white px-5 text-[15px] font-medium not-italic text-black no-underline hover:bg-white/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-bg disabled:cursor-not-allowed disabled:opacity-60";
 
 type ButtonPrimaryProps = {
   children: ReactNode;

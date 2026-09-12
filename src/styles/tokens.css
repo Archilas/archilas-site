@@ -1,54 +1,56 @@
-/* Archilas paper/ink. Signal teal is active tab underline, Run fill, and focus only. */
+/* Near-black canvas. Warm-white type. Electric blue is focus/active only. */
 
 :root {
-  --bg: #f6f3ed;
-  --surface: #ffffff;
-  --ink: #0a0a0a;
-  --body: #3f3f46;
-  --muted: #737373;
-  --line: #e5e5e5;
-  --inverse: #0a0a0a;
-  --signal: #0f766e;
-  --focus: #0f766e;
+  --bg: #07080a;
+  --surface: #12141a;
+  --ink: #f3f0e8;
+  --body: #9b9ca6;
+  --muted: #787984;
+  --line: #23262e;
+  --inverse: #f3f0e8;
+  --signal: #3d8bff;
+  --focus: #3d8bff;
+  --cta: #ffffff;
+  --cta-ink: #0a0a0a;
 
   --paper: var(--bg);
   --elevated: var(--surface);
-  --near-black: var(--ink);
+  --near-black: #0a0a0a;
   --border: var(--line);
   --border-input: var(--line);
   --surface-legacy: var(--surface);
 
-  --bg-dark: var(--inverse);
-  --card-dark: #111111;
-  --border-dark: #2a2a2a;
-  --text-dark: #f7f7f5;
+  --bg-dark: var(--bg);
+  --card-dark: #12141a;
+  --border-dark: var(--line);
+  --text-dark: var(--ink);
 
   --accent: var(--focus);
   --accent-dark: var(--focus);
 
-  --hero-shadow: 0 32px 80px rgba(10, 10, 10, 0.14);
-  --card-shadow: 0 16px 40px rgba(10, 10, 10, 0.06);
+  --hero-shadow: 0 40px 90px rgba(0, 0, 0, 0.45);
+  --card-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
 
-  --text-display: clamp(2.52rem, 6.3vw, 4.86rem);
-  --text-statement: clamp(4rem, 7.4vw, 6rem);
-  --text-h2: clamp(1.65rem, 2.6vw, 2.1rem);
+  --text-display: clamp(2.4rem, 5.6vw, 4.4rem);
+  --text-statement: clamp(2.4rem, 5vw, 3.6rem);
+  --text-h2: clamp(1.7rem, 3vw, 2.4rem);
   --text-h3: 1.125rem;
   --text-body: 1.0625rem;
   --text-label: 0.6875rem;
   --text-mono: 0.75rem;
   --leading-body: 1.5;
 
-  --arch-radius-card: 16px;
+  --arch-radius-card: 20px;
   --arch-radius-control: 999px;
-  --arch-radius-hero: 20px;
+  --arch-radius-hero: 28px;
 
   --max-width: 1120px;
   --pad-x: 28px;
-  --pad-y: 80px;
-  --pad-y-mobile: 48px;
-  --nav-height: 64px;
+  --pad-y: 96px;
+  --pad-y-mobile: 64px;
+  --nav-height: 88px;
   --control-height: 46px;
-  --scroll-margin: 80px;
+  --scroll-margin: 96px;
 }
 
 @theme inline {
@@ -63,10 +65,10 @@
   --color-focus: var(--focus);
   --color-paper: var(--bg);
   --color-elevated: var(--surface);
-  --color-near-black: var(--ink);
+  --color-near-black: var(--near-black);
   --color-border: var(--line);
   --color-border-input: var(--line);
-  --color-bg-dark: var(--inverse);
+  --color-bg-dark: var(--bg);
   --color-card-dark: var(--card-dark);
   --color-border-dark: var(--border-dark);
   --color-text-dark: var(--text-dark);

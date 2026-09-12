@@ -36,34 +36,36 @@ export function SiteHeader() {
   }, []);
 
   return (
-    <header className={`site-header sticky top-0 z-50 isolate${solid ? " is-solid" : ""}`}>
-      <div className="mx-auto grid h-[var(--nav-height)] w-full max-w-[var(--max-width)] grid-cols-[1fr_auto] items-center px-[var(--pad-x)] lg:grid-cols-[1fr_auto_1fr]">
-        <BrandLogo />
-        <nav aria-label="Primary" className="hidden items-center gap-7 lg:flex">
-          {nav.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="nav-link"
-              onClick={() => scrollToHash(item.href)}
-            >
-              {item.label}
-            </a>
-          ))}
-        </nav>
-        <div className="hidden justify-self-end lg:block">
-          <WaitlistCTA source="nav" align="end" />
+    <header className={`site-header${solid ? " is-solid" : ""}`}>
+      <div className="nav-shell">
+        <div className="nav-pill">
+          <BrandLogo />
+          <nav aria-label="Primary" className="hidden items-center justify-center gap-7 lg:flex">
+            {nav.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="nav-link"
+                onClick={() => scrollToHash(item.href)}
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+          <div className="nav-cta hidden lg:flex">
+            <WaitlistCTA source="nav" align="end" />
+          </div>
+          <button
+            type="button"
+            className="header-menu inline-flex h-10 w-10 items-center justify-center justify-self-end lg:hidden"
+            aria-expanded={open}
+            aria-controls={drawerId}
+            onClick={() => setOpen((value) => !value)}
+          >
+            <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
+            <MenuIcon open={open} />
+          </button>
         </div>
-        <button
-          type="button"
-          className="header-menu inline-flex h-10 w-10 items-center justify-center justify-self-end lg:hidden"
-          aria-expanded={open}
-          aria-controls={drawerId}
-          onClick={() => setOpen((value) => !value)}
-        >
-          <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
-          <MenuIcon open={open} />
-        </button>
       </div>
       {open ? (
         <div

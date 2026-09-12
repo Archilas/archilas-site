@@ -17,7 +17,7 @@ export const site = {
 export const showResources = posts.length >= 2;
 
 export const nav = [
-  { href: "/#how", label: "How it works" },
+  { href: "/#how", label: "How" },
   { href: "/#product", label: "Product" },
   { href: "/#waitlist", label: "Waitlist" },
 ] as const;

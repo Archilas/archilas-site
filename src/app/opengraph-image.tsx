@@ -15,8 +15,8 @@ export default function OpenGraphImage() {
           flexDirection: "column",
           justifyContent: "center",
           padding: "80px 88px",
-          background: "#EAF3FB",
-          color: "#0A0A0A",
+          background: "#07080a",
+          color: "#f3f0e8",
         }}
       >
         <div
@@ -25,7 +25,7 @@ export default function OpenGraphImage() {
             fontSize: 18,
             letterSpacing: "0.14em",
             textTransform: "uppercase",
-            color: "#737373",
+            color: "#787984",
           }}
         >
           Archilas
@@ -38,7 +38,7 @@ export default function OpenGraphImage() {
             fontWeight: 550,
             letterSpacing: "-0.04em",
             lineHeight: 1.05,
-            color: "#0A0A0A",
+            color: "#f3f0e8",
           }}
         >
           {site.headline}

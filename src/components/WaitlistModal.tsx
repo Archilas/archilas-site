@@ -28,7 +28,7 @@ export function WaitlistModal() {
           <h2 id={titleId} className="h2 text-[1.5rem]">
             Join the waitlist.
           </h2>
-          <button type="button" className="text-[14px] text-ink underline-offset-4 hover:underline" onClick={hide}>
+          <button type="button" className="text-[14px] text-body underline-offset-4 hover:text-ink hover:underline" onClick={hide}>
             Close
           </button>
         </div>

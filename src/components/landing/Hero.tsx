@@ -9,17 +9,13 @@ export function Hero() {
         <h1 className="display">
           AI memory that <em className="word-accent">understands</em> you.
         </h1>
-        <p className="hero-sub">
-          Notes compact into living memory. At query time the right context loads —
-          <br />
-          then one clear answer.
-        </p>
+        <p className="hero-sub">Notes compact into living memory — then one clear answer.</p>
         <div className="hero-actions">
           <WaitlistCTA source="hero" />
         </div>
         <p className="hero-slm">Powered by a memory SLM · early access</p>
-        <ClarityDemo />
       </div>
+      <ClarityDemo />
     </section>
   );
 }

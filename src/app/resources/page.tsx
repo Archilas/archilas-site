@@ -14,7 +14,7 @@ export default function ResourcesPage() {
 
   return (
     <>
-      <Section className="!pb-10 !pt-16">
+      <Section className="!pb-10">
         <p className="label">Resources</p>
         <h1 className="display mt-4">Resources</h1>
         <p className="mt-4 max-w-xl text-body">

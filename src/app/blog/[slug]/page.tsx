@@ -48,7 +48,7 @@ export default async function BlogPostPage({ params }: Props) {
         })}
       />
 
-      <Section className="!pb-8 !pt-16">
+      <Section className="!pb-8">
         <p className="mono text-[11px] text-muted">
           <Link href="/blog" className="hover:text-ink">
             Blog
