@@ -7,14 +7,15 @@
 - Sub: Notes → Compact → Reason → Answer — filmed walkthrough on the way.
 - Play glyph disabled; no Ship Friday.
 
-## Compare show
+## Compare contrast (no demo)
 
-See TRYCLEAN-SIMPLE-COMPARE.md. Use exactly.
+See TRYCLEAN-SIMPLE-COMPARE.md.
 
-- Them: `The usual way` — `You hunt old chats and paste scraps into the prompt.`
+- Them: `The old way` — `You hunt old chats and paste scraps into the prompt.`
 - Us: `Archilas` — `You keep what matters — and get a clear answer when you ask.`
 - Micros: `Search. Paste. Hope.` → `Compact. Reason. Deliver.`
-- Visual beats: messy paste scraps → Preference / Decision / Open loop → Ask → Answer.
+- Old beats: relevant snippets / inject everything / token cost / no long-term / no sense of time
+- Us beats: living compacted record / reasons when it can / what changed and what’s open / doesn’t dump the world
 
 ## Under plate
 
