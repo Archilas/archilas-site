@@ -25,6 +25,12 @@ export const HERO_COMPACT = [
   { id: "open", kind: "Open loop", text: "Legal on usage add-on" },
 ] as const;
 
+export const HERO_STEPS = [
+  { id: "search", label: "Searching living memory" },
+  { id: "pick", label: "Picking relevant notes" },
+  { id: "compact", label: "Compacting prefs / decisions / open loops" },
+] as const;
+
 export const HERO_LOOP_MS = 20000;
 export const HERO_TYPE_START = 220;
 export const HERO_TYPE_MS = 21;

@@ -10,11 +10,11 @@
 ## Compare (NO demo · NO essay)
 
 - H2: The old way vs Archilas
-- Line: Same problem. Two memories.
-- Old labels ONLY: Search · Inject all · Heavy tokens · No long-term · No sense of time
-- Micro: Search. Paste. Hope.
+- Line: Paste everything in — or keep only what matters.
+- Old labels ONLY: Search · Dump context · Burn tokens · Forget next week · No sense of time
+- Micro: Hope the model remembers.
 - Us labels ONLY: Compact · Reason · Deliver
-- Micro: Keep what matters. Answer clearly.
+- Micro: Prefs, decisions, open loops — ready when you ask.
 
 ## How
 

@@ -18,6 +18,7 @@ import {
   HERO_STATUS_DONE,
   HERO_STATUS_SEARCH,
   HERO_STATUS_SELECT,
+  HERO_STEPS,
   HERO_TOOL,
   HERO_TOOL_AT,
   HERO_TOOL_CLOSE,
@@ -37,6 +38,7 @@ type Snap = {
   picks: number;
   compact: boolean;
   done: boolean;
+  step: number;
   status: ToolStatus;
   answer: number;
   fade: boolean;
@@ -55,6 +57,7 @@ function snapAt(ms: number): Snap {
     ms < HERO_PICK_AT ? 0 : Math.min(4, 1 + Math.floor((ms - HERO_PICK_AT) / 520));
   const compact = open && ms >= HERO_COMPACT_AT;
   const done = tool && ms >= HERO_TOOL_DONE;
+  const step = !tool ? 0 : done || compact ? 3 : picks > 0 ? 2 : 1;
   const status: ToolStatus = done
     ? HERO_STATUS_DONE
     : picks > 0
@@ -71,7 +74,7 @@ function snapAt(ms: number): Snap {
   else if (done && !open) phase = "chip";
   else if (open) phase = "tool";
   else if (sent) phase = "send";
-  return { typed, sent, tool, open, picks, compact, done, status, answer, fade, phase };
+  return { typed, sent, tool, open, picks, compact, done, step, status, answer, fade, phase };
 }
 
 const REDUCED: Snap = {
@@ -82,6 +85,7 @@ const REDUCED: Snap = {
   picks: 4,
   compact: false,
   done: true,
+  step: 3,
   status: HERO_STATUS_DONE,
   answer: HERO_ANSWER.length,
   fade: false,
@@ -97,6 +101,7 @@ function sameSnap(a: Snap, b: Snap) {
     a.picks === b.picks &&
     a.compact === b.compact &&
     a.done === b.done &&
+    a.step === b.step &&
     a.status === b.status &&
     a.answer === b.answer &&
     a.fade === b.fade
@@ -144,8 +149,8 @@ export function HeroProductDemo() {
     };
   }, [reduced]);
 
-  const typing = !snap.sent && snap.typed < HERO_QUERY.length;
-  const userText = snap.sent ? HERO_QUERY : HERO_QUERY.slice(0, snap.typed);
+  const typing = !snap.sent && snap.typed > 0 && snap.typed < HERO_QUERY.length;
+  const composerText = snap.sent ? "" : HERO_QUERY.slice(0, snap.typed);
 
   return (
     <div
@@ -178,10 +183,9 @@ export function HeroProductDemo() {
           <span className="hero-app-spine">Compact → Reason → Deliver</span>
         </div>
         <div className={cn("hero-thread", snap.fade && "is-dissolve")} data-testid="hero-thread">
-          {userText ? (
+          {snap.sent ? (
             <div className="hero-bubble is-user" data-testid="hero-user">
-              {userText}
-              {typing ? <span className="hero-caret" /> : null}
+              {HERO_QUERY}
             </div>
           ) : null}
 
@@ -198,6 +202,24 @@ export function HeroProductDemo() {
               </div>
               <div className="hero-tool-body">
                 <div className="hero-tool-inner">
+                  <ol className="hero-steps" data-testid="hero-steps">
+                    {HERO_STEPS.map((row, index) => {
+                      const n = index + 1;
+                      return (
+                        <li
+                          key={row.id}
+                          className={cn(
+                            "hero-step",
+                            snap.step === n && "is-on",
+                            snap.step > n && "is-done",
+                          )}
+                        >
+                          <span className="hero-step-mark" aria-hidden="true" />
+                          {row.label}
+                        </li>
+                      );
+                    })}
+                  </ol>
                   <ul className="hero-memos">
                     {HERO_SHARDS.map((shard, index) => {
                       const on = shard.pick && index < snap.picks;
@@ -235,11 +257,21 @@ export function HeroProductDemo() {
             </div>
           ) : null}
         </div>
-        <div className={cn("hero-composer", !snap.sent && snap.typed > 0 && "is-live")}>
-          <p className="hero-composer-text">
-            <span className="hero-composer-ph">Message Archilas…</span>
+        <div
+          className={cn("hero-composer", !snap.sent && snap.typed > 0 && "is-live")}
+          data-testid="hero-composer"
+        >
+          <p className="hero-composer-text" dir="ltr">
+            {composerText ? (
+              <>
+                {composerText}
+                {typing ? <span className="hero-caret" /> : null}
+              </>
+            ) : (
+              <span className="hero-composer-ph">Message Archilas…</span>
+            )}
           </p>
-          <span className={cn("hero-composer-go", snap.sent && snap.tool && "is-sent")} aria-hidden="true">
+          <span className={cn("hero-composer-go", snap.sent && "is-sent")} aria-hidden="true">
             →
           </span>
         </div>

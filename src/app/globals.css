@@ -1923,7 +1923,7 @@ cite {
 
 .hero-app {
   display: grid;
-  min-height: 520px;
+  min-height: 460px;
   grid-template-columns: 196px 1fr;
   text-align: left;
   color: var(--ink);
@@ -2044,7 +2044,7 @@ cite {
   flex: 1;
   flex-direction: column;
   gap: 14px;
-  min-height: 300px;
+  min-height: 200px;
   padding: 22px 22px 10px;
 }
 
@@ -2078,7 +2078,7 @@ cite {
 
 .hero-caret {
   display: inline-block;
-  width: 1px;
+  width: 1.5px;
   height: 1em;
   margin-left: 1px;
   background: var(--ink);
@@ -2088,15 +2088,17 @@ cite {
 .hero-tool {
   width: min(100%, 40rem);
   overflow: hidden;
-  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  background: #16181f;
 }
 
 .hero-tool-head {
   display: flex;
   align-items: center;
   gap: 8px;
-  min-height: 36px;
-  padding: 0 2px;
+  min-height: 42px;
+  padding: 0 12px;
 }
 
 .hero-tool-mark {
@@ -2157,7 +2159,48 @@ cite {
 }
 
 .hero-tool.is-open .hero-tool-inner {
-  padding: 6px 0 4px;
+  padding: 4px 12px 12px;
+}
+
+.hero-steps {
+  display: grid;
+  gap: 6px;
+  margin: 0 0 10px;
+  padding: 0;
+  list-style: none;
+}
+
+.hero-step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.35;
+  opacity: 0.4;
+  transition: opacity 280ms ease, color 280ms ease;
+}
+
+.hero-step.is-on {
+  color: var(--ink);
+  opacity: 1;
+}
+
+.hero-step.is-done {
+  color: var(--body);
+  opacity: 0.78;
+}
+
+.hero-step-mark {
+  width: 6px;
+  height: 6px;
+  flex: none;
+  border-radius: 999px;
+  background: currentColor;
+}
+
+.hero-step.is-on .hero-step-mark {
+  background: var(--signal);
 }
 
 .hero-memos {
@@ -2236,7 +2279,7 @@ cite {
 .hero-composer {
   display: flex;
   flex: none;
-  align-items: center;
+  align-items: flex-end;
   gap: 12px;
   min-height: 56px;
   margin: 8px 18px 18px;
@@ -2246,10 +2289,21 @@ cite {
   background: #16181f;
 }
 
+.hero-composer.is-live {
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
 .hero-composer-text {
   flex: 1;
+  min-width: 0;
   color: var(--ink);
   font-size: 14px;
+  line-height: 1.45;
+  text-align: left;
+  direction: ltr;
+  unicode-bidi: isolate;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
 }
 
 .hero-composer-ph {
@@ -2428,6 +2482,36 @@ cite {
 .frost-panel.is-dim,
 .chrome-window.is-dim {
   background: #0c0d11;
+}
+
+.chrome-window.is-dim {
+  opacity: 0.72;
+}
+
+.chrome-window.is-dim .chip {
+  color: var(--muted);
+}
+
+.chrome-window.is-dim .compare-micro {
+  color: var(--muted);
+  font-weight: 450;
+}
+
+.chrome-window.is-ours {
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.1) inset,
+    0 22px 48px rgba(0, 0, 0, 0.45);
+}
+
+.chrome-window.is-ours .chip.is-on {
+  border-color: rgba(61, 139, 255, 0.45);
+  background: rgba(61, 139, 255, 0.14);
+  color: var(--ink);
+}
+
+.chrome-window.is-ours .compare-micro {
+  color: var(--ink);
 }
 
 .chrome-body {
