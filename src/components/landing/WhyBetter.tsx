@@ -6,10 +6,10 @@ const bullets = [
 
 export function WhyBetter() {
   return (
-    <section id="product" className="why-band slm-band scroll-mt-[var(--scroll-margin)] px-[var(--pad-x)] py-16 md:py-20">
-      <div className="mx-auto max-w-[var(--max-width)]">
+    <section id="product" className="why-band slm-band scroll-mt-[var(--scroll-margin)] px-[var(--pad-x)] py-12 md:py-16">
+      <div className="mx-auto max-w-[760px]">
         <p className="label">Why Archilas</p>
-        <h2 className="h2 mt-3 max-w-3xl">Built around an SLM that reasons over compacted memory</h2>
+        <h2 className="h2 mt-3">Built around an SLM that reasons over compacted memory</h2>
         <p className="slm-sub">In development / early access. Pre-launch — not live today.</p>
         <ol className="slm-list">
           {bullets.map((line, index) => (

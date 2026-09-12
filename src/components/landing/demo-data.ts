@@ -21,6 +21,7 @@ export const memoryRows = [
 
 export const demoQuestion = {
   q: "Ship Friday?",
-  a: "Yes — if tests go green. Hold the Monday slip until they don’t.",
+  a: "Yes — if tests go green.",
+  refuse: "Won’t invent a Monday ship. Not enough to change the call.",
   citeIds: ["pref", "dec"] as readonly string[],
 };

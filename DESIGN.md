@@ -11,9 +11,9 @@ Mem0 rhythm: blue-wash hero (chip + H1 + reinforce + CTAs), demo below the fold,
 
 ## Rhythm
 
-- Hero wash: `#E8F0F9 → #EEF4FA → #F5F8FB → #F7F7F5` plus large soft radials. Ink type. No cartoon clouds.
-- Stack: chip→H1 16px, H1→reinforce 16px, reinforce→CTAs 24px. Hero fills the viewport so the demo starts below the fold.
-- Demo: exclusive stages, “Ship Friday?” thread. Notes (bubbles) → Compact (Preference / Decision / Open loop) → Reason (ask + cited rows) → Answer. 36s, ≥50% in view, pause off-screen, Replay. No phone stack.
+- Hero wash: deeper `#D5E4F4 → #F7F7F5` plus airy white/blue radials. Ink type. No cartoon clouds, no lavender.
+- Stack: chip→H1 18px, H1→reinforce 22px, reinforce→CTAs 32px. SLM early-access line under CTAs. Hero fills the viewport so the demo starts below the fold.
+- Demo: elevated cream/ink product window. Exclusive stages, “Ship Friday?” thread. Notes → Compact → Reason (cited + refuse) → Answer. 36s, ≥50% in view, pause off-screen, Replay. No phone stack.
 - Why Archilas: SLM differentiator band. In development / early access — not live. Chat + agents, one memory layer. Footer: MCP support — coming soon.
 - How it works: cream stepper — Notes, Compact, Reason, Answer.
 - Waitlist: cream, dual buttons.

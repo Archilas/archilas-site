@@ -16,6 +16,7 @@ export function Hero() {
         <div className="hero-actions">
           <WaitlistCTA source="hero" />
         </div>
+        <p className="hero-slm">Powered by a memory SLM · early access</p>
       </div>
     </section>
   );
