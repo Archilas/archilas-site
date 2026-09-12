@@ -65,6 +65,7 @@ export function CompareScroll() {
       id="compare"
       className="compare-band split-band scroll-mt-[var(--scroll-margin)] px-[var(--pad-x)]"
       data-testid="compare-scroll"
+      data-phase={progress < 0.08 ? "typical" : progress > 0.92 ? "ours" : "mid"}
       style={{ ["--compare" as string]: String(progress) }}
     >
       <div className="band-plate is-a mx-auto max-w-[1120px] plate-drift">

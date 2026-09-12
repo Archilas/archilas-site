@@ -1939,6 +1939,16 @@ cite {
   opacity: var(--compare, 0);
 }
 
+.compare-band[data-phase="typical"] .compare-ours {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.compare-band[data-phase="ours"] .compare-typical {
+  visibility: hidden;
+  opacity: 0;
+}
+
 .compare-grid {
   display: grid;
   gap: 28px;
