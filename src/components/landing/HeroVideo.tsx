@@ -2,7 +2,7 @@ export function HeroVideo() {
   return (
     <div className="hero-demo" id="demo" data-testid="hero-video">
       <div className="demo-plate plate-drift">
-        <div className="plate-sky is-night" aria-hidden="true" />
+        <div className="plate-sky is-alpine" aria-hidden="true" />
         <div className="demo-window video-ph">
           <div className="demo-chrome">
             <span>Product demo</span>

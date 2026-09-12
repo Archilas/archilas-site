@@ -12,7 +12,7 @@ Tryclean-craft: near-black canvas, warm-white type, electric-blue focus only, fl
 ## Rhythm
 
 - Hero: chip → H1 → one-line sub → CTAs → SLM line → video-coming-soon plate peeking.
-- Compare: “The old way vs Archilas” on a photo plate. Locked Marketing lines. Copy only; no demo UI.
+- Compare: tiny left copy + landscape plate with frost chips. No demo UI.
 - How: 2-col — short steps + staged UI on plate. Spine Compact → Reason → Deliver.
 - Plates: huge rounded cards with photographic night/fog depth (not neon orbs, not flat black). Lerped sky drift on scroll; reduced-motion is static.
 - SLM: in development / early access — not live.

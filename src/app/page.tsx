@@ -5,7 +5,6 @@ import { HowItWorks } from "@/components/landing/HowItWorks";
 import { Surfaces } from "@/components/landing/Surfaces";
 import { Waitlist } from "@/components/landing/Waitlist";
 import { WhyBetter } from "@/components/landing/WhyBetter";
-import { WhyCompare } from "@/components/landing/WhyCompare";
 import { JsonLd } from "@/components/JsonLd";
 import { buildMetadata, organizationJsonLd } from "@/lib/seo";
 import { site } from "@/lib/site";
@@ -23,7 +22,6 @@ export default function HomePage() {
       <PlateDrift />
       <Hero />
       <CompareScroll />
-      <WhyCompare />
       <HowItWorks />
       <WhyBetter />
       <Surfaces />
