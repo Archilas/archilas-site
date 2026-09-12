@@ -17,7 +17,7 @@ Required env (set on Vercel; never commit secrets):
 - Landing follows TRYCLEAN-RESTORE-SPARSE: dark canvas, floating pill nav, photographic atmosphere plates, 2-col bands. Inner UI is opaque dark chrome; landscape stays on the outer plate only.
 - Hero: one continuous AI chat loop (REACT-HERO-DEMO.md). Composer types L→R → send → user bubble → `search_living_memory` tool accordion → streamed answer. No mp4. No scene cuts.
 - Hero plate: Product demo / Demo video coming soon / Walkthrough on the way. Play glyph disabled. No Ship Friday.
-- Compare: sparse chips on a landscape photo plate. Old way vs Archilas. No demo UI. Old: Search · Dump context · Burn tokens · Forget next week · No sense of time. Us: Compact · Reason · Deliver.
+- Compare: sparse chips on a landscape photo plate. Old way vs Archilas. No demo UI. Old: Search · Paste everything · Burns tokens · Forgets next session · No sense of time. Us: Compact · Reason · Deliver.
 - How: Notes in. Answers out. / Compact what matters. Reason when you ask. Stage switch on the plate. Spine Compact → Reason → Deliver.
 - SLM band: early access — not live. Surfaces: Built for tools you use. / Claude · ChatGPT · Cursor. MCP coming soon.
 - Footer: “MCP support — coming soon.”

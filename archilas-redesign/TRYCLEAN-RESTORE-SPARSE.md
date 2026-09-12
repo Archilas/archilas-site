@@ -10,11 +10,12 @@
 ## Compare (NO demo · NO essay)
 
 - H2: The old way vs Archilas
-- Line: Paste everything in — or keep only what matters.
-- Old labels ONLY: Search · Dump context · Burn tokens · Forget next week · No sense of time
-- Micro: Hope the model remembers.
+- Line: One dumps the past into the prompt. The other keeps a living record.
+- Old labels ONLY: Search · Paste everything · Burns tokens · Forgets next session · No sense of time
+- Micro: Hope the prompt remembers.
 - Us labels ONLY: Compact · Reason · Deliver
-- Micro: Prefs, decisions, open loops — ready when you ask.
+- Micro: Keep what matters. Answer clearly.
+- Under both: Paste memory guesses. Living memory knows.
 
 ## How
 

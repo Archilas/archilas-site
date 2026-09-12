@@ -12,7 +12,7 @@ Tryclean-craft: near-black canvas, warm-white type, electric-blue focus only, fl
 ## Rhythm
 
 - Hero: chip → H1 → one-line sub → CTAs → SLM line → video-coming-soon plate peeking.
-- Compare: tiny left copy + landscape plate with frost chips. No demo UI. Old: Search · Dump context · Burn tokens · Forget next week · No sense of time. Us: Compact · Reason · Deliver.
+- Compare: tiny left copy + landscape plate with frost chips. No demo UI. Old: Search · Paste everything · Burns tokens · Forgets next session · No sense of time. Us: Compact · Reason · Deliver.
 - How: 2-col — H2 + one line left, staged UI on plate. Spine Compact → Reason → Deliver.
 - Plates: huge rounded cards with photographic night/fog depth (not neon orbs, not flat black). Inner product windows are opaque chrome — landscape does not bleed through type. Sides and heights vary (compare tall/right, how mid/left, surfaces short/wide). Lerped sky drift on scroll; reduced-motion is static.
 - Hero: coded chat transcript on the alpine plate — type, expand `search_living_memory`, stream answer. No scene cuts, no generative video.

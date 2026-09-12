@@ -1,4 +1,4 @@
-const oldChips = ["Search", "Dump context", "Burn tokens", "Forget next week", "No sense of time"] as const;
+const oldChips = ["Search", "Paste everything", "Burns tokens", "Forgets next session", "No sense of time"] as const;
 const usChips = ["Compact", "Reason", "Deliver"] as const;
 
 export function CompareScroll() {
@@ -12,7 +12,7 @@ export function CompareScroll() {
         <div className="split-copy">
           <p className="label">Compare</p>
           <h2 className="h2 mt-3">The old way vs Archilas</h2>
-          <p className="split-lede">Paste everything in — or keep only what matters.</p>
+          <p className="split-lede">One dumps the past into the prompt. The other keeps a living record.</p>
           <a
             href="#how"
             data-testid="why-explain"
@@ -36,7 +36,7 @@ export function CompareScroll() {
                     </span>
                   ))}
                 </div>
-                <p className="compare-micro">Hope the model remembers.</p>
+                <p className="compare-micro">Hope the prompt remembers.</p>
               </div>
             </div>
             <div className="chrome-window is-ours" data-testid="compare-ours">
@@ -51,9 +51,12 @@ export function CompareScroll() {
                     </span>
                   ))}
                 </div>
-                <p className="compare-micro">Prefs, decisions, open loops — ready when you ask.</p>
+                <p className="compare-micro">Keep what matters. Answer clearly.</p>
               </div>
             </div>
+            <p className="compare-foot" data-testid="compare-foot">
+              Paste memory guesses. Living memory knows.
+            </p>
           </div>
         </div>
       </div>

@@ -2550,6 +2550,18 @@ cite {
   border-top: 0;
 }
 
+.surface-brand {
+  display: inline-flex;
+  align-items: center;
+  color: var(--ink);
+}
+
+.surface-mark {
+  display: block;
+  width: 22px;
+  height: 22px;
+}
+
 .surface-state {
   color: var(--muted);
   font-size: 12px;
@@ -2613,6 +2625,13 @@ button.chip {
   color: var(--ink);
   font-size: 14px;
   font-weight: 500;
+}
+
+.compare-foot {
+  margin: 2px 4px 0;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 520;
 }
 
 .compare-honest {
