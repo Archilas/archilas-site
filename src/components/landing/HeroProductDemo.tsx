@@ -56,7 +56,7 @@ function snapAt(ms: number): Snap {
   const tool = ms >= HERO_TOOL_AT;
   const fade = ms >= HERO_FADE;
   const result = tool && ms >= HERO_RESULT_AT && !fade;
-  const open = tool && ms >= HERO_TOOL_OPEN && !fade;
+  const open = tool && ms >= HERO_TOOL_OPEN && !result && !fade;
   const picks =
     ms < HERO_PICK_AT ? 0 : Math.min(3, 1 + Math.floor((ms - HERO_PICK_AT) / 520));
   const done = tool && ms >= HERO_TOOL_DONE;
@@ -87,7 +87,7 @@ const REDUCED: Snap = {
   typed: HERO_QUERY.length,
   sent: true,
   tool: true,
-  open: true,
+  open: false,
   picks: 3,
   result: true,
   done: true,
@@ -211,54 +211,51 @@ export function HeroProductDemo() {
               </div>
               <div className="hero-tool-body">
                 <div className="hero-tool-inner">
-                  {!snap.result ? (
-                    <>
-                      <ol className="hero-steps" data-testid="hero-steps">
-                        {HERO_STEPS.map((row, index) => {
-                          const n = index + 1;
-                          return (
-                            <li
-                              key={row.id}
-                              className={cn(
-                                "hero-step",
-                                snap.step === n && "is-on",
-                                snap.step > n && "is-done",
-                              )}
-                            >
-                              <span className="hero-step-mark" aria-hidden="true" />
-                              {row.label}
-                            </li>
-                          );
-                        })}
-                      </ol>
-                      <ul className="hero-memos">
-                        {HERO_SHARDS.map((shard, index) => {
-                          const on = shard.pick && index < snap.picks;
-                          return (
-                            <li
-                              key={shard.id}
-                              className={cn("hero-memo", on && "is-on", !shard.pick && "is-dim")}
-                            >
-                              <span className="hero-memo-date">{shard.date}</span>
-                              <span className="hero-memo-kind">{shard.kind}</span>
-                              <span className="hero-memo-text">{shard.text}</span>
-                            </li>
-                          );
-                        })}
-                      </ul>
-                    </>
-                  ) : null}
-                  {snap.result ? (
-                    <div className="hero-result" data-testid="hero-result">
-                      <p className="hero-result-kicker">Returned to model</p>
-                      <pre className="hero-result-pre">
-                        {HERO_RESULT.map((row) => `${row.kind}: ${row.text}`).join("\n")}
-                      </pre>
-                      <p className="hero-result-note">{HERO_RESULT_NOTE}</p>
-                    </div>
-                  ) : null}
+                  <ol className="hero-steps" data-testid="hero-steps">
+                    {HERO_STEPS.map((row, index) => {
+                      const n = index + 1;
+                      return (
+                        <li
+                          key={row.id}
+                          className={cn(
+                            "hero-step",
+                            snap.step === n && "is-on",
+                            snap.step > n && "is-done",
+                          )}
+                        >
+                          <span className="hero-step-mark" aria-hidden="true" />
+                          {row.label}
+                        </li>
+                      );
+                    })}
+                  </ol>
+                  <ul className="hero-memos">
+                    {HERO_SHARDS.map((shard, index) => {
+                      const on = shard.pick && index < snap.picks;
+                      return (
+                        <li
+                          key={shard.id}
+                          className={cn("hero-memo", on && "is-on", !shard.pick && "is-dim")}
+                        >
+                          <span className="hero-memo-date">{shard.date}</span>
+                          <span className="hero-memo-kind">{shard.kind}</span>
+                          <span className="hero-memo-text">{shard.text}</span>
+                        </li>
+                      );
+                    })}
+                  </ul>
                 </div>
               </div>
+            </div>
+          ) : null}
+
+          {snap.result ? (
+            <div className="hero-result" data-testid="hero-result">
+              <p className="hero-result-kicker">Returned to model</p>
+              <pre className="hero-result-pre">
+                {HERO_RESULT.map((row) => `${row.kind}: ${row.text}`).join("\n")}
+              </pre>
+              <p className="hero-result-note">{HERO_RESULT_NOTE}</p>
             </div>
           ) : null}
 

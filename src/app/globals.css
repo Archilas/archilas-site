@@ -1934,7 +1934,7 @@ cite {
 
 .hero-app {
   display: grid;
-  min-height: 500px;
+  min-height: 520px;
   grid-template-columns: 196px 1fr;
   text-align: left;
   color: var(--ink);
@@ -2279,11 +2279,12 @@ cite {
 }
 
 .hero-result {
-  margin-top: 2px;
-  padding: 10px 10px 8px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-  background: #101218;
+  width: min(100%, 40rem);
+  flex: none;
+  padding: 10px 12px 9px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  background: #16181f;
 }
 
 .hero-result-kicker {

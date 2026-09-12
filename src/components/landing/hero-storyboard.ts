@@ -30,7 +30,7 @@ export const HERO_RESULT = [
   { id: "open", kind: "open_loop", text: "Usage add-on — legal not cleared" },
 ] as const;
 
-export const HERO_LOOP_MS = 20000;
+export const HERO_LOOP_MS = 22000;
 export const HERO_TYPE_START = 220;
 export const HERO_TYPE_MS = 21;
 export const HERO_SEND = 3400;
@@ -39,7 +39,7 @@ export const HERO_TOOL_OPEN = 4200;
 export const HERO_RETRIEVE_AT = 5200;
 export const HERO_PICK_AT = 6400;
 export const HERO_RESULT_AT = 10000;
-export const HERO_TOOL_DONE = 11400;
-export const HERO_ANSWER_AT = 12000;
+export const HERO_TOOL_DONE = 10800;
+export const HERO_ANSWER_AT = 11800;
 export const HERO_ANSWER_MS = 18;
-export const HERO_FADE = 18800;
+export const HERO_FADE = 19800;
