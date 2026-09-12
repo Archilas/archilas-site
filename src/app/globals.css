@@ -1638,6 +1638,10 @@ cite {
   padding-bottom: 28px;
 }
 
+.compare-track + .split-band {
+  padding-top: 64px;
+}
+
 .split-grid {
   display: grid;
   gap: 28px;
