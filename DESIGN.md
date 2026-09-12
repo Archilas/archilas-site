@@ -15,7 +15,7 @@ Tryclean-craft: near-black canvas, warm-white type, electric-blue focus only, fl
 - Compare: tiny left copy + landscape plate with frost chips. No demo UI. Old: Search · Inject all · Heavy tokens · No long-term · No sense of time. Us: Compact · Reason · Deliver.
 - How: 2-col — H2 + one line left, staged UI on plate. Spine Compact → Reason → Deliver.
 - Plates: huge rounded cards with photographic night/fog depth (not neon orbs, not flat black). Inner product windows are opaque chrome — landscape does not bleed through type. Sides and heights vary (compare tall/right, how mid/left, surfaces short/wide). Lerped sky drift on scroll; reduced-motion is static.
-- Hero: coded chat transcript on the alpine plate — type, expand `archilas_memory`, stream answer. No scene cuts, no generative video.
+- Hero: coded chat transcript on the alpine plate — type, expand `search_living_memory`, stream answer. No scene cuts, no generative video.
 - SLM: in development / early access — not live.
 - Surfaces: Claude / ChatGPT / Cursor text pills. MCP — coming soon.
 - Waitlist: honest. Footer: minimal dark + MCP coming soon.

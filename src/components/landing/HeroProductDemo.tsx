@@ -15,6 +15,9 @@ import {
   HERO_QUERY,
   HERO_SEND,
   HERO_SHARDS,
+  HERO_STATUS_DONE,
+  HERO_STATUS_SEARCH,
+  HERO_STATUS_SELECT,
   HERO_TOOL,
   HERO_TOOL_AT,
   HERO_TOOL_CLOSE,
@@ -24,6 +27,8 @@ import {
   HERO_TYPE_START,
 } from "@/components/landing/hero-storyboard";
 
+type ToolStatus = typeof HERO_STATUS_SEARCH | typeof HERO_STATUS_SELECT | typeof HERO_STATUS_DONE;
+
 type Snap = {
   typed: number;
   sent: boolean;
@@ -32,6 +37,7 @@ type Snap = {
   picks: number;
   compact: boolean;
   done: boolean;
+  status: ToolStatus;
   answer: number;
   fade: boolean;
   phase: string;
@@ -49,6 +55,11 @@ function snapAt(ms: number): Snap {
     ms < HERO_PICK_AT ? 0 : Math.min(4, 1 + Math.floor((ms - HERO_PICK_AT) / 520));
   const compact = open && ms >= HERO_COMPACT_AT;
   const done = tool && ms >= HERO_TOOL_DONE;
+  const status: ToolStatus = done
+    ? HERO_STATUS_DONE
+    : picks > 0
+      ? HERO_STATUS_SELECT
+      : HERO_STATUS_SEARCH;
   const answer =
     ms < HERO_ANSWER_AT
       ? 0
@@ -60,7 +71,7 @@ function snapAt(ms: number): Snap {
   else if (done && !open) phase = "chip";
   else if (open) phase = "tool";
   else if (sent) phase = "send";
-  return { typed, sent, tool, open, picks, compact, done, answer, fade, phase };
+  return { typed, sent, tool, open, picks, compact, done, status, answer, fade, phase };
 }
 
 const REDUCED: Snap = {
@@ -71,6 +82,7 @@ const REDUCED: Snap = {
   picks: 4,
   compact: false,
   done: true,
+  status: HERO_STATUS_DONE,
   answer: HERO_ANSWER.length,
   fade: false,
   phase: "answer",
@@ -85,6 +97,7 @@ function sameSnap(a: Snap, b: Snap) {
     a.picks === b.picks &&
     a.compact === b.compact &&
     a.done === b.done &&
+    a.status === b.status &&
     a.answer === b.answer &&
     a.fade === b.fade
   );
@@ -169,9 +182,7 @@ export function HeroProductDemo() {
               <div className="hero-tool-head">
                 <span className="hero-tool-mark" aria-hidden="true" />
                 <span className="hero-tool-name">{HERO_TOOL}</span>
-                <span className="hero-tool-status">
-                  {snap.done ? "Done · 4 memories" : "Searching living memory…"}
-                </span>
+                <span className="hero-tool-status">{snap.status}</span>
               </div>
               <div className="hero-tool-body">
                 <div className="hero-tool-inner">
