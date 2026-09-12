@@ -77,7 +77,7 @@ function snapAt(ms: number): Snap {
   let phase = "type";
   if (fade) phase = "fade";
   else if (answer > 0) phase = "answer";
-  else if (done && !open) phase = "chip";
+  else if (result || (done && !open)) phase = "chip";
   else if (open) phase = "tool";
   else if (sent) phase = "send";
   return { typed, sent, tool, open, picks, result, done, step, status, answer, fade, phase };
