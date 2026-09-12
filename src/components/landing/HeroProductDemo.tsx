@@ -7,12 +7,12 @@ import {
   HERO_ANSWER,
   HERO_ANSWER_AT,
   HERO_ANSWER_MS,
-  HERO_COMPACT,
-  HERO_COMPACT_AT,
   HERO_FADE,
   HERO_LOOP_MS,
   HERO_PICK_AT,
   HERO_QUERY,
+  HERO_RESULT,
+  HERO_RESULT_AT,
   HERO_SEND,
   HERO_SHARDS,
   HERO_STATUS_DONE,
@@ -24,6 +24,7 @@ import {
   HERO_TOOL_CLOSE,
   HERO_TOOL_DONE,
   HERO_TOOL_OPEN,
+  HERO_TOOL_SUB,
   HERO_TYPE_MS,
   HERO_TYPE_START,
 } from "@/components/landing/hero-storyboard";
@@ -36,7 +37,7 @@ type Snap = {
   tool: boolean;
   open: boolean;
   picks: number;
-  compact: boolean;
+  result: boolean;
   done: boolean;
   step: number;
   status: ToolStatus;
@@ -55,9 +56,9 @@ function snapAt(ms: number): Snap {
   const open = tool && ms >= HERO_TOOL_OPEN && ms < HERO_TOOL_CLOSE;
   const picks =
     ms < HERO_PICK_AT ? 0 : Math.min(4, 1 + Math.floor((ms - HERO_PICK_AT) / 520));
-  const compact = open && ms >= HERO_COMPACT_AT;
+  const result = open && ms >= HERO_RESULT_AT;
   const done = tool && ms >= HERO_TOOL_DONE;
-  const step = !tool ? 0 : done || compact ? 3 : picks > 0 ? 2 : 1;
+  const step = !tool ? 0 : done || result ? 3 : picks > 0 ? 2 : 1;
   const status: ToolStatus = done
     ? HERO_STATUS_DONE
     : picks > 0
@@ -74,7 +75,7 @@ function snapAt(ms: number): Snap {
   else if (done && !open) phase = "chip";
   else if (open) phase = "tool";
   else if (sent) phase = "send";
-  return { typed, sent, tool, open, picks, compact, done, step, status, answer, fade, phase };
+  return { typed, sent, tool, open, picks, result, done, step, status, answer, fade, phase };
 }
 
 const REDUCED: Snap = {
@@ -83,7 +84,7 @@ const REDUCED: Snap = {
   tool: true,
   open: false,
   picks: 4,
-  compact: false,
+  result: false,
   done: true,
   step: 3,
   status: HERO_STATUS_DONE,
@@ -99,7 +100,7 @@ function sameSnap(a: Snap, b: Snap) {
     a.tool === b.tool &&
     a.open === b.open &&
     a.picks === b.picks &&
-    a.compact === b.compact &&
+    a.result === b.result &&
     a.done === b.done &&
     a.step === b.step &&
     a.status === b.status &&
@@ -161,8 +162,8 @@ export function HeroProductDemo() {
     >
       <aside className="hero-app-side" aria-hidden="true">
         <p className="hero-app-brand">
-          <span className="hero-app-mark" />
-          Archilas
+          <span className="hero-app-mark is-claude" />
+          Claude
         </p>
         <p className="hero-app-search">Search</p>
         <nav className="hero-app-nav">
@@ -178,7 +179,7 @@ export function HeroProductDemo() {
         <div className="hero-app-bar">
           <div className="hero-app-tabs">
             <span className="hero-app-tab is-on">Chat</span>
-            <span className="hero-app-tab">History</span>
+            <span className="hero-app-diff">Living record · not paste</span>
           </div>
           <span className="hero-app-spine">Compact → Reason → Deliver</span>
         </div>
@@ -196,7 +197,10 @@ export function HeroProductDemo() {
             >
               <div className="hero-tool-head">
                 <span className="hero-tool-mark" aria-hidden="true" />
-                <span className="hero-tool-name">{HERO_TOOL}</span>
+                <span className="hero-tool-titles">
+                  <span className="hero-tool-name">{HERO_TOOL}</span>
+                  <span className="hero-tool-sub">{HERO_TOOL_SUB}</span>
+                </span>
                 <span className="hero-tool-status">{snap.status}</span>
                 <span className="hero-tool-chev" aria-hidden="true" />
               </div>
@@ -235,13 +239,14 @@ export function HeroProductDemo() {
                       );
                     })}
                   </ul>
-                  {snap.compact ? (
-                    <div className="hero-micros" data-testid="hero-compact">
-                      {HERO_COMPACT.map((row) => (
-                        <span key={row.id} className="hero-micro">
+                  {snap.result ? (
+                    <div className="hero-result" data-testid="hero-result">
+                      <p className="hero-result-kicker">Returned to model</p>
+                      {HERO_RESULT.map((row) => (
+                        <p key={row.id} className="hero-result-row">
                           <em>{row.kind}</em>
                           {row.text}
-                        </span>
+                        </p>
                       ))}
                     </div>
                   ) : null}
@@ -268,7 +273,7 @@ export function HeroProductDemo() {
                 {typing ? <span className="hero-caret" /> : null}
               </>
             ) : (
-              <span className="hero-composer-ph">Message Archilas…</span>
+              <span className="hero-composer-ph">Message Claude…</span>
             )}
           </p>
           <span className={cn("hero-composer-go", snap.sent && "is-sent")} aria-hidden="true">

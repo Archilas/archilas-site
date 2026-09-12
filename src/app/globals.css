@@ -1681,7 +1681,16 @@ cite {
 
   .split-grid.is-compare {
     grid-template-columns: 0.76fr 1.24fr;
-    align-items: stretch;
+    align-items: start;
+  }
+
+  .compare-band {
+    min-height: 118vh;
+  }
+
+  .compare-plate {
+    position: sticky;
+    top: 108px;
   }
 
   .split-grid.is-how {
@@ -1855,8 +1864,10 @@ cite {
 
 .reveal {
   opacity: 0;
-  transform: translateY(14px);
-  transition: opacity 420ms ease, transform 420ms ease;
+  transform: translateY(28px);
+  transition:
+    opacity 720ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 720ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .reveal.is-in {
@@ -1891,7 +1902,7 @@ cite {
 
 .plate-drift {
   --drift: 0px;
-  transform: translate3d(0, calc(var(--drift) * 0.35), 0);
+  transform: translate3d(0, calc(var(--drift) * 0.55), 0);
   will-change: transform;
 }
 
@@ -1955,6 +1966,10 @@ cite {
   flex: none;
   border-radius: 999px;
   background: var(--ink);
+}
+
+.hero-app-mark.is-claude {
+  clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%);
 }
 
 .hero-app-search {
@@ -2033,6 +2048,11 @@ cite {
   color: var(--ink);
 }
 
+.hero-app-diff {
+  color: var(--muted);
+  font-size: 12px;
+}
+
 .hero-app-spine {
   color: var(--muted);
   font-size: 11px;
@@ -2097,8 +2117,14 @@ cite {
   display: flex;
   align-items: center;
   gap: 8px;
-  min-height: 42px;
-  padding: 0 12px;
+  min-height: 48px;
+  padding: 8px 12px;
+}
+
+.hero-tool-titles {
+  display: grid;
+  min-width: 0;
+  gap: 1px;
 }
 
 .hero-tool-mark {
@@ -2118,6 +2144,12 @@ cite {
   font-family: var(--font-geist-mono), ui-monospace, monospace;
   font-size: 12px;
   font-weight: 550;
+}
+
+.hero-tool-sub {
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 0.02em;
 }
 
 .hero-tool-status {
@@ -2248,32 +2280,37 @@ cite {
   color: var(--muted);
 }
 
-.hero-micros {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
+.hero-result {
   margin-top: 10px;
-}
-
-.hero-micro {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  height: 26px;
-  padding: 0 10px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 999px;
+  padding: 10px 10px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
   background: #101218;
-  color: var(--ink);
-  font-size: 11px;
 }
 
-.hero-micro em {
+.hero-result-kicker {
+  margin-bottom: 6px;
   color: var(--signal);
-  font-style: normal;
+  font-size: 10px;
   font-weight: 650;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+.hero-result-row {
+  display: grid;
+  grid-template-columns: 88px 1fr;
+  gap: 8px;
+  padding: 4px 0;
+  color: var(--ink);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.hero-result-row em {
+  color: var(--body);
+  font-style: normal;
+  font-weight: 550;
 }
 
 .hero-composer {
@@ -2328,6 +2365,10 @@ cite {
 }
 
 @media (max-width: 720px) {
+  .surface-marks {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .hero-app {
     grid-template-columns: 1fr;
     min-height: 480px;
@@ -2526,28 +2567,18 @@ cite {
   margin-top: 0;
 }
 
-.surface-rows {
+.surface-marks {
   display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  padding: 18px 14px 16px;
 }
 
-.surface-row {
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  min-height: 48px;
-  padding: 0 18px;
-  border: 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  background: transparent;
-  color: var(--ink);
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.surface-row:first-child {
-  border-top: 0;
+.surface-cell {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  padding: 10px 6px 8px;
 }
 
 .surface-brand {
@@ -2558,13 +2589,13 @@ cite {
 
 .surface-mark {
   display: block;
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
 }
 
 .surface-state {
   color: var(--muted);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.04em;
   text-transform: uppercase;

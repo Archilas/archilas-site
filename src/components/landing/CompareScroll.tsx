@@ -1,3 +1,5 @@
+import { Reveal } from "@/components/Reveal";
+
 const oldChips = ["Search", "Paste everything", "Burns tokens", "Forgets next session", "No sense of time"] as const;
 const usChips = ["Compact", "Reason", "Deliver"] as const;
 
@@ -8,6 +10,7 @@ export function CompareScroll() {
       className="compare-band split-band scroll-mt-[var(--scroll-margin)] px-[var(--pad-x)]"
       data-testid="compare-scroll"
     >
+      <Reveal>
       <div className="split-grid is-compare mx-auto max-w-[1180px]">
         <div className="split-copy">
           <p className="label">Compare</p>
@@ -60,6 +63,7 @@ export function CompareScroll() {
           </div>
         </div>
       </div>
+      </Reveal>
     </section>
   );
 }

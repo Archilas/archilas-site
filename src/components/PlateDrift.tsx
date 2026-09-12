@@ -17,12 +17,12 @@ export function PlateDrift() {
       frame = window.requestAnimationFrame(tick);
       const dt = Math.min(40, now - last);
       last = now;
-      const k = 1 - Math.exp(-dt / 180);
+      const k = 1 - Math.exp(-dt / 240);
       const vh = window.innerHeight;
       nodes.forEach((node, index) => {
         const rect = node.getBoundingClientRect();
         const mid = rect.top + rect.height / 2;
-        const target = ((vh / 2 - mid) / vh) * 32;
+        const target = ((vh / 2 - mid) / vh) * 56;
         current[index] += (target - current[index]) * k;
         node.style.setProperty("--drift", `${current[index].toFixed(2)}px`);
       });
