@@ -1491,7 +1491,7 @@ cite {
   position: relative;
   overflow: hidden;
   border-radius: 32px 32px 0 0;
-  padding: 28px 28px 0;
+  padding: 36px 36px 0;
   background: #07080a;
   box-shadow:
     0 -1px 0 rgba(255, 255, 255, 0.06) inset,
@@ -1852,6 +1852,10 @@ cite {
   border-bottom-color: rgba(255, 255, 255, 0.06);
 }
 
+.demo-window.video-ph {
+  background: rgba(10, 11, 14, 0.42);
+}
+
 .video-ph-stage {
   position: relative;
   display: grid;
@@ -1861,9 +1865,7 @@ cite {
   gap: 14px;
   padding: 48px 24px 56px;
   overflow: hidden;
-  background:
-    radial-gradient(70% 60% at 50% 40%, rgba(255, 255, 255, 0.03) 0%, transparent 68%),
-    #0b0c0f;
+  background: linear-gradient(180deg, rgba(7, 8, 10, 0.18) 0%, rgba(7, 8, 10, 0.4) 100%);
 }
 
 .video-ph-stage::after {
