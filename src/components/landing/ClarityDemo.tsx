@@ -59,6 +59,10 @@ export function ClarityDemo() {
         </div>
 
         <div className="demo-window">
+        <div className="demo-chrome">
+          <span>Living memory</span>
+          <span>Ship Friday?</span>
+        </div>
         <div className="stage-board" ref={boardRef} data-testid="demo-stage">
           {beat === "notes" ? (
             <div className="stage-view" data-testid="stage-notes">
