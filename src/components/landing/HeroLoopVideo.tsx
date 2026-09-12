@@ -1,13 +1,15 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { HeroQueryFallback } from "@/components/landing/HeroQueryFallback";
 
 export function HeroLoopVideo({ src }: { src: string }) {
   const ref = useRef<HTMLVideoElement>(null);
+  const [failed, setFailed] = useState(false);
 
   useEffect(() => {
     const node = ref.current;
-    if (!node) return;
+    if (!node || failed) return;
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
     const apply = () => {
       if (media.matches) {
@@ -21,7 +23,11 @@ export function HeroLoopVideo({ src }: { src: string }) {
     apply();
     media.addEventListener("change", apply);
     return () => media.removeEventListener("change", apply);
-  }, [src]);
+  }, [src, failed]);
+
+  if (failed) {
+    return <HeroQueryFallback />;
+  }
 
   return (
     <video
@@ -34,7 +40,8 @@ export function HeroLoopVideo({ src }: { src: string }) {
       loop
       playsInline
       preload="auto"
-      aria-label="Product demo"
+      aria-label="Product demo: pricing memory walkthrough"
+      onError={() => setFailed(true)}
     />
   );
 }

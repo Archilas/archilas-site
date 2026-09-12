@@ -1,4 +1,5 @@
 import { HeroLoopVideo } from "@/components/landing/HeroLoopVideo";
+import { HeroQueryFallback } from "@/components/landing/HeroQueryFallback";
 
 export function HeroVideo({ src }: { src?: string | null }) {
   const live = Boolean(src);
@@ -12,19 +13,7 @@ export function HeroVideo({ src }: { src?: string | null }) {
             <span>Product demo</span>
           </div>
           <div className={live ? "video-ph-stage is-live" : "video-ph-stage"}>
-            {live && src ? (
-              <HeroLoopVideo src={src} />
-            ) : (
-              <>
-                <button type="button" className="video-ph-play" disabled aria-disabled="true" aria-label="Demo video coming soon">
-                  <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true">
-                    <path d="M8 5.5 L17 11 L8 16.5 Z" fill="currentColor" />
-                  </svg>
-                </button>
-                <p className="video-ph-label">Demo video coming soon</p>
-                <p className="video-ph-sub">Walkthrough on the way.</p>
-              </>
-            )}
+            {live && src ? <HeroLoopVideo src={src} /> : <HeroQueryFallback />}
           </div>
         </div>
       </div>
