@@ -1,6 +1,5 @@
 import { HeroVideo } from "@/components/landing/HeroVideo";
 import { WaitlistCTA } from "@/components/WaitlistCTA";
-import { heroDemoSrc } from "@/lib/hero-demo";
 
 export function Hero() {
   return (
@@ -16,7 +15,7 @@ export function Hero() {
         </div>
         <p className="hero-slm">Powered by a memory SLM · early access</p>
       </div>
-      <HeroVideo src={heroDemoSrc()} />
+      <HeroVideo />
     </section>
   );
 }

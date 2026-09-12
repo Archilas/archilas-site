@@ -25,4 +25,4 @@ Landscape photo plates · **OPAQUE filled UI** · vary sizes · alternate L/R li
 
 ## Asset
 
-`public/hero-demo.mp4` — muted autoplay loop, playsInline, no controls. Quiet query-frame fallback if the file fails to load.
+Coded in React (`HeroProductDemo`). Do not serve `public/hero-demo.mp4`.
