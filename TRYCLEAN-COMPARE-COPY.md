@@ -9,12 +9,14 @@
 
 ## Compare show
 
-Labels: `The usual approach` → `Archilas`
-Micros: `Search. Paste. Hope.` → `Compact. Reason. Deliver.`
-Visual: messy paste/search cards → one living-memory card (preference / decision / open loop / held back).
-No jargon essay in the compare (no passages / query time / surfaces).
+See TRYCLEAN-SIMPLE-COMPARE.md. Use exactly.
+
+- Them: `The usual way` — `You hunt old chats and paste scraps into the prompt.`
+- Us: `Archilas` — `You keep what matters — and get a clear answer when you ask.`
+- Micros: `Search. Paste. Hope.` → `Compact. Reason. Deliver.`
+- Visual beats: messy paste scraps → Preference / Decision / Open loop → Ask → Answer.
 
 ## Under plate
 
-- One line: Paste memory forgets. Living memory holds.
+- One line: `Most memory is still paste. Archilas keeps a living record.`
 - Optional: See how it works →

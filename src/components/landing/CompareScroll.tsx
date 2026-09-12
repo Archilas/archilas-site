@@ -3,16 +3,36 @@
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/cn";
 
-const CUT = 0.5;
+type Stage = "paste" | "record" | "answer";
 
-function stageFrom(progress: number): "typical" | "ours" {
-  return progress < CUT ? "typical" : "ours";
+function stageFrom(progress: number): Stage {
+  if (progress < 0.34) return "paste";
+  if (progress < 0.66) return "record";
+  return "answer";
 }
+
+const copy = {
+  paste: {
+    title: "The usual way",
+    line: "You hunt old chats and paste scraps into the prompt.",
+    micro: "Search. Paste. Hope.",
+  },
+  record: {
+    title: "Archilas",
+    line: "You keep what matters — and get a clear answer when you ask.",
+    micro: "Compact. Reason. Deliver.",
+  },
+  answer: {
+    title: "Archilas",
+    line: "You keep what matters — and get a clear answer when you ask.",
+    micro: "Compact. Reason. Deliver.",
+  },
+} as const;
 
 export function CompareScroll() {
   const trackRef = useRef<HTMLElement>(null);
-  const stageRef = useRef<"typical" | "ours">("typical");
-  const [stage, setStage] = useState<"typical" | "ours">("typical");
+  const stageRef = useRef<Stage>("paste");
+  const [stage, setStage] = useState<Stage>("paste");
   const [reduced, setReduced] = useState(false);
 
   useEffect(() => {
@@ -23,8 +43,8 @@ export function CompareScroll() {
       frame = window.requestAnimationFrame(() => {
         setReduced(on);
         if (on) {
-          stageRef.current = "ours";
-          setStage("ours");
+          stageRef.current = "answer";
+          setStage("answer");
         }
       });
     };
@@ -42,7 +62,7 @@ export function CompareScroll() {
 
     if (reduced) {
       track.dataset.progress = "1.000";
-      track.dataset.stage = "ours";
+      track.dataset.stage = "answer";
       track.style.setProperty("--compare-progress", "1");
       return;
     }
@@ -74,7 +94,7 @@ export function CompareScroll() {
       const dt = Math.min(40, now - last);
       last = now;
       readTarget();
-      const k = 1 - Math.exp(-dt / 160);
+      const k = 1 - Math.exp(-dt / 180);
       current.v += (target.v - current.v) * k;
       if (Math.abs(target.v - current.v) < 0.0008) current.v = target.v;
       publish(current.v);
@@ -95,7 +115,7 @@ export function CompareScroll() {
     window.scrollTo({ top, behavior: "auto" });
   };
 
-  const ours = stage === "ours";
+  const text = copy[stage];
 
   return (
     <section
@@ -114,46 +134,72 @@ export function CompareScroll() {
             type="button"
             className="compare-cue"
             data-testid="compare-cue"
-            hidden={reduced || ours}
-            onClick={() => jumpTo(0.72)}
+            hidden={reduced || stage !== "paste"}
+            onClick={() => jumpTo(0.5)}
           >
             Scroll to compare
             <span className="compare-dots" aria-hidden="true">
-              <i className={!ours ? "is-on" : undefined} />
-              <i className={ours ? "is-on" : undefined} />
+              <i className={stage === "paste" ? "is-on" : undefined} />
+              <i className={stage === "record" ? "is-on" : undefined} />
+              <i className={stage === "answer" ? "is-on" : undefined} />
             </span>
           </button>
 
           <div key={stage} className="compare-stage split-grid" data-testid={`compare-stage-${stage}`}>
             <div className="split-copy compare-head">
               <p className="label">Compare</p>
-              <h2 className="h2 compare-title">{ours ? "Archilas" : "The usual approach"}</h2>
-              <p className="split-lede">{ours ? "Compact. Reason. Deliver." : "Search. Paste. Hope."}</p>
+              <h2 className="h2 compare-title">{text.title}</h2>
+              <p className="split-lede">{text.line}</p>
+              <p className="compare-micro">{text.micro}</p>
             </div>
 
             <div className="compare-visual">
-              {ours ? (
-                <div className="ui-stack" data-testid="compare-ours">
-                  <div className="ui-card">
-                    <span className="ui-kicker">Living memory</span>
-                    <p>Preference: Ship Friday when the work is ready.</p>
-                    <p>Decision: Don’t ship until tests are green.</p>
-                    <p>Open loop: Alex asked about Monday.</p>
-                    <p className="ui-held">Held back: Monday slip — not enough to invent a new plan.</p>
-                  </div>
-                </div>
-              ) : (
+              {stage === "paste" ? (
                 <div className="ui-stack" data-testid="compare-typical">
                   <div className="ui-card is-dim is-skew-a">
-                    <span className="ui-kicker">Paste</span>
-                    <p>Ship Friday? Monday? tests?? Alex said something — maybe slip it.</p>
+                    <span className="ui-kicker">Scrap</span>
+                    <p>Ship Friday? Monday? tests??</p>
                   </div>
                   <div className="ui-card is-dim is-skew-b">
-                    <span className="ui-kicker">Search</span>
-                    <p>Old chat. Drop it in. Hope it holds.</p>
+                    <span className="ui-kicker">Old chat</span>
+                    <p>Alex said something — maybe slip it.</p>
+                  </div>
+                  <div className="ui-card is-dim">
+                    <span className="ui-kicker">Paste</span>
+                    <p>Drop it in the prompt. Hope it holds.</p>
                   </div>
                 </div>
-              )}
+              ) : null}
+
+              {stage === "record" ? (
+                <div className="ui-stack" data-testid="compare-record">
+                  <div className="ui-card">
+                    <span className="ui-kicker">Preference</span>
+                    <p>Ship Friday when the work is ready.</p>
+                  </div>
+                  <div className="ui-card">
+                    <span className="ui-kicker">Decision</span>
+                    <p>Don’t ship until tests are green.</p>
+                  </div>
+                  <div className="ui-card">
+                    <span className="ui-kicker">Open loop</span>
+                    <p>Alex asked about Monday.</p>
+                  </div>
+                </div>
+              ) : null}
+
+              {stage === "answer" ? (
+                <div className="ui-stack" data-testid="compare-ours">
+                  <div className="ui-card is-dim">
+                    <span className="ui-kicker">Ask</span>
+                    <p>Ship Friday?</p>
+                  </div>
+                  <div className="ui-card">
+                    <span className="ui-kicker">Answer</span>
+                    <p>Yes — if tests go green.</p>
+                  </div>
+                </div>
+              ) : null}
             </div>
           </div>
         </div>

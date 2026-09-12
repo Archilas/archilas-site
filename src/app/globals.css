@@ -1934,7 +1934,7 @@ cite {
 
 .compare-track {
   --compare-progress: 0;
-  height: 230vh;
+  height: 260vh;
   position: relative;
 }
 
@@ -2028,6 +2028,14 @@ cite {
 
 .compare-title {
   margin: 12px 0 0;
+}
+
+.compare-micro {
+  margin-top: 16px;
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
 }
 
 .compare-stage.split-grid {

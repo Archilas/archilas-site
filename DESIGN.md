@@ -12,7 +12,7 @@ Tryclean-craft: near-black canvas, warm-white type, electric-blue focus only, fl
 ## Rhythm
 
 - Hero: chip → H1 → one-line sub → CTAs → SLM line → video-coming-soon plate peeking.
-- Compare: sticky visual show — one short line + messy paste UI → living-memory UI. Exclusive stages. No jargon essay.
+- Compare: sticky 3-beat visual — The usual way / paste scraps → Archilas living record → Ask/Answer. Exact locked lines. Exclusive stages.
 - How: 2-col — short steps + staged UI on plate. Spine Compact → Reason → Deliver.
 - Plates: huge rounded cards with photographic night/fog depth (not neon orbs, not flat black). Lerped sky drift on scroll; reduced-motion is static.
 - SLM: in development / early access — not live.

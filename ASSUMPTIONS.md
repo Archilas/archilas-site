@@ -16,7 +16,7 @@ Required env (set on Vercel; never commit secrets):
 - Dual CTAs: white Join waitlist → (modal) and outline Contact.
 - Landing follows TRYCLEAN-CRAFT-BRIEF: dark canvas, floating pill nav, photographic atmosphere plates, 2-col bands.
 - Hero plate: Product demo / Demo video coming soon / Notes → Compact → Reason → Answer — filmed walkthrough on the way. Play glyph disabled. No Ship Friday.
-- Compare plate: sticky visual show. Short lines only (Search. Paste. Hope. → Compact. Reason. Deliver.). Messy paste UI → living-memory UI. Exclusive mount, lerped progress, longer start hold. Under-plate is one sentence: Paste memory forgets. Living memory holds. Reduced motion skips the pin and shows Archilas.
+- Compare plate: sticky 3-beat visual (paste scraps → living record → ask/answer). Exact Marketing pack in TRYCLEAN-SIMPLE-COMPARE.md. Exclusive stages. Under-plate: Most memory is still paste. Archilas keeps a living record. Reduced motion skips the pin and shows the answer beat.
 - How: Notes / Compact / Reason / Answer. Exclusive stage switch. Spine Compact → Reason → Deliver.
 - SLM band: in development / early access — not live. Surfaces: Claude / ChatGPT / Cursor intended; MCP coming soon.
 - Footer: “MCP support — coming soon.”
