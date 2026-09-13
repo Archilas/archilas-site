@@ -119,7 +119,7 @@ function PayloadCard() {
     <div className="hero-result" data-testid="hero-result">
       <p className="hero-result-kicker">Returned to model</p>
       <pre className="hero-result-pre">
-        {HERO_RESULT.map((row) => `${row.kind}: ${row.text}`).join("\n")}
+        {HERO_RESULT.map((row) => `${row.kind} · ${row.when} · ${row.text}`).join("\n")}
       </pre>
       <p className="hero-result-note">{HERO_RESULT_NOTE}</p>
     </div>
@@ -252,7 +252,9 @@ export function HeroProductDemo() {
               </span>
               <span className="hero-tool-status">{snap.status}</span>
             </div>
-            <p className="hero-sheet-kicker">{HERO_SHEET_KICKER}</p>
+            {!snap.result ? (
+              <p className="hero-sheet-kicker">{HERO_SHEET_KICKER}</p>
+            ) : null}
             {snap.result && snap.up ? (
               <PayloadCard />
             ) : !snap.result ? (

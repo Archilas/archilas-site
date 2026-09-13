@@ -1,29 +1,30 @@
 export const HERO_QUERY =
-  "We’re renegotiating Acme this week. Since March, what did we lock on enterprise pricing, what’s still open with legal, and what must we not promise on the call?";
+  "Since March, what pricing did we lock for Acme, what changed last quarter, and what’s still open that we must not promise on today’s call?";
 
 export const HERO_ANSWER =
-  "Keep the $12k floor we locked in March. You can offer up to 20% on annual. Don’t promise the usage add-on — legal still hasn’t cleared it since April.";
+  "Since March the floor is $12k and annual discounts max out at 20%. Last quarter you ruled out multi-year without legal. Don’t promise the usage add-on — it’s been open since April.";
 
 export const HERO_TOOL = "archilas_get_context";
 export const HERO_TOOL_SUB = "Archilas · Memory SLM · early access";
 export const HERO_DIFF = "We don’t dump old chats into the prompt — we return the living record.";
 export const HERO_RESULT_NOTE = "Living memory · memory SLM · early access";
-export const HERO_SHEET_KICKER = "Living record · already compacted";
+export const HERO_SHEET_KICKER = "Living memory · memory SLM · early access";
 
 export const HERO_STATUS_DONE = "Done";
 
 export const HERO_STEPS = [
   { id: "search", label: "Searching for the right notes…" },
-  { id: "pull", label: "Pulling up extra context…" },
+  { id: "pull", label: "Pulling extra context…" },
   { id: "reason", label: "Reasoning over the living record…" },
   { id: "explain", label: "Explaining what matters…" },
-  { id: "return", label: "Answering / returning to the model…" },
+  { id: "return", label: "Returning answer to the model…" },
 ] as const;
 
 export const HERO_RESULT = [
-  { id: "pref", kind: "preference", text: "Since Mar 3 — annual discount capped at 20%" },
-  { id: "dec", kind: "decision", text: "Since Mar 18 — enterprise floor stays $12k" },
-  { id: "open", kind: "open_loop", text: "Since Apr 2 — usage add-on blocked until legal clears" },
+  { id: "pref", kind: "preference", when: "Mar 3", text: "Cap annual discount at 20%" },
+  { id: "dec", kind: "decision", when: "Mar 18", text: "Enterprise floor stays $12k" },
+  { id: "multi", kind: "decision", when: "Jun 12", text: "Last quarter: no multi-year without legal" },
+  { id: "open", kind: "open_loop", when: "Apr 2–now", text: "Usage add-on — legal not cleared" },
 ] as const;
 
 function buildTypeAt(start: number) {
