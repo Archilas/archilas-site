@@ -7,26 +7,26 @@ import {
   HERO_ANSWER,
   HERO_ANSWER_AT,
   HERO_ANSWER_MS,
-  HERO_FADE,
   HERO_DIFF,
+  HERO_FADE,
   HERO_LOOP_MS,
-  HERO_PICK_AT,
+  HERO_POP_MS,
   HERO_QUERY,
   HERO_RESULT,
   HERO_RESULT_AT,
   HERO_RESULT_NOTE,
-  HERO_RETRIEVE_AT,
   HERO_SEND,
-  HERO_SHARDS,
+  HERO_SHEET_AT,
+  HERO_SHEET_DOWN,
+  HERO_SHEET_KICKER,
   HERO_STATUS_DONE,
+  HERO_STEP_MS,
   HERO_STEPS,
   HERO_TOOL,
   HERO_TOOL_AT,
   HERO_TOOL_DONE,
-  HERO_TOOL_OPEN,
   HERO_TOOL_SUB,
-  HERO_TYPE_MS,
-  HERO_TYPE_START,
+  typedCount,
 } from "@/components/landing/hero-storyboard";
 import { ClaudeMark } from "@/components/landing/BrandMarks";
 
@@ -35,10 +35,12 @@ type ToolStatus = (typeof HERO_STEPS)[number]["label"] | typeof HERO_STATUS_DONE
 type Snap = {
   typed: number;
   sent: boolean;
+  pop: boolean;
   tool: boolean;
-  open: boolean;
-  picks: number;
+  sheet: boolean;
+  up: boolean;
   result: boolean;
+  persist: boolean;
   done: boolean;
   step: number;
   status: ToolStatus;
@@ -48,27 +50,21 @@ type Snap = {
 };
 
 function snapAt(ms: number): Snap {
-  const typed = Math.min(
-    HERO_QUERY.length,
-    ms < HERO_TYPE_START ? 0 : Math.floor((ms - HERO_TYPE_START) / HERO_TYPE_MS),
-  );
+  const typed = Math.min(HERO_QUERY.length, typedCount(ms));
   const sent = ms >= HERO_SEND;
+  const pop = sent && ms < HERO_SEND + HERO_POP_MS;
   const tool = ms >= HERO_TOOL_AT;
   const fade = ms >= HERO_FADE;
+  const up = tool && ms >= HERO_SHEET_AT && ms < HERO_SHEET_DOWN && !fade;
+  const persist = tool && ms >= HERO_SHEET_DOWN && !fade;
+  const sheet = tool && ms >= HERO_TOOL_AT && ms < HERO_SHEET_DOWN + 840 && !fade;
   const result = tool && ms >= HERO_RESULT_AT && !fade;
-  const open = tool && ms >= HERO_TOOL_OPEN && !result && !fade;
-  const picks =
-    ms < HERO_PICK_AT ? 0 : Math.min(3, 1 + Math.floor((ms - HERO_PICK_AT) / 520));
   const done = tool && ms >= HERO_TOOL_DONE;
   const step = !tool
     ? 0
     : result || done
-      ? 4
-      : picks > 0
-        ? 3
-        : ms >= HERO_RETRIEVE_AT
-          ? 2
-          : 1;
+      ? HERO_STEPS.length
+      : Math.min(HERO_STEPS.length, 1 + Math.floor(Math.max(0, ms - HERO_SHEET_AT) / HERO_STEP_MS));
   const status: ToolStatus = done ? HERO_STATUS_DONE : HERO_STEPS[Math.max(0, step - 1)].label;
   const answer =
     ms < HERO_ANSWER_AT
@@ -77,21 +73,23 @@ function snapAt(ms: number): Snap {
   let phase = "type";
   if (fade) phase = "fade";
   else if (answer > 0) phase = "answer";
-  else if (result || (done && !open)) phase = "chip";
-  else if (open) phase = "tool";
+  else if (persist) phase = "chip";
+  else if (up) phase = "sheet";
   else if (sent) phase = "send";
-  return { typed, sent, tool, open, picks, result, done, step, status, answer, fade, phase };
+  return { typed, sent, pop, tool, sheet, up, result, persist, done, step, status, answer, fade, phase };
 }
 
 const REDUCED: Snap = {
   typed: HERO_QUERY.length,
   sent: true,
+  pop: false,
   tool: true,
-  open: false,
-  picks: 3,
+  sheet: false,
+  up: false,
   result: true,
+  persist: true,
   done: true,
-  step: 4,
+  step: HERO_STEPS.length,
   status: HERO_STATUS_DONE,
   answer: HERO_ANSWER.length,
   fade: false,
@@ -102,15 +100,29 @@ function sameSnap(a: Snap, b: Snap) {
   return (
     a.typed === b.typed &&
     a.sent === b.sent &&
+    a.pop === b.pop &&
     a.tool === b.tool &&
-    a.open === b.open &&
-    a.picks === b.picks &&
+    a.sheet === b.sheet &&
+    a.up === b.up &&
     a.result === b.result &&
+    a.persist === b.persist &&
     a.done === b.done &&
     a.step === b.step &&
     a.status === b.status &&
     a.answer === b.answer &&
     a.fade === b.fade
+  );
+}
+
+function PayloadCard() {
+  return (
+    <div className="hero-result" data-testid="hero-result">
+      <p className="hero-result-kicker">Returned to model</p>
+      <pre className="hero-result-pre">
+        {HERO_RESULT.map((row) => `${row.kind}: ${row.text}`).join("\n")}
+      </pre>
+      <p className="hero-result-note">{HERO_RESULT_NOTE}</p>
+    </div>
   );
 }
 
@@ -190,14 +202,17 @@ export function HeroProductDemo() {
         </div>
         <div className={cn("hero-thread", snap.fade && "is-dissolve")} data-testid="hero-thread">
           {snap.sent ? (
-            <div className="hero-bubble is-user" data-testid="hero-user">
+            <div
+              className={cn("hero-bubble is-user", snap.pop && "is-pop")}
+              data-testid="hero-user"
+            >
               {HERO_QUERY}
             </div>
           ) : null}
 
-          {snap.tool ? (
+          {snap.tool && !snap.up ? (
             <div
-              className={cn("hero-tool", snap.open && "is-open", snap.done && "is-done")}
+              className={cn("hero-tool", snap.done && "is-done")}
               data-testid="hero-tool"
             >
               <div className="hero-tool-head">
@@ -207,57 +222,11 @@ export function HeroProductDemo() {
                   <span className="hero-tool-sub">{HERO_TOOL_SUB}</span>
                 </span>
                 <span className="hero-tool-status">{snap.status}</span>
-                <span className="hero-tool-chev" aria-hidden="true" />
-              </div>
-              <div className="hero-tool-body">
-                <div className="hero-tool-inner">
-                  <ol className="hero-steps" data-testid="hero-steps">
-                    {HERO_STEPS.map((row, index) => {
-                      const n = index + 1;
-                      return (
-                        <li
-                          key={row.id}
-                          className={cn(
-                            "hero-step",
-                            snap.step === n && "is-on",
-                            snap.step > n && "is-done",
-                          )}
-                        >
-                          <span className="hero-step-mark" aria-hidden="true" />
-                          {row.label}
-                        </li>
-                      );
-                    })}
-                  </ol>
-                  <ul className="hero-memos">
-                    {HERO_SHARDS.map((shard, index) => {
-                      const on = shard.pick && index < snap.picks;
-                      return (
-                        <li
-                          key={shard.id}
-                          className={cn("hero-memo", on && "is-on", !shard.pick && "is-dim")}
-                        >
-                          <span className="hero-memo-date">{shard.date}</span>
-                          <span className="hero-memo-kind">{shard.kind}</span>
-                          <span className="hero-memo-text">{shard.text}</span>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
               </div>
             </div>
           ) : null}
 
-          {snap.result ? (
-            <div className="hero-result" data-testid="hero-result">
-              <p className="hero-result-kicker">Returned to model</p>
-              <pre className="hero-result-pre">
-                {HERO_RESULT.map((row) => `${row.kind}: ${row.text}`).join("\n")}
-              </pre>
-              <p className="hero-result-note">{HERO_RESULT_NOTE}</p>
-            </div>
-          ) : null}
+          {snap.persist ? <PayloadCard /> : null}
 
           {snap.answer > 0 ? (
             <div className="hero-bubble is-assistant" data-testid="hero-answer">
@@ -266,6 +235,48 @@ export function HeroProductDemo() {
             </div>
           ) : null}
         </div>
+        <div
+          className={cn("hero-sheet-scrim", snap.up && "is-on")}
+          aria-hidden="true"
+        />
+        {snap.sheet ? (
+          <div
+            className={cn("hero-sheet", snap.up && "is-up")}
+            data-testid="hero-sheet"
+          >
+            <div className="hero-sheet-head">
+              <span className="hero-tool-mark" aria-hidden="true" />
+              <span className="hero-tool-titles">
+                <span className="hero-tool-name">{HERO_TOOL}</span>
+                <span className="hero-tool-sub">{HERO_TOOL_SUB}</span>
+              </span>
+              <span className="hero-tool-status">{snap.status}</span>
+            </div>
+            <p className="hero-sheet-kicker">{HERO_SHEET_KICKER}</p>
+            {snap.result && snap.up ? (
+              <PayloadCard />
+            ) : !snap.result ? (
+              <ol className="hero-steps" data-testid="hero-steps">
+                {HERO_STEPS.map((row, index) => {
+                  const n = index + 1;
+                  return (
+                    <li
+                      key={row.id}
+                      className={cn(
+                        "hero-step",
+                        snap.step === n && "is-on",
+                        snap.step > n && "is-done",
+                      )}
+                    >
+                      <span className="hero-step-mark" aria-hidden="true" />
+                      {row.label}
+                    </li>
+                  );
+                })}
+              </ol>
+            ) : null}
+          </div>
+        ) : null}
         <div
           className={cn("hero-composer", !snap.sent && snap.typed > 0 && "is-live")}
           data-testid="hero-composer"

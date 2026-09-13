@@ -1934,7 +1934,7 @@ cite {
 
 .hero-app {
   display: grid;
-  min-height: 520px;
+  min-height: 560px;
   grid-template-columns: 196px 1fr;
   text-align: left;
   color: var(--ink);
@@ -2010,6 +2010,7 @@ cite {
 }
 
 .hero-app-main {
+  position: relative;
   display: flex;
   min-width: 0;
   flex-direction: column;
@@ -2085,6 +2086,26 @@ cite {
   align-self: flex-end;
   background: #1b1e27;
   border: 1px solid rgba(255, 255, 255, 0.08);
+  transform-origin: 92% 100%;
+}
+
+.hero-bubble.is-user.is-pop {
+  animation: hero-pop 720ms cubic-bezier(0.22, 1.35, 0.36, 1) both;
+}
+
+@keyframes hero-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.84) translateY(12px);
+  }
+  62% {
+    opacity: 1;
+    transform: scale(1.035) translateY(-1px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 .hero-bubble.is-assistant {
@@ -2312,7 +2333,70 @@ cite {
   font-size: 11px;
 }
 
+.hero-sheet-scrim {
+  position: absolute;
+  inset: 48px 0 72px;
+  z-index: 2;
+  background: rgba(8, 9, 12, 0.34);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 560ms ease;
+}
+
+.hero-sheet-scrim.is-on {
+  opacity: 1;
+}
+
+.hero-sheet {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 76px;
+  z-index: 3;
+  padding-bottom: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 18px;
+  background: #16181f;
+  box-shadow: 0 22px 56px rgba(0, 0, 0, 0.48);
+  transform: translate3d(0, 36px, 0);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    transform 820ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 560ms ease;
+}
+
+.hero-sheet.is-up {
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+}
+
+.hero-sheet-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 8px 12px 4px;
+}
+
+.hero-sheet-kicker {
+  margin: 0 14px 10px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.hero-sheet .hero-steps {
+  margin: 0 8px 4px;
+}
+
+.hero-sheet .hero-result {
+  width: auto;
+  margin: 0 8px;
+}
+
 .hero-composer {
+  position: relative;
+  z-index: 4;
   display: flex;
   flex: none;
   align-items: flex-end;
@@ -2388,8 +2472,14 @@ cite {
   }
 
   .hero-tool-body,
-  .hero-tool-chev {
+  .hero-tool-chev,
+  .hero-sheet,
+  .hero-sheet-scrim {
     transition: none;
+  }
+
+  .hero-bubble.is-user.is-pop {
+    animation: none;
   }
 
   .hero-caret {
