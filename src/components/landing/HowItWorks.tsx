@@ -7,7 +7,7 @@ import { usePrefersReducedMotion } from "@/lib/use-prefers-reduced-motion";
 
 const STAGES = [
   { id: "notes", label: "Notes", status: "Written as notes." },
-  { id: "compact", label: "Compact", status: "Compacting into KV cache." },
+  { id: "compact", label: "Compact", status: "Compacting into KV cache…" },
   { id: "reason", label: "Reason", status: "Searching · thinking · selecting what matters." },
   { id: "deliver", label: "Deliver", status: "One clear answer." },
 ] as const;
@@ -15,20 +15,20 @@ const STAGES = [
 type StageId = (typeof STAGES)[number]["id"];
 
 const NOTES = [
-  { id: "n1", date: "Mar 3", stamp: "2026-03-03", body: "Meet Tuesday if the deck is ready." },
-  { id: "n2", date: "Mar 18", stamp: "2026-03-18", body: "Don’t meet until the deck lands." },
-  { id: "n3", date: "Apr 2", stamp: "2026-04-02", body: "Sam asked about the recap — still open." },
+  { id: "n1", date: "Mar 3", stamp: "2026-03-03", body: "Acme wants multi-year" },
+  { id: "n2", date: "Mar 18", stamp: "2026-03-18", body: "Floor felt firm on the Mar call" },
+  { id: "n3", date: "Apr 2", stamp: "2026-04-02", body: "Legal still on usage add-on" },
 ] as const;
 
 const KV_ROWS = [
-  { key: "pref", value: "Tuesday · if the deck is ready" },
-  { key: "dec", value: "No meet until the deck lands" },
-  { key: "loop", value: "Recap — still open" },
+  { key: "preference", value: "Cap annual discount at 20%" },
+  { key: "decision", value: "Enterprise floor stays $12k" },
+  { key: "open loop", value: "Usage add-on — legal not cleared" },
 ] as const;
 
-const REASON_STEPS = ["Searching…", "Pulling context…", "Thinking…"] as const;
+const REASON_STEPS = ["Searching…", "Thinking…", "Selecting what matters…"] as const;
 
-const ANSWER = "Yes — if the deck is ready.";
+const ANSWER = "Keep the $12k floor. Cap annual at 20%. Don’t promise the usage add-on yet.";
 
 const STAGE_MS = 4200;
 const REASON_STEP_MS = 1400;
@@ -140,7 +140,7 @@ export function HowItWorks() {
               ) : null}
               {id === "compact" ? (
                 <div className="how-kv" data-testid="how-kv">
-                  <p className="how-kv-head">Compacting into KV cache</p>
+                  <p className="how-kv-head">Compacting into KV cache…</p>
                   {KV_ROWS.map((row) => (
                     <div key={row.key} className="how-kv-row">
                       <span>{row.key}</span>

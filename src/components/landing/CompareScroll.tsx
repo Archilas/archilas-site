@@ -1,14 +1,20 @@
 import { Reveal } from "@/components/Reveal";
 
-const oldChips = ["Search", "Paste everything", "Burns tokens", "Forgets next session", "No sense of time"] as const;
+const oldChips = [
+  "Search relevant answers",
+  "Inject everything",
+  "Burns tokens",
+  "No long-term reasoning",
+  "No temporal reasoning",
+] as const;
 const usChips = [
   "Living record",
-  "Prefs · decisions · open loops",
-  "Remembers across sessions",
-  "Sense of time",
-  "Short context to the model",
+  "Prefs",
+  "Decisions",
+  "Open loops",
+  "Remembers across time",
+  "Short context, not a dump",
 ] as const;
-const usSpine = ["Compact", "Reason", "Deliver"] as const;
 
 export function CompareScroll() {
   return (
@@ -61,18 +67,11 @@ export function CompareScroll() {
                     </span>
                   ))}
                 </div>
-                <div className="chip-row is-spine">
-                  {usSpine.map((chip) => (
-                    <span key={chip} className="chip is-soft">
-                      {chip}
-                    </span>
-                  ))}
-                </div>
-                <p className="compare-micro">Keep what matters. Answer clearly.</p>
+                <p className="compare-micro">We keep what matters — and bring it back when you ask.</p>
               </div>
             </div>
             <p className="compare-foot" data-testid="compare-foot">
-              Paste memory guesses. Living memory knows.
+              Old way floods the prompt. Archilas returns a living record.
             </p>
           </div>
         </div>

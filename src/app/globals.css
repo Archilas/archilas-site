@@ -2768,6 +2768,9 @@ cite {
 
 .how-note.is-t0 {
   align-self: flex-start;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0 18px, transparent 42px),
+    #f6e38a;
   transform: rotate(-2.1deg);
 }
 
@@ -2780,6 +2783,9 @@ cite {
 .how-note.is-t2 {
   align-self: center;
   width: min(100%, 288px);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0 18px, transparent 42px),
+    #efe4b8;
   transform: rotate(-0.7deg);
 }
 
