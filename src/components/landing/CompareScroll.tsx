@@ -1,7 +1,14 @@
 import { Reveal } from "@/components/Reveal";
 
 const oldChips = ["Search", "Paste everything", "Burns tokens", "Forgets next session", "No sense of time"] as const;
-const usChips = ["Compact", "Reason", "Deliver"] as const;
+const usChips = [
+  "Living record",
+  "Prefs · decisions · open loops",
+  "Remembers across sessions",
+  "Sense of time",
+  "Short context to the model",
+] as const;
+const usSpine = ["Compact", "Reason", "Deliver"] as const;
 
 export function CompareScroll() {
   return (
@@ -50,6 +57,13 @@ export function CompareScroll() {
                 <div className="chip-row">
                   {usChips.map((chip) => (
                     <span key={chip} className="chip is-on">
+                      {chip}
+                    </span>
+                  ))}
+                </div>
+                <div className="chip-row is-spine">
+                  {usSpine.map((chip) => (
+                    <span key={chip} className="chip is-soft">
                       {chip}
                     </span>
                   ))}
