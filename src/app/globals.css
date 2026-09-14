@@ -2322,6 +2322,14 @@ cite {
   text-transform: uppercase;
 }
 
+.hero-result-body {
+  margin: 0;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
 .hero-result-pre {
   margin: 0;
   color: var(--ink);
@@ -2730,16 +2738,16 @@ cite {
 .how-notes {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  min-height: 228px;
-  padding: 4px 2px 8px;
+  gap: 10px;
+  min-height: 280px;
+  padding: 2px 0 8px;
 }
 
 .how-note {
   position: relative;
-  width: min(100%, 320px);
-  min-height: 84px;
-  padding: 14px 16px 16px;
+  width: 100%;
+  min-height: 0;
+  padding: 12px 14px 14px;
   border: 1px solid rgba(42, 36, 28, 0.14);
   border-radius: 2px 11px 7px 3px;
   background:
@@ -2767,26 +2775,26 @@ cite {
 }
 
 .how-note.is-t0 {
-  align-self: flex-start;
+  align-self: stretch;
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0 18px, transparent 42px),
     #f6e38a;
-  transform: rotate(-2.1deg);
+  transform: rotate(-0.8deg);
 }
 
 .how-note.is-t1 {
-  align-self: flex-end;
-  width: min(100%, 300px);
-  transform: rotate(1.6deg);
+  align-self: stretch;
+  width: 100%;
+  transform: rotate(0.6deg);
 }
 
 .how-note.is-t2 {
-  align-self: center;
-  width: min(100%, 288px);
+  align-self: stretch;
+  width: 100%;
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0 18px, transparent 42px),
     #efe4b8;
-  transform: rotate(-0.7deg);
+  transform: rotate(-0.4deg);
 }
 
 .how-note time {
@@ -2802,7 +2810,7 @@ cite {
 .how-note p {
   margin-top: 6px;
   color: #1c1712;
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 500;
   line-height: 1.45;
 }

@@ -20,12 +20,8 @@ export const HERO_STEPS = [
   { id: "return", label: "Returning answer to the model…" },
 ] as const;
 
-export const HERO_RESULT = [
-  { id: "pref", kind: "preference", when: "Mar 3", text: "Cap annual discount at 20%" },
-  { id: "dec", kind: "decision", when: "Mar 18", text: "Enterprise floor stays $12k" },
-  { id: "multi", kind: "decision", when: "Jun 12", text: "Last quarter: no multi-year without legal" },
-  { id: "open", kind: "open_loop", when: "Apr 2–now", text: "Usage add-on — legal not cleared" },
-] as const;
+export const HERO_RESULT =
+  "Keep the $12k floor. Cap annual discounts at 20%. Do not promise the usage add-on until legal clears.";
 
 function buildTypeAt(start: number) {
   const at: number[] = [];

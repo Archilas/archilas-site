@@ -7,17 +7,32 @@ import { usePrefersReducedMotion } from "@/lib/use-prefers-reduced-motion";
 
 const STAGES = [
   { id: "notes", label: "Notes", status: "Written as notes." },
-  { id: "compact", label: "Compact", status: "Compacting into KV cache…" },
-  { id: "reason", label: "Reason", status: "Searching · thinking · selecting what matters." },
+  { id: "compact", label: "Compact", status: "Compacting into a memory KV…" },
+  { id: "reason", label: "Reason", status: "Searching · selecting what matters · thinking." },
   { id: "deliver", label: "Deliver", status: "One clear answer." },
 ] as const;
 
 type StageId = (typeof STAGES)[number]["id"];
 
 const NOTES = [
-  { id: "n1", date: "Mar 3", stamp: "2026-03-03", body: "Acme wants multi-year" },
-  { id: "n2", date: "Mar 18", stamp: "2026-03-18", body: "Floor felt firm on the Mar call" },
-  { id: "n3", date: "Apr 2", stamp: "2026-04-02", body: "Legal still on usage add-on" },
+  {
+    id: "n1",
+    date: "Mar 3",
+    stamp: "2026-03-03",
+    body: "Acme asked again about multi-year pricing on the call; they want a commitment before Q3 planning.",
+  },
+  {
+    id: "n2",
+    date: "Mar 18",
+    stamp: "2026-03-18",
+    body: "On the pricing review, the enterprise floor held at $12k; team treated that as locked.",
+  },
+  {
+    id: "n3",
+    date: "Apr 2",
+    stamp: "2026-04-02",
+    body: "Usage add-on still with legal; no one is cleared to promise it on customer calls.",
+  },
 ] as const;
 
 const KV_ROWS = [
@@ -26,7 +41,7 @@ const KV_ROWS = [
   { key: "open loop", value: "Usage add-on — legal not cleared" },
 ] as const;
 
-const REASON_STEPS = ["Searching…", "Thinking…", "Selecting what matters…"] as const;
+const REASON_STEPS = ["Searching…", "Selecting what matters…", "Thinking…"] as const;
 
 const ANSWER = "Keep the $12k floor. Cap annual at 20%. Don’t promise the usage add-on yet.";
 
@@ -140,7 +155,7 @@ export function HowItWorks() {
               ) : null}
               {id === "compact" ? (
                 <div className="how-kv" data-testid="how-kv">
-                  <p className="how-kv-head">Compacting into KV cache…</p>
+                  <p className="how-kv-head">Compacting into a memory KV…</p>
                   {KV_ROWS.map((row) => (
                     <div key={row.key} className="how-kv-row">
                       <span>{row.key}</span>

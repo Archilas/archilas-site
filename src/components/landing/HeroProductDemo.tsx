@@ -118,9 +118,7 @@ function PayloadCard() {
   return (
     <div className="hero-result" data-testid="hero-result">
       <p className="hero-result-kicker">Returned to model</p>
-      <pre className="hero-result-pre">
-        {HERO_RESULT.map((row) => `${row.kind} · ${row.when} · ${row.text}`).join("\n")}
-      </pre>
+      <p className="hero-result-body">{HERO_RESULT}</p>
       <p className="hero-result-note">{HERO_RESULT_NOTE}</p>
     </div>
   );
