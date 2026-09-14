@@ -19,19 +19,19 @@ const NOTES = [
     id: "n1",
     date: "Mar 3",
     stamp: "2026-03-03",
-    body: "Acme asked again about multi-year pricing on the call; they want a commitment before Q3 planning.",
+    body: "Mar 3 call w/ Acme — they pushed hard on annual pricing; we said we can flex on term discounts but not below the enterprise floor we quoted last cycle.",
   },
   {
     id: "n2",
     date: "Mar 18",
     stamp: "2026-03-18",
-    body: "On the pricing review, the enterprise floor held at $12k; team treated that as locked.",
+    body: "Mar 18 internal — locked enterprise floor at $12k; annual discount capped at 20%; no handshake on usage-based add-on until legal reviews the draft.",
   },
   {
     id: "n3",
     date: "Apr 2",
     stamp: "2026-04-02",
-    body: "Usage add-on still with legal; no one is cleared to promise it on customer calls.",
+    body: "Apr 2 thread + follow-ups through now — legal still has the usage add-on; customer keeps asking; we have not cleared it for promises on live calls.",
   },
 ] as const;
 

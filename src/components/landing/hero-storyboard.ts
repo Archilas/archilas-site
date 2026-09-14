@@ -21,7 +21,7 @@ export const HERO_STEPS = [
 ] as const;
 
 export const HERO_RESULT =
-  "Keep the $12k floor. Cap annual discounts at 20%. Do not promise the usage add-on until legal clears.";
+  "Since March, Acme’s enterprise floor is $12k and annual discounts max out at 20%. Multi-year was ruled out last quarter without legal. The usage add-on has been open since April — don’t promise it.";
 
 function buildTypeAt(start: number) {
   const at: number[] = [];
