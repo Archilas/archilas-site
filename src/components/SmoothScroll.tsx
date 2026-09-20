@@ -5,7 +5,10 @@ import Lenis from "lenis";
 import "lenis/dist/lenis.css";
 import { setLenis } from "@/lib/lenis";
 
-/** Match tryclean.ai: eased Lenis wheel scroll (duration 1.15, lerp 0.1). */
+/**
+ * Replicate tryclean.ai SmoothScroll:
+ * duration 1.15, expo easing, smoothWheel, lerp 0.1, manual rAF.
+ */
 export function SmoothScroll() {
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -17,11 +20,19 @@ export function SmoothScroll() {
       wheelMultiplier: 1,
       lerp: 0.1,
       anchors: true,
-      autoRaf: true,
+      autoRaf: false,
     });
     setLenis(lenis);
 
+    let frame = 0;
+    const raf = (time: number) => {
+      lenis.raf(time);
+      frame = window.requestAnimationFrame(raf);
+    };
+    frame = window.requestAnimationFrame(raf);
+
     return () => {
+      window.cancelAnimationFrame(frame);
       setLenis(null);
       lenis.destroy();
     };
