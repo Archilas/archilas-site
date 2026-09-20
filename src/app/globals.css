@@ -106,8 +106,13 @@ body {
   letter-spacing: -0.03em;
 }
 
-.brand img {
-  filter: brightness(0) invert(1);
+.brand-mark {
+  display: block;
+  height: 28px;
+  width: auto;
+  flex: none;
+  aspect-ratio: 1633.867 / 1759.156;
+  color: currentColor;
 }
 
 .nav-link {

@@ -42,6 +42,8 @@ export const metadata: Metadata = {
   authors: [{ name: site.name }],
   icons: {
     icon: [
+      { url: "/archilas-mark.svg", type: "image/svg+xml", media: "(prefers-color-scheme: dark)" },
+      { url: "/archilas-mark-black.svg", type: "image/svg+xml", media: "(prefers-color-scheme: light)" },
       { url: "/favicon.ico" },
       { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
       { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
