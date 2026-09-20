@@ -23,9 +23,8 @@ export function CompareScroll() {
       className="compare-band split-band scroll-mt-[var(--scroll-margin)] px-[var(--pad-x)]"
       data-testid="compare-scroll"
     >
-      <Reveal>
       <div className="split-grid is-compare mx-auto max-w-[1180px]">
-        <div className="split-copy">
+        <Reveal delay={80} className="split-copy">
           <p className="label">Compare</p>
           <h2 className="h2 mt-3">The old way vs Archilas</h2>
           <p className="split-lede">One dumps the past into the prompt. The other keeps a living record.</p>
@@ -36,47 +35,48 @@ export function CompareScroll() {
           >
             See how it works →
           </a>
-        </div>
-        <div className="band-plate compare-plate is-tall plate-drift">
-          <div className="plate-sky is-fjord" aria-hidden="true" />
-          <div className="frost-stack">
-            <div className="chrome-window is-dim" data-testid="compare-typical">
-              <div className="demo-chrome">
-                <span>The old way</span>
-              </div>
-              <div className="chrome-body">
-                <div className="chip-row">
-                  {oldChips.map((chip) => (
-                    <span key={chip} className="chip">
-                      {chip}
-                    </span>
-                  ))}
+        </Reveal>
+        <Reveal delay={180} y={28}>
+          <div className="band-plate compare-plate is-tall plate-drift">
+            <div className="plate-sky is-fjord" aria-hidden="true" />
+            <div className="frost-stack">
+              <div className="chrome-window is-dim" data-testid="compare-typical">
+                <div className="demo-chrome">
+                  <span>The old way</span>
                 </div>
-                <p className="compare-micro">Hope the prompt remembers.</p>
-              </div>
-            </div>
-            <div className="chrome-window is-ours" data-testid="compare-ours">
-              <div className="demo-chrome">
-                <span>Archilas</span>
-              </div>
-              <div className="chrome-body">
-                <div className="chip-row">
-                  {usChips.map((chip) => (
-                    <span key={chip} className="chip is-on">
-                      {chip}
-                    </span>
-                  ))}
+                <div className="chrome-body">
+                  <div className="chip-row">
+                    {oldChips.map((chip) => (
+                      <span key={chip} className="chip">
+                        {chip}
+                      </span>
+                    ))}
+                  </div>
+                  <p className="compare-micro">Hope the prompt remembers.</p>
                 </div>
-                <p className="compare-micro">We keep what matters — and bring it back when you ask.</p>
               </div>
+              <div className="chrome-window is-ours" data-testid="compare-ours">
+                <div className="demo-chrome">
+                  <span>Archilas</span>
+                </div>
+                <div className="chrome-body">
+                  <div className="chip-row">
+                    {usChips.map((chip) => (
+                      <span key={chip} className="chip is-on">
+                        {chip}
+                      </span>
+                    ))}
+                  </div>
+                  <p className="compare-micro">We keep what matters — and bring it back when you ask.</p>
+                </div>
+              </div>
+              <p className="compare-foot" data-testid="compare-foot">
+                Old way floods the prompt. Archilas returns a living record.
+              </p>
             </div>
-            <p className="compare-foot" data-testid="compare-foot">
-              Old way floods the prompt. Archilas returns a living record.
-            </p>
           </div>
-        </div>
+        </Reveal>
       </div>
-      </Reveal>
     </section>
   );
 }

@@ -7,7 +7,7 @@ export function Waitlist() {
       id="waitlist"
       className="wait-band scroll-mt-[var(--scroll-margin)] px-[var(--pad-x)] py-16 md:py-24"
     >
-      <Reveal>
+      <Reveal delay={80} y={20}>
         <div className="mx-auto max-w-lg text-center">
           <h2 className="h2">Get early access.</h2>
           <p className="mt-3 text-[16px] leading-7 text-body">We’ll email when Archilas opens.</p>
