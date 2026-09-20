@@ -1698,11 +1698,6 @@ cite {
     align-items: start;
   }
 
-  .compare-plate {
-    position: sticky;
-    top: 108px;
-  }
-
   .split-grid.is-how {
     grid-template-columns: 1.16fr 0.84fr;
   }
