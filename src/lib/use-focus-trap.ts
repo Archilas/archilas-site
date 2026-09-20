@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, type RefObject } from "react";
+import { getLenis } from "@/lib/lenis";
 
 const FOCUSABLE =
   'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
@@ -50,11 +51,13 @@ export function useFocusTrap(
     const prevHtml = document.documentElement.style.overflow;
     document.body.style.overflow = "hidden";
     document.documentElement.style.overflow = "hidden";
+    getLenis()?.stop();
     document.addEventListener("keydown", onKey);
     return () => {
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = prevBody;
       document.documentElement.style.overflow = prevHtml;
+      getLenis()?.start();
       previous?.focus();
     };
   }, [active, containerRef, onClose]);

@@ -14,7 +14,7 @@ export function WaitlistModal() {
   if (!open) return null;
 
   return (
-    <div className="waitlist-overlay" role="presentation" onClick={hide}>
+    <div className="waitlist-overlay" role="presentation" onClick={hide} data-lenis-prevent>
       <div
         ref={panelRef}
         role="dialog"
@@ -22,6 +22,7 @@ export function WaitlistModal() {
         aria-labelledby={titleId}
         className="waitlist-dialog"
         data-testid="waitlist-modal"
+        data-lenis-prevent
         onClick={(event) => event.stopPropagation()}
       >
         <div className="flex items-start justify-between gap-4">
