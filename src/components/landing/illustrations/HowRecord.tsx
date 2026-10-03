@@ -83,10 +83,10 @@ function RecordRow({
     if (!entry.source) return 0;
     if (forceHidden) return 0;
     if (forceComplete) return 1;
-    return v > 0.55 ? 1 : 0;
+    return v > 0.35 ? 1 : 0;
   });
   const border = useTransform(highlight, (v) =>
-    v > 0.5 ? "color-mix(in srgb, var(--amber) 85%, transparent)" : "var(--line)",
+    v > 0.5 ? "var(--amber)" : "var(--line)",
   );
   const bg = useTransform(highlight, (v) => (v > 0.5 ? "var(--amber-soft)" : "var(--surface)"));
 
