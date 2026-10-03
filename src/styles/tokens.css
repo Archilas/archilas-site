@@ -1,17 +1,17 @@
-/* Near-black canvas. Warm-white type. Electric blue is focus/active only. */
+/* Light Linear / Vercel-style canvas. Monochrome + one restrained accent. */
 
 :root {
-  --bg: #07080a;
-  --surface: #12141a;
-  --ink: #f3f0e8;
-  --body: #9b9ca6;
-  --muted: #787984;
-  --line: #23262e;
-  --inverse: #f3f0e8;
-  --signal: #3d8bff;
-  --focus: #3d8bff;
-  --cta: #ffffff;
-  --cta-ink: #0a0a0a;
+  --bg: #fafafa;
+  --surface: #ffffff;
+  --ink: #0a0a0a;
+  --body: #525252;
+  --muted: #737373;
+  --line: #e5e5e5;
+  --inverse: #fafafa;
+  --signal: #171717;
+  --focus: #2563eb;
+  --cta: #0a0a0a;
+  --cta-ink: #ffffff;
 
   --paper: var(--bg);
   --elevated: var(--surface);
@@ -20,37 +20,43 @@
   --border-input: var(--line);
   --surface-legacy: var(--surface);
 
-  --bg-dark: var(--bg);
-  --card-dark: #12141a;
-  --border-dark: var(--line);
-  --text-dark: var(--ink);
+  --bg-dark: #0a0a0a;
+  --card-dark: #171717;
+  --border-dark: #262626;
+  --text-dark: #fafafa;
 
   --accent: var(--focus);
   --accent-dark: var(--focus);
 
-  --hero-shadow: 0 40px 90px rgba(0, 0, 0, 0.45);
-  --card-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+  --hero-shadow: 0 24px 48px rgba(10, 10, 10, 0.06);
+  --card-shadow: none;
 
-  --text-display: clamp(2.4rem, 5.6vw, 4.4rem);
-  --text-statement: clamp(2.4rem, 5vw, 3.6rem);
-  --text-h2: clamp(1.7rem, 3vw, 2.4rem);
-  --text-h3: 1.125rem;
-  --text-body: 1.0625rem;
+  --text-display: clamp(2.35rem, 5.2vw, 3.75rem);
+  --text-statement: clamp(2rem, 4.2vw, 3rem);
+  --text-h2: clamp(1.5rem, 2.6vw, 2rem);
+  --text-h3: 1.0625rem;
+  --text-body: 1rem;
   --text-label: 0.6875rem;
   --text-mono: 0.75rem;
   --leading-body: 1.5;
 
-  --arch-radius-card: 20px;
-  --arch-radius-control: 999px;
-  --arch-radius-hero: 28px;
+  --arch-radius-card: 12px;
+  --arch-radius-control: 8px;
+  --arch-radius-hero: 12px;
 
-  --max-width: 1120px;
-  --pad-x: 28px;
-  --pad-y: 96px;
-  --pad-y-mobile: 64px;
-  --nav-height: 88px;
-  --control-height: 46px;
-  --scroll-margin: 96px;
+  --max-width: 1080px;
+  --pad-x: 20px;
+  --pad-y: 88px;
+  --pad-y-mobile: 56px;
+  --nav-height: 72px;
+  --control-height: 40px;
+  --scroll-margin: 88px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --pad-x: 32px;
+  }
 }
 
 @theme inline {
@@ -68,7 +74,7 @@
   --color-near-black: var(--near-black);
   --color-border: var(--line);
   --color-border-input: var(--line);
-  --color-bg-dark: var(--bg);
+  --color-bg-dark: var(--bg-dark);
   --color-card-dark: var(--card-dark);
   --color-border-dark: var(--border-dark);
   --color-text-dark: var(--text-dark);

@@ -1,5 +1,3 @@
-import { PlateDrift } from "@/components/PlateDrift";
-import { AgentMemory } from "@/components/landing/AgentMemory";
 import { CtaBand } from "@/components/landing/CtaBand";
 import { Hero } from "@/components/landing/Hero";
 import { HowItWorks } from "@/components/landing/HowItWorks";
@@ -20,13 +18,11 @@ export default function HomePage() {
   return (
     <>
       <JsonLd data={organizationJsonLd()} />
-      <PlateDrift />
       <Hero />
       <Problem />
       <HowItWorks />
       <WhoFor />
       <WhyBetter />
-      <AgentMemory />
       <CtaBand />
     </>
   );

@@ -4,24 +4,24 @@ const STEPS = [
   {
     id: "capture",
     title: "Capture",
-    body: "Archilas reads the places your team already writes things down: PRs, issues, design notes and threads.",
+    body: "Reads PRs, issues, design notes and threads your team already writes.",
   },
   {
     id: "remember",
     title: "Remember",
-    body: "It keeps a lasting record of decisions, changes and owners over time, not a pile of chunks.",
+    body: "Keeps a lasting record of decisions, changes and owners — not a pile of chunks.",
   },
   {
     id: "answer",
     title: "Answer",
-    body: "Ask a question and get a direct answer with a citation to the source note. Asking from Cursor, Claude Code or any MCP client is coming soon.",
+    body: "Ask a question; get a direct answer with a citation. Cursor, Claude Code and MCP coming soon.",
   },
 ] as const;
 
 export function HowItWorks() {
   return (
     <section id="how" className="how-band split-band scroll-mt-[var(--scroll-margin)] px-[var(--pad-x)]">
-      <div className="mx-auto max-w-[1180px]">
+      <div className="mx-auto max-w-[var(--max-width)]">
         <Reveal delay={60}>
           <div className="section-head">
             <p className="label">How it works</p>
@@ -30,7 +30,7 @@ export function HowItWorks() {
         </Reveal>
         <div className="how-steps">
           {STEPS.map((step, index) => (
-            <Reveal key={step.id} delay={80 + index * 90} y={20}>
+            <Reveal key={step.id} delay={80 + index * 70} y={16}>
               <article className="how-step" data-testid={`how-${step.id}`}>
                 <p className="how-step-index">{String(index + 1).padStart(2, "0")}</p>
                 <h3 className="how-step-title">{step.title}</h3>
@@ -39,33 +39,6 @@ export function HowItWorks() {
             </Reveal>
           ))}
         </div>
-        <Reveal delay={200} y={24}>
-          <aside className="how-example band-plate is-short plate-drift" data-testid="how-example">
-            <div className="plate-sky is-fjord" aria-hidden="true" />
-            <div className="chrome-window how-example-window">
-              <div className="demo-chrome">
-                <span>Illustrative example</span>
-                <span className="hero-qa-chip">Not a live query</span>
-              </div>
-              <div className="how-example-body">
-                <p className="hero-qa-q">
-                  <span className="hero-qa-label">Q</span>
-                  Why did we move auth off the session service, and who signed off?
-                </p>
-                <div className="hero-qa-a is-on">
-                  <p>
-                    <span className="hero-qa-label">A</span>
-                    The team moved it in March after repeated timeouts under load. Priya approved the
-                    change in the infra review.
-                  </p>
-                  <p className="hero-qa-source">
-                    Source: PR #412, design note &quot;Auth migration&quot;.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </aside>
-        </Reveal>
       </div>
     </section>
   );

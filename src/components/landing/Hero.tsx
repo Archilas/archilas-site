@@ -3,15 +3,14 @@ import { HeroQaDemo } from "@/components/landing/HeroQaDemo";
 
 export function Hero() {
   return (
-    <section className="hero-sky px-[var(--pad-x)] text-center">
+    <section className="hero-sky px-[var(--pad-x)]">
       <div className="hero-stack">
         <p className="hero-badge enter enter-d0">
           Team memory for engineering teams · Cursor, Claude Code and MCP coming soon
         </p>
         <h1 className="display enter enter-d1">The agent that knows your team&apos;s history.</h1>
         <p className="hero-sub enter enter-d2">
-          Ask why, when or who about any part of your codebase. Archilas answers from your team&apos;s
-          record and cites the note it came from.
+          Ask why, when or who about your codebase. Get a cited answer from your team&apos;s record.
         </p>
         <div className="hero-actions enter enter-d3">
           <EarlyAccessCTA source="hero" />
@@ -22,12 +21,7 @@ export function Hero() {
       </div>
       <div className="hero-plate-enter enter enter-d5">
         <div className="hero-demo" id="demo" data-testid="hero-demo">
-          <div className="demo-plate plate-drift is-wide">
-            <div className="plate-sky is-alpine" aria-hidden="true" />
-            <div className="chrome-window hero-app-window">
-              <HeroQaDemo />
-            </div>
-          </div>
+          <HeroQaDemo />
         </div>
       </div>
     </section>
