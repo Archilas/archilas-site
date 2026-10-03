@@ -57,10 +57,7 @@ export function HowItWorks() {
   const [reasonStep, setReasonStep] = useState(0);
 
   useEffect(() => {
-    if (reduced) {
-      setReasonStep(REASON_STEPS.length);
-      return;
-    }
+    if (reduced) return;
     const node = rootRef.current;
     let visible = true;
     const observer = node
@@ -114,6 +111,7 @@ export function HowItWorks() {
   };
 
   const stage = STAGES.find((item) => item.id === id) ?? STAGES[0];
+  const shownReason = reduced ? REASON_STEPS.length : reasonStep;
 
   return (
     <section id="how" className="how-band split-band scroll-mt-[var(--scroll-margin)] px-[var(--pad-x)]">
@@ -173,8 +171,8 @@ export function HowItWorks() {
                         key={label}
                         className={cn(
                           "how-reason-step",
-                          reasonStep === n && "is-on",
-                          reasonStep > n && "is-done",
+                          shownReason === n && "is-on",
+                          shownReason > n && "is-done",
                         )}
                       >
                         <span className="how-reason-mark" aria-hidden="true" />

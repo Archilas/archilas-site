@@ -28,10 +28,7 @@ export function Reveal({
   useEffect(() => {
     const node = ref.current;
     if (!node) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setOn(true);
-      return;
-    }
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {

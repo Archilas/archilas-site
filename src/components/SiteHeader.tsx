@@ -2,13 +2,11 @@
 
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { BrandLogo } from "@/components/BrandLogo";
-import { WaitlistCTA } from "@/components/WaitlistCTA";
+import { ButtonPrimary } from "@/components/ButtonPrimary";
 import { scrollToHash } from "@/lib/hash-scroll";
 import { nav, site } from "@/lib/site";
 import { useFocusTrap } from "@/lib/use-focus-trap";
-import { useWaitlist } from "@/lib/waitlist-context";
 import { track } from "@/lib/analytics";
-import { ButtonPrimary } from "@/components/ButtonPrimary";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
@@ -16,7 +14,6 @@ export function SiteHeader() {
   const drawerId = useId();
   const drawerRef = useRef<HTMLDivElement>(null);
   const close = useCallback(() => setOpen(false), []);
-  const waitlist = useWaitlist();
   useFocusTrap(open, drawerRef, close);
 
   useEffect(() => {
@@ -53,7 +50,12 @@ export function SiteHeader() {
             ))}
           </nav>
           <div className="nav-cta hidden lg:flex">
-            <WaitlistCTA source="nav" align="end" />
+            <ButtonPrimary
+              href={site.earlyAccessUrl}
+              onClick={() => track("cta_click", { source: "nav" })}
+            >
+              Get early access
+            </ButtonPrimary>
           </div>
           <button
             type="button"
@@ -94,18 +96,15 @@ export function SiteHeader() {
           </nav>
           <div className="mt-4 flex flex-col gap-3">
             <ButtonPrimary
+              href={site.earlyAccessUrl}
               className="w-full"
               onClick={() => {
                 track("cta_click", { source: "nav-mobile" });
-                waitlist.show("nav-mobile");
                 close();
               }}
             >
-              Join waitlist →
+              Get early access
             </ButtonPrimary>
-            <a href={`mailto:${site.email}`} className="btn-outline w-full">
-              Contact
-            </a>
             <button type="button" className="self-start text-[14px] font-medium not-italic text-ink" onClick={close}>
               Close
             </button>

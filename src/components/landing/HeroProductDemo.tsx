@@ -127,14 +127,12 @@ function PayloadCard() {
 export function HeroProductDemo() {
   const reduced = usePrefersReducedMotion();
   const rootRef = useRef<HTMLDivElement>(null);
-  const [snap, setSnap] = useState<Snap>(reduced ? REDUCED : snapAt(0));
+  const [snap, setSnap] = useState<Snap>(snapAt(0));
   const visibleRef = useRef(true);
+  const frame = reduced ? REDUCED : snap;
 
   useEffect(() => {
-    if (reduced) {
-      setSnap(REDUCED);
-      return;
-    }
+    if (reduced) return;
     const node = rootRef.current;
     const observer = node
       ? new IntersectionObserver(
@@ -165,15 +163,15 @@ export function HeroProductDemo() {
     };
   }, [reduced]);
 
-  const typing = !snap.sent && snap.typed > 0 && snap.typed < HERO_QUERY.length;
-  const composerText = snap.sent ? "" : HERO_QUERY.slice(0, snap.typed);
+  const typing = !frame.sent && frame.typed > 0 && frame.typed < HERO_QUERY.length;
+  const composerText = frame.sent ? "" : HERO_QUERY.slice(0, frame.typed);
 
   return (
     <div
       ref={rootRef}
       className="hero-app"
       data-testid="hero-product-demo"
-      data-phase={snap.phase}
+      data-phase={frame.phase}
     >
       <aside className="hero-app-side" aria-hidden="true">
         <p className="hero-app-brand">
@@ -198,19 +196,19 @@ export function HeroProductDemo() {
           </div>
           <span className="hero-app-spine">Compact → Reason → Deliver</span>
         </div>
-        <div className={cn("hero-thread", snap.fade && "is-dissolve")} data-testid="hero-thread">
-          {snap.sent ? (
+        <div className={cn("hero-thread", frame.fade && "is-dissolve")} data-testid="hero-thread">
+          {frame.sent ? (
             <div
-              className={cn("hero-bubble is-user", snap.pop && "is-pop")}
+              className={cn("hero-bubble is-user", frame.pop && "is-pop")}
               data-testid="hero-user"
             >
               {HERO_QUERY}
             </div>
           ) : null}
 
-          {snap.tool && !snap.up ? (
+          {frame.tool && !frame.up ? (
             <div
-              className={cn("hero-tool", snap.done && "is-done")}
+              className={cn("hero-tool", frame.done && "is-done")}
               data-testid="hero-tool"
             >
               <div className="hero-tool-head">
@@ -219,27 +217,27 @@ export function HeroProductDemo() {
                   <span className="hero-tool-name">{HERO_TOOL}</span>
                   <span className="hero-tool-sub">{HERO_TOOL_SUB}</span>
                 </span>
-                <span className="hero-tool-status">{snap.status}</span>
+                <span className="hero-tool-status">{frame.status}</span>
               </div>
             </div>
           ) : null}
 
-          {snap.persist ? <PayloadCard /> : null}
+          {frame.persist ? <PayloadCard /> : null}
 
-          {snap.answer > 0 ? (
+          {frame.answer > 0 ? (
             <div className="hero-bubble is-assistant" data-testid="hero-answer">
-              {HERO_ANSWER.slice(0, snap.answer)}
-              {snap.answer < HERO_ANSWER.length ? <span className="hero-caret" /> : null}
+              {HERO_ANSWER.slice(0, frame.answer)}
+              {frame.answer < HERO_ANSWER.length ? <span className="hero-caret" /> : null}
             </div>
           ) : null}
         </div>
         <div
-          className={cn("hero-sheet-scrim", snap.up && "is-on")}
+          className={cn("hero-sheet-scrim", frame.up && "is-on")}
           aria-hidden="true"
         />
-        {snap.sheet ? (
+        {frame.sheet ? (
           <div
-            className={cn("hero-sheet", snap.up && "is-up")}
+            className={cn("hero-sheet", frame.up && "is-up")}
             data-testid="hero-sheet"
           >
             <div className="hero-sheet-head">
@@ -248,14 +246,14 @@ export function HeroProductDemo() {
                 <span className="hero-tool-name">{HERO_TOOL}</span>
                 <span className="hero-tool-sub">{HERO_TOOL_SUB}</span>
               </span>
-              <span className="hero-tool-status">{snap.status}</span>
+              <span className="hero-tool-status">{frame.status}</span>
             </div>
-            {!snap.result ? (
+            {!frame.result ? (
               <p className="hero-sheet-kicker">{HERO_SHEET_KICKER}</p>
             ) : null}
-            {snap.result && snap.up ? (
+            {frame.result && frame.up ? (
               <PayloadCard />
-            ) : !snap.result ? (
+            ) : !frame.result ? (
               <ol className="hero-steps" data-testid="hero-steps">
                 {HERO_STEPS.map((row, index) => {
                   const n = index + 1;
@@ -264,8 +262,8 @@ export function HeroProductDemo() {
                       key={row.id}
                       className={cn(
                         "hero-step",
-                        snap.step === n && "is-on",
-                        snap.step > n && "is-done",
+                        frame.step === n && "is-on",
+                        frame.step > n && "is-done",
                       )}
                     >
                       <span className="hero-step-mark" aria-hidden="true" />
@@ -278,7 +276,7 @@ export function HeroProductDemo() {
           </div>
         ) : null}
         <div
-          className={cn("hero-composer", !snap.sent && snap.typed > 0 && "is-live")}
+          className={cn("hero-composer", !frame.sent && frame.typed > 0 && "is-live")}
           data-testid="hero-composer"
         >
           <p className="hero-composer-text" dir="ltr">
@@ -291,7 +289,7 @@ export function HeroProductDemo() {
               <span className="hero-composer-ph">Message Claude…</span>
             )}
           </p>
-          <span className={cn("hero-composer-go", snap.sent && "is-sent")} aria-hidden="true">
+          <span className={cn("hero-composer-go", frame.sent && "is-sent")} aria-hidden="true">
             →
           </span>
         </div>
