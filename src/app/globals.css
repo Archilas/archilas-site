@@ -271,7 +271,8 @@ button.btn-primary:hover,
   margin: 0 auto;
   display: grid;
   gap: 28px;
-  align-items: center;
+  /* Start-align so the short copy column isn't vertically centered into a gap above the H1. */
+  align-items: start;
 }
 
 .mem-hero-grid::before {
