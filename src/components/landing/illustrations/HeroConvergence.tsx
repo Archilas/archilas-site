@@ -1,109 +1,160 @@
+"use client";
+
+import { motion, useInView, useReducedMotion } from "framer-motion";
+import { useRef } from "react";
+
 /** Hero: agents/chats flow into Archilas; answer returns with cited source. */
 export function HeroConvergence({ className = "" }: { className?: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { amount: 0.2, once: false });
+  const reduced = useReducedMotion();
+  // Hero diagram starts "on" so first paint isn't empty; still reverses when scrolled away.
+  const on = reduced || inView || true;
+
   return (
-    <svg
-      className={className}
-      viewBox="0 0 720 420"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      role="img"
-      aria-label="Diagram: Cursor, Claude, agent handoff, and company chatbot feed into Archilas, which answers with a cited source"
-    >
-      <rect width="720" height="420" fill="var(--surface)" />
-      {/* grid */}
-      <g stroke="var(--line)" strokeWidth="1" opacity="0.55">
-        {Array.from({ length: 13 }, (_, i) => (
-          <line key={`v${i}`} x1={40 + i * 53} y1="24" x2={40 + i * 53} y2="396" />
+    <div ref={ref} className={className}>
+      <svg
+        className="mem-diagram mem-diagram-desktop"
+        viewBox="0 0 760 460"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        role="img"
+        aria-label="Diagram: Cursor, Claude, agent handoff, and company chatbot feed into Archilas, which answers with a cited source"
+      >
+        <rect width="760" height="460" fill="var(--surface)" />
+        <g stroke="var(--line)" strokeWidth="1" opacity="0.45">
+          {Array.from({ length: 14 }, (_, i) => (
+            <line key={`v${i}`} x1={28 + i * 54} y1="20" x2={28 + i * 54} y2="440" />
+          ))}
+          {Array.from({ length: 9 }, (_, i) => (
+            <line key={`h${i}`} x1="28" y1={20 + i * 52.5} x2="732" y2={20 + i * 52.5} />
+          ))}
+        </g>
+
+        <SourceNode x={40} y={40} label="Cursor chat" sub="yesterday" fill="var(--sky-soft)" stroke="var(--sky)" />
+        <SourceNode x={40} y={132} label="Claude Code" sub="session" fill="var(--sky-soft)" stroke="var(--sky)" />
+        <SourceNode x={40} y={224} label="Agent handoff" sub="tool → tool" fill="var(--sky-soft)" stroke="var(--sky)" />
+        <SourceNode x={40} y={316} label="Team chatbot" sub="last week" fill="var(--sky-soft)" stroke="var(--sky)" />
+
+        {(
+          [
+            "M210 72 C300 72, 330 220, 390 230",
+            "M210 164 C290 164, 340 220, 390 230",
+            "M210 256 C290 250, 350 240, 390 230",
+            "M210 348 C300 340, 350 260, 390 230",
+          ] as const
+        ).map((d, i) => (
+          <motion.path
+            key={d}
+            d={d}
+            stroke="var(--signal)"
+            strokeWidth="2.25"
+            fill="none"
+            strokeDasharray="10 7"
+            initial={false}
+            animate={on ? { pathLength: 1, opacity: 1, x: 0 } : { pathLength: 0.15, opacity: 0.35, x: -12 }}
+            transition={{ duration: 0.7, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+          />
         ))}
-        {Array.from({ length: 8 }, (_, i) => (
-          <line key={`h${i}`} x1="40" y1={24 + i * 53} x2="680" y2={24 + i * 53} />
-        ))}
-      </g>
 
-      {/* Source nodes */}
-      <SourceNode x={48} y={48} label="Cursor chat" sub="yesterday" />
-      <SourceNode x={48} y={132} label="Claude Code" sub="session" />
-      <SourceNode x={48} y={216} label="Agent handoff" sub="tool → tool" />
-      <SourceNode x={48} y={300} label="Team chatbot" sub="last week" />
+        <motion.g
+          initial={false}
+          animate={on ? { scale: 1, opacity: 1 } : { scale: 0.94, opacity: 0.55 }}
+          transition={{ duration: 0.55, delay: 0.2 }}
+          style={{ transformOrigin: "466px 230px" }}
+        >
+          <rect x="390" y="176" width="152" height="108" rx="4" fill="var(--ink)" />
+          <text
+            x="466"
+            y="214"
+            textAnchor="middle"
+            fill="var(--inverse)"
+            style={{ fontFamily: "var(--font-geist), sans-serif", fontSize: 16, fontWeight: 650 }}
+          >
+            Archilas
+          </text>
+          <text
+            x="466"
+            y="238"
+            textAnchor="middle"
+            fill="var(--signal-soft)"
+            style={{ fontFamily: "var(--font-geist-mono), monospace", fontSize: 12, letterSpacing: "0.08em" }}
+          >
+            MEMORY AGENT
+          </text>
+          <circle cx="466" cy="262" r="4" fill="var(--signal)" />
+        </motion.g>
 
-      {/* Flow lines into center */}
-      <g stroke="var(--signal)" strokeWidth="1.75" fill="none">
-        <path d="M188 72 C270 72, 310 200, 360 210" className="diag-flow" />
-        <path d="M188 156 C260 156, 310 200, 360 210" className="diag-flow diag-flow-d1" />
-        <path d="M188 240 C260 240, 320 220, 360 210" className="diag-flow diag-flow-d2" />
-        <path d="M188 324 C270 324, 330 240, 360 210" className="diag-flow diag-flow-d3" />
-      </g>
+        <motion.path
+          d="M542 230 H590"
+          stroke="var(--amber)"
+          strokeWidth="2.25"
+          initial={false}
+          animate={on ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0.3 }}
+          transition={{ duration: 0.5, delay: 0.45 }}
+        />
+        <polygon points="590,223 608,230 590,237" fill="var(--amber)" />
 
-      {/* Archilas core */}
-      <rect x="360" y="168" width="148" height="84" rx="4" fill="var(--ink)" />
-      <text
-        x="434"
-        y="198"
-        textAnchor="middle"
-        fill="var(--inverse)"
-        style={{ fontFamily: "var(--font-geist), sans-serif", fontSize: 13, fontWeight: 600 }}
-      >
-        Archilas
-      </text>
-      <text
-        x="434"
-        y="220"
-        textAnchor="middle"
-        fill="var(--accent-soft)"
-        style={{ fontFamily: "var(--font-geist-mono), monospace", fontSize: 10, letterSpacing: "0.08em" }}
-      >
-        MEMORY AGENT
-      </text>
-      <circle cx="434" cy="236" r="3" fill="var(--signal)" />
+        <rect x="616" y="150" width="120" height="160" rx="4" fill="var(--bg)" stroke="var(--ink)" strokeWidth="1.75" />
+        <text
+          x="676"
+          y="178"
+          textAnchor="middle"
+          fill="var(--muted)"
+          style={{ fontFamily: "var(--font-geist-mono), monospace", fontSize: 12, letterSpacing: "0.1em" }}
+        >
+          ANSWER
+        </text>
+        <text
+          x="676"
+          y="204"
+          textAnchor="middle"
+          fill="var(--ink)"
+          style={{ fontFamily: "var(--font-geist), sans-serif", fontSize: 14, fontWeight: 600 }}
+        >
+          with source
+        </text>
+        <rect x="632" y="224" width="88" height="56" rx="3" fill="var(--amber-soft)" stroke="var(--amber)" strokeWidth="1.5" />
+        <text
+          x="676"
+          y="248"
+          textAnchor="middle"
+          fill="var(--amber)"
+          style={{ fontFamily: "var(--font-geist-mono), monospace", fontSize: 12 }}
+        >
+          cite
+        </text>
+        <text
+          x="676"
+          y="268"
+          textAnchor="middle"
+          fill="var(--ink)"
+          style={{ fontFamily: "var(--font-geist), sans-serif", fontSize: 12, fontWeight: 560 }}
+        >
+          Claude · Tue
+        </text>
+      </svg>
 
-      {/* Outbound answer */}
-      <path
-        d="M508 210 H560"
-        stroke="var(--signal)"
-        strokeWidth="1.5"
-        className="diag-flow diag-flow-d4"
-      />
-      <polygon points="560,204 574,210 560,216" fill="var(--signal)" />
-
-      <rect x="580" y="150" width="108" height="120" rx="4" fill="var(--bg)" stroke="var(--ink)" strokeWidth="1.5" />
-      <text
-        x="634"
-        y="174"
-        textAnchor="middle"
-        fill="var(--muted)"
-        style={{ fontFamily: "var(--font-geist-mono), monospace", fontSize: 9, letterSpacing: "0.1em" }}
-      >
-        ANSWER
-      </text>
-      <text
-        x="634"
-        y="198"
-        textAnchor="middle"
-        fill="var(--ink)"
-        style={{ fontFamily: "var(--font-geist), sans-serif", fontSize: 11, fontWeight: 560 }}
-      >
-        with source
-      </text>
-      <rect x="596" y="214" width="76" height="36" rx="2" fill="var(--accent-soft)" stroke="var(--signal)" />
-      <text
-        x="634"
-        y="228"
-        textAnchor="middle"
-        fill="var(--signal)"
-        style={{ fontFamily: "var(--font-geist-mono), monospace", fontSize: 8 }}
-      >
-        cite
-      </text>
-      <text
-        x="634"
-        y="242"
-        textAnchor="middle"
-        fill="var(--ink)"
-        style={{ fontFamily: "var(--font-geist), sans-serif", fontSize: 9 }}
-      >
-        Claude · Tue
-      </text>
-    </svg>
+      <div className="mem-diagram-mobile" aria-label="Agents feed Archilas; it answers with a cited source">
+        <div className="mob-flow-stack">
+          {["Cursor chat · yesterday", "Claude Code · session", "Agent handoff · tool → tool", "Team chatbot · last week"].map(
+            (label) => (
+              <div key={label} className="mob-node mob-node-sky">
+                {label}
+              </div>
+            ),
+          )}
+          <div className="mob-arrow" aria-hidden="true">
+            ↓ into Archilas
+          </div>
+          <div className="mob-node mob-node-ink">Archilas · memory agent</div>
+          <div className="mob-arrow mob-arrow-amber" aria-hidden="true">
+            ↓ answers with source
+          </div>
+          <div className="mob-node mob-node-amber">cite · Claude · Tue</div>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -112,32 +163,33 @@ function SourceNode({
   y,
   label,
   sub,
-  wide,
+  fill,
+  stroke,
 }: {
   x: number;
   y: number;
   label: string;
   sub: string;
-  wide?: boolean;
+  fill: string;
+  stroke: string;
 }) {
-  const w = wide ? 164 : 140;
   return (
     <g>
-      <rect x={x} y={y} width={w} height={48} rx="4" fill="var(--bg)" stroke="var(--line)" strokeWidth="1.25" />
-      <circle cx={x + 16} cy={y + 24} r="5" fill="none" stroke="var(--signal)" strokeWidth="1.5" />
+      <rect x={x} y={y} width={170} height={64} rx="4" fill={fill} stroke={stroke} strokeWidth="1.5" />
+      <circle cx={x + 18} cy={y + 32} r="6" fill="none" stroke={stroke} strokeWidth="2" />
       <text
-        x={x + 30}
-        y={y + 20}
+        x={x + 34}
+        y={y + 28}
         fill="var(--ink)"
-        style={{ fontFamily: "var(--font-geist), sans-serif", fontSize: 12, fontWeight: 560 }}
+        style={{ fontFamily: "var(--font-geist), sans-serif", fontSize: 14, fontWeight: 600 }}
       >
         {label}
       </text>
       <text
-        x={x + 30}
-        y={y + 36}
-        fill="var(--muted)"
-        style={{ fontFamily: "var(--font-geist-mono), monospace", fontSize: 10 }}
+        x={x + 34}
+        y={y + 48}
+        fill="var(--body)"
+        style={{ fontFamily: "var(--font-geist-mono), monospace", fontSize: 12 }}
       >
         {sub}
       </text>

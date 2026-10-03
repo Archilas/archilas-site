@@ -1,99 +1,205 @@
+"use client";
+
+import { motion, useInView, useReducedMotion } from "framer-motion";
+import { useRef } from "react";
+
 /** Who it's for: company internal agents vs individual AI tools. */
 export function WhoScenes({ className = "" }: { className?: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { amount: 0.28, once: false });
+  const reduced = useReducedMotion();
+  const on = reduced || inView;
+
   return (
-    <svg
-      className={className}
-      viewBox="0 0 720 320"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      role="img"
-      aria-label="Two scenes: companies running internal agents and chatbots, and individuals who live in AI tools"
-    >
-      <rect width="720" height="320" fill="var(--surface)" />
-
-      {/* Company scene */}
-      <rect x="24" y="24" width="328" height="272" rx="4" fill="var(--bg)" stroke="var(--line)" />
-      <text
-        x="44"
-        y="52"
-        fill="var(--muted)"
-        style={{ fontFamily: "var(--font-geist-mono), monospace", fontSize: 10, letterSpacing: "0.1em" }}
+    <div ref={ref} className={className}>
+      <svg
+        className="mem-diagram mem-diagram-desktop"
+        viewBox="0 0 760 340"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        role="img"
+        aria-label="Two scenes: companies running internal agents and chatbots, and individuals who live in AI tools"
       >
-        COMPANIES
-      </text>
+        <rect width="760" height="340" fill="transparent" />
+
+        {/* Company scene — no outer nested frame beyond the panel */}
+        <motion.g
+          initial={false}
+          animate={on ? { opacity: 1, x: 0 } : { opacity: 0.4, x: -16 }}
+          transition={{ duration: 0.55 }}
+        >
+          <rect x="0" y="0" width="364" height="300" rx="4" fill="var(--bg-mint)" stroke="var(--line)" />
+          <text
+            x="24"
+            y="36"
+            fill="var(--muted)"
+            style={{ fontFamily: "var(--font-geist-mono), monospace", fontSize: 12, letterSpacing: "0.1em" }}
+          >
+            COMPANIES
+          </text>
+          <text
+            x="24"
+            y="64"
+            fill="var(--ink)"
+            style={{ fontFamily: "var(--font-geist), sans-serif", fontSize: 16, fontWeight: 650 }}
+          >
+            Internal agents & chatbots
+          </text>
+
+          <AgentChip x={24} y={90} label="Support bot" />
+          <AgentChip x={140} y={90} label="Ops agent" />
+          <AgentChip x={256} y={90} label="Legal bot" />
+          <AgentChip x={24} y={148} label="Sales agent" />
+          <AgentChip x={140} y={148} label="Oncall bot" />
+
+          <rect x={100} y={214} width={164} height={58} rx="4" fill="var(--ink)" />
+          <text
+            x={182}
+            y={240}
+            textAnchor="middle"
+            fill="var(--inverse)"
+            style={{ fontFamily: "var(--font-geist), sans-serif", fontSize: 14, fontWeight: 650 }}
+          >
+            Archilas
+          </text>
+          <text
+            x={182}
+            y={260}
+            textAnchor="middle"
+            fill="var(--signal-soft)"
+            style={{ fontFamily: "var(--font-geist-mono), monospace", fontSize: 12 }}
+          >
+            shared memory
+          </text>
+          <path d="M80 186 V214 H182" stroke="var(--signal)" strokeWidth="1.75" fill="none" />
+          <path d="M196 186 V214 H182" stroke="var(--signal)" strokeWidth="1.75" fill="none" />
+          <path d="M302 128 V200 H182" stroke="var(--signal)" strokeWidth="1.5" fill="none" opacity="0.7" />
+        </motion.g>
+
+        <motion.g
+          initial={false}
+          animate={on ? { opacity: 1, x: 0 } : { opacity: 0.4, x: 16 }}
+          transition={{ duration: 0.55, delay: 0.08 }}
+        >
+          <rect x="396" y="0" width="364" height="300" rx="4" fill="var(--bg-warm)" stroke="var(--line)" />
+          <text
+            x="420"
+            y="36"
+            fill="var(--muted)"
+            style={{ fontFamily: "var(--font-geist-mono), monospace", fontSize: 12, letterSpacing: "0.1em" }}
+          >
+            INDIVIDUALS
+          </text>
+          <text
+            x="420"
+            y="64"
+            fill="var(--ink)"
+            style={{ fontFamily: "var(--font-geist), sans-serif", fontSize: 16, fontWeight: 650 }}
+          >
+            Live in AI tools
+          </text>
+
+          <AgentChip x={420} y={100} label="Cursor" />
+          <AgentChip x={536} y={100} label="Claude" />
+          <AgentChip x={420} y={158} label="ChatGPT" warm />
+          <AgentChip x={536} y={158} label="Local agents" warm />
+
+          <rect x={470} y={220} width={164} height={58} rx="4" fill="var(--ink)" />
+          <text
+            x={552}
+            y={246}
+            textAnchor="middle"
+            fill="var(--inverse)"
+            style={{ fontFamily: "var(--font-geist), sans-serif", fontSize: 14, fontWeight: 650 }}
+          >
+            Archilas
+          </text>
+          <text
+            x={552}
+            y={266}
+            textAnchor="middle"
+            fill="var(--amber-soft)"
+            style={{ fontFamily: "var(--font-geist-mono), monospace", fontSize: 12 }}
+          >
+            personal memory
+          </text>
+          <path d="M476 196 V220 H552" stroke="var(--amber)" strokeWidth="1.75" fill="none" />
+          <path d="M592 196 V220 H552" stroke="var(--amber)" strokeWidth="1.75" fill="none" />
+        </motion.g>
+
+        <text
+          x="380"
+          y="328"
+          textAnchor="middle"
+          fill="var(--body)"
+          style={{ fontFamily: "var(--font-geist), sans-serif", fontSize: 13 }}
+        >
+          Coming soon: Cursor, Claude Code and MCP support
+        </text>
+      </svg>
+
+      <div className="mem-diagram-mobile">
+        <div className="mob-who-card mint">
+          <p className="mob-kicker">Companies</p>
+          <strong>Internal agents & chatbots</strong>
+          <ul className="mob-chip-row">
+            <li>Support bot</li>
+            <li>Ops agent</li>
+            <li>Legal bot</li>
+            <li>Sales agent</li>
+            <li>Oncall bot</li>
+          </ul>
+          <div className="mob-node mob-node-ink">Archilas · shared memory</div>
+        </div>
+        <div className="mob-who-card warm">
+          <p className="mob-kicker">Individuals</p>
+          <strong>Live in AI tools</strong>
+          <ul className="mob-chip-row">
+            <li>Cursor</li>
+            <li>Claude</li>
+            <li>ChatGPT</li>
+            <li>Local agents</li>
+          </ul>
+          <div className="mob-node mob-node-ink">Archilas · personal memory</div>
+        </div>
+        <p className="mob-soon">Coming soon: Cursor, Claude Code and MCP support</p>
+      </div>
+    </div>
+  );
+}
+
+function AgentChip({
+  x,
+  y,
+  label,
+  warm,
+}: {
+  x: number;
+  y: number;
+  label: string;
+  warm?: boolean;
+}) {
+  return (
+    <g>
+      <rect
+        x={x}
+        y={y}
+        width={104}
+        height={40}
+        rx="3"
+        fill={warm ? "var(--amber-soft)" : "var(--sky-soft)"}
+        stroke={warm ? "var(--amber)" : "var(--sky)"}
+        strokeWidth="1.25"
+      />
       <text
-        x="44"
-        y="78"
+        x={x + 52}
+        y={y + 25}
+        textAnchor="middle"
         fill="var(--ink)"
-        style={{ fontFamily: "var(--font-geist), sans-serif", fontSize: 15, fontWeight: 600 }}
+        style={{ fontFamily: "var(--font-geist), sans-serif", fontSize: 12, fontWeight: 560 }}
       >
-        Internal agents & chatbots
+        {label}
       </text>
-
-      {/* org nodes */}
-      <rect x="56" y="110" width="88" height="56" rx="3" stroke="var(--ink)" fill="var(--surface)" />
-      <text x="100" y="142" textAnchor="middle" fill="var(--ink)" style={{ fontSize: 11, fontFamily: "var(--font-geist), sans-serif" }}>
-        Support bot
-      </text>
-      <rect x="172" y="110" width="88" height="56" rx="3" stroke="var(--ink)" fill="var(--surface)" />
-      <text x="216" y="142" textAnchor="middle" fill="var(--ink)" style={{ fontSize: 11, fontFamily: "var(--font-geist), sans-serif" }}>
-        Ops agent
-      </text>
-      <rect x="116" y="196" width="120" height="56" rx="3" fill="var(--ink)" />
-      <text x="176" y="220" textAnchor="middle" fill="var(--inverse)" style={{ fontSize: 12, fontFamily: "var(--font-geist), sans-serif", fontWeight: 600 }}>
-        Archilas
-      </text>
-      <text x="176" y="238" textAnchor="middle" fill="var(--accent-soft)" style={{ fontSize: 9, fontFamily: "var(--font-geist-mono), monospace" }}>
-        shared memory
-      </text>
-      <path d="M100 166 V196 H176" stroke="var(--signal)" strokeWidth="1.5" fill="none" />
-      <path d="M216 166 V196 H176" stroke="var(--signal)" strokeWidth="1.5" fill="none" />
-
-      {/* Individual scene */}
-      <rect x="368" y="24" width="328" height="272" rx="4" fill="var(--bg)" stroke="var(--line)" />
-      <text
-        x="388"
-        y="52"
-        fill="var(--muted)"
-        style={{ fontFamily: "var(--font-geist-mono), monospace", fontSize: 10, letterSpacing: "0.1em" }}
-      >
-        INDIVIDUALS
-      </text>
-      <text
-        x="388"
-        y="78"
-        fill="var(--ink)"
-        style={{ fontFamily: "var(--font-geist), sans-serif", fontSize: 15, fontWeight: 600 }}
-      >
-        Live in AI tools
-      </text>
-
-      <rect x="400" y="110" width="100" height="40" rx="3" stroke="var(--line)" fill="var(--surface)" />
-      <text x="450" y="134" textAnchor="middle" fill="var(--ink)" style={{ fontSize: 11, fontFamily: "var(--font-geist), sans-serif" }}>
-        Cursor
-      </text>
-      <rect x="520" y="110" width="100" height="40" rx="3" stroke="var(--line)" fill="var(--surface)" />
-      <text x="570" y="134" textAnchor="middle" fill="var(--ink)" style={{ fontSize: 11, fontFamily: "var(--font-geist), sans-serif" }}>
-        Claude
-      </text>
-      <rect x="460" y="180" width="140" height="56" rx="3" fill="var(--ink)" />
-      <text x="530" y="204" textAnchor="middle" fill="var(--inverse)" style={{ fontSize: 12, fontFamily: "var(--font-geist), sans-serif", fontWeight: 600 }}>
-        Archilas
-      </text>
-      <text x="530" y="222" textAnchor="middle" fill="var(--accent-soft)" style={{ fontSize: 9, fontFamily: "var(--font-geist-mono), monospace" }}>
-        personal memory
-      </text>
-      <path d="M450 150 V180 H530" stroke="var(--signal)" strokeWidth="1.5" fill="none" />
-      <path d="M570 150 V180 H530" stroke="var(--signal)" strokeWidth="1.5" fill="none" />
-
-      <text
-        x="388"
-        y="270"
-        fill="var(--body)"
-        style={{ fontFamily: "var(--font-geist), sans-serif", fontSize: 11 }}
-      >
-        Coming soon: Cursor, Claude Code, MCP
-      </text>
-    </svg>
+    </g>
   );
 }

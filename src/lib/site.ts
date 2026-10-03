@@ -8,6 +8,7 @@ export const site = {
   tagline: "The memory agent for your AI.",
   headline: "The memory agent for your AI.",
   email: "hello@archilas.com",
+  contactEmail: "hermes@archilas.com",
   twitter: "@archilas",
   twitterUrl: "https://x.com/archilas",
   githubUrl: "https://github.com/Archilas",

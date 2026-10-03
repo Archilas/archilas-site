@@ -1,7 +1,9 @@
-/* Memory-agent landing: cool paper, deep ink, forest accent. Diagram-led. */
+/* Signal Ledger polish: forest primary + amber cite + sky agent accents. */
 
 :root {
   --bg: #eef1f0;
+  --bg-warm: #f4f0e8;
+  --bg-mint: #e8f0eb;
   --surface: #f7f8f7;
   --ink: #141816;
   --body: #3d4540;
@@ -9,10 +11,15 @@
   --line: #c5cdc6;
   --inverse: #f7f8f7;
   --signal: #1f6b4a;
+  --signal-soft: #d7ebe1;
+  --amber: #c47a2c;
+  --amber-soft: #f3e4cf;
+  --sky: #3a7ca5;
+  --sky-soft: #d7e8f2;
   --focus: #1f6b4a;
   --cta: #141816;
   --cta-ink: #f7f8f7;
-  --accent-soft: #d7ebe1;
+  --accent-soft: var(--signal-soft);
   --diagram: #1f6b4a;
   --fade: #9aa39c;
 
@@ -34,7 +41,7 @@
   --hero-shadow: none;
   --card-shadow: none;
 
-  --text-display: clamp(2.6rem, 6.2vw, 4.5rem);
+  --text-display: clamp(2.4rem, 5.6vw, 4.1rem);
   --text-statement: clamp(1.8rem, 3.4vw, 2.6rem);
   --text-h2: clamp(1.55rem, 2.8vw, 2.1rem);
   --text-h3: 1.05rem;
@@ -47,13 +54,13 @@
   --arch-radius-control: 4px;
   --arch-radius-hero: 4px;
 
-  --max-width: 1120px;
+  --max-width: 1160px;
   --pad-x: 20px;
   --pad-y: 72px;
   --pad-y-mobile: 48px;
-  --nav-height: 64px;
+  --nav-height: 72px;
   --control-height: 44px;
-  --scroll-margin: 80px;
+  --scroll-margin: 96px;
 }
 
 @media (min-width: 768px) {
