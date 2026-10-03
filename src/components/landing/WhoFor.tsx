@@ -7,7 +7,7 @@ export function WhoFor() {
         <div className="mem-copy mem-copy-wide">
           <p className="label">Who it&apos;s for</p>
           <h2 id="who-heading" className="h2">
-            Built for accuracy over split-second speed.
+            Companies and individuals who live in AI tools.
           </h2>
           <p className="mem-lede">
             Companies running internal agents and chatbots, and individuals who live in AI tools.

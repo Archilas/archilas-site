@@ -275,10 +275,28 @@ section[id] {
 
 /* —— Memory-agent landing —— */
 .mem-hero {
+  position: relative;
   min-height: 100dvh;
   padding: calc(var(--nav-height) + 28px) var(--pad-x) 48px;
   display: flex;
   align-items: center;
+}
+
+.mem-hero::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: calc(var(--nav-height) + 48px);
+  bottom: 64px;
+  width: 3px;
+  background: var(--signal);
+  opacity: 0.85;
+}
+
+@media (min-width: 768px) {
+  .mem-hero::before {
+    left: max(0px, calc((100vw - var(--max-width)) / 2 - 12px));
+  }
 }
 
 .mem-hero-grid {
@@ -298,10 +316,10 @@ section[id] {
 
 .mem-brand {
   color: var(--ink);
-  font-size: clamp(1.35rem, 2.4vw, 1.75rem);
-  font-weight: 650;
-  letter-spacing: -0.04em;
-  margin-bottom: 14px;
+  font-size: clamp(1.75rem, 3.2vw, 2.35rem);
+  font-weight: 680;
+  letter-spacing: -0.045em;
+  margin-bottom: 18px;
 }
 
 .mem-hero-sub {
@@ -327,11 +345,40 @@ section[id] {
 
 .mem-hero-figure,
 .mem-figure {
-  border: 1px solid var(--line);
-  border-radius: 4px;
+  position: relative;
+  border: 1px solid var(--ink);
+  border-radius: 2px;
   overflow: hidden;
   background: var(--surface);
-  box-shadow: 0 1px 0 color-mix(in srgb, var(--ink) 4%, transparent);
+}
+
+.mem-hero-figure::before,
+.mem-hero-figure::after,
+.mem-figure::before,
+.mem-figure::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid var(--signal);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.mem-hero-figure::before,
+.mem-figure::before {
+  top: 6px;
+  left: 6px;
+  border-right: 0;
+  border-bottom: 0;
+}
+
+.mem-hero-figure::after,
+.mem-figure::after {
+  right: 6px;
+  bottom: 6px;
+  border-left: 0;
+  border-top: 0;
 }
 
 .mem-diagram {

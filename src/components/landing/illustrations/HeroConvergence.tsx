@@ -21,17 +21,17 @@ export function HeroConvergence({ className = "" }: { className?: string }) {
       </g>
 
       {/* Source nodes */}
-      <SourceNode x={56} y={56} label="Cursor chat" sub="yesterday" />
-      <SourceNode x={56} y={168} label="Claude Code" sub="session" />
-      <SourceNode x={56} y={280} label="Agent handoff" sub="tool → tool" />
-      <SourceNode x={56} y={348} label="Team chatbot" sub="last week" wide />
+      <SourceNode x={48} y={48} label="Cursor chat" sub="yesterday" />
+      <SourceNode x={48} y={132} label="Claude Code" sub="session" />
+      <SourceNode x={48} y={216} label="Agent handoff" sub="tool → tool" />
+      <SourceNode x={48} y={300} label="Team chatbot" sub="last week" />
 
       {/* Flow lines into center */}
-      <g stroke="var(--signal)" strokeWidth="1.5" fill="none">
-        <path d="M196 84 C280 84, 300 200, 360 210" className="diag-flow" />
-        <path d="M196 196 C270 196, 310 208, 360 210" className="diag-flow diag-flow-d1" />
-        <path d="M196 308 C270 300, 320 240, 360 210" className="diag-flow diag-flow-d2" />
-        <path d="M220 372 C300 360, 330 250, 360 210" className="diag-flow diag-flow-d3" />
+      <g stroke="var(--signal)" strokeWidth="1.75" fill="none">
+        <path d="M188 72 C270 72, 310 200, 360 210" className="diag-flow" />
+        <path d="M188 156 C260 156, 310 200, 360 210" className="diag-flow diag-flow-d1" />
+        <path d="M188 240 C260 240, 320 220, 360 210" className="diag-flow diag-flow-d2" />
+        <path d="M188 324 C270 324, 330 240, 360 210" className="diag-flow diag-flow-d3" />
       </g>
 
       {/* Archilas core */}

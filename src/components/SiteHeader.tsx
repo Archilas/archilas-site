@@ -56,7 +56,7 @@ export function SiteHeader() {
               align="end"
               secondaryHref={`mailto:${site.email}`}
               secondaryLabel="Contact"
-              primaryLabel="Book a call"
+              primaryLabel="Book an early-access call"
             />
           </div>
           <button
