@@ -420,6 +420,64 @@ button.btn-primary:hover,
   border-block: 1px solid color-mix(in srgb, var(--signal) 22%, var(--line));
 }
 
+/* Full-width dark band (mem0-style rhythm). Remaps ledger tokens so
+   diagrams/mobile stacks keep teal/amber/green accents with AA contrast. */
+.mem-section-dark {
+  --bg: #1a201c;
+  --bg-warm: #221c16;
+  --bg-mint: #17241e;
+  --surface: #1c221f;
+  --ink: #f2f4f2;
+  --body: #c2cbc4;
+  --muted: #9aa39c;
+  --line: #3a433d;
+  --inverse: #141816;
+  --signal: #5cb88a;
+  --signal-soft: color-mix(in srgb, #5cb88a 26%, #141816);
+  --amber: #e0a04a;
+  --amber-soft: color-mix(in srgb, #e0a04a 26%, #141816);
+  --sky: #6eb0d4;
+  --sky-soft: color-mix(in srgb, #6eb0d4 26%, #141816);
+  --fade: #7a847c;
+  --focus: #5cb88a;
+  background: var(--near-black);
+  color: var(--ink);
+  border-block: 1px solid color-mix(in srgb, var(--signal) 28%, transparent);
+}
+
+.mem-section-dark .label {
+  color: var(--signal);
+}
+
+.mem-section-dark .h2,
+.mem-section-dark .mem-lede,
+.mem-section-dark .mem-aside-note {
+  color: inherit;
+}
+
+.mem-section-dark .mem-lede,
+.mem-section-dark .mem-aside-note {
+  color: var(--body);
+}
+
+.mem-section-dark .mem-aside-label {
+  color: var(--muted);
+}
+
+.mem-section-dark .mem-aside-note {
+  border-top-color: var(--line);
+}
+
+.mem-section-dark .mem-figure {
+  border-color: var(--line);
+  background: var(--surface);
+}
+
+.mem-section-dark .mem-figure::before,
+.mem-section-dark .mem-figure::after {
+  border-color: var(--signal);
+}
+
 .mem-section-inner {
   width: min(var(--max-width), 100%);
   margin: 0 auto;
@@ -834,29 +892,56 @@ button.btn-primary:hover,
   line-height: inherit;
 }
 
-.contact-popover-backdrop {
+.contact-modal-backdrop {
   position: fixed;
   inset: 0;
   z-index: 80;
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-end;
-  padding: calc(var(--nav-height) + 12px) var(--pad-x) 24px;
-  background: color-mix(in srgb, var(--ink) 18%, transparent);
+  align-items: center;
+  justify-content: center;
+  padding: 24px var(--pad-x);
+  background: color-mix(in srgb, #141816 58%, transparent);
 }
 
+.contact-modal-panel,
 .contact-popover-panel {
-  width: min(320px, 100%);
-  margin-top: 0;
-  padding: 18px 18px 16px;
+  position: relative;
+  width: min(360px, 100%);
+  margin: 0;
+  padding: 22px 22px 18px;
   border: 1px solid var(--line);
   border-radius: 4px;
   background: var(--surface);
-  box-shadow: 0 18px 40px color-mix(in srgb, var(--ink) 12%, transparent);
+  box-shadow: 0 24px 56px color-mix(in srgb, #141816 28%, transparent);
+  color: var(--ink);
+}
+
+.contact-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.contact-modal-close:hover {
+  color: var(--ink);
+  border-color: var(--line);
+  background: color-mix(in srgb, var(--bg) 70%, transparent);
 }
 
 .contact-popover-title {
   margin: 0;
+  padding-right: 28px;
   font-family: var(--font-geist-mono), monospace;
   font-size: 11px;
   letter-spacing: 0.1em;
@@ -893,12 +978,8 @@ a.contact-popover-btn.btn-primary {
   text-decoration: none;
 }
 
-@media (max-width: 1023px) {
-  .contact-popover-backdrop {
-    align-items: center;
-    justify-content: center;
-    padding: 24px var(--pad-x);
-  }
+.contact-popover-title {
+  padding-right: 28px;
 }
 
 .mob-who-card {

@@ -3,7 +3,7 @@ import { ScrollReveal } from "@/components/ScrollReveal";
 
 export function HowItWorks() {
   return (
-    <section id="how" className="mem-section mem-section-mint" aria-labelledby="how-heading">
+    <section id="how" className="mem-section mem-section-dark" aria-labelledby="how-heading">
       <div className="mem-section-inner mem-split">
         <div className="mem-copy">
           <ScrollReveal y={16}>

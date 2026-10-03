@@ -48,23 +48,6 @@ export function ContactDialog({ open, onClose }: { open: boolean; onClose: () =>
   useFocusTrap(open, panelRef, close, { lockScroll: true });
 
   useEffect(() => {
-    if (!open) return;
-    function onPointerDown(event: MouseEvent | TouchEvent) {
-      const target = event.target as Node;
-      if (panelRef.current?.contains(target)) return;
-      const trigger = (event.target as HTMLElement | null)?.closest?.("[data-contact-trigger]");
-      if (trigger) return;
-      close();
-    }
-    document.addEventListener("mousedown", onPointerDown);
-    document.addEventListener("touchstart", onPointerDown);
-    return () => {
-      document.removeEventListener("mousedown", onPointerDown);
-      document.removeEventListener("touchstart", onPointerDown);
-    };
-  }, [open, close]);
-
-  useEffect(() => {
     if (!copied) return;
     const timer = window.setTimeout(() => setCopied(false), 1600);
     return () => window.clearTimeout(timer);
@@ -95,15 +78,30 @@ export function ContactDialog({ open, onClose }: { open: boolean; onClose: () =>
   if (!open || !mounted) return null;
 
   return createPortal(
-    <div className="contact-popover-backdrop" data-testid="contact-popover-backdrop">
+    <div
+      className="contact-modal-backdrop"
+      data-testid="contact-popover-backdrop"
+      onMouseDown={(event) => {
+        if (event.target === event.currentTarget) close();
+      }}
+    >
       <div
         ref={panelRef}
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
-        className="contact-popover-panel"
+        className="contact-modal-panel"
         data-testid="contact-popover"
+        onMouseDown={(event) => event.stopPropagation()}
       >
+        <button
+          type="button"
+          className="contact-modal-close"
+          aria-label="Close"
+          onClick={close}
+        >
+          <CloseIcon />
+        </button>
         <p id={titleId} className="contact-popover-title">
           Contact
         </p>
@@ -119,6 +117,19 @@ export function ContactDialog({ open, onClose }: { open: boolean; onClose: () =>
       </div>
     </div>,
     document.body,
+  );
+}
+
+function CloseIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+      <path
+        d="M3 3 L11 11 M11 3 L3 11"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="square"
+      />
+    </svg>
   );
 }
 
