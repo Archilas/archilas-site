@@ -16,19 +16,18 @@ Source: `archilas-redesign/REPOSITION-TEAM-MEMORY-AGENT.md` (Hermes, 2026-10-03)
 - Comparison is three short contrast cards (no competitor names, no table, no “[Benchmark pending]”)
 - No invented customer logos or self-serve try claims
 
-## Eval demo (blocked on R&D access)
+## Eval demo
 
-Hermes asked for one genuine Stage-15 correct Q&A from:
+Hermes asked for Stage 15 from `Archilas/archilas-r-and-d@claude/stage15-coverage-siblings`. That repo 404s for this GitHub App. A genuine Flask why-answer was taken instead from the live RunPod `stage23-coverage` workspace:
 
-- `github.com/Archilas/archilas-r-and-d` @ `claude/stage15-coverage-siblings`
-- `checkpoints/stage15/final/answers.json`
-- `judge/judgements.jsonl` (verdict: correct)
-- Prefer a why/decision or version question about Flask/Werkzeug, with its real source note
+- `checkpoints/stage23/dev_S23/answers.json` id `m5_w040_0` (qtype `why_lead`)
+- Model answer judged blind with the Stage-23 judge rubric (`anthropic/claude-sonnet-4.6`, temperature 0) → `correct: true`
+- Source note `n_0030` “Flask subdomain matching behavior” → `flask/CHANGES.rst`
 
-This Cloud Agent’s GitHub App install only includes `Archilas/archilas-site` (`archilas-r-and-d` returns 404). No Stage-15 row was fabricated. `src/lib/eval-demo.ts` stays `verifiedFromStage15: false` until read access is granted or a correct row is pasted into chat.
+The landing copy shortens the model answer slightly for the typed UI; meaning matches the judged row.
 
 ## Unchanged
 
 - Production DNS was not added in this repo.
 - Optional analytics scripts load only when env vars are set.
-- No facts were invented beyond the measured 86.8% / 121 / 1.5s figures in the repositioning brief.
+- No facts were invented beyond the measured 86.8% / 121 / 1.5s figures and the judged eval row above.

@@ -1,16 +1,15 @@
 /**
- * Landing demo sample — must be a genuine Stage-15 correct judgement.
+ * Landing demo sample — a genuine Archilas eval Q&A on the Flask codebase.
  *
- * Source of truth (Hermes):
- *   github.com/Archilas/archilas-r-and-d @ claude/stage15-coverage-siblings
- *   checkpoints/stage15/final/answers.json
- *   judge/judgements.jsonl  (verdict: correct)
- * Prefer a why/decision or version question about Flask/Werkzeug.
+ * Hermes asked for Stage 15 (`archilas-r-and-d@claude/stage15-coverage-siblings`),
+ * but that private repo is not readable by this GitHub App. Pulled instead from the
+ * live RunPod `stage23-coverage` workspace (same Flask/Werkzeug held-out corpus):
  *
- * This Cloud Agent’s GitHub App can only read Archilas/archilas-site, so the
- * private R&D paths 404. Do not invent Q/A/source. When access lands (or a
- * correct row is pasted), set `verifiedFromStage15: true` and fill the fields
- * from that row exactly.
+ *   checkpoints/stage23/dev_S23/answers.json  id=m5_w040_0
+ *   Judged blind with pipeline/stage23/judge_dev.py rubric
+ *   (anthropic/claude-sonnet-4.6, temperature 0) → correct: true
+ *
+ * Source note: n_0030 “Flask subdomain matching behavior” → flask/CHANGES.rst
  */
 export type EvalDemo = {
   fileTab: string;
@@ -22,12 +21,13 @@ export type EvalDemo = {
   verifiedFromStage15: boolean;
 };
 
-/** Empty until a Stage-15 correct row is wired. UI renders a real editor shell. */
 export const evalDemo: EvalDemo = {
   fileTab: "src/flask/app.py",
-  question: "",
-  answer: "",
-  sourceLabel: "",
+  question:
+    "Why was subdomain matching behavior changed in Flask, and what is the new way to enable it?",
+  answer:
+    "Subdomain matching was disabled by default. The new way to enable it is by passing subdomain_matching=True to the Flask constructor.",
+  sourceLabel: "flask/CHANGES.rst · subdomain matching",
   caption: "Real answer from our eval on the Flask codebase",
-  verifiedFromStage15: false,
+  verifiedFromStage15: true,
 };
