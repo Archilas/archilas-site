@@ -1,29 +1,33 @@
 # Assumptions
 
-## Waitlist persistence
+## Early access
 
-`POST /api/waitlist` durably stores `{ email, created_at }` in Upstash Redis (Vercel KV REST). Duplicates are idempotent and still return `{ ok: true }`. Missing store env or store errors return 503 — the UI never fakes success. The form lives in a shared modal.
+Primary CTA is an intro call at `https://cal.com/archilas/archilas-intro`. There is no self-serve signup on the marketing site. The waitlist API remains in the repo but is not the landing CTA.
 
-Required env (set on Vercel; never commit secrets):
+## Product and copy (team memory agent)
 
-- `KV_REST_API_URL` + `KV_REST_API_TOKEN`
-- or `UPSTASH_REDIS_REST_URL` + `UPSTASH_REDIS_REST_TOKEN`
+Source: `archilas-redesign/REPOSITION-TEAM-MEMORY-AGENT.md` (Hermes, 2026-10-03), plus Hermes PR #56 feedback (light Linear/Vercel look, contrast cards, real eval demo).
 
-## Product and copy
+- H1: “The agent that knows your team's history.”
+- Sub: Ask why, when or who about your codebase. Get a cited answer from your team's record.
+- Eyebrow: Team memory for engineering teams · Cursor, Claude Code and MCP coming soon
+- Proof: 86.8% accuracy on 121 questions about a real repo's history · p95 1.5s
+- Integrations (Cursor, Claude Code, MCP) are NOT live — say “coming soon” everywhere
+- Comparison is three short contrast cards (no competitor names, no table, no “[Benchmark pending]”)
+- No invented customer logos or self-serve try claims
 
-- H1: “AI memory that *understands* you.” — Geist + Instrument Serif italic on “understands” only.
-- One-line reinforce: Detailed notes → compacted memory → smart answers.
-- Dual CTAs: white Join waitlist → (modal) and outline Contact.
-- Landing follows TRYCLEAN-RESTORE-SPARSE: dark canvas, floating pill nav, photographic atmosphere plates, 2-col bands. Inner UI is opaque dark chrome; landscape stays on the outer plate only.
-- Hero: main LLM chat (Claude) with an Archilas tool call (REACT-HERO-DEMO.md). Compact is not at query time — the SLM retrieves already-compacted living memory and returns context to the model. No mp4. No scene cuts.
-- Hero plate: Product demo / Demo video coming soon / Walkthrough on the way. Play glyph disabled. No Ship Friday.
-- Compare: sparse chips on a landscape photo plate. Old way vs Archilas. No demo UI. Old: Search · Paste everything · Burns tokens · Forgets next session · No sense of time. Us: Compact · Reason · Deliver.
-- How: Notes in. Answers out. / Compact what matters. Reason when you ask. Stage switch on the plate. Spine Compact → Reason → Deliver.
-- SLM band: early access — not live. Surfaces: Built for tools you use. / Claude · ChatGPT · Cursor. MCP coming soon.
-- Footer: “MCP support — coming soon.”
+## Eval demo
+
+Hermes asked for Stage 15 from `Archilas/archilas-r-and-d@claude/stage15-coverage-siblings`. That repo 404s for this GitHub App. A genuine Flask why-answer was taken instead from the live RunPod `stage23-coverage` workspace:
+
+- `checkpoints/stage23/dev_S23/answers.json` id `m5_w040_0` (qtype `why_lead`)
+- Model answer judged blind with the Stage-23 judge rubric (`anthropic/claude-sonnet-4.6`, temperature 0) → `correct: true`
+- Source note `n_0030` “Flask subdomain matching behavior” → `flask/CHANGES.rst`
+
+The landing copy shortens the model answer slightly for the typed UI; meaning matches the judged row.
 
 ## Unchanged
 
 - Production DNS was not added in this repo.
 - Optional analytics scripts load only when env vars are set.
-- No facts were invented.
+- No facts were invented beyond the measured 86.8% / 121 / 1.5s figures and the judged eval row above.

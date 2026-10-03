@@ -5,7 +5,7 @@ import type { ButtonHTMLAttributes, MouseEventHandler, ReactNode } from "react";
 import { scrollToHash } from "@/lib/hash-scroll";
 
 const base =
-  "inline-flex h-[var(--control-height)] items-center justify-center rounded-[var(--arch-radius-control)] bg-white px-5 text-[15px] font-medium not-italic text-black no-underline hover:bg-white/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-bg disabled:cursor-not-allowed disabled:opacity-60";
+  "btn-primary inline-flex h-[var(--control-height)] items-center justify-center rounded-[var(--arch-radius-control)] px-5 text-[14px] font-medium not-italic no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-bg disabled:cursor-not-allowed disabled:opacity-60";
 
 type ButtonPrimaryProps = {
   children: ReactNode;
@@ -31,7 +31,9 @@ export function ButtonPrimary({
         <a
           href={href}
           className={cls}
-          {...(external ? { rel: "noopener noreferrer" } : {})}
+          {...(external
+            ? { rel: "noopener noreferrer", target: "_blank" }
+            : {})}
           onClick={(event) => {
             onClick?.(event);
             if (hash) scrollToHash(href);

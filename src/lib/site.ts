@@ -4,29 +4,31 @@ export const site = {
   name: "Archilas",
   url: "https://archilas.com",
   description:
-    "Persistent memory layer for AI. A compact, grounded, revisable record of preferences, decisions, and open loops — delivered into the tools you already use.",
-  tagline: "Persistent memory layer for AI.",
-  headline: "AI memory that understands you.",
+    "The memory agent for your AI. Archilas sits alongside your agents and chatbots, remembers everything they're told and do, and answers with the source. Cursor, Claude Code and MCP coming soon.",
+  tagline: "The memory agent for your AI.",
+  headline: "The memory agent for your AI.",
   email: "hello@archilas.com",
   twitter: "@archilas",
   twitterUrl: "https://x.com/archilas",
   githubUrl: "https://github.com/Archilas",
+  calUrl: "https://cal.com/archilas/archilas-intro",
   locale: "en_US",
 } as const;
 
 export const showResources = posts.length >= 2;
 
 export const nav = [
+  { href: "/#problem", label: "Problem" },
   { href: "/#how", label: "How" },
-  { href: "/#product", label: "Product" },
-  { href: "/#waitlist", label: "Waitlist" },
+  { href: "/#who", label: "Who" },
+  { href: "/#early-access", label: "Early access" },
 ] as const;
 
 export const footerNav = {
   product: [
     { href: "/#how", label: "How it works" },
-    { href: "/#product", label: "Product" },
-    { href: "/#waitlist", label: "Waitlist" },
+    { href: "/#who", label: "Who it's for" },
+    { href: "/#early-access", label: "Early access" },
   ],
   resources: showResources
     ? [

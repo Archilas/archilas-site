@@ -1,56 +1,65 @@
-/* Near-black canvas. Warm-white type. Electric blue is focus/active only. */
+/* Memory-agent landing: cool paper, deep ink, forest accent. Diagram-led. */
 
 :root {
-  --bg: #07080a;
-  --surface: #12141a;
-  --ink: #f3f0e8;
-  --body: #9b9ca6;
-  --muted: #787984;
-  --line: #23262e;
-  --inverse: #f3f0e8;
-  --signal: #3d8bff;
-  --focus: #3d8bff;
-  --cta: #ffffff;
-  --cta-ink: #0a0a0a;
+  --bg: #eef1f0;
+  --surface: #f7f8f7;
+  --ink: #141816;
+  --body: #3d4540;
+  --muted: #6a736c;
+  --line: #c5cdc6;
+  --inverse: #f7f8f7;
+  --signal: #1f6b4a;
+  --focus: #1f6b4a;
+  --cta: #141816;
+  --cta-ink: #f7f8f7;
+  --accent-soft: #d7ebe1;
+  --diagram: #1f6b4a;
+  --fade: #9aa39c;
 
   --paper: var(--bg);
   --elevated: var(--surface);
-  --near-black: #0a0a0a;
+  --near-black: #141816;
   --border: var(--line);
   --border-input: var(--line);
   --surface-legacy: var(--surface);
 
-  --bg-dark: var(--bg);
-  --card-dark: #12141a;
-  --border-dark: var(--line);
-  --text-dark: var(--ink);
+  --bg-dark: #141816;
+  --card-dark: #1c221f;
+  --border-dark: #2c342f;
+  --text-dark: #f7f8f7;
 
-  --accent: var(--focus);
-  --accent-dark: var(--focus);
+  --accent: var(--signal);
+  --accent-dark: var(--signal);
 
-  --hero-shadow: 0 40px 90px rgba(0, 0, 0, 0.45);
-  --card-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+  --hero-shadow: none;
+  --card-shadow: none;
 
-  --text-display: clamp(2.4rem, 5.6vw, 4.4rem);
-  --text-statement: clamp(2.4rem, 5vw, 3.6rem);
-  --text-h2: clamp(1.7rem, 3vw, 2.4rem);
-  --text-h3: 1.125rem;
+  --text-display: clamp(2.6rem, 6.2vw, 4.5rem);
+  --text-statement: clamp(1.8rem, 3.4vw, 2.6rem);
+  --text-h2: clamp(1.55rem, 2.8vw, 2.1rem);
+  --text-h3: 1.05rem;
   --text-body: 1.0625rem;
-  --text-label: 0.6875rem;
+  --text-label: 0.7rem;
   --text-mono: 0.75rem;
   --leading-body: 1.5;
 
-  --arch-radius-card: 20px;
-  --arch-radius-control: 999px;
-  --arch-radius-hero: 28px;
+  --arch-radius-card: 4px;
+  --arch-radius-control: 4px;
+  --arch-radius-hero: 4px;
 
   --max-width: 1120px;
-  --pad-x: 28px;
-  --pad-y: 96px;
-  --pad-y-mobile: 64px;
-  --nav-height: 88px;
-  --control-height: 46px;
-  --scroll-margin: 96px;
+  --pad-x: 20px;
+  --pad-y: 72px;
+  --pad-y-mobile: 48px;
+  --nav-height: 64px;
+  --control-height: 44px;
+  --scroll-margin: 80px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --pad-x: 40px;
+  }
 }
 
 @theme inline {
@@ -68,12 +77,12 @@
   --color-near-black: var(--near-black);
   --color-border: var(--line);
   --color-border-input: var(--line);
-  --color-bg-dark: var(--bg);
+  --color-bg-dark: var(--bg-dark);
   --color-card-dark: var(--card-dark);
   --color-border-dark: var(--border-dark);
   --color-text-dark: var(--text-dark);
-  --color-accent: var(--focus);
-  --color-accent-dark: var(--focus);
+  --color-accent: var(--signal);
+  --color-accent-dark: var(--signal);
   --font-sans: var(--font-geist);
   --font-mono: var(--font-geist-mono);
   --font-serif: var(--font-instrument);

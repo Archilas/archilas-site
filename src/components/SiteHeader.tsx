@@ -2,13 +2,12 @@
 
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { BrandLogo } from "@/components/BrandLogo";
-import { WaitlistCTA } from "@/components/WaitlistCTA";
+import { EarlyAccessCTA } from "@/components/EarlyAccessCTA";
+import { ButtonPrimary } from "@/components/ButtonPrimary";
 import { scrollToHash } from "@/lib/hash-scroll";
 import { nav, site } from "@/lib/site";
 import { useFocusTrap } from "@/lib/use-focus-trap";
-import { useWaitlist } from "@/lib/waitlist-context";
 import { track } from "@/lib/analytics";
-import { ButtonPrimary } from "@/components/ButtonPrimary";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
@@ -16,7 +15,6 @@ export function SiteHeader() {
   const drawerId = useId();
   const drawerRef = useRef<HTMLDivElement>(null);
   const close = useCallback(() => setOpen(false), []);
-  const waitlist = useWaitlist();
   useFocusTrap(open, drawerRef, close);
 
   useEffect(() => {
@@ -52,8 +50,14 @@ export function SiteHeader() {
               </a>
             ))}
           </nav>
-          <div className="nav-cta hidden lg:flex">
-            <WaitlistCTA source="nav" align="end" />
+          <div className="nav-cta">
+            <EarlyAccessCTA
+              source="nav"
+              align="end"
+              secondaryHref={`mailto:${site.email}`}
+              secondaryLabel="Contact"
+              primaryLabel="Book an early-access call"
+            />
           </div>
           <button
             type="button"
@@ -95,13 +99,13 @@ export function SiteHeader() {
           <div className="mt-4 flex flex-col gap-3">
             <ButtonPrimary
               className="w-full"
+              href={site.calUrl}
               onClick={() => {
-                track("cta_click", { source: "nav-mobile" });
-                waitlist.show("nav-mobile");
+                track("cta_click", { source: "nav-mobile", label: "early_access" });
                 close();
               }}
             >
-              Join waitlist →
+              Book an early-access call
             </ButtonPrimary>
             <a href={`mailto:${site.email}`} className="btn-outline w-full">
               Contact

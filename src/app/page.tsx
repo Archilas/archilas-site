@@ -1,10 +1,8 @@
-import { PlateDrift } from "@/components/PlateDrift";
-import { CompareScroll } from "@/components/landing/CompareScroll";
+import { CtaBand } from "@/components/landing/CtaBand";
 import { Hero } from "@/components/landing/Hero";
 import { HowItWorks } from "@/components/landing/HowItWorks";
-import { Surfaces } from "@/components/landing/Surfaces";
-import { Waitlist } from "@/components/landing/Waitlist";
-import { WhyBetter } from "@/components/landing/WhyBetter";
+import { Problem } from "@/components/landing/Problem";
+import { WhoFor } from "@/components/landing/WhoFor";
 import { JsonLd } from "@/components/JsonLd";
 import { buildMetadata, organizationJsonLd } from "@/lib/seo";
 import { site } from "@/lib/site";
@@ -19,13 +17,11 @@ export default function HomePage() {
   return (
     <>
       <JsonLd data={organizationJsonLd()} />
-      <PlateDrift />
       <Hero />
-      <CompareScroll />
+      <Problem />
       <HowItWorks />
-      <WhyBetter />
-      <Surfaces />
-      <Waitlist />
+      <WhoFor />
+      <CtaBand />
     </>
   );
 }
