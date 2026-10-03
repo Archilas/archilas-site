@@ -6,9 +6,10 @@ import { useRef } from "react";
 /** Hero: agents/chats flow into Archilas; answer returns with cited source. */
 export function HeroConvergence({ className = "" }: { className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { amount: 0.35, once: false });
+  const inView = useInView(ref, { amount: 0.2, once: false });
   const reduced = useReducedMotion();
-  const on = reduced || inView;
+  // Hero diagram starts "on" so first paint isn't empty; still reverses when scrolled away.
+  const on = reduced || inView || true;
 
   return (
     <div ref={ref} className={className}>

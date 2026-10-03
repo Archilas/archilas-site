@@ -198,6 +198,15 @@ section[id] {
   font-size: 13px;
 }
 
+.nav-cta .nav-text-link {
+  height: auto;
+  padding: 0;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+}
+
 .header-menu {
   border: 1px solid var(--line);
   background: var(--surface);
