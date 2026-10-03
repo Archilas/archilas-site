@@ -34,7 +34,7 @@ export function EarlyAccessCTA({
         {primaryLabel}
       </ButtonPrimary>
       {secondaryHref ? (
-        <a href={secondaryHref} className="btn-outline">
+        <a href={secondaryHref} className="nav-text-link">
           {secondaryLabel}
         </a>
       ) : null}

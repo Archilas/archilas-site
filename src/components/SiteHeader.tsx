@@ -54,7 +54,7 @@ export function SiteHeader() {
             <EarlyAccessCTA
               source="nav"
               align="end"
-              secondaryHref={`mailto:${site.email}`}
+              secondaryHref={`mailto:${site.contactEmail}`}
               secondaryLabel="Contact"
               primaryLabel="Book an early-access call"
             />
@@ -107,8 +107,8 @@ export function SiteHeader() {
             >
               Book an early-access call
             </ButtonPrimary>
-            <a href={`mailto:${site.email}`} className="btn-outline w-full">
-              Contact
+            <a href={`mailto:${site.contactEmail}`} className="nav-text-link self-start">
+              Contact · {site.contactEmail}
             </a>
             <button type="button" className="self-start text-[14px] font-medium not-italic text-ink" onClick={close}>
               Close
