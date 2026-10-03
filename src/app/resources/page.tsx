@@ -51,18 +51,19 @@ export default function ResourcesPage() {
               <p className="label">Guides</p>
               <p className="mt-3 text-[15px] text-ink">Coming as the product opens.</p>
               <p className="mt-2 text-[14px] text-body">
-                Intended delivery is MCP. Surfaces are in development — not live.
+                Cursor, Claude Code and MCP — coming soon.
               </p>
             </div>
             <div className="card p-6">
-              <p className="label">Waitlist</p>
-              <p className="mt-3 text-[14px] text-body">Early access. We email when Archilas opens.</p>
-              <Link
-                href="/#waitlist"
+              <p className="label">Early access</p>
+              <p className="mt-3 text-[14px] text-body">An intro call. Not a self-serve signup.</p>
+              <a
+                href="https://cal.com/archilas/archilas-intro"
                 className="mt-3 inline-block text-[14px] font-medium text-ink underline underline-offset-4"
+                rel="noopener noreferrer"
               >
-                Join waitlist
-              </Link>
+                Get early access
+              </a>
             </div>
           </div>
         </div>

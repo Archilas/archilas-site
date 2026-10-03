@@ -3046,6 +3046,328 @@ button.chip {
   font-size: 12px;
 }
 
+/* Team-memory landing. Mobile first: H1, sub, CTA, and proof fit the first screen. */
+
+.tm-hero {
+  padding-top: calc(var(--nav-height) + 4px);
+  padding-bottom: 28px;
+}
+
+.tm-h1 {
+  max-width: 11em;
+  color: var(--ink);
+  font-family: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  font-size: clamp(2rem, 8.2vw, 4.25rem);
+  font-weight: 680;
+  letter-spacing: -0.05em;
+  line-height: 1.02;
+}
+
+.tm-sub {
+  max-width: 34rem;
+  margin-top: 14px;
+  color: var(--body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.tm-cta {
+  margin-top: 20px;
+}
+
+.tm-proof {
+  max-width: 36rem;
+  margin-top: 16px;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.tm-soon {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.tm-band {
+  padding-top: 36px;
+  padding-bottom: 36px;
+  border-top: 1px solid var(--line);
+}
+
+.tm-problem {
+  max-width: 40rem;
+  color: var(--ink);
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.4;
+}
+
+.tm-lede {
+  max-width: 40rem;
+  margin-top: 12px;
+  color: var(--body);
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.tm-steps,
+.tm-cards {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+  padding: 0;
+  list-style: none;
+}
+
+.tm-step,
+.tm-card {
+  padding: 16px 16px 15px;
+  border: 1px solid var(--line);
+  border-radius: var(--arch-radius-card);
+  background: var(--surface);
+}
+
+.tm-index {
+  color: var(--signal);
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: 0.12em;
+}
+
+.tm-step-title,
+.tm-card h3 {
+  margin-top: 8px;
+  color: var(--ink);
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.tm-step-body,
+.tm-card p {
+  margin-top: 6px;
+  color: var(--body);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.tm-example {
+  margin-top: 14px;
+  padding: 16px 16px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--arch-radius-card);
+  background: #0e1014;
+}
+
+.tm-example .label {
+  color: var(--muted);
+}
+
+.tm-q,
+.tm-a {
+  display: grid;
+  grid-template-columns: 1.25rem 1fr;
+  gap: 8px;
+  margin-top: 12px;
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.tm-q span,
+.tm-a span {
+  color: var(--signal);
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: 0.06em;
+}
+
+.tm-a {
+  color: var(--body);
+}
+
+.tm-source {
+  margin-top: 10px;
+  padding-left: calc(1.25rem + 8px);
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.tm-cards-mobile {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.tm-compare-card {
+  padding: 14px 14px 6px;
+  border: 1px solid var(--line);
+  border-radius: var(--arch-radius-card);
+  background: var(--surface);
+}
+
+.tm-compare-card.is-ours {
+  border-color: color-mix(in srgb, var(--signal) 55%, var(--line));
+  background: color-mix(in srgb, var(--signal) 8%, var(--surface));
+}
+
+.tm-compare-card h3 {
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.tm-compare-card dl {
+  margin-top: 8px;
+}
+
+.tm-compare-card dl > div {
+  padding: 8px 0;
+  border-top: 1px solid var(--line);
+}
+
+.tm-compare-card dt {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 550;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.tm-compare-card dd {
+  margin-top: 3px;
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.tm-table-wrap {
+  display: none;
+}
+
+.tm-foot {
+  margin-top: 14px;
+  max-width: 52rem;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.tm-memory p,
+.tm-final .tm-lede {
+  max-width: 38rem;
+}
+
+.tm-memory p {
+  margin-top: 12px;
+  color: var(--body);
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.tm-final {
+  padding-bottom: 56px;
+}
+
+@media (min-width: 768px) {
+  .tm-hero {
+    padding-top: calc(var(--nav-height) + 28px);
+    padding-bottom: 48px;
+  }
+
+  .tm-sub {
+    margin-top: 18px;
+    font-size: 18px;
+  }
+
+  .tm-proof {
+    font-size: 14px;
+  }
+
+  .tm-band {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
+  .tm-steps,
+  .tm-cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 22px;
+  }
+
+  .tm-problem {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .tm-cards-mobile {
+    display: none;
+  }
+
+  .tm-table-wrap {
+    display: block;
+    margin-top: 22px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .tm-table {
+    width: 100%;
+    min-width: 920px;
+    border-collapse: separate;
+    border-spacing: 0;
+    text-align: left;
+  }
+
+  .tm-table th,
+  .tm-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--line);
+    color: var(--body);
+    font-size: 13px;
+    font-weight: 450;
+    line-height: 1.4;
+    vertical-align: top;
+  }
+
+  .tm-table thead th {
+    color: var(--ink);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .tm-table .tm-sticky {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    width: 168px;
+    min-width: 168px;
+    background: var(--bg);
+    color: var(--ink);
+    font-weight: 550;
+    box-shadow: 1px 0 0 var(--line);
+  }
+
+  .tm-table .is-ours {
+    background: color-mix(in srgb, var(--signal) 10%, var(--bg));
+    color: var(--ink);
+  }
+
+  .tm-table thead .is-ours {
+    font-weight: 650;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .plate-drift {
     transform: none;
