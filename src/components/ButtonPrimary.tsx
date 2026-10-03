@@ -31,7 +31,9 @@ export function ButtonPrimary({
         <a
           href={href}
           className={cls}
-          {...(external ? { rel: "noopener noreferrer" } : {})}
+          {...(external
+            ? { rel: "noopener noreferrer", target: "_blank" }
+            : {})}
           onClick={(event) => {
             onClick?.(event);
             if (hash) scrollToHash(href);

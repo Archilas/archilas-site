@@ -35,7 +35,7 @@ export function SiteFooter() {
           <p className="text-[12px] text-muted">
             © {new Date().getFullYear()} {site.name}
           </p>
-          <p className="text-[12px] text-muted">MCP support — coming soon.</p>
+          <p className="text-[12px] text-muted">Cursor, Claude Code and MCP — coming soon.</p>
         </div>
       </div>
     </footer>

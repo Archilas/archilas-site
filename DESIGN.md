@@ -5,20 +5,19 @@ Tryclean-craft: near-black canvas, warm-white type, electric-blue focus only, fl
 ## Type
 
 - Nav: Geist 14, sentence case in the pill.
-- H1: Geist 680 + Instrument Serif italic on **understands** only.
+- H1: Geist 680 display.
 - Floating pill nav: z-50, blur, isolation — always above plates.
-- Dual CTAs: 46px pills. White **Join waitlist →** + outline Contact.
+- Primary CTA: 46px white pill → Cal.com early-access call.
 
-## Rhythm
+## Rhythm (team memory agent)
 
-- Hero: chip → H1 → one-line sub → CTAs → SLM line → video-coming-soon plate peeking.
-- Compare: tiny left copy + landscape plate with frost chips. No demo UI. Old: Search · Paste everything · Burns tokens · Forgets next session · No sense of time. Us: Compact · Reason · Deliver.
-- How: 2-col — H2 + one line left, staged UI on plate. Spine Compact → Reason → Deliver.
-- Plates: huge rounded cards with photographic night/fog depth (not neon orbs, not flat black). Inner product windows are opaque chrome — landscape does not bleed through type. Sides and heights vary (compare tall/right, how mid/left, surfaces short/wide). Lerped sky drift on scroll; reduced-motion is static.
-- Hero: Claude chat on the alpine plate — composer types, Archilas tool retrieves already-compacted living memory, returns context to the model, Claude answers. No scene cuts, no generative video.
-- SLM: in development / early access — not live.
-- Surfaces: Claude / ChatGPT / Cursor text pills. MCP — coming soon.
-- Waitlist: honest. Footer: minimal dark + MCP coming soon.
+1. Hero — eyebrow · H1 · sub · Get early access + See how it works · proof · Q&A demo plate
+2. Problem — one line
+3. How — Capture / Remember / Answer + illustrative example
+4. Who — four audience cards
+5. Why — comparison table (no Cursor/Claude Code row) + source footnote
+6. Agent + memory — short band
+7. CTA — See it on your own repo · Book an early-access call
 
 ## Color
 
@@ -28,4 +27,4 @@ Tryclean-craft: near-black canvas, warm-white type, electric-blue focus only, fl
 | `--ink` | `#F3F0E8` | Warm-white headlines |
 | `--body` | `#9B9CA6` | Muted body |
 | `--signal` | `#3D8BFF` | Focus / active only |
-| CTA | `#FFFFFF` | Join waitlist pill |
+| CTA | `#FFFFFF` | Early-access pill |

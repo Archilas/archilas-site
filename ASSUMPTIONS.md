@@ -1,29 +1,23 @@
 # Assumptions
 
-## Waitlist persistence
+## Early access
 
-`POST /api/waitlist` durably stores `{ email, created_at }` in Upstash Redis (Vercel KV REST). Duplicates are idempotent and still return `{ ok: true }`. Missing store env or store errors return 503 — the UI never fakes success. The form lives in a shared modal.
+Primary CTA is an intro call at `https://cal.com/archilas/archilas-intro`. There is no self-serve signup on the marketing site. The waitlist API remains in the repo but is not the landing CTA.
 
-Required env (set on Vercel; never commit secrets):
+## Product and copy (team memory agent)
 
-- `KV_REST_API_URL` + `KV_REST_API_TOKEN`
-- or `UPSTASH_REDIS_REST_URL` + `UPSTASH_REDIS_REST_TOKEN`
+Source: `archilas-redesign/REPOSITION-TEAM-MEMORY-AGENT.md` (Hermes, 2026-10-03).
 
-## Product and copy
-
-- H1: “AI memory that *understands* you.” — Geist + Instrument Serif italic on “understands” only.
-- One-line reinforce: Detailed notes → compacted memory → smart answers.
-- Dual CTAs: white Join waitlist → (modal) and outline Contact.
-- Landing follows TRYCLEAN-RESTORE-SPARSE: dark canvas, floating pill nav, photographic atmosphere plates, 2-col bands. Inner UI is opaque dark chrome; landscape stays on the outer plate only.
-- Hero: main LLM chat (Claude) with an Archilas tool call (REACT-HERO-DEMO.md). Compact is not at query time — the SLM retrieves already-compacted living memory and returns context to the model. No mp4. No scene cuts.
-- Hero plate: Product demo / Demo video coming soon / Walkthrough on the way. Play glyph disabled. No Ship Friday.
-- Compare: sparse chips on a landscape photo plate. Old way vs Archilas. No demo UI. Old: Search · Paste everything · Burns tokens · Forgets next session · No sense of time. Us: Compact · Reason · Deliver.
-- How: Notes in. Answers out. / Compact what matters. Reason when you ask. Stage switch on the plate. Spine Compact → Reason → Deliver.
-- SLM band: early access — not live. Surfaces: Built for tools you use. / Claude · ChatGPT · Cursor. MCP coming soon.
-- Footer: “MCP support — coming soon.”
+- H1: “The agent that knows your team's history.”
+- Sub: Ask why, when or who about any part of your codebase. Archilas answers from your team's record and cites the note it came from.
+- Eyebrow: Team memory for engineering teams · Cursor, Claude Code and MCP coming soon
+- Proof: 86.8% accuracy on 121 questions about a real repo's history · p95 1.5s
+- Integrations (Cursor, Claude Code, MCP) are NOT live — say “coming soon” everywhere
+- Comparison table omits the Cursor/Claude Code row; competitor benchmark cells are “[Benchmark pending]”
+- No invented customer logos or self-serve try claims
 
 ## Unchanged
 
 - Production DNS was not added in this repo.
 - Optional analytics scripts load only when env vars are set.
-- No facts were invented.
+- No facts were invented beyond the measured 86.8% / 121 / 1.5s figures in the repositioning brief.

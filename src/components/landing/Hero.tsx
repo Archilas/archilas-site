@@ -1,22 +1,34 @@
-import { HeroVideo } from "@/components/landing/HeroVideo";
-import { WaitlistCTA } from "@/components/WaitlistCTA";
+import { EarlyAccessCTA } from "@/components/EarlyAccessCTA";
+import { HeroQaDemo } from "@/components/landing/HeroQaDemo";
 
 export function Hero() {
   return (
     <section className="hero-sky px-[var(--pad-x)] text-center">
       <div className="hero-stack">
-        <p className="hero-badge enter enter-d0">Many sources. One living record.</p>
-        <h1 className="display enter enter-d1">
-          AI memory that <em className="word-accent">understands</em> you.
-        </h1>
-        <p className="hero-sub enter enter-d2">Detailed notes → compacted memory → smart answers.</p>
+        <p className="hero-badge enter enter-d0">
+          Team memory for engineering teams · Cursor, Claude Code and MCP coming soon
+        </p>
+        <h1 className="display enter enter-d1">The agent that knows your team&apos;s history.</h1>
+        <p className="hero-sub enter enter-d2">
+          Ask why, when or who about any part of your codebase. Archilas answers from your team&apos;s
+          record and cites the note it came from.
+        </p>
         <div className="hero-actions enter enter-d3">
-          <WaitlistCTA source="hero" />
+          <EarlyAccessCTA source="hero" />
         </div>
-        <p className="hero-slm enter enter-d4">Powered by a memory SLM · early access</p>
+        <p className="hero-proof enter enter-d4">
+          86.8% accuracy on 121 questions about a real repo&apos;s history · p95 1.5s
+        </p>
       </div>
       <div className="hero-plate-enter enter enter-d5">
-        <HeroVideo />
+        <div className="hero-demo" id="demo" data-testid="hero-demo">
+          <div className="demo-plate plate-drift is-wide">
+            <div className="plate-sky is-alpine" aria-hidden="true" />
+            <div className="chrome-window hero-app-window">
+              <HeroQaDemo />
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

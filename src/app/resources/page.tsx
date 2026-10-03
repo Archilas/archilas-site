@@ -55,13 +55,15 @@ export default function ResourcesPage() {
               </p>
             </div>
             <div className="card p-6">
-              <p className="label">Waitlist</p>
-              <p className="mt-3 text-[14px] text-body">Early access. We email when Archilas opens.</p>
+              <p className="label">Early access</p>
+              <p className="mt-3 text-[14px] text-body">
+                Book a 20-minute intro call. Cursor, Claude Code and MCP are coming soon.
+              </p>
               <Link
-                href="/#waitlist"
+                href="/#early-access"
                 className="mt-3 inline-block text-[14px] font-medium text-ink underline underline-offset-4"
               >
-                Join waitlist
+                Get early access
               </Link>
             </div>
           </div>
