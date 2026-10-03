@@ -50,7 +50,7 @@ export function SiteHeader() {
               </a>
             ))}
           </nav>
-          <div className="nav-cta hidden lg:flex">
+          <div className="nav-cta">
             <EarlyAccessCTA
               source="nav"
               align="end"
