@@ -21,7 +21,7 @@ export function ContactTrigger({
     <button
       type="button"
       data-contact-trigger
-      className={cn("nav-text-link contact-popover-trigger", className)}
+      className={cn("nav-link contact-popover-trigger", className)}
       aria-expanded={expanded}
       aria-haspopup="dialog"
       onClick={onOpen}

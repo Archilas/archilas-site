@@ -198,13 +198,24 @@ section[id] {
   font-size: 13px;
 }
 
-.nav-cta .nav-text-link {
+.nav-cta .nav-text-link,
+.nav-cta .contact-popover-trigger {
   height: auto;
   padding: 0;
   border: none;
   background: transparent;
   box-shadow: none;
   border-radius: 0;
+  color: var(--body);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: inherit;
+  font-family: inherit;
+}
+
+.nav-cta .contact-popover-trigger:hover {
+  color: var(--ink);
 }
 
 .header-menu {
@@ -811,8 +822,13 @@ button.btn-primary:hover,
   background: transparent;
   border: none;
   cursor: pointer;
-  font: inherit;
   padding: 0;
+  color: var(--body);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  font-family: inherit;
+  line-height: inherit;
 }
 
 .contact-popover-backdrop {
