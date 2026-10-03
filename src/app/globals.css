@@ -198,6 +198,21 @@ section[id] {
 }
 
 /* —— Buttons —— */
+/* Explicit class beats `a { color: inherit }` so CTA labels stay light on ink. */
+a.btn-primary,
+button.btn-primary,
+.btn-primary {
+  background: var(--cta);
+  color: var(--cta-ink);
+}
+
+a.btn-primary:hover,
+button.btn-primary:hover,
+.btn-primary:hover {
+  opacity: 0.9;
+  color: var(--cta-ink);
+}
+
 .btn-outline {
   display: inline-flex;
   height: var(--control-height);
@@ -312,14 +327,6 @@ section[id] {
     grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
     gap: 48px;
   }
-}
-
-.mem-brand {
-  color: var(--ink);
-  font-size: clamp(1.75rem, 3.2vw, 2.35rem);
-  font-weight: 680;
-  letter-spacing: -0.045em;
-  margin-bottom: 18px;
 }
 
 .mem-hero-sub {
@@ -486,10 +493,19 @@ section[id] {
   border-color: var(--inverse);
 }
 
-/* Invert primary CTA contrast on dark band — ButtonPrimary uses --cta which is ink */
-.mem-cta a.inline-flex {
-  background: var(--inverse) !important;
-  color: var(--ink) !important;
+/* On the ink CTA band, flip to light fill + dark label (still AA). */
+.mem-cta a.btn-primary,
+.mem-cta button.btn-primary,
+.mem-cta .btn-primary {
+  background: var(--inverse);
+  color: var(--ink);
+}
+
+.mem-cta a.btn-primary:hover,
+.mem-cta button.btn-primary:hover,
+.mem-cta .btn-primary:hover {
+  opacity: 0.92;
+  color: var(--ink);
 }
 
 /* —— Footer —— */

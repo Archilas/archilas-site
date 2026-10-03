@@ -1,13 +1,11 @@
 import { EarlyAccessCTA } from "@/components/EarlyAccessCTA";
 import { HeroConvergence } from "@/components/landing/illustrations/HeroConvergence";
-import { site } from "@/lib/site";
 
 export function Hero() {
   return (
     <section className="mem-hero" aria-labelledby="hero-heading">
       <div className="mem-hero-grid">
         <div className="mem-hero-copy">
-          <p className="mem-brand enter enter-d0">{site.name}</p>
           <h1 id="hero-heading" className="display enter enter-d1">
             The memory agent for your AI.
           </h1>
