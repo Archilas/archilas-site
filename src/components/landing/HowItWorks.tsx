@@ -16,6 +16,11 @@ export function HowItWorks() {
               what they do, and when you or another agent asks, it works out the answer from that
               history and links to where each answer came from. It can learn your entire codebase too.
             </p>
+            <p className="mem-aside-note">
+              <span className="mem-aside-label">What it doesn&apos;t do</span>
+              It doesn&apos;t write code, doesn&apos;t run tasks, and doesn&apos;t replace your agents.
+              It remembers and answers.
+            </p>
           </ScrollReveal>
         </div>
         <ScrollReveal className="mem-figure" y={24} amount={0.25}>

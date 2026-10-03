@@ -10,7 +10,10 @@ export function useFocusTrap(
   active: boolean,
   containerRef: RefObject<HTMLElement | null>,
   onClose: () => void,
+  options: { lockScroll?: boolean } = {},
 ) {
+  const lockScroll = options.lockScroll ?? true;
+
   useEffect(() => {
     if (!active) return;
     const root = containerRef.current;
@@ -49,16 +52,20 @@ export function useFocusTrap(
 
     const prevBody = document.body.style.overflow;
     const prevHtml = document.documentElement.style.overflow;
-    document.body.style.overflow = "hidden";
-    document.documentElement.style.overflow = "hidden";
-    getLenis()?.stop();
+    if (lockScroll) {
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
+      getLenis()?.stop();
+    }
     document.addEventListener("keydown", onKey);
     return () => {
       document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = prevBody;
-      document.documentElement.style.overflow = prevHtml;
-      getLenis()?.start();
+      if (lockScroll) {
+        document.body.style.overflow = prevBody;
+        document.documentElement.style.overflow = prevHtml;
+        getLenis()?.start();
+      }
       previous?.focus();
     };
-  }, [active, containerRef, onClose]);
+  }, [active, containerRef, onClose, lockScroll]);
 }

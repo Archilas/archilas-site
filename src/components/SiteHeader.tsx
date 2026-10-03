@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { BrandLogo } from "@/components/BrandLogo";
+import { ContactDialog, ContactTrigger } from "@/components/ContactPopover";
 import { EarlyAccessCTA } from "@/components/EarlyAccessCTA";
 import { ButtonPrimary } from "@/components/ButtonPrimary";
 import { scrollToHash } from "@/lib/hash-scroll";
@@ -11,11 +12,16 @@ import { track } from "@/lib/analytics";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [contactOpen, setContactOpen] = useState(false);
   const [solid, setSolid] = useState(false);
   const drawerId = useId();
   const drawerRef = useRef<HTMLDivElement>(null);
   const close = useCallback(() => setOpen(false), []);
-  useFocusTrap(open, drawerRef, close);
+  const openContact = useCallback(() => {
+    setOpen(false);
+    setContactOpen((value) => !value);
+  }, []);
+  useFocusTrap(open && !contactOpen, drawerRef, close);
 
   useEffect(() => {
     const media = window.matchMedia("(min-width: 1024px)");
@@ -51,11 +57,11 @@ export function SiteHeader() {
             ))}
           </nav>
           <div className="nav-cta">
+            <ContactTrigger expanded={contactOpen} onOpen={openContact} />
             <EarlyAccessCTA
               source="nav"
               align="end"
-              secondaryHref={`mailto:${site.contactEmail}`}
-              secondaryLabel="Contact"
+              secondaryHref=""
               primaryLabel="Book an early-access call"
             />
           </div>
@@ -107,15 +113,19 @@ export function SiteHeader() {
             >
               Book an early-access call
             </ButtonPrimary>
-            <a href={`mailto:${site.contactEmail}`} className="nav-text-link self-start">
-              Contact · {site.contactEmail}
-            </a>
+            <ContactTrigger
+              className="self-start"
+              label={`Contact · ${site.contactEmail}`}
+              expanded={contactOpen}
+              onOpen={openContact}
+            />
             <button type="button" className="self-start text-[14px] font-medium not-italic text-ink" onClick={close}>
               Close
             </button>
           </div>
         </div>
       ) : null}
+      <ContactDialog open={contactOpen} onClose={() => setContactOpen(false)} />
     </header>
   );
 }

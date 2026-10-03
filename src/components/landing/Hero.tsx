@@ -17,6 +17,10 @@ export function Hero() {
               Archilas sits alongside your agents and chatbots, remembers everything they&apos;re told
               and do, and answers any of them, or you, with the source.
             </p>
+            <p className="mem-hero-aside">
+              It talks, but it doesn&apos;t do the work. It just remembers, so you and your AI never
+              start from zero.
+            </p>
           </ScrollReveal>
           <ScrollReveal y={14} delay={0.1} startVisible>
             <div className="mem-hero-actions">
