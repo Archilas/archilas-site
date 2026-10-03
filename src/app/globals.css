@@ -819,10 +819,13 @@ button.btn-primary:hover,
 }
 
 .contact-popover-trigger {
+  appearance: none;
+  -webkit-appearance: none;
   background: transparent;
   border: none;
   cursor: pointer;
   padding: 0;
+  margin: 0;
   color: var(--body);
   font-size: 13px;
   font-weight: 500;
