@@ -36,6 +36,10 @@ export function HowItWorks() {
             <p className="mem-aside-note">
               What it doesn&apos;t do: write code, run tasks, or replace your agents.
             </p>
+            <p className="mem-how-statement">
+              Memory shouldn&apos;t be a database you search. Archilas understands what happened, and
+              answers like someone who was there.
+            </p>
           </ScrollReveal>
         </div>
         <ScrollReveal className="mem-figure-bare" y={24} amount={0.2}>

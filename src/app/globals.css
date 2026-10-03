@@ -468,6 +468,10 @@ button.btn-primary:hover,
   border-top-color: var(--line);
 }
 
+.mem-section-dark .mem-how-statement {
+  color: var(--ink);
+}
+
 .mem-section-dark .mem-figure {
   border-color: var(--line);
   background: var(--surface);
