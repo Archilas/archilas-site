@@ -1,18 +1,23 @@
-import { Reveal } from "@/components/Reveal";
+import { ProblemFade } from "@/components/landing/illustrations/ProblemFade";
 
 export function Problem() {
   return (
-    <section id="problem" className="problem-band scroll-mt-[var(--scroll-margin)] px-[var(--pad-x)]">
-      <Reveal delay={60} y={12}>
-        <div className="section-head mx-auto text-center">
-          <p className="label">The problem</p>
-          <h2 className="h2 mt-3">Your agents can&apos;t see why the code is this way.</h2>
-          <p className="split-lede mx-auto">
-            Reasons live in old PRs, threads and people&apos;s heads — not in the tools that write the
-            next change.
+    <section id="problem" className="mem-section" aria-labelledby="problem-heading">
+      <div className="mem-section-inner mem-split mem-split-figure-first">
+        <div className="mem-figure">
+          <ProblemFade className="mem-diagram" />
+        </div>
+        <div className="mem-copy">
+          <p className="label">Problem</p>
+          <h2 id="problem-heading" className="h2">
+            Every AI chat starts from zero.
+          </h2>
+          <p className="mem-lede">
+            What you told Cursor yesterday, what one agent handed another, and what your team&apos;s
+            chatbot learned last week are all gone the next session.
           </p>
         </div>
-      </Reveal>
+      </div>
     </section>
   );
 }

@@ -1,27 +1,35 @@
 import { EarlyAccessCTA } from "@/components/EarlyAccessCTA";
-import { HeroQaDemo } from "@/components/landing/HeroQaDemo";
+import { HeroConvergence } from "@/components/landing/illustrations/HeroConvergence";
+import { site } from "@/lib/site";
 
 export function Hero() {
   return (
-    <section className="hero-sky px-[var(--pad-x)]">
-      <div className="hero-stack">
-        <p className="hero-badge enter enter-d0">
-          Team memory for engineering teams · Cursor, Claude Code and MCP coming soon
-        </p>
-        <h1 className="display enter enter-d1">The agent that knows your team&apos;s history.</h1>
-        <p className="hero-sub enter enter-d2">
-          Ask why, when or who about your codebase. Get a cited answer from your team&apos;s record.
-        </p>
-        <div className="hero-actions enter enter-d3">
-          <EarlyAccessCTA source="hero" />
+    <section className="mem-hero" aria-labelledby="hero-heading">
+      <div className="mem-hero-grid">
+        <div className="mem-hero-copy">
+          <p className="mem-brand enter enter-d0">{site.name}</p>
+          <h1 id="hero-heading" className="display enter enter-d1">
+            The memory agent for your AI.
+          </h1>
+          <p className="mem-hero-sub enter enter-d2">
+            Archilas sits alongside your agents and chatbots, remembers everything they&apos;re told
+            and do, and answers any of them, or you, with the source.
+          </p>
+          <div className="mem-hero-actions enter enter-d3">
+            <EarlyAccessCTA
+              source="hero"
+              align="start"
+              primaryLabel="Book an early-access call"
+              secondaryHref=""
+            />
+          </div>
+          <p className="mem-hero-proof enter enter-d4">
+            86.8% correct on 121 questions about a real project&apos;s history. Answers in under 1.5
+            seconds.
+          </p>
         </div>
-        <p className="hero-proof enter enter-d4">
-          86.8% accuracy on 121 questions about a real repo&apos;s history · p95 1.5s
-        </p>
-      </div>
-      <div className="hero-plate-enter enter enter-d5">
-        <div className="hero-demo" id="demo" data-testid="hero-demo">
-          <HeroQaDemo />
+        <div className="mem-hero-figure enter enter-d5" id="demo" data-testid="hero-demo">
+          <HeroConvergence className="mem-diagram" />
         </div>
       </div>
     </section>

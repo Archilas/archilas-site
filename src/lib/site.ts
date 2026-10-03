@@ -4,9 +4,9 @@ export const site = {
   name: "Archilas",
   url: "https://archilas.com",
   description:
-    "The agent that knows your team's history. Ask why, when or who about your codebase and get a cited answer. Cursor, Claude Code and MCP coming soon.",
-  tagline: "Team memory for engineering teams.",
-  headline: "The agent that knows your team's history.",
+    "The memory agent for your AI. Archilas sits alongside your agents and chatbots, remembers everything they're told and do, and answers with the source. Cursor, Claude Code and MCP coming soon.",
+  tagline: "The memory agent for your AI.",
+  headline: "The memory agent for your AI.",
   email: "hello@archilas.com",
   twitter: "@archilas",
   twitterUrl: "https://x.com/archilas",
@@ -18,9 +18,9 @@ export const site = {
 export const showResources = posts.length >= 2;
 
 export const nav = [
+  { href: "/#problem", label: "Problem" },
   { href: "/#how", label: "How" },
   { href: "/#who", label: "Who" },
-  { href: "/#why", label: "Why" },
   { href: "/#early-access", label: "Early access" },
 ] as const;
 
@@ -28,7 +28,6 @@ export const footerNav = {
   product: [
     { href: "/#how", label: "How it works" },
     { href: "/#who", label: "Who it's for" },
-    { href: "/#why", label: "Why Archilas" },
     { href: "/#early-access", label: "Early access" },
   ],
   resources: showResources

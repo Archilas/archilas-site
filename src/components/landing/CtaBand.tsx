@@ -1,28 +1,22 @@
 import { EarlyAccessCTA } from "@/components/EarlyAccessCTA";
-import { Reveal } from "@/components/Reveal";
 
 export function CtaBand() {
   return (
-    <section
-      id="early-access"
-      className="cta-band scroll-mt-[var(--scroll-margin)] px-[var(--pad-x)]"
-    >
-      <Reveal delay={70} y={16}>
-        <div className="cta-panel mx-auto max-w-xl text-center">
-          <h2 className="h2">See it on your own repo.</h2>
-          <p className="mt-3 text-[15px] leading-6 text-body">
-            20 minutes. Bring a question your team keeps asking.
-          </p>
-          <div className="mt-6">
-            <EarlyAccessCTA
-              source="cta-band"
-              primaryLabel="Book an early-access call →"
-              secondaryHref="mailto:hello@archilas.com"
-              secondaryLabel="Email us"
-            />
-          </div>
-        </div>
-      </Reveal>
+    <section id="early-access" className="mem-cta" aria-labelledby="cta-heading">
+      <div className="mem-cta-inner">
+        <h2 id="cta-heading" className="h2 mem-cta-title">
+          Give your agents a teammate that remembers.
+        </h2>
+        <p className="mem-lede mem-cta-lede">
+          20 minutes. Bring something your agents keep forgetting.
+        </p>
+        <EarlyAccessCTA
+          source="cta-band"
+          align="start"
+          primaryLabel="Book an early-access call"
+          secondaryHref=""
+        />
+      </div>
     </section>
   );
 }
