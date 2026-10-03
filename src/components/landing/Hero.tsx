@@ -1,5 +1,5 @@
 import { EarlyAccessCTA } from "@/components/EarlyAccessCTA";
-import { HeroConvergence } from "@/components/landing/illustrations/HeroConvergence";
+import { HeroChat } from "@/components/landing/illustrations/HeroChat";
 import { ScrollReveal } from "@/components/ScrollReveal";
 
 export function Hero() {
@@ -14,13 +14,10 @@ export function Hero() {
           </ScrollReveal>
           <ScrollReveal y={18} delay={0.06} startVisible>
             <p className="mem-hero-sub">
-              Archilas sits alongside your agents and chatbots, remembers everything they&apos;re told
-              and do, and answers any of them, or you, with the source.
+              Archilas remembers what you and your AI tools have said and done, and answers whenever
+              anyone asks.
             </p>
-            <p className="mem-hero-aside">
-              It talks, but it doesn&apos;t do the work. It just remembers, so you and your AI never
-              start from zero.
-            </p>
+            <p className="mem-hero-aside">It doesn&apos;t do the work. It remembers it.</p>
           </ScrollReveal>
           <ScrollReveal y={14} delay={0.1} startVisible>
             <div className="mem-hero-actions">
@@ -34,14 +31,13 @@ export function Hero() {
           </ScrollReveal>
           <ScrollReveal y={12} delay={0.14} startVisible>
             <p className="mem-hero-proof">
-              86.8% correct on 121 questions about a real project&apos;s history. Answers in under 1.5
-              seconds.
+              Answers 87% of questions about a real project&apos;s history correctly.
             </p>
           </ScrollReveal>
         </div>
-        <ScrollReveal y={20} delay={0.08} className="mem-hero-figure" amount={0.15} startVisible>
+        <ScrollReveal y={20} delay={0.08} className="mem-hero-figure mem-figure-bare" amount={0.15} startVisible>
           <div id="demo" data-testid="hero-demo">
-            <HeroConvergence />
+            <HeroChat />
           </div>
         </ScrollReveal>
       </div>

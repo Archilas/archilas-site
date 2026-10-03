@@ -6,10 +6,10 @@ export function CtaBand() {
     <section id="early-access" className="mem-cta" aria-labelledby="cta-heading">
       <ScrollReveal className="mem-cta-inner" y={18}>
         <h2 id="cta-heading" className="h2 mem-cta-title">
-          Give your agents a teammate that remembers.
+          Give your AI a memory.
         </h2>
         <p className="mem-lede mem-cta-lede">
-          20 minutes. Bring something your agents keep forgetting.
+          A 20-minute call. Bring something your AI keeps forgetting.
         </p>
         <EarlyAccessCTA
           source="cta-band"

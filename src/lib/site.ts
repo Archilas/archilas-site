@@ -4,7 +4,7 @@ export const site = {
   name: "Archilas",
   url: "https://archilas.com",
   description:
-    "The memory agent for your AI. Archilas sits alongside your agents and chatbots, remembers everything they're told and do, and answers with the source. Cursor, Claude Code and MCP coming soon.",
+    "The memory agent for your AI. Archilas remembers what you and your AI tools have said and done, and answers whenever anyone asks. Cursor, Claude Code and MCP coming soon.",
   tagline: "The memory agent for your AI.",
   headline: "The memory agent for your AI.",
   email: "hello@archilas.com",

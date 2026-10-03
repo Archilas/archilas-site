@@ -1,4 +1,4 @@
-import { HowSequence } from "@/components/landing/illustrations/HowSequence";
+import { HowRecord } from "@/components/landing/illustrations/HowRecord";
 import { ScrollReveal } from "@/components/ScrollReveal";
 
 export function HowItWorks() {
@@ -7,24 +7,39 @@ export function HowItWorks() {
       <div className="mem-section-inner mem-split">
         <div className="mem-copy">
           <ScrollReveal y={16}>
-            <p className="label">What it does</p>
             <h2 id="how-heading" className="h2">
-              An agent with one job: remember.
+              Three steps. Nothing new to learn.
             </h2>
-            <p className="mem-lede">
-              Archilas is an agent with one job: remember. It follows what your agents are sent and
-              what they do, and when you or another agent asks, it works out the answer from that
-              history and links to where each answer came from. It can learn your entire codebase too.
-            </p>
+            <ol className="mem-steps">
+              <li>
+                <span className="mem-step-n">1</span>
+                <div>
+                  <strong>Connect.</strong> Point your AI tools at Archilas. Cursor, Claude Code and
+                  MCP are coming soon.
+                </div>
+              </li>
+              <li>
+                <span className="mem-step-n">2</span>
+                <div>
+                  <strong>Work as usual.</strong> Archilas keeps a record of every chat, handoff and
+                  decision.
+                </div>
+              </li>
+              <li>
+                <span className="mem-step-n">3</span>
+                <div>
+                  <strong>Ask.</strong> You or your agents ask in plain words, and Archilas answers
+                  with the source.
+                </div>
+              </li>
+            </ol>
             <p className="mem-aside-note">
-              <span className="mem-aside-label">What it doesn&apos;t do</span>
-              It doesn&apos;t write code, doesn&apos;t run tasks, and doesn&apos;t replace your agents.
-              It remembers and answers.
+              What it doesn&apos;t do: write code, run tasks, or replace your agents.
             </p>
           </ScrollReveal>
         </div>
-        <ScrollReveal className="mem-figure" y={24} amount={0.25}>
-          <HowSequence />
+        <ScrollReveal className="mem-figure-bare" y={24} amount={0.2}>
+          <HowRecord />
         </ScrollReveal>
       </div>
     </section>
