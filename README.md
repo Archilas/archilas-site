@@ -1,6 +1,6 @@
 # Archilas marketing site
 
-Public marketing site for [Archilas](https://archilas.com). Persistent memory layer for AI.
+Public marketing site for [Archilas](https://www.archilas.com). Persistent memory layer for AI.
 
 ## Stack
 

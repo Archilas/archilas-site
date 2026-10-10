@@ -2,9 +2,9 @@ import { Reveal } from "@/components/Reveal";
 import { ChatGptMark, ClaudeMark, CursorMark, McpMark } from "@/components/landing/BrandMarks";
 
 const surfaces = [
-  { name: "Claude", state: "Intended", Mark: ClaudeMark },
-  { name: "ChatGPT", state: "Intended", Mark: ChatGptMark },
-  { name: "Cursor", state: "Intended", Mark: CursorMark },
+  { name: "Claude", state: "Coming soon", Mark: ClaudeMark },
+  { name: "ChatGPT", state: "Coming soon", Mark: ChatGptMark },
+  { name: "Cursor", state: "Coming soon", Mark: CursorMark },
   { name: "MCP", state: "Coming soon", Mark: McpMark },
 ] as const;
 
@@ -21,7 +21,7 @@ export function Surfaces() {
             <div className="plate-sky is-fjord" aria-hidden="true" />
             <div className="chrome-window">
               <div className="demo-chrome">
-                <span>Intended surfaces · not live</span>
+                <span>Coming soon · not live</span>
               </div>
               <div className="surface-marks">
                 {surfaces.map((item) => (

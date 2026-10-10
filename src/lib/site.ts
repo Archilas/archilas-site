@@ -2,15 +2,17 @@ import { posts } from "@/lib/posts";
 
 export const site = {
   name: "Archilas",
-  url: "https://archilas.com",
+  url: "https://www.archilas.com",
   description:
-    "The memory agent for your AI. Archilas remembers what you and your AI tools have said and done, and answers whenever anyone asks. Cursor, Claude Code and MCP coming soon.",
+    "Archilas is a memory agent for teams and their AI agents. It remembers what those agents were told and did, and answers later with the source. Cursor, Claude Code, and MCP are coming soon.",
   tagline: "The memory agent for your AI.",
   headline: "The memory agent for your AI.",
-  email: "hello@archilas.com",
+  /** Document title. The visible H1 stays `headline`. */
+  documentTitle: "A memory agent for AI agents and teams",
+  email: "hermes@archilas.com",
   contactEmail: "hermes@archilas.com",
-  twitter: "@archilas",
-  twitterUrl: "https://x.com/archilas",
+  twitter: "@archilas1",
+  twitterUrl: "https://x.com/archilas1",
   githubUrl: "https://github.com/Archilas",
   calUrl: "https://cal.com/archilas/archilas-intro",
   locale: "en_US",

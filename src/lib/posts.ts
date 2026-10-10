@@ -40,14 +40,14 @@ export const posts: BlogPost[] = [
     slug: "ai-memory-vs-rag",
     title: "How AI memory tools actually work, and how they differ from RAG",
     excerpt:
-      "Retrieval-augmented generation finds passages. A memory layer maintains a living model of what matters across time. Here is the practical difference.",
+      "Retrieval-augmented generation finds passages. A memory agent remembers what matters across time and answers for your other agents. Here is the practical difference.",
     directAnswer:
-      "RAG retrieves text snippets and pastes them into a prompt. An AI memory layer maintains structured, durable facts about you and your work, then reasons over that history so answers stay consistent across sessions instead of depending on whatever search happened to return.",
+      "RAG retrieves text snippets and pastes them into a prompt. A memory agent remembers structured facts about your work and answers for your other agents, so replies stay consistent across sessions instead of depending on whatever search happened to return.",
     datePublished: "2026-08-04",
     author: "Archilas",
     coverImage: "/blog/covers/memory-vs-rag.svg",
     coverAlt:
-      "Abstract diagram contrasting a search stack of text snippets with a compact persistent memory layer",
+      "Abstract diagram contrasting a search stack of text snippets with a memory agent that answers for other agents",
     tags: ["memory", "RAG", "architecture"],
     sections: [
       {
@@ -67,10 +67,10 @@ export const posts: BlogPost[] = [
         type: "p",
         text: "Where RAG strains is when the truth is distributed. “Why did we leave that vendor?” might require a payment failure from one month, a migration decision from another, and a constraint you stated in passing. Search returns fragments. The model is left to stitch them, or invent a bridge.",
       },
-      { type: "h2", text: "What a memory layer is trying to do" },
+      { type: "h2", text: "What a memory agent is trying to do" },
       {
         type: "p",
-        text: "A memory layer treats conversations as material for a maintained record: preferences, decisions, open loops, relationships between facts. The goal is not to re-find last Tuesday’s transcript. The goal is to keep a compact, current picture that an AI can reason over the next time you ask.",
+        text: "A memory agent treats conversations as material for a maintained record: preferences, decisions, open loops, relationships between facts. It remembers, then answers for your other agents. The goal is not to re-find last Tuesday’s transcript. The goal is to keep a compact, current picture the next agent can ask about.",
       },
       {
         type: "ul",
@@ -83,11 +83,11 @@ export const posts: BlogPost[] = [
       { type: "h2", text: "Why the distinction matters in practice" },
       {
         type: "p",
-        text: "If your daily stack spans Cursor, Claude, ChatGPT, and internal agents, each tool’s prompt window is a temporary stage. Without a shared memory layer, you re-explain context, or each tool reconstructs a different story from whatever it can search.",
+        text: "If your daily stack spans several chat apps and internal agents, each tool’s prompt window is a temporary stage. Without a shared memory agent, you re-explain context, or each tool reconstructs a different story from whatever it can search. Cursor, Claude Code, and MCP integrations for Archilas are coming soon — they are not live.",
       },
       {
         type: "p",
-        text: "Archilas is built around that second path: compacted memory, local reasoning over that memory, and delivery into the tools you already use. RAG can still feed documents into the picture. Memory is what keeps the picture from resetting every morning.",
+        text: "Archilas is that memory agent: it remembers what your other agents were told and did, and answers with the source. RAG can still feed documents into the picture. The memory agent is what keeps the picture from resetting every morning.",
       },
     ],
   },
@@ -149,7 +149,7 @@ export const posts: BlogPost[] = [
     excerpt:
       "The Model Context Protocol is a standard way for AI tools to connect to external context and capabilities. Here is why that matters for memory.",
     directAnswer:
-      "MCP (Model Context Protocol) is an open protocol that lets AI applications connect to external tools and context sources through a shared interface. It matters because memory, files, and services can plug into Claude, Cursor, and other clients without building a one-off integration for each product.",
+      "MCP (Model Context Protocol) is an open protocol that lets AI applications connect to external tools and context sources through a shared interface. Memory could reach Claude, Cursor, and other clients that way. Archilas’s Cursor, Claude Code, and MCP integrations are coming soon — they are not live.",
     datePublished: "2026-08-08",
     author: "Archilas",
     coverImage: "/blog/covers/what-is-mcp.svg",
@@ -169,7 +169,7 @@ export const posts: BlogPost[] = [
       { type: "h2", text: "Why memory belongs on that path" },
       {
         type: "p",
-        text: "Memory is only useful if it shows up where you already work. Developers do not want a fourth chat window that holds the “real” context while Cursor and Claude remain unaware. Delivering memory through MCP means the same layer can meet you inside the tools you already trust.",
+        text: "Memory is only useful if it shows up where you already work. Developers do not want a fourth chat window that holds the “real” context while their other tools remain unaware. Delivering memory through MCP would let the same agent meet you inside those tools. For Archilas, Cursor, Claude Code, and MCP are coming soon. Memory does not reach those tools from Archilas today.",
       },
       {
         type: "ul",
@@ -186,7 +186,7 @@ export const posts: BlogPost[] = [
       },
       {
         type: "p",
-        text: "Archilas uses that delivery model so compacted memory and local reasoning can reach the AI tools you already use without asking you to abandon them.",
+        text: "Archilas is a memory agent meant to answer for your other agents. Reaching the tools you already use — Cursor, Claude Code, and MCP — is coming soon, not something the product does today.",
       },
     ],
   },
@@ -241,9 +241,9 @@ export const posts: BlogPost[] = [
     slug: "persistent-memory-for-everyday-ai",
     title: "Persistent memory for the AI tools you already use",
     excerpt:
-      "You should not have to pick one chat app forever to keep context. Memory should travel with you across Claude, ChatGPT, Cursor, and agents.",
+      "You should not have to pick one chat app forever to keep context. A memory agent should answer for your other agents. Delivery into Claude, ChatGPT, and Cursor is coming soon.",
     directAnswer:
-      "Persistent AI memory should follow you across tools, not lock you into a single chat product. The practical approach is a separate memory layer that stores what matters and delivers it into Claude, ChatGPT, Cursor, and agents through standard interfaces such as MCP.",
+      "Persistent AI memory should follow you across tools, not lock you into a single chat product. Archilas is a memory agent that remembers what matters and answers for your other agents. Delivery into Claude, ChatGPT, and Cursor through MCP is coming soon. Those integrations are not live.",
     datePublished: "2026-08-12",
     author: "Archilas",
     coverImage: "/blog/covers/everyday-ai.svg",
@@ -263,11 +263,11 @@ export const posts: BlogPost[] = [
       { type: "h2", text: "A better shape" },
       {
         type: "p",
-        text: "Keep memory as its own layer. Compact what matters. Reason over it locally where you need control. Deliver it into the hosts you already use. When a new client appears, you connect the layer. You do not rebuild your autobiography.",
+        text: "Keep memory as its own agent. Compact what matters. Reason over it where you need control. Connecting that agent to Claude, ChatGPT, Cursor, and MCP is coming soon — it is not available in those tools today. When a new client appears later, you connect the agent. You do not rebuild your history.",
       },
       {
         type: "p",
-        text: "That is the Archilas bet in one sentence: a persistent memory layer for AI that reasons over your history, stays grounded, and meets you in the tools you already chose.",
+        text: "That is the Archilas bet: a memory agent that reasons over your history and stays grounded. It does not yet meet you inside Claude, ChatGPT, or Cursor. Those integrations, including MCP, are coming soon.",
       },
     ],
   },

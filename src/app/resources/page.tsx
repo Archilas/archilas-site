@@ -51,7 +51,7 @@ export default function ResourcesPage() {
               <p className="label">Guides</p>
               <p className="mt-3 text-[15px] text-ink">Coming as the product opens.</p>
               <p className="mt-2 text-[14px] text-body">
-                Intended delivery is MCP. Surfaces are in development — not live.
+                Cursor, Claude Code, and MCP are coming soon. They are not live.
               </p>
             </div>
             <div className="card p-6">

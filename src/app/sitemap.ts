@@ -4,7 +4,7 @@ import { site } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = ["", "/privacy", "/terms", "/blog", "/resources"].map((path) => ({
-    url: `${site.url}${path || "/"}`,
+    url: path ? `${site.url}${path}` : site.url,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: path === "" ? 1 : 0.8,

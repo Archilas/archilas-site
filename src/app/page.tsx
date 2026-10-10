@@ -2,6 +2,7 @@ import { CtaBand } from "@/components/landing/CtaBand";
 import { Hero } from "@/components/landing/Hero";
 import { HowItWorks } from "@/components/landing/HowItWorks";
 import { Problem } from "@/components/landing/Problem";
+import { Status } from "@/components/landing/Status";
 import { WhoFor } from "@/components/landing/WhoFor";
 import { JsonLd } from "@/components/JsonLd";
 import { buildMetadata, organizationJsonLd } from "@/lib/seo";
@@ -21,6 +22,7 @@ export default function HomePage() {
       <Problem />
       <HowItWorks />
       <WhoFor />
+      <Status />
       <CtaBand />
     </>
   );

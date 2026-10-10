@@ -16,6 +16,9 @@ export function SiteFooter() {
             <a href={site.calUrl} className="footer-link" rel="noopener noreferrer" target="_blank">
               Book an early-access call
             </a>
+            <a href={site.twitterUrl} className="footer-link" rel="noopener noreferrer" target="_blank">
+              X
+            </a>
           </div>
         </div>
         <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-[14px] text-body">

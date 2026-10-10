@@ -31,7 +31,7 @@ export function Hero() {
           </ScrollReveal>
           <ScrollReveal y={12} delay={0.14} startVisible>
             <p className="mem-hero-proof">
-              Answers 87% of questions about a real project&apos;s history correctly.
+              It answers from the notes it kept, and cites the source.
             </p>
           </ScrollReveal>
         </div>

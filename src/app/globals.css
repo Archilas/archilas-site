@@ -134,6 +134,14 @@ a {
   border-bottom-color: var(--signal);
 }
 
+.waitlist-honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 section[id] {
   scroll-margin-top: var(--scroll-margin);
 }
